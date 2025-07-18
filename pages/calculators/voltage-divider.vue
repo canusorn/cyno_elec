@@ -197,42 +197,59 @@
             <div>
               <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Input Values</h3>
               <div class="space-y-6">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Input Voltage (Vin) - Volts
-                  </label>
-                  <input 
-                    v-model.number="inputs.inputVoltage"
-                    type="number" 
-                    step="any"
-                    placeholder="Enter input voltage in volts"
-                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Resistor 1 (R1) - Ohms
-                  </label>
-                  <input 
-                    v-model.number="inputs.r1"
-                    type="number" 
-                    step="any"
-                    placeholder="Enter R1 in ohms (top resistor)"
-                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Resistor 2 (R2) - Ohms
-                  </label>
-                  <input 
-                    v-model.number="inputs.r2"
-                    type="number" 
-                    step="any"
-                    placeholder="Enter R2 in ohms (bottom resistor)"
-                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
-                  />
-                </div>
+                <div class="mb-4 text-center">
+                <p class="text-sm text-gray-600 dark:text-gray-300">
+                  Enter any three values to calculate the fourth variable
+                </p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Input Voltage (Vin) - Volts
+                </label>
+                <input 
+                  v-model.number="inputs.inputVoltage"
+                  type="number" 
+                  step="any"
+                  placeholder="Enter input voltage in volts"
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Resistor 1 (R1) - Ohms
+                </label>
+                <input 
+                  v-model.number="inputs.r1"
+                  type="number" 
+                  step="any"
+                  placeholder="Enter R1 in ohms (top resistor)"
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Resistor 2 (R2) - Ohms
+                </label>
+                <input 
+                  v-model.number="inputs.r2"
+                  type="number" 
+                  step="any"
+                  placeholder="Enter R2 in ohms (bottom resistor)"
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Output Voltage (Vout) - Volts
+                </label>
+                <input 
+                  v-model.number="inputs.outputVoltage"
+                  type="number" 
+                  step="any"
+                  placeholder="Enter output voltage in volts"
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
+                />
+              </div>
               </div>
             </div>
 
@@ -241,12 +258,12 @@
               <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Result</h3>
               <div class="bg-gradient-to-r from-primary/10 to-primary-dark/10 rounded-lg p-6">
                 <div class="text-center">
-                  <span class="text-lg text-gray-600 dark:text-gray-300">Output Voltage (Vout)</span>
+                  <span class="text-lg text-gray-600 dark:text-gray-300">{{ calculatedVariable ? calculatedVariable.label : 'Output Voltage (Vout)' }}</span>
                   <div class="text-4xl font-bold text-primary mt-2">
-                    {{ result !== null ? result : '---' }} V
+                    {{ calculatedVariable ? calculatedVariable.value.toFixed(3) + ' ' + calculatedVariable.unit : '---' }}
                   </div>
-                  <div v-if="result !== null" class="mt-4 text-sm text-gray-600 dark:text-gray-300">
-                    {{ inputs.inputVoltage }} × ({{ inputs.r2 }}/({{ inputs.r1 }}+{{ inputs.r2 }})) = {{ result }} V
+                  <div v-if="calculatedVariable" class="mt-4 text-sm text-gray-600 dark:text-gray-300">
+                    {{ calculatedVariable.formula }}
                   </div>
                 </div>
               </div>
@@ -352,19 +369,68 @@ export default {
       inputs: {
         inputVoltage: null,
         r1: null,
-        r2: null
+        r2: null,
+        outputVoltage: null
       },
       animationSpeed: 1
     }
   },
   computed: {
-    result() {
-      if (this.inputs.inputVoltage && this.inputs.r1 && this.inputs.r2 && 
-          !isNaN(this.inputs.inputVoltage) && !isNaN(this.inputs.r1) && !isNaN(this.inputs.r2) &&
-          this.inputs.r1 > 0 && this.inputs.r2 > 0) {
-        const outputVoltage = this.inputs.inputVoltage * (this.inputs.r2 / (this.inputs.r1 + this.inputs.r2))
-        return isFinite(outputVoltage) ? outputVoltage.toFixed(4) : null
+    hasAnyInput() {
+      return this.inputs.inputVoltage || this.inputs.r1 || this.inputs.r2 || this.inputs.outputVoltage
+    },
+    calculatedVariable() {
+      const { inputVoltage, r1, r2, outputVoltage } = this.inputs
+      
+      // Count non-null inputs
+      const inputCount = [inputVoltage, r1, r2, outputVoltage].filter(val => val !== null && val !== undefined && val !== '').length
+      
+      // Need exactly 3 inputs to calculate the 4th
+      if (inputCount !== 3) return null
+      
+      // Calculate missing variable
+      if (!inputVoltage && r1 && r2 && outputVoltage) {
+        // Calculate Input Voltage: Vin = Vout × (R1 + R2) / R2
+        const value = outputVoltage * (r1 + r2) / r2
+        return {
+          variable: 'inputVoltage',
+          value: value,
+          label: 'Input Voltage (Vin)',
+          unit: 'V',
+          formula: `Vin = Vout × (R1 + R2) / R2 = ${outputVoltage} × (${r1} + ${r2}) / ${r2} = ${value.toFixed(3)} V`
+        }
+      } else if (inputVoltage && !r1 && r2 && outputVoltage) {
+        // Calculate R1: R1 = R2 × (Vin - Vout) / Vout
+        const value = r2 * (inputVoltage - outputVoltage) / outputVoltage
+        return {
+          variable: 'r1',
+          value: value,
+          label: 'Resistor 1 (R1)',
+          unit: 'Ω',
+          formula: `R1 = R2 × (Vin - Vout) / Vout = ${r2} × (${inputVoltage} - ${outputVoltage}) / ${outputVoltage} = ${value.toFixed(3)} Ω`
+        }
+      } else if (inputVoltage && r1 && !r2 && outputVoltage) {
+        // Calculate R2: R2 = R1 × Vout / (Vin - Vout)
+        const value = r1 * outputVoltage / (inputVoltage - outputVoltage)
+        return {
+          variable: 'r2',
+          value: value,
+          label: 'Resistor 2 (R2)',
+          unit: 'Ω',
+          formula: `R2 = R1 × Vout / (Vin - Vout) = ${r1} × ${outputVoltage} / (${inputVoltage} - ${outputVoltage}) = ${value.toFixed(3)} Ω`
+        }
+      } else if (inputVoltage && r1 && r2 && !outputVoltage) {
+        // Calculate Output Voltage: Vout = Vin × R2 / (R1 + R2)
+        const value = inputVoltage * r2 / (r1 + r2)
+        return {
+          variable: 'outputVoltage',
+          value: value,
+          label: 'Output Voltage (Vout)',
+          unit: 'V',
+          formula: `Vout = Vin × R2 / (R1 + R2) = ${inputVoltage} × ${r2} / (${r1} + ${r2}) = ${value.toFixed(3)} V`
+        }
       }
+      
       return null
     }
   },
@@ -384,9 +450,15 @@ export default {
       this.animateFormulaHighlight('r2')
       this.updateResistorDisplay()
     },
-    result() {
-      this.animateResult()
-      this.updateVoltageDivision()
+    'inputs.outputVoltage'() {
+      this.animateFormulaHighlight('output')
+      this.updateVoltageDisplay()
+    },
+    calculatedVariable() {
+      if (this.calculatedVariable) {
+        this.animateResult()
+        this.updateVoltageDivision()
+      }
     }
   },
   methods: {
@@ -423,7 +495,7 @@ export default {
     },
     updateVoltageDisplay() {
       const vinDisplay = this.$refs.vinDisplay
-      const inputVoltage = parseFloat(this.inputs.inputVoltage) || 0
+      const inputVoltage = this.inputs.inputVoltage || (this.calculatedVariable && this.calculatedVariable.variable === 'inputVoltage' ? this.calculatedVariable.value : 0)
       
       if (vinDisplay) {
         vinDisplay.textContent = `${inputVoltage}V`
@@ -432,8 +504,8 @@ export default {
     updateResistorDisplay() {
       const r1Display = this.$refs.r1Display
       const r2Display = this.$refs.r2Display
-      const r1 = parseFloat(this.inputs.r1) || 0
-      const r2 = parseFloat(this.inputs.r2) || 0
+      const r1 = this.inputs.r1 || (this.calculatedVariable && this.calculatedVariable.variable === 'r1' ? this.calculatedVariable.value : 0)
+      const r2 = this.inputs.r2 || (this.calculatedVariable && this.calculatedVariable.variable === 'r2' ? this.calculatedVariable.value : 0)
       
       if (r1Display) {
         r1Display.textContent = r1 >= 1000 ? `${(r1/1000).toFixed(1)}kΩ` : `${r1}Ω`
@@ -447,10 +519,11 @@ export default {
       const v1Display = this.$refs.v1Display
       const v2Display = this.$refs.v2Display
       
-      const vin = parseFloat(this.inputs.inputVoltage) || 0
-      const r1 = parseFloat(this.inputs.r1) || 1
-      const r2 = parseFloat(this.inputs.r2) || 1
-      const vout = parseFloat(this.result) || 0
+      // Get values from inputs or calculatedVariable
+      let vin = this.inputs.inputVoltage || (this.calculatedVariable && this.calculatedVariable.variable === 'inputVoltage' ? this.calculatedVariable.value : 0)
+      let r1 = this.inputs.r1 || (this.calculatedVariable && this.calculatedVariable.variable === 'r1' ? this.calculatedVariable.value : 1)
+      let r2 = this.inputs.r2 || (this.calculatedVariable && this.calculatedVariable.variable === 'r2' ? this.calculatedVariable.value : 1)
+      let vout = this.inputs.outputVoltage || (this.calculatedVariable && this.calculatedVariable.variable === 'outputVoltage' ? this.calculatedVariable.value : 0)
       
       const v1 = vin - vout // Voltage across R1
       const v2 = vout // Voltage across R2

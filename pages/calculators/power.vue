@@ -181,6 +181,23 @@
                     class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
                   />
                 </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Power (P) - Watts
+                  </label>
+                  <input 
+                    v-model.number="inputs.power"
+                    type="number" 
+                    step="any"
+                    placeholder="Enter power in watts"
+                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
+                  />
+                </div>
+              </div>
+              <div class="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                <p class="text-sm text-blue-700 dark:text-blue-300">
+                  💡 Enter any two values to calculate the third variable.
+                </p>
               </div>
             </div>
 
@@ -189,12 +206,13 @@
               <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Result</h3>
               <div class="bg-gradient-to-r from-primary/10 to-primary-dark/10 rounded-lg p-6">
                 <div class="text-center">
-                  <span class="text-lg text-gray-600 dark:text-gray-300">Power (P)</span>
+                  <span v-if="calculatedVariable" class="text-lg text-gray-600 dark:text-gray-300">{{ calculatedVariable.label }}</span>
+                  <span v-else class="text-lg text-gray-600 dark:text-gray-300">Enter two values to calculate</span>
                   <div class="text-4xl font-bold text-primary mt-2">
-                    {{ result !== null ? result : '---' }} W
+                    {{ calculatedVariable ? calculatedVariable.value : '---' }} {{ calculatedVariable ? calculatedVariable.unit : '' }}
                   </div>
-                  <div v-if="result !== null" class="mt-4 text-sm text-gray-600 dark:text-gray-300">
-                    {{ inputs.voltage }} V × {{ inputs.current }} A = {{ result }} W
+                  <div v-if="calculatedVariable" class="mt-4 text-sm text-gray-600 dark:text-gray-300">
+                    {{ calculatedVariable.formula }}
                   </div>
                 </div>
               </div>
@@ -203,8 +221,10 @@
               <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                 <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Formula Explanation</h4>
                 <p class="text-sm text-gray-600 dark:text-gray-300">
-                  Electrical power is the rate at which electrical energy is transferred by an electric circuit. 
-                  It is calculated as the product of voltage and current.
+                  Electrical power calculations use the relationship P = V × I. You can calculate any variable when the other two are known:
+                  <br>• Power: P = V × I
+                  <br>• Voltage: V = P / I
+                  <br>• Current: I = P / V
                 </p>
               </div>
             </div>
@@ -260,18 +280,55 @@ export default {
       mobileMenuOpen: false,
       inputs: {
         voltage: null,
-        current: null
+        current: null,
+        power: null
       },
       animationSpeed: 1
     }
   },
   computed: {
-    result() {
-      if (this.inputs.voltage && this.inputs.current && 
-          !isNaN(this.inputs.voltage) && !isNaN(this.inputs.current)) {
-        const power = this.inputs.voltage * this.inputs.current
-        return isFinite(power) ? power.toFixed(4) : null
+    hasAnyInput() {
+      return Object.values(this.inputs).some(value => value !== null && value !== '' && !isNaN(value))
+    },
+    calculatedVariable() {
+      const { voltage, current, power } = this.inputs
+      
+      // Count non-null inputs
+      const validInputs = [voltage, current, power]
+        .filter(val => val !== null && val !== '' && !isNaN(val) && val > 0)
+      
+      if (validInputs.length !== 2) return null
+      
+      // Calculate missing variable based on which two are provided
+      if (voltage && current && !power) {
+        // Calculate power: P = V × I
+        const result = voltage * current
+        return {
+          label: 'Power (P)',
+          value: result.toFixed(4),
+          unit: 'W',
+          formula: `${voltage} V × ${current} A = ${result.toFixed(4)} W`
+        }
+      } else if (voltage && power && !current) {
+        // Calculate current: I = P / V
+        const result = power / voltage
+        return {
+          label: 'Current (I)',
+          value: result.toFixed(4),
+          unit: 'A',
+          formula: `${power} W / ${voltage} V = ${result.toFixed(4)} A`
+        }
+      } else if (current && power && !voltage) {
+        // Calculate voltage: V = P / I
+        const result = power / current
+        return {
+          label: 'Voltage (V)',
+          value: result.toFixed(4),
+          unit: 'V',
+          formula: `${power} W / ${current} A = ${result.toFixed(4)} V`
+        }
       }
+      
       return null
     }
   },
@@ -287,8 +344,14 @@ export default {
       this.animateFormulaHighlight('current')
       this.updateCurrentAnimation()
     },
-    result() {
-      this.animateResult()
+    'inputs.power'() {
+      this.animateFormulaHighlight('power')
+      this.updatePowerAnimation()
+    },
+    calculatedVariable() {
+      if (this.calculatedVariable) {
+        this.animateResult()
+      }
     }
   },
   methods: {
@@ -324,7 +387,14 @@ export default {
     },
     updateCurrentAnimation() {
       const particles = document.querySelectorAll('.current-particle')
-      const speed = Math.max(0.5, Math.min(3, parseFloat(this.inputs.current) || 1))
+      
+      // Get current value from calculated variable or input
+      let current = this.inputs.current
+      if (this.calculatedVariable && this.calculatedVariable.label.includes('Current')) {
+        current = parseFloat(this.calculatedVariable.value)
+      }
+      
+      const speed = Math.max(0.5, Math.min(3, parseFloat(current) || 1))
       
       particles.forEach(particle => {
         const animation = particle.querySelector('animateMotion')
@@ -338,8 +408,13 @@ export default {
       const bulb = document.querySelector('.load-bulb')
       const filament = document.querySelector('.bulb-filament')
       
-      const power = this.result
-      const intensity = Math.min(1, power / 100) // Normalize to 0-1
+      // Get power value from calculated variable or input
+      let power = this.inputs.power
+      if (this.calculatedVariable && this.calculatedVariable.label.includes('Power')) {
+        power = parseFloat(this.calculatedVariable.value)
+      }
+      
+      const intensity = power ? Math.min(1, power / 100) : 0 // Normalize to 0-1
       
       // Update bulb brightness
       if (bulb && filament) {

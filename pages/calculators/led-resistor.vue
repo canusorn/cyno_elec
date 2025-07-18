@@ -252,6 +252,26 @@
                     Typical values: Standard LED ~0.02A (20mA), High-power LED ~0.35A (350mA)
                   </p>
                 </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Resistor Value (R) - Ohms
+                  </label>
+                  <input 
+                    v-model.number="inputs.resistance"
+                    type="number" 
+                    step="any"
+                    placeholder="Enter resistor value (e.g., 330, 1000)"
+                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
+                  />
+                  <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    Common values: 220Ω, 330Ω, 470Ω, 1kΩ
+                  </p>
+                </div>
+              </div>
+              <div class="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                <p class="text-sm text-blue-700 dark:text-blue-300">
+                  💡 Enter any three values to calculate the fourth variable.
+                </p>
               </div>
             </div>
 
@@ -260,12 +280,13 @@
               <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Result</h3>
               <div class="bg-gradient-to-r from-primary/10 to-primary-dark/10 rounded-lg p-6">
                 <div class="text-center">
-                  <span class="text-lg text-gray-600 dark:text-gray-300">Required Resistor (R)</span>
+                  <span v-if="calculatedVariable" class="text-lg text-gray-600 dark:text-gray-300">{{ calculatedVariable.label }}</span>
+                  <span v-else class="text-lg text-gray-600 dark:text-gray-300">Enter three values to calculate</span>
                   <div class="text-4xl font-bold text-primary mt-2">
-                    {{ result !== null ? result : '---' }} Ω
+                    {{ calculatedVariable ? calculatedVariable.value : '---' }} {{ calculatedVariable ? calculatedVariable.unit : '' }}
                   </div>
-                  <div v-if="result !== null" class="mt-4 text-sm text-gray-600 dark:text-gray-300">
-                    ({{ inputs.supplyVoltage }} - {{ inputs.forwardVoltage }}) / {{ inputs.forwardCurrent }} = {{ result }} Ω
+                  <div v-if="calculatedVariable" class="mt-4 text-sm text-gray-600 dark:text-gray-300">
+                    {{ calculatedVariable.formula }}
                   </div>
                   <div v-if="powerDissipation !== null" class="mt-2 text-sm text-gray-600 dark:text-gray-300">
                     Power dissipation: {{ powerDissipation }} W
@@ -323,8 +344,11 @@
               <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                 <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Formula Explanation</h4>
                 <p class="text-sm text-gray-600 dark:text-gray-300">
-                  The current-limiting resistor drops the excess voltage (Vs - Vf) to limit the current through the LED 
-                  to its safe operating value. Without this resistor, the LED would draw too much current and burn out.
+                  LED circuit calculations use Ohm's law: R = (Vs - Vf) / If. You can calculate any variable when the other three are known:
+                  <br>• Resistance: R = (Vs - Vf) / If
+                  <br>• Supply Voltage: Vs = (R × If) + Vf
+                  <br>• Forward Voltage: Vf = Vs - (R × If)
+                  <br>• Forward Current: If = (Vs - Vf) / R
                 </p>
               </div>
             </div>
@@ -381,25 +405,94 @@ export default {
       inputs: {
         supplyVoltage: null,
         forwardVoltage: null,
-        forwardCurrent: null
+        forwardCurrent: null,
+        resistance: null
       },
       animationSpeed: 1
     }
   },
   computed: {
-    result() {
-      if (this.inputs.supplyVoltage && this.inputs.forwardVoltage && this.inputs.forwardCurrent && 
-          !isNaN(this.inputs.supplyVoltage) && !isNaN(this.inputs.forwardVoltage) && !isNaN(this.inputs.forwardCurrent) &&
-          this.inputs.supplyVoltage > this.inputs.forwardVoltage && this.inputs.forwardCurrent > 0) {
-        const resistance = (this.inputs.supplyVoltage - this.inputs.forwardVoltage) / this.inputs.forwardCurrent
-        return isFinite(resistance) ? resistance.toFixed(2) : null
+    hasAnyInput() {
+      return Object.values(this.inputs).some(value => value !== null && value !== '' && !isNaN(value))
+    },
+    calculatedVariable() {
+      const { supplyVoltage, forwardVoltage, forwardCurrent, resistance } = this.inputs
+      
+      // Count non-null inputs
+      const validInputs = [supplyVoltage, forwardVoltage, forwardCurrent, resistance]
+        .filter(val => val !== null && val !== '' && !isNaN(val) && val > 0)
+      
+      if (validInputs.length !== 3) return null
+      
+      // Calculate missing variable based on which three are provided
+      if (supplyVoltage && forwardVoltage && forwardCurrent && !resistance) {
+        // Calculate resistance: R = (Vs - Vf) / If
+        if (supplyVoltage > forwardVoltage) {
+          const result = (supplyVoltage - forwardVoltage) / forwardCurrent
+          return {
+            label: 'Required Resistor (R)',
+            value: result.toFixed(2),
+            unit: 'Ω',
+            formula: `(${supplyVoltage} - ${forwardVoltage}) / ${forwardCurrent} = ${result.toFixed(2)} Ω`
+          }
+        }
+      } else if (forwardVoltage && forwardCurrent && resistance && !supplyVoltage) {
+        // Calculate supply voltage: Vs = (R × If) + Vf
+        const result = (resistance * forwardCurrent) + forwardVoltage
+        return {
+          label: 'Supply Voltage (Vs)',
+          value: result.toFixed(2),
+          unit: 'V',
+          formula: `(${resistance} × ${forwardCurrent}) + ${forwardVoltage} = ${result.toFixed(2)} V`
+        }
+      } else if (supplyVoltage && forwardCurrent && resistance && !forwardVoltage) {
+        // Calculate forward voltage: Vf = Vs - (R × If)
+        const result = supplyVoltage - (resistance * forwardCurrent)
+        if (result > 0) {
+          return {
+            label: 'LED Forward Voltage (Vf)',
+            value: result.toFixed(2),
+            unit: 'V',
+            formula: `${supplyVoltage} - (${resistance} × ${forwardCurrent}) = ${result.toFixed(2)} V`
+          }
+        }
+      } else if (supplyVoltage && forwardVoltage && resistance && !forwardCurrent) {
+        // Calculate forward current: If = (Vs - Vf) / R
+        if (supplyVoltage > forwardVoltage) {
+          const result = (supplyVoltage - forwardVoltage) / resistance
+          return {
+            label: 'LED Forward Current (If)',
+            value: result.toFixed(4),
+            unit: 'A',
+            formula: `(${supplyVoltage} - ${forwardVoltage}) / ${resistance} = ${result.toFixed(4)} A`
+          }
+        }
       }
+      
       return null
     },
     powerDissipation() {
-      if (this.result && this.inputs.forwardCurrent) {
-        const voltageDrop = this.inputs.supplyVoltage - this.inputs.forwardVoltage
-        const power = voltageDrop * this.inputs.forwardCurrent
+      const { supplyVoltage, forwardVoltage, forwardCurrent, resistance } = this.inputs
+      
+      // We need at least supply voltage, forward voltage, and current to calculate power
+      let vs = supplyVoltage
+      let vf = forwardVoltage
+      let current = forwardCurrent
+      
+      // If any of these are missing but we have a calculated variable, use it
+      if (this.calculatedVariable) {
+        if (!vs && this.calculatedVariable.label.includes('Supply Voltage')) {
+          vs = parseFloat(this.calculatedVariable.value)
+        } else if (!vf && this.calculatedVariable.label.includes('Forward Voltage')) {
+          vf = parseFloat(this.calculatedVariable.value)
+        } else if (!current && this.calculatedVariable.label.includes('Forward Current')) {
+          current = parseFloat(this.calculatedVariable.value)
+        }
+      }
+      
+      if (vs && vf && current && vs > vf) {
+        const voltageDrop = vs - vf
+        const power = voltageDrop * current
         return isFinite(power) ? power.toFixed(4) : null
       }
       return null
@@ -421,8 +514,14 @@ export default {
       this.updateCircuitAnimation()
       this.animateResult()
     },
-    result() {
+    'inputs.resistance'() {
+      this.updateCircuitAnimation()
       this.animateResult()
+    },
+    calculatedVariable() {
+      if (this.calculatedVariable) {
+        this.animateResult()
+      }
     }
   },
   methods: {
@@ -451,33 +550,48 @@ export default {
       }
     },
     updateCircuitAnimation() {
+      // Get current values, using calculated variable if available
+      let supplyV = this.inputs.supplyVoltage || 9
+      let forwardV = this.inputs.forwardVoltage || 2
+      let forwardI = this.inputs.forwardCurrent || 0.02
+      let resistance = this.inputs.resistance || ((supplyV - forwardV) / forwardI)
+      
+      // Override with calculated variable if it exists
+      if (this.calculatedVariable) {
+        if (this.calculatedVariable.label.includes('Supply Voltage')) {
+          supplyV = parseFloat(this.calculatedVariable.value)
+        } else if (this.calculatedVariable.label.includes('Forward Voltage')) {
+          forwardV = parseFloat(this.calculatedVariable.value)
+        } else if (this.calculatedVariable.label.includes('Forward Current')) {
+          forwardI = parseFloat(this.calculatedVariable.value)
+        } else if (this.calculatedVariable.label.includes('Resistor')) {
+          resistance = parseFloat(this.calculatedVariable.value)
+        }
+      }
+      
       // Update voltage displays
       if (this.$refs.vsDisplay) {
-        this.$refs.vsDisplay.textContent = `${this.inputs.supplyVoltage || 9}V`
+        this.$refs.vsDisplay.textContent = `${supplyV}V`
         this.animateFormulaHighlight(this.$refs.supplyElement)
       }
       
       if (this.$refs.vfDisplay) {
-        this.$refs.vfDisplay.textContent = `${this.inputs.forwardVoltage || 2}V`
+        this.$refs.vfDisplay.textContent = `${forwardV}V`
         this.animateFormulaHighlight(this.$refs.forwardElement)
       }
       
       if (this.$refs.currentDisplay) {
-        const current = (this.inputs.forwardCurrent || 0.02) * 1000
-        this.$refs.currentDisplay.textContent = `If = ${current}mA`
+        const current = forwardI * 1000
+        this.$refs.currentDisplay.textContent = `If = ${current.toFixed(1)}mA`
         this.animateFormulaHighlight(this.$refs.currentElement)
       }
       
       // Update calculated values
-      const supplyV = this.inputs.supplyVoltage || 9
-      const forwardV = this.inputs.forwardVoltage || 2
-      const forwardI = this.inputs.forwardCurrent || 0.02
       const resistorVoltage = supplyV - forwardV
       const power = resistorVoltage * forwardI
       
       if (this.$refs.rDisplay) {
-        const resistance = this.result || ((supplyV - forwardV) / forwardI).toFixed(2)
-        this.$refs.rDisplay.textContent = `${resistance}Ω`
+        this.$refs.rDisplay.textContent = `${resistance.toFixed(2)}Ω`
         this.animateFormulaHighlight(this.$refs.resistorElement)
       }
       
@@ -500,7 +614,13 @@ export default {
       const lightRays = document.querySelectorAll('.light-ray')
       
       if (ledBody && lightRays.length > 0) {
-        const current = this.inputs.forwardCurrent || 0.02
+        let current = this.inputs.forwardCurrent || 0.02
+        
+        // Use calculated current if available
+        if (this.calculatedVariable && this.calculatedVariable.label.includes('Forward Current')) {
+          current = parseFloat(this.calculatedVariable.value)
+        }
+        
         const brightness = Math.min(current / 0.02, 1)
         ledBody.style.filter = `brightness(${0.5 + brightness * 0.5})`
         
@@ -512,7 +632,13 @@ export default {
     updateCurrentFlow() {
       const currentParticle = document.querySelector('.current-particle')
       if (currentParticle) {
-        const current = this.inputs.forwardCurrent || 0.02
+        let current = this.inputs.forwardCurrent || 0.02
+        
+        // Use calculated current if available
+        if (this.calculatedVariable && this.calculatedVariable.label.includes('Forward Current')) {
+          current = parseFloat(this.calculatedVariable.value)
+        }
+        
         const speed = Math.max(0.5, 3 - (current / 0.02) * 2)
         const animateMotion = currentParticle.querySelector('animateMotion')
         if (animateMotion) {

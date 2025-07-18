@@ -181,7 +181,22 @@
             <!-- Input Section -->
             <div>
               <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Input Values</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6">
+                Enter any two values to calculate the third variable.
+              </p>
               <div class="space-y-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Inductive Reactance (XL) - Ohms
+                  </label>
+                  <input 
+                    v-model.number="inputs.reactance"
+                    type="number" 
+                    step="any"
+                    placeholder="Enter reactance in Ω"
+                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
+                  />
+                </div>
                 <div>
                   <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Frequency (f) - Hertz
@@ -217,12 +232,16 @@
               <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Result</h3>
               <div class="bg-gradient-to-r from-primary/10 to-primary-dark/10 rounded-lg p-6">
                 <div class="text-center">
-                  <span class="text-lg text-gray-600 dark:text-gray-300">Inductive Reactance (XL)</span>
+                  <span v-if="calculatedVariable" class="text-lg text-gray-600 dark:text-gray-300">{{ calculatedVariable.label }}</span>
+                  <span v-else class="text-lg text-gray-600 dark:text-gray-300">Result</span>
                   <div class="text-4xl font-bold text-primary mt-2">
-                    {{ result !== null ? result : '---' }} Ω
+                    {{ calculatedVariable ? calculatedVariable.value : '---' }} {{ calculatedVariable ? calculatedVariable.unit : '' }}
                   </div>
-                  <div v-if="result !== null" class="mt-4 text-sm text-gray-600 dark:text-gray-300">
-                    2π × {{ inputs.frequency }} × {{ inputs.inductance }} = {{ result }} Ω
+                  <div v-if="calculatedVariable" class="mt-4 text-sm text-gray-600 dark:text-gray-300">
+                    {{ calculatedVariable.formula }}
+                  </div>
+                  <div v-if="!calculatedVariable && hasAnyInput" class="mt-4 text-sm text-gray-500 dark:text-gray-400">
+                    Please enter two values to calculate the third.
                   </div>
                 </div>
               </div>
@@ -231,8 +250,8 @@
               <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                 <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Formula Explanation</h4>
                 <p class="text-sm text-gray-600 dark:text-gray-300">
-                  Inductive reactance is the opposition that an inductor offers to alternating current. 
-                  It increases with increasing frequency and inductance. At DC (f=0), reactance is zero.
+                  This calculator can determine any of the three variables (reactance, frequency, or inductance) when the other two are provided. 
+                  Inductive reactance increases with increasing frequency and inductance.
                 </p>
               </div>
             </div>
@@ -287,6 +306,7 @@ export default {
     return {
       mobileMenuOpen: false,
       inputs: {
+        reactance: null,
         frequency: null,
         inductance: null
       },
@@ -294,13 +314,49 @@ export default {
     }
   },
   computed: {
-    result() {
-      if (this.inputs.frequency && this.inputs.inductance && 
-          !isNaN(this.inputs.frequency) && !isNaN(this.inputs.inductance) &&
-          this.inputs.frequency > 0 && this.inputs.inductance > 0) {
-        const reactance = 2 * Math.PI * this.inputs.frequency * this.inputs.inductance
-        return isFinite(reactance) ? reactance.toFixed(4) : null
+    hasAnyInput() {
+      return this.inputs.reactance || this.inputs.frequency || this.inputs.inductance
+    },
+    calculatedVariable() {
+      const { reactance, frequency, inductance } = this.inputs
+      
+      // Count non-null inputs
+      const inputCount = [reactance, frequency, inductance].filter(val => 
+        val !== null && val !== undefined && val !== '' && !isNaN(val) && val > 0
+      ).length
+      
+      if (inputCount !== 2) return null
+      
+      // Calculate missing variable based on XL = 2πfL
+      if (!reactance && frequency && inductance) {
+        // Calculate reactance: XL = 2πfL
+        const calc = 2 * Math.PI * frequency * inductance
+        return {
+          label: 'Inductive Reactance (XL)',
+          value: calc.toFixed(4),
+          unit: 'Ω',
+          formula: `2π × ${frequency} × ${inductance} = ${calc.toFixed(4)} Ω`
+        }
+      } else if (!frequency && reactance && inductance) {
+        // Calculate frequency: f = XL/(2πL)
+        const calc = reactance / (2 * Math.PI * inductance)
+        return {
+          label: 'Frequency (f)',
+          value: calc.toFixed(4),
+          unit: 'Hz',
+          formula: `${reactance}/(2π × ${inductance}) = ${calc.toFixed(4)} Hz`
+        }
+      } else if (!inductance && reactance && frequency) {
+        // Calculate inductance: L = XL/(2πf)
+        const calc = reactance / (2 * Math.PI * frequency)
+        return {
+          label: 'Inductance (L)',
+          value: calc.toExponential(4),
+          unit: 'H',
+          formula: `${reactance}/(2π × ${frequency}) = ${calc.toExponential(4)} H`
+        }
       }
+      
       return null
     }
   },
@@ -308,6 +364,9 @@ export default {
     this.initializeAnimations()
   },
   watch: {
+    'inputs.reactance'() {
+      this.animateFormulaHighlight('reactance')
+    },
     'inputs.frequency'() {
       this.animateFormulaHighlight('frequency')
       this.updateFrequencyAnimation()
@@ -316,9 +375,11 @@ export default {
       this.animateFormulaHighlight('inductance')
       this.updateInductanceAnimation()
     },
-    result() {
-      this.animateResult()
-      this.updateReactanceVisualization()
+    calculatedVariable() {
+      if (this.calculatedVariable) {
+        this.animateResult()
+        this.updateReactanceVisualization()
+      }
     }
   },
   methods: {
@@ -395,18 +456,27 @@ export default {
     },
     updateReactanceVisualization() {
       const reactanceBar = document.querySelector('.reactance-bar')
-      const reactance = this.result
+      let reactanceValue = null
       
-      if (reactanceBar && reactance > 0) {
+      if (this.calculatedVariable) {
+        if (this.calculatedVariable.label.includes('Reactance')) {
+          reactanceValue = parseFloat(this.calculatedVariable.value)
+        } else {
+          // If calculating other variables, use reactance input if available
+          reactanceValue = this.inputs.reactance
+        }
+      }
+      
+      if (reactanceBar && reactanceValue > 0) {
         // Direct relationship visualization (higher reactance = higher bar)
         const maxHeight = 150
-        const normalizedHeight = Math.max(20, Math.min(maxHeight, (reactance / 1000) * maxHeight))
+        const normalizedHeight = Math.max(20, Math.min(maxHeight, (reactanceValue / 1000) * maxHeight))
         
         reactanceBar.setAttribute('height', normalizedHeight)
         reactanceBar.setAttribute('y', 200 - normalizedHeight)
         
         // Color based on reactance value
-        const hue = Math.max(60, Math.min(120, 60 + (reactance / 1000) * 60)) // Yellow to green
+        const hue = Math.max(60, Math.min(120, 60 + (reactanceValue / 1000) * 60)) // Yellow to green
         reactanceBar.setAttribute('fill', `hsl(${hue}, 70%, 60%)`)
       }
     },

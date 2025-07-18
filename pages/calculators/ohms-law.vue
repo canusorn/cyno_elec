@@ -148,6 +148,18 @@
               <div class="space-y-6">
                 <div>
                   <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Voltage (V) - Volts
+                  </label>
+                  <input 
+                    v-model.number="inputs.voltage"
+                    type="number" 
+                    step="any"
+                    placeholder="Enter voltage in volts"
+                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Current (I) - Amperes
                   </label>
                   <input 
@@ -178,12 +190,15 @@
               <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Result</h3>
               <div class="bg-gradient-to-r from-primary/10 to-primary-dark/10 rounded-lg p-6">
                 <div class="text-center">
-                  <span class="text-lg text-gray-600 dark:text-gray-300">Voltage (V)</span>
+                  <span class="text-lg text-gray-600 dark:text-gray-300">{{ calculatedVariable.label }}</span>
                   <div class="text-4xl font-bold text-primary mt-2">
-                    {{ result !== null ? result : '---' }} V
+                    {{ calculatedVariable.value !== null ? calculatedVariable.value : '---' }} {{ calculatedVariable.unit }}
                   </div>
-                  <div v-if="result !== null" class="mt-4 text-sm text-gray-600 dark:text-gray-300">
-                    {{ inputs.current }} A × {{ inputs.resistance }} Ω = {{ result }} V
+                  <div v-if="calculatedVariable.value !== null" class="mt-4 text-sm text-gray-600 dark:text-gray-300">
+                    {{ calculatedVariable.formula }}
+                  </div>
+                  <div v-if="calculatedVariable.value === null && hasAnyInput" class="mt-4 text-sm text-yellow-600 dark:text-yellow-400">
+                    Enter any two values to calculate the third
                   </div>
                 </div>
               </div>
@@ -192,8 +207,9 @@
               <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                 <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Formula Explanation</h4>
                 <p class="text-sm text-gray-600 dark:text-gray-300">
-                  Ohm's Law states that the voltage across a conductor is directly proportional to the current flowing through it, 
-                  provided the temperature remains constant. The constant of proportionality is the resistance.
+                  Ohm's Law (V = I × R) states that voltage equals current multiplied by resistance. This fundamental electrical 
+                  law describes the relationship between these three key electrical quantities. Enter any two values and this 
+                  calculator will automatically determine the third variable using the appropriate formula.
                 </p>
               </div>
             </div>
@@ -248,6 +264,7 @@ export default {
     return {
       mobileMenuOpen: false,
       inputs: {
+        voltage: null,
         current: null,
         resistance: null
       },
@@ -258,6 +275,11 @@ export default {
     this.initializeAnimations()
   },
   watch: {
+    'inputs.voltage': {
+      handler() {
+        this.animateFormulaHighlight('voltage')
+      }
+    },
     'inputs.current': {
       handler() {
         this.animateFormulaHighlight('current')
@@ -270,23 +292,68 @@ export default {
         this.updateResistorAnimation()
       }
     },
-    result: {
+    calculatedVariable: {
       handler() {
-        if (this.result !== null) {
-          this.animateFormulaHighlight('voltage')
+        if (this.calculatedVariable.value !== null) {
           this.animateResult()
         }
       }
     }
   },
   computed: {
-    result() {
-      if (this.inputs.current && this.inputs.resistance && 
-          !isNaN(this.inputs.current) && !isNaN(this.inputs.resistance)) {
-        const voltage = this.inputs.current * this.inputs.resistance
-        return isFinite(voltage) ? voltage.toFixed(4) : null
+    hasAnyInput() {
+      return (this.inputs.voltage !== null && this.inputs.voltage !== '') ||
+             (this.inputs.current !== null && this.inputs.current !== '') ||
+             (this.inputs.resistance !== null && this.inputs.resistance !== '')
+    },
+    calculatedVariable() {
+      const { voltage, current, resistance } = this.inputs
+      
+      // Check if we have valid numbers (not null, not empty string, not NaN)
+      const hasVoltage = voltage !== null && voltage !== '' && !isNaN(voltage)
+      const hasCurrent = current !== null && current !== '' && !isNaN(current)
+      const hasResistance = resistance !== null && resistance !== '' && !isNaN(resistance)
+      
+      // Calculate voltage when current and resistance are provided
+      if (hasCurrent && hasResistance && !hasVoltage) {
+        const calculatedVoltage = current * resistance
+        return {
+          label: 'Voltage (V)',
+          value: isFinite(calculatedVoltage) ? calculatedVoltage.toFixed(4) : null,
+          unit: 'V',
+          formula: `${current} A × ${resistance} Ω = ${calculatedVoltage.toFixed(4)} V`
+        }
       }
-      return null
+      
+      // Calculate current when voltage and resistance are provided
+      if (hasVoltage && hasResistance && !hasCurrent) {
+        const calculatedCurrent = voltage / resistance
+        return {
+          label: 'Current (I)',
+          value: isFinite(calculatedCurrent) ? calculatedCurrent.toFixed(4) : null,
+          unit: 'A',
+          formula: `${voltage} V ÷ ${resistance} Ω = ${calculatedCurrent.toFixed(4)} A`
+        }
+      }
+      
+      // Calculate resistance when voltage and current are provided
+      if (hasVoltage && hasCurrent && !hasResistance) {
+        const calculatedResistance = voltage / current
+        return {
+          label: 'Resistance (R)',
+          value: isFinite(calculatedResistance) ? calculatedResistance.toFixed(4) : null,
+          unit: 'Ω',
+          formula: `${voltage} V ÷ ${current} A = ${calculatedResistance.toFixed(4)} Ω`
+        }
+      }
+      
+      // Default case when no calculation is possible
+      return {
+        label: 'Result',
+        value: null,
+        unit: '',
+        formula: ''
+      }
     }
   },
   methods: {
