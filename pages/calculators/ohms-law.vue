@@ -296,10 +296,10 @@ export default {
     initializeAnimations() {
       // Initialize formula animations
       this.$nextTick(() => {
-        const formulaParts = this.$refs.formulaContainer?.querySelectorAll('.formula-part')
-        formulaParts?.forEach((part, index) => {
-          part.style.animationDelay = `${index * 0.2}s`
-          part.classList.add('fade-in')
+        const formulaElements = this.$refs.formulaContainer?.querySelectorAll('.formula-part, .formula-operator')
+        formulaElements?.forEach((element, index) => {
+          element.style.animationDelay = `${index * 0.2}s`
+          element.classList.add('fade-in')
         })
       })
     },
@@ -399,6 +399,13 @@ html {
   color: var(--tw-color-primary);
   font-size: 1.5rem;
   margin: 0 0.25rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.formula-operator.fade-in {
+  animation: fadeInUp 0.6s ease forwards;
 }
 
 .circuit-animation {

@@ -432,10 +432,10 @@ export default {
     initializeAnimations() {
       // Initialize formula animations
       if (this.$refs.formulaContainer) {
-        const parts = this.$refs.formulaContainer.querySelectorAll('.formula-part')
-        parts.forEach((part, index) => {
-          part.style.animationDelay = `${index * 0.2}s`
-          part.classList.add('fade-in')
+        const elements = this.$refs.formulaContainer.querySelectorAll('.formula-part, .formula-operator')
+        elements.forEach((element, index) => {
+          element.style.animationDelay = `${index * 0.2}s`
+          element.classList.add('fade-in')
         })
       }
       
@@ -583,6 +583,13 @@ export default {
 .formula-operator {
   color: #6b7280;
   font-weight: normal;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.formula-operator.fade-in {
+  animation: fadeInUp 0.6s ease forwards;
 }
 
 /* LED Animation Styles */

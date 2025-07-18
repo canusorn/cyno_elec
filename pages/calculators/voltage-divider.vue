@@ -396,12 +396,11 @@ export default {
     initializeAnimations() {
       // Animate formula parts on load
       setTimeout(() => {
-        const parts = ['outputElement', 'inputElement', 'r1Element', 'r2Element']
-        parts.forEach((part, index) => {
+        const formulaElements = this.$refs.formulaContainer?.querySelectorAll('.formula-part, .formula-operator')
+        formulaElements?.forEach((element, index) => {
           setTimeout(() => {
-            if (this.$refs[part]) {
-              this.$refs[part].classList.add('fade-in')
-            }
+            element.style.animationDelay = `${index * 0.2}s`
+            element.classList.add('fade-in')
           }, index * 200)
         })
       }, 500)
@@ -547,6 +546,13 @@ html {
   color: var(--tw-color-primary);
   font-size: 1.2rem;
   margin: 0 0.25rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.formula-operator.fade-in {
+  animation: fadeInUp 0.6s ease forwards;
 }
 
 .divider-animation {

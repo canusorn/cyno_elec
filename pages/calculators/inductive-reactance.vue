@@ -97,7 +97,7 @@
             <div class="animated-formula" ref="formulaContainer">
               <span class="formula-part reactance" ref="reactanceElement">XL</span>
               <span class="formula-operator">=</span>
-              <span class="formula-part constant">2π</span>
+              <span class="formula-part fraction">2π</span>
               <span class="formula-part frequency" ref="frequencyElement">f</span>
               <span class="formula-part inductance" ref="inductanceElement">L</span>
             </div>
@@ -328,12 +328,10 @@ export default {
     initializeAnimations() {
       // Animate formula parts on load
       setTimeout(() => {
-        const parts = ['reactanceElement', 'frequencyElement', 'inductanceElement']
-        parts.forEach((part, index) => {
+        const formulaParts = document.querySelectorAll('.formula-part, .formula-operator')
+        formulaParts.forEach((part, index) => {
           setTimeout(() => {
-            if (this.$refs[part]) {
-              this.$refs[part].classList.add('fade-in')
-            }
+            part.classList.add('fade-in')
           }, index * 200)
         })
       }, 500)
@@ -483,6 +481,18 @@ html {
   color: var(--tw-color-primary);
   font-size: 1.5rem;
   margin: 0 0.25rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.formula-operator.fade-in {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.formula-part.fraction {
+  color: var(--tw-color-primary);
+  font-size: 1.5rem;
 }
 
 .reactance-animation {
