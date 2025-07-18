@@ -7,11 +7,13 @@
         <div class="flex justify-between h-16">
           <div class="flex items-center">
             <svg class="h-8 sm:h-10 mr-2 hover:scale-105 transition-transform" viewBox="0 0 100 100" fill="none">
-              <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="4" class="text-primary animate-pulse"/>
-              <path d="M30 50 L45 35 L55 65 L70 50" stroke="currentColor" stroke-width="3" class="text-primary-dark"/>
+              <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="4"
+                class="text-primary animate-pulse" />
+              <path d="M30 50 L45 35 L55 65 L70 50" stroke="currentColor" stroke-width="3" class="text-primary-dark" />
             </svg>
             <span
-              class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">Cyno Electric</span>
+              class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">Cyno
+              Electric</span>
           </div>
 
           <!-- Desktop Navigation -->
@@ -23,16 +25,11 @@
               class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">Formulas</a>
             <a href="#tools"
               class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">Tools</a>
-            <NuxtLink to="/projects"
-              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
-              Projects</NuxtLink>
             <NuxtLink to="/contact"
               class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
               Contact</NuxtLink>
             <a href="#about"
               class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">About</a>
-            <button @click="toggleDark()"
-              class="bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white px-6 py-2 rounded-full font-medium transition-all transform hover:scale-105 hover:shadow-lg">{{ $colorMode === 'dark' ? '☀️' : '🌙' }}</button>
           </div>
 
           <!-- Mobile menu button -->
@@ -59,9 +56,6 @@
               class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">Formulas</a>
             <a href="#tools" @click="mobileMenuOpen = false"
               class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">Tools</a>
-            <NuxtLink to="/projects" @click="mobileMenuOpen = false"
-              class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
-              Projects</NuxtLink>
             <NuxtLink to="/contact" @click="mobileMenuOpen = false"
               class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
               Contact</NuxtLink>
@@ -69,7 +63,8 @@
               class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">About</a>
             <div class="px-3 py-2">
               <button @click="toggleDark(); mobileMenuOpen = false"
-                class="w-full bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white px-6 py-2 rounded-full font-medium transition-all">{{ $colorMode === 'dark' ? '☀️ Light' : '🌙 Dark' }}</button>
+                class="w-full bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white px-6 py-2 rounded-full font-medium transition-all">{{
+                  $colorMode === 'dark' ? '☀️ Light' : '🌙 Dark' }}</button>
             </div>
           </div>
         </div>
@@ -86,7 +81,8 @@
             Master Electrical Calculations with <span class="text-primary dark:text-primary-light">Cyno Electric</span>
           </h1>
           <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-            Your comprehensive platform for electrical engineering calculations, formulas, and interactive tools. From Ohm's Law to complex power analysis.
+            Your comprehensive platform for electrical engineering calculations, formulas, and interactive tools. From
+            Ohm's Law to complex power analysis.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <a href="#calculators"
@@ -100,39 +96,49 @@
           </div>
         </div>
         <div class="flex-1 flex justify-center mt-12 md:mt-0">
-          <div class="w-full max-w-lg bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 transform hover:scale-105 transition-transform duration-500 hover:shadow-primary/20">
+          <div
+            class="w-full max-w-lg bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 transform hover:scale-105 transition-transform duration-500 hover:shadow-primary/20">
             <!-- Animated Circuit Diagram -->
             <svg viewBox="0 0 400 300" class="w-full h-auto">
               <!-- Circuit Background -->
-              <rect width="400" height="300" fill="transparent"/>
-              
+              <rect width="400" height="300" fill="transparent" />
+
               <!-- Voltage Source -->
-              <circle cx="50" cy="150" r="25" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"/>
+              <circle cx="50" cy="150" r="25" fill="none" stroke="currentColor" stroke-width="2" class="text-primary" />
               <text x="50" y="155" text-anchor="middle" class="text-sm font-bold fill-current text-primary">V</text>
-              
+
               <!-- Resistor -->
-              <rect x="150" y="140" width="40" height="20" fill="none" stroke="currentColor" stroke-width="2" class="text-primary-dark"/>
-              <text x="170" y="135" text-anchor="middle" class="text-xs fill-current text-gray-600 dark:text-gray-300">R</text>
-              
+              <rect x="150" y="140" width="40" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                class="text-primary-dark" />
+              <text x="170" y="135" text-anchor="middle"
+                class="text-xs fill-current text-gray-600 dark:text-gray-300">R</text>
+
               <!-- Current Flow Animation -->
               <g class="animate-pulse">
                 <circle cx="100" cy="150" r="3" fill="currentColor" class="text-red-500">
                   <animateMotion dur="2s" repeatCount="indefinite">
-                    <path d="M 0,0 L 100,0 L 100,-50 L 100,0 L 100,50 L 100,0 L -100,0 Z"/>
+                    <path d="M 0,0 L 100,0 L 100,-50 L 100,0 L 100,50 L 100,0 L -100,0 Z" />
                   </animateMotion>
                 </circle>
               </g>
-              
+
               <!-- Wires -->
-              <line x1="75" y1="150" x2="150" y2="150" stroke="currentColor" stroke-width="2" class="text-gray-700 dark:text-gray-300"/>
-              <line x1="190" y1="150" x2="350" y2="150" stroke="currentColor" stroke-width="2" class="text-gray-700 dark:text-gray-300"/>
-              <line x1="350" y1="150" x2="350" y2="100" stroke="currentColor" stroke-width="2" class="text-gray-700 dark:text-gray-300"/>
-              <line x1="350" y1="100" x2="50" y2="100" stroke="currentColor" stroke-width="2" class="text-gray-700 dark:text-gray-300"/>
-              <line x1="50" y1="100" x2="50" y2="125" stroke="currentColor" stroke-width="2" class="text-gray-700 dark:text-gray-300"/>
-              
+              <line x1="75" y1="150" x2="150" y2="150" stroke="currentColor" stroke-width="2"
+                class="text-gray-700 dark:text-gray-300" />
+              <line x1="190" y1="150" x2="350" y2="150" stroke="currentColor" stroke-width="2"
+                class="text-gray-700 dark:text-gray-300" />
+              <line x1="350" y1="150" x2="350" y2="100" stroke="currentColor" stroke-width="2"
+                class="text-gray-700 dark:text-gray-300" />
+              <line x1="350" y1="100" x2="50" y2="100" stroke="currentColor" stroke-width="2"
+                class="text-gray-700 dark:text-gray-300" />
+              <line x1="50" y1="100" x2="50" y2="125" stroke="currentColor" stroke-width="2"
+                class="text-gray-700 dark:text-gray-300" />
+
               <!-- Formula Display -->
-              <text x="200" y="50" text-anchor="middle" class="text-lg font-bold fill-current text-primary">V = I × R</text>
-              <text x="200" y="250" text-anchor="middle" class="text-sm fill-current text-gray-600 dark:text-gray-300">Ohm's Law</text>
+              <text x="200" y="50" text-anchor="middle" class="text-lg font-bold fill-current text-primary">V = I ×
+                R</text>
+              <text x="200" y="250" text-anchor="middle"
+                class="text-sm fill-current text-gray-600 dark:text-gray-300">Ohm's Law</text>
             </svg>
           </div>
         </div>
@@ -146,7 +152,8 @@
           <h2
             class="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-4">
             Electrical Calculators</h2>
-          <p class="text-xl text-gray-600 dark:text-gray-300">Interactive tools for all your electrical engineering calculations</p>
+          <p class="text-xl text-gray-600 dark:text-gray-300">Interactive tools for all your electrical engineering
+            calculations</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div v-for="(calculator, index) in calculators" :key="index"
@@ -156,21 +163,22 @@
               class="h-12 w-12 text-primary group-hover:text-primary-dark transition-colors mb-6" />
             <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">{{ calculator.title }}</h3>
             <p class="text-gray-600 dark:text-gray-300 text-center mb-4">{{ calculator.description }}</p>
-            <div class="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded-full">{{ calculator.formula }}</div>
+            <div class="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded-full">{{ calculator.formula }}
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Formulas Section -->
-    <section id="formulas"
-      class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <section id="formulas" class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <h2
             class="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-4">
             Essential Electrical Formulas</h2>
-          <p class="text-xl text-gray-600 dark:text-gray-300">Master the fundamental equations that power electrical engineering</p>
+          <p class="text-xl text-gray-600 dark:text-gray-300">Master the fundamental equations that power electrical
+            engineering</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div v-for="(formula, index) in mainFormulas" :key="index"
@@ -178,7 +186,9 @@
             @click="animateFormula(index)">
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">{{ formula.name }}</h3>
             <div class="text-center">
-              <div class="text-3xl font-bold text-primary dark:text-primary-light mb-2 font-mono group-hover:scale-110 transition-transform">{{ formula.equation }}</div>
+              <div
+                class="text-3xl font-bold text-primary dark:text-primary-light mb-2 font-mono group-hover:scale-110 transition-transform">
+                {{ formula.equation }}</div>
               <div class="text-sm text-gray-600 dark:text-gray-400">{{ formula.description }}</div>
             </div>
           </div>
@@ -190,32 +200,35 @@
             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Interactive Calculator</h3>
             <p class="text-gray-600 dark:text-gray-300">Select a formula above to start calculating</p>
           </div>
-          
+
           <!-- Calculator Interface -->
           <div v-if="selectedFormula" class="max-w-md mx-auto">
             <div class="bg-primary/10 rounded-lg p-6 mb-6">
-              <div class="text-2xl font-bold text-center text-primary mb-4 font-mono">{{ selectedFormula.equation }}</div>
+              <div class="text-2xl font-bold text-center text-primary mb-4 font-mono">{{ selectedFormula.equation }}
+              </div>
               <div class="text-center text-gray-600 dark:text-gray-400">{{ selectedFormula.description }}</div>
             </div>
-            
+
             <div class="space-y-4">
               <div v-for="(input, key) in selectedFormula.inputs" :key="key" class="flex items-center space-x-4">
                 <label class="w-20 text-sm font-medium text-gray-700 dark:text-gray-300">{{ input.label }}:</label>
-                <input v-model.number="calculatorInputs[key]" :placeholder="input.placeholder" 
-                  class="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white" 
+                <input v-model.number="calculatorInputs[key]" :placeholder="input.placeholder"
+                  class="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   type="number" step="any">
                 <span class="text-sm text-gray-500 dark:text-gray-400 w-12">{{ input.unit }}</span>
               </div>
             </div>
-            
-            <div v-if="calculatorResult !== null" class="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+
+            <div v-if="calculatorResult !== null"
+              class="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
               <div class="text-center">
                 <div class="text-lg font-semibold text-green-800 dark:text-green-200">Result:</div>
-                <div class="text-2xl font-bold text-green-600 dark:text-green-400">{{ calculatorResult }} {{ selectedFormula.resultUnit }}</div>
+                <div class="text-2xl font-bold text-green-600 dark:text-green-400">{{ calculatorResult }} {{
+                  selectedFormula.resultUnit }}</div>
               </div>
             </div>
           </div>
-          
+
           <div v-else class="text-center py-12">
             <div class="text-6xl mb-4">⚡</div>
             <p class="text-gray-500 dark:text-gray-400">Click on a formula above to start calculating</p>
@@ -231,7 +244,8 @@
           <h2
             class="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-4">
             Electrical Engineering Tools</h2>
-          <p class="text-xl text-gray-600 dark:text-gray-300">Professional tools and resources for electrical engineers</p>
+          <p class="text-xl text-gray-600 dark:text-gray-300">Professional tools and resources for electrical engineers
+          </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <div v-for="(tool, index) in engineeringTools" :key="index"
@@ -253,7 +267,8 @@
                 </li>
               </ul>
               <div class="mt-6 text-center">
-                <span class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">{{ tool.category }}</span>
+                <span class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">{{
+                  tool.category }}</span>
               </div>
             </div>
           </div>
@@ -264,12 +279,13 @@
     <!-- About Section -->
     <section id="about" class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-8">
+        <h2
+          class="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-8">
           About Cyno Electric
         </h2>
         <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-          Cyno Electric is your comprehensive platform for electrical engineering calculations and tools. 
-          Whether you're a student learning the fundamentals or a professional engineer working on complex projects, 
+          Cyno Electric is your comprehensive platform for electrical engineering calculations and tools.
+          Whether you're a student learning the fundamentals or a professional engineer working on complex projects,
           our interactive calculators and formula references make electrical calculations simple and accurate.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
@@ -295,8 +311,8 @@
         <div class="text-center">
           <div class="flex items-center justify-center mb-4">
             <svg class="h-12 w-12 mr-3 text-primary" viewBox="0 0 100 100" fill="none">
-              <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="4" class="animate-pulse"/>
-              <path d="M30 50 L45 35 L55 65 L70 50" stroke="currentColor" stroke-width="3"/>
+              <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="4" class="animate-pulse" />
+              <path d="M30 50 L45 35 L55 65 L70 50" stroke="currentColor" stroke-width="3" />
             </svg>
             <span class="text-2xl font-bold text-white">Cyno Electric</span>
           </div>
@@ -475,7 +491,7 @@ watch(calculatorInputs, (newInputs) => {
   if (selectedFormula.value && Object.keys(newInputs).length > 0) {
     const requiredInputs = Object.keys(selectedFormula.value.inputs)
     const hasAllInputs = requiredInputs.every(key => newInputs[key] && !isNaN(newInputs[key]))
-    
+
     if (hasAllInputs) {
       try {
         const result = selectedFormula.value.calculate(newInputs)

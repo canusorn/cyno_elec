@@ -18,15 +18,8 @@
           <div class="hidden md:flex items-center space-x-6">
             <NuxtLink to="/"
               class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">Home</NuxtLink>
-            <NuxtLink to="/projects"
-              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">Projects</NuxtLink>
             <NuxtLink to="/contact"
               class="text-primary dark:text-primary-light font-semibold transition-colors">Contact</NuxtLink>
-            <a href="https://cynoiot.com/docs/dev/" target="_blank"
-              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">Docs</a>
-            <a href="https://cynoiot.com/auth/login" target="_blank">
-              <button class="bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white px-6 py-2 rounded-full font-medium transition-all transform hover:scale-105 hover:shadow-lg">Login</button>
-            </a>
           </div>
 
           <!-- Mobile menu button -->
@@ -45,8 +38,6 @@
           <div class="px-2 pt-2 pb-3 space-y-1">
             <NuxtLink to="/" @click="mobileMenuOpen = false"
               class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">Home</NuxtLink>
-            <NuxtLink to="/projects" @click="mobileMenuOpen = false"
-              class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">Projects</NuxtLink>
             <NuxtLink to="/contact" @click="mobileMenuOpen = false"
               class="block px-3 py-2 text-primary dark:text-primary-light font-semibold transition-colors rounded-md">Contact</NuxtLink>
             <a href="https://cynoiot.com/docs/dev/" target="_blank"

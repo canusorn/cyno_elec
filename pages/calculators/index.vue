@@ -169,13 +169,13 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 items-center">
-                <button @click="openCalculator(calculator.type)"
+                <NuxtLink :to="`/calculators/${calculator.type}`"
                   class="flex-1 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white py-2 px-4 rounded-lg font-medium transition-all text-center">
-                  Calculate
-                </button>
-                <button @click="showFormula(calculator)"
+                  Open Page
+                </NuxtLink>
+                <button @click="openCalculator(calculator.type)"
                   class="flex-1 bg-white dark:bg-gray-700 text-primary dark:text-primary-light border border-primary dark:border-primary-light py-2 px-4 rounded-lg font-medium transition-all hover:bg-primary/10 dark:hover:bg-primary/20 text-center">
-                  Formula
+                  Quick Calc
                 </button>
               </div>
             </div>
@@ -324,6 +324,7 @@ export default {
           difficulty: 'Basic',
           category: 'Fundamental',
           type: 'ohms-law',
+          path: '/calculators/ohms-law',
           formula: 'V = I × R',
           icon: 'BoltIcon',
           units: ['V', 'A', 'Ω'],
@@ -342,6 +343,7 @@ export default {
           difficulty: 'Basic',
           category: 'Power',
           type: 'power',
+          path: '/calculators/power',
           formula: 'P = V × I',
           icon: 'LightBulbIcon',
           units: ['W', 'V', 'A'],
@@ -360,6 +362,7 @@ export default {
           difficulty: 'Intermediate',
           category: 'AC Analysis',
           type: 'capacitive-reactance',
+          path: '/calculators/capacitive-reactance',
           formula: 'Xc = 1/(2πfC)',
           icon: 'CpuChipIcon',
           units: ['Ω', 'Hz', 'F'],
@@ -378,6 +381,7 @@ export default {
           difficulty: 'Intermediate',
           category: 'AC Analysis',
           type: 'inductive-reactance',
+          path: '/calculators/inductive-reactance',
           formula: 'XL = 2πfL',
           icon: 'CogIcon',
           units: ['Ω', 'Hz', 'H'],
@@ -396,6 +400,7 @@ export default {
           difficulty: 'Basic',
           category: 'Circuit Analysis',
           type: 'voltage-divider',
+          path: '/calculators/voltage-divider',
           formula: 'Vout = Vin × (R2/(R1+R2))',
           icon: 'ChartBarIcon',
           units: ['V', 'Ω'],
@@ -415,6 +420,7 @@ export default {
           difficulty: 'Basic',
           category: 'Lighting',
           type: 'led-resistor',
+          path: '/calculators/led-resistor',
           formula: 'R = (Vs - Vf) / If',
           icon: 'LightBulbIcon',
           units: ['Ω', 'V', 'A'],
