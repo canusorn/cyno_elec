@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="[$colorMode === 'dark' ? 'dark' : '', 'min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800']">
+    :class="[colorMode === 'dark' ? 'dark' : '', 'min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800']">
     <!-- Navigation -->
     <nav class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg fixed w-full z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,7 +32,7 @@
               Contact</NuxtLink>
             <button @click="toggleDark"
               class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
-              <svg v-if="$colorMode === 'dark'" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg v-if="colorMode === 'dark'" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
               <svg v-else class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -340,10 +340,10 @@ export default {
       ]
     })
 
-    const $colorMode = useColorMode()
+    const colorMode = useColorMode()
     
     return {
-      $colorMode
+      colorMode
     }
   },
   data() {
@@ -391,7 +391,7 @@ export default {
   },
   methods: {
     toggleDark() {
-      this.$colorMode = this.$colorMode === 'dark' ? 'light' : 'dark'
+      this.colorMode = this.colorMode === 'dark' ? 'light' : 'dark'
     },
     initializeAnimations() {
       // Animate formula parts on load
