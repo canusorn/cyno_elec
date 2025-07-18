@@ -17,6 +17,23 @@
             Professional electrical engineering calculators for voltage, current, power, and circuit analysis
           </p>
 
+          <!-- Search Input -->
+          <div class="mb-8 max-w-md mx-auto">
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+              <input
+                v-model="searchQuery"
+                type="text"
+                placeholder="Search calculators..."
+                class="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg leading-5 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-lg"
+              />
+            </div>
+          </div>
+
           <!-- Filter Buttons -->
           <CategoryFilter 
             :categories="categories" 
@@ -43,8 +60,12 @@
         <!-- Empty State -->
         <div v-if="filteredCalculators.length === 0" class="text-center py-16">
           <CalculatorIcon class="h-16 w-16 text-gray-400 mx-auto mb-4" />
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">No calculators found in this category</h3>
-          <p class="text-gray-600 dark:text-gray-300">Try selecting a different category or view all calculators</p>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+            {{ searchQuery.trim() ? 'No calculators found for your search' : 'No calculators found in this category' }}
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            {{ searchQuery.trim() ? 'Try different search terms or clear the search to view all calculators' : 'Try selecting a different category or view all calculators' }}
+          </p>
         </div>
       </div>
     </section>
@@ -116,6 +137,7 @@ export default {
     return {
       selectedCategory: 'all',
       selectedCalculator: null,
+      searchQuery: '',
       
       // Categories
       categories: [
@@ -252,10 +274,23 @@ export default {
   },
   computed: {
     filteredCalculators() {
-      if (this.selectedCategory === 'all') {
-        return this.calculators
+      let filtered = this.calculators
+      
+      // Filter by search query
+      if (this.searchQuery.trim()) {
+        const query = this.searchQuery.toLowerCase().trim()
+        filtered = filtered.filter(calculator => 
+          calculator.title.toLowerCase().includes(query) ||
+          calculator.description.toLowerCase().includes(query)
+        )
       }
-      return this.calculators.filter(calculator => calculator.categoryId.includes(this.selectedCategory))
+      
+      // Filter by category
+      if (this.selectedCategory !== 'all') {
+        filtered = filtered.filter(calculator => calculator.categoryId.includes(this.selectedCategory))
+      }
+      
+      return filtered
     }
   },
 
