@@ -1,0 +1,54 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)"/>
+  
+  <!-- Air particles -->
+  <circle cx="80" cy="60" r="3" fill="#f87171" opacity="0.7"/>
+  <circle cx="120" cy="80" r="2" fill="#fbbf24" opacity="0.7"/>
+  <circle cx="160" cy="50" r="4" fill="#f87171" opacity="0.7"/>
+  <circle cx="200" cy="70" r="2" fill="#fbbf24" opacity="0.7"/>
+  <circle cx="240" cy="40" r="3" fill="#f87171" opacity="0.7"/>
+  <circle cx="280" cy="90" r="2" fill="#fbbf24" opacity="0.7"/>
+  <circle cx="320" cy="60" r="4" fill="#f87171" opacity="0.7"/>
+  
+  <!-- Sensor device -->
+  <rect x="150" y="150" width="100" height="80" rx="10" fill="#374151"/>
+  <rect x="160" y="160" width="80" height="60" rx="5" fill="#1f2937"/>
+  
+  <!-- Display screen -->
+  <rect x="170" y="170" width="60" height="40" rx="3" fill="#000000"/>
+  <text x="200" y="185" text-anchor="middle" font-family="monospace" font-size="8" fill="#00ff00">PM2.5</text>
+  <text x="200" y="195" text-anchor="middle" font-family="monospace" font-size="8" fill="#00ff00">45 μg/m³</text>
+  <text x="200" y="205" text-anchor="middle" font-family="monospace" font-size="8" fill="#00ff00">UNHEALTHY</text>
+  
+  <!-- Sensor vents -->
+  <rect x="155" y="240" width="10" height="15" fill="#6b7280"/>
+  <rect x="170" y="240" width="10" height="15" fill="#6b7280"/>
+  <rect x="185" y="240" width="10" height="15" fill="#6b7280"/>
+  <rect x="200" y="240" width="10" height="15" fill="#6b7280"/>
+  <rect x="215" y="240" width="10" height="15" fill="#6b7280"/>
+  <rect x="230" y="240" width="10" height="15" fill="#6b7280"/>
+  <rect x="245" y="240" width="10" height="15" fill="#6b7280"/>
+  
+  <!-- ESP32 -->
+  <rect x="50" y="200" width="60" height="40" rx="5" fill="#1f2937"/>
+  <rect x="55" y="205" width="50" height="30" rx="3" fill="#374151"/>
+  
+  <!-- Connection -->
+  <line x1="110" y1="220" x2="150" y2="190" stroke="#ef4444" stroke-width="2"/>
+  
+  <!-- Warning indicator -->
+  <circle cx="350" cy="150" r="20" fill="#ef4444"/>
+  <text x="350" y="158" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white">!</text>
+  
+  <!-- Title -->
+  <text x="200" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">Air Quality Monitor</text>
+  <text x="200" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">ตรวจสอบคุณภาพอากาศ</text>
+</svg>

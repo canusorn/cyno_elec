@@ -1,0 +1,47 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="light" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#fef3c7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:0.3" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)"/>
+  
+  <!-- House outline -->
+  <rect x="100" y="120" width="200" height="120" fill="#374151" stroke="#1f2937" stroke-width="2"/>
+  <polygon points="100,120 200,60 300,120" fill="#dc2626" stroke="#991b1b" stroke-width="2"/>
+  
+  <!-- Windows with light -->
+  <rect x="130" y="150" width="40" height="40" fill="url(#light)" rx="5"/>
+  <rect x="230" y="150" width="40" height="40" fill="url(#light)" rx="5"/>
+  
+  <!-- Door -->
+  <rect x="180" y="180" width="40" height="60" fill="#8b4513" rx="3"/>
+  <circle cx="210" cy="210" r="2" fill="#fbbf24"/>
+  
+  <!-- Light bulbs -->
+  <circle cx="150" cy="170" r="8" fill="#fef3c7" stroke="#fbbf24" stroke-width="2"/>
+  <circle cx="250" cy="170" r="8" fill="#fef3c7" stroke="#fbbf24" stroke-width="2"/>
+  
+  <!-- ESP8266 -->
+  <rect x="50" y="200" width="50" height="30" rx="5" fill="#1f2937"/>
+  <rect x="55" y="205" width="40" height="20" rx="3" fill="#374151"/>
+  
+  <!-- Mobile phone -->
+  <rect x="320" y="180" width="50" height="80" rx="10" fill="#1f2937"/>
+  <rect x="325" y="190" width="40" height="60" rx="5" fill="#3b82f6"/>
+  
+  <!-- WiFi signals -->
+  <path d="M 110 215 Q 150 195 190 215" stroke="#10b981" stroke-width="2" fill="none"/>
+  <path d="M 320 220 Q 280 200 240 220" stroke="#10b981" stroke-width="2" fill="none"/>
+  
+  <!-- Title -->
+  <text x="200" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">Smart Lighting</text>
+  <text x="200" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">ระบบควบคุมไฟอัจฉริยะ</text>
+</svg>
