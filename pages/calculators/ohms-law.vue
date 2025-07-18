@@ -94,7 +94,44 @@
             Calculate voltage, current, or resistance using the fundamental electrical law
           </p>
           <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-4 inline-block">
-            <span class="text-3xl font-mono font-bold text-primary">V = I × R</span>
+            <div class="animated-formula" ref="formulaContainer">
+              <span class="formula-part voltage" ref="voltageElement">V</span>
+              <span class="formula-operator">=</span>
+              <span class="formula-part current" ref="currentElement">I</span>
+              <span class="formula-operator">×</span>
+              <span class="formula-part resistance" ref="resistanceElement">R</span>
+            </div>
+          </div>
+          
+          <!-- Animated Circuit Visualization -->
+          <div class="mt-8 flex justify-center">
+            <div class="circuit-animation" ref="circuitContainer">
+              <svg width="300" height="150" viewBox="0 0 300 150" class="text-primary">
+                <!-- Circuit wires -->
+                <line x1="50" y1="75" x2="100" y2="75" stroke="currentColor" stroke-width="3" class="wire"/>
+                <line x1="200" y1="75" x2="250" y2="75" stroke="currentColor" stroke-width="3" class="wire"/>
+                
+                <!-- Resistor -->
+                <rect x="100" y="65" width="100" height="20" fill="none" stroke="currentColor" stroke-width="3" class="resistor-body"/>
+                <text x="150" y="80" class="text-sm fill-current text-center resistor-label">R</text>
+                
+                <!-- Current flow animation -->
+                <circle r="4" fill="#FFD700" class="current-particle">
+                  <animateMotion dur="2s" repeatCount="indefinite" path="M50,75 L100,75 L200,75 L250,75"/>
+                </circle>
+                
+                <!-- Voltage indicators -->
+                <text x="25" y="70" class="text-xs fill-current voltage-label">+</text>
+                <text x="25" y="85" class="text-xs fill-current voltage-label">V</text>
+                <text x="275" y="70" class="text-xs fill-current voltage-label">-</text>
+                
+                <!-- Current arrow -->
+                <polygon points="150,50 160,55 160,45" fill="#FFD700" class="current-arrow">
+                  <animateTransform attributeName="transform" type="translate" values="0,0; 10,0; 0,0" dur="1s" repeatCount="indefinite"/>
+                </polygon>
+                <text x="165" y="55" class="text-xs fill-current">I</text>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -213,6 +250,32 @@ export default {
       inputs: {
         current: null,
         resistance: null
+      },
+      animationSpeed: 2
+    }
+  },
+  mounted() {
+    this.initializeAnimations()
+  },
+  watch: {
+    'inputs.current': {
+      handler() {
+        this.animateFormulaHighlight('current')
+        this.updateCurrentAnimation()
+      }
+    },
+    'inputs.resistance': {
+      handler() {
+        this.animateFormulaHighlight('resistance')
+        this.updateResistorAnimation()
+      }
+    },
+    result: {
+      handler() {
+        if (this.result !== null) {
+          this.animateFormulaHighlight('voltage')
+          this.animateResult()
+        }
       }
     }
   },
@@ -229,6 +292,52 @@ export default {
   methods: {
     toggleDark() {
       this.$colorMode = this.$colorMode === 'dark' ? 'light' : 'dark'
+    },
+    initializeAnimations() {
+      // Initialize formula animations
+      this.$nextTick(() => {
+        const formulaParts = this.$refs.formulaContainer?.querySelectorAll('.formula-part')
+        formulaParts?.forEach((part, index) => {
+          part.style.animationDelay = `${index * 0.2}s`
+          part.classList.add('fade-in')
+        })
+      })
+    },
+    animateFormulaHighlight(type) {
+      const element = this.$refs[`${type}Element`]
+      if (element) {
+        element.classList.remove('highlight')
+        setTimeout(() => {
+          element.classList.add('highlight')
+        }, 10)
+      }
+    },
+    updateCurrentAnimation() {
+      const particles = this.$refs.circuitContainer?.querySelectorAll('.current-particle')
+      const speed = this.inputs.current ? Math.max(0.5, 3 - this.inputs.current * 0.5) : 2
+      particles?.forEach(particle => {
+        const animation = particle.querySelector('animateMotion')
+        if (animation) {
+          animation.setAttribute('dur', `${speed}s`)
+        }
+      })
+    },
+    updateResistorAnimation() {
+      const resistor = this.$refs.circuitContainer?.querySelector('.resistor-body')
+      if (resistor && this.inputs.resistance) {
+        const intensity = Math.min(this.inputs.resistance / 100, 1)
+        resistor.style.strokeWidth = `${3 + intensity * 2}`
+        resistor.style.opacity = `${0.7 + intensity * 0.3}`
+      }
+    },
+    animateResult() {
+      const resultElement = document.querySelector('.text-4xl.font-bold.text-primary')
+      if (resultElement) {
+        resultElement.classList.remove('result-pulse')
+        setTimeout(() => {
+          resultElement.classList.add('result-pulse')
+        }, 10)
+      }
     }
   }
 }
@@ -255,5 +364,125 @@ html {
 
 .border-primary {
   border-color: var(--tw-color-primary) !important;
+}
+
+/* Animation Styles */
+.animated-formula {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 2rem;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.formula-part {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.formula-part.fade-in {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.formula-part.highlight {
+  background-color: var(--tw-color-primary);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(159, 168, 218, 0.5);
+}
+
+.formula-operator {
+  color: var(--tw-color-primary);
+  font-size: 1.5rem;
+  margin: 0 0.25rem;
+}
+
+.circuit-animation {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.wire {
+  stroke-dasharray: 5, 5;
+  animation: wireFlow 2s linear infinite;
+}
+
+.resistor-body {
+  transition: all 0.3s ease;
+}
+
+.current-particle {
+  filter: drop-shadow(0 0 6px #FFD700);
+}
+
+.current-arrow {
+  filter: drop-shadow(0 0 4px #FFD700);
+}
+
+.voltage-label {
+  font-weight: bold;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.result-pulse {
+  animation: resultPulse 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wireFlow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 10;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes resultPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+    color: #FFD700;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Input animation effects */
+input:focus {
+  animation: inputGlow 0.3s ease;
+}
+
+@keyframes inputGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(159, 168, 218, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba(159, 168, 218, 0.1);
+  }
 }
 </style>

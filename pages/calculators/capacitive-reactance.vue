@@ -94,7 +94,70 @@
             Calculate the reactance of a capacitor in AC circuits
           </p>
           <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-4 inline-block">
-            <span class="text-3xl font-mono font-bold text-primary">Xc = 1/(2πfC)</span>
+            <div class="animated-formula" ref="formulaContainer">
+              <span class="formula-part reactance" ref="reactanceElement">Xc</span>
+              <span class="formula-operator">=</span>
+              <span class="formula-part fraction">1/(2π</span>
+              <span class="formula-part frequency" ref="frequencyElement">f</span>
+              <span class="formula-part capacitance" ref="capacitanceElement">C</span>
+              <span class="formula-part fraction">)</span>
+            </div>
+          </div>
+          
+          <!-- Animated Capacitive Reactance Visualization -->
+          <div class="mt-8 flex justify-center">
+            <div class="reactance-animation" ref="reactanceContainer">
+              <svg width="350" height="250" viewBox="0 0 350 250" class="text-primary">
+                <!-- AC Source -->
+                <circle cx="50" cy="125" r="25" fill="none" stroke="currentColor" stroke-width="3" class="ac-source"/>
+                <path d="M40,125 Q45,115 50,125 Q55,135 60,125" stroke="currentColor" stroke-width="2" fill="none"/>
+                <text x="50" y="160" class="text-xs fill-current text-center">AC</text>
+                
+                <!-- Wires -->
+                <line x1="75" y1="125" x2="150" y2="125" stroke="currentColor" stroke-width="3" class="wire"/>
+                <line x1="200" y1="125" x2="275" y2="125" stroke="currentColor" stroke-width="3" class="wire"/>
+                
+                <!-- Capacitor -->
+                <g class="capacitor-symbol">
+                  <line x1="170" y1="100" x2="170" y2="150" stroke="currentColor" stroke-width="4"/>
+                  <line x1="180" y1="100" x2="180" y2="150" stroke="currentColor" stroke-width="4"/>
+                  <text x="175" y="175" class="text-xs fill-current text-center">C</text>
+                </g>
+                
+                <!-- Current waves -->
+                <g class="current-waves">
+                  <path d="M100,125 Q110,115 120,125 Q130,135 140,125" stroke="#FFD700" stroke-width="3" fill="none" class="current-wave">
+                    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+                  </path>
+                  <path d="M210,125 Q220,115 230,125 Q240,135 250,125" stroke="#FFD700" stroke-width="3" fill="none" class="current-wave">
+                    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite"/>
+                  </path>
+                </g>
+                
+                <!-- Frequency indicator -->
+                <g class="frequency-indicator">
+                  <circle cx="100" cy="50" r="3" fill="#00FF00" class="freq-pulse">
+                    <animate attributeName="r" values="3;8;3" dur="1s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+                  </circle>
+                  <text x="100" y="35" class="text-xs fill-current text-center">f</text>
+                </g>
+                
+                <!-- Reactance visualization -->
+                <g class="reactance-bars">
+                  <rect x="300" y="50" width="20" height="150" fill="none" stroke="currentColor" stroke-width="2" class="reactance-bar-bg"/>
+                  <rect x="300" y="125" width="20" height="75" fill="#FF6B6B" class="reactance-bar" opacity="0.7">
+                    <animate attributeName="height" values="75;25;75" dur="2s" repeatCount="indefinite"/>
+                    <animate attributeName="y" values="125;175;125" dur="2s" repeatCount="indefinite"/>
+                  </rect>
+                  <text x="310" y="220" class="text-xs fill-current text-center">Xc</text>
+                </g>
+                
+                <!-- Labels -->
+                <text x="175" y="30" class="text-sm fill-current text-center font-bold">Capacitive Reactance</text>
+                <text x="175" y="240" class="text-xs fill-current text-center">Xc ∝ 1/(f×C)</text>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -216,7 +279,8 @@ export default {
       inputs: {
         frequency: null,
         capacitance: null
-      }
+      },
+      animationSpeed: 1
     }
   },
   computed: {
@@ -230,9 +294,117 @@ export default {
       return null
     }
   },
+  mounted() {
+    this.initializeAnimations()
+  },
+  watch: {
+    'inputs.frequency'() {
+      this.animateFormulaHighlight('frequency')
+      this.updateFrequencyAnimation()
+    },
+    'inputs.capacitance'() {
+      this.animateFormulaHighlight('capacitance')
+      this.updateCapacitanceAnimation()
+    },
+    result() {
+      this.animateResult()
+      this.updateReactanceVisualization()
+    }
+  },
   methods: {
     toggleDark() {
       this.$colorMode = this.$colorMode === 'dark' ? 'light' : 'dark'
+    },
+    initializeAnimations() {
+      // Animate formula parts on load
+      setTimeout(() => {
+        const parts = ['reactanceElement', 'frequencyElement', 'capacitanceElement']
+        parts.forEach((part, index) => {
+          setTimeout(() => {
+            if (this.$refs[part]) {
+              this.$refs[part].classList.add('fade-in')
+            }
+          }, index * 200)
+        })
+      }, 500)
+    },
+    animateFormulaHighlight(type) {
+      const elementMap = {
+        frequency: 'frequencyElement',
+        capacitance: 'capacitanceElement',
+        reactance: 'reactanceElement'
+      }
+      
+      const element = this.$refs[elementMap[type]]
+      if (element) {
+        element.classList.add('highlight')
+        setTimeout(() => {
+          element.classList.remove('highlight')
+        }, 600)
+      }
+    },
+    updateFrequencyAnimation() {
+      const freqPulse = document.querySelector('.freq-pulse')
+      const currentWaves = document.querySelectorAll('.current-wave')
+      
+      const frequency = parseFloat(this.inputs.frequency) || 1
+      const speed = Math.max(0.2, Math.min(3, frequency / 1000)) // Normalize frequency
+      
+      // Update frequency pulse speed
+      if (freqPulse) {
+        const animations = freqPulse.querySelectorAll('animate')
+        animations.forEach(anim => {
+          anim.setAttribute('dur', `${1 / speed}s`)
+        })
+      }
+      
+      // Update current wave speed
+      currentWaves.forEach(wave => {
+        const animation = wave.querySelector('animate')
+        if (animation) {
+          animation.setAttribute('dur', `${1 / speed}s`)
+        }
+      })
+    },
+    updateCapacitanceAnimation() {
+      const capacitorLines = document.querySelectorAll('.capacitor-symbol line')
+      const capacitance = parseFloat(this.inputs.capacitance) || 1
+      
+      // Visual representation of capacitance (plate separation)
+      const separation = Math.max(8, Math.min(20, 10 + (capacitance * 1000000))) // Convert to visual scale
+      
+      if (capacitorLines.length >= 2) {
+        capacitorLines[0].setAttribute('x1', 175 - separation/2)
+        capacitorLines[0].setAttribute('x2', 175 - separation/2)
+        capacitorLines[1].setAttribute('x1', 175 + separation/2)
+        capacitorLines[1].setAttribute('x2', 175 + separation/2)
+      }
+    },
+    updateReactanceVisualization() {
+      const reactanceBar = document.querySelector('.reactance-bar')
+      const reactance = this.result
+      
+      if (reactanceBar && reactance > 0) {
+        // Inverse relationship visualization
+        const maxHeight = 150
+        const normalizedHeight = Math.max(20, Math.min(maxHeight, maxHeight / Math.log10(reactance + 1)))
+        
+        reactanceBar.setAttribute('height', normalizedHeight)
+        reactanceBar.setAttribute('y', 200 - normalizedHeight)
+        
+        // Color based on reactance value
+        const hue = Math.max(0, Math.min(120, 120 - (reactance / 1000) * 120)) // Red to green
+        reactanceBar.setAttribute('fill', `hsl(${hue}, 70%, 60%)`)
+      }
+    },
+    animateResult() {
+      const resultElement = document.querySelector('.result-display')
+      if (resultElement) {
+        resultElement.classList.add('result-pulse')
+        setTimeout(() => {
+          resultElement.classList.remove('result-pulse')
+        }, 600)
+      }
     }
   }
 }
@@ -259,5 +431,126 @@ html {
 
 .border-primary {
   border-color: var(--tw-color-primary) !important;
+}
+
+/* Animation Styles */
+.animated-formula {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 1.8rem;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.formula-part {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.formula-part.fade-in {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.formula-part.highlight {
+  background-color: var(--tw-color-primary);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(159, 168, 218, 0.5);
+}
+
+.formula-operator {
+  color: var(--tw-color-primary);
+  font-size: 1.5rem;
+  margin: 0 0.25rem;
+}
+
+.reactance-animation {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.wire {
+  stroke-dasharray: 5, 5;
+  animation: wireFlow 2s linear infinite;
+}
+
+.ac-source {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px #00FF00);
+}
+
+.capacitor-symbol {
+  transition: all 0.3s ease;
+}
+
+.current-wave {
+  filter: drop-shadow(0 0 4px #FFD700);
+}
+
+.freq-pulse {
+  filter: drop-shadow(0 0 6px #00FF00);
+}
+
+.reactance-bar {
+  transition: all 0.5s ease;
+}
+
+.reactance-bar-bg {
+  opacity: 0.3;
+}
+
+.result-pulse {
+  animation: resultPulse 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wireFlow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 10;
+  }
+}
+
+@keyframes resultPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+    color: #FFD700;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Input animation effects */
+input:focus {
+  animation: inputGlow 0.3s ease;
+}
+
+@keyframes inputGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(159, 168, 218, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba(159, 168, 218, 0.1);
+  }
 }
 </style>

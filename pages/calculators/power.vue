@@ -94,7 +94,55 @@
             Calculate electrical power using voltage and current
           </p>
           <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-4 inline-block">
-            <span class="text-3xl font-mono font-bold text-primary">P = V × I</span>
+            <div class="animated-formula" ref="formulaContainer">
+              <span class="formula-part power" ref="powerElement">P</span>
+              <span class="formula-operator">=</span>
+              <span class="formula-part voltage" ref="voltageElement">V</span>
+              <span class="formula-operator">×</span>
+              <span class="formula-part current" ref="currentElement">I</span>
+            </div>
+          </div>
+          
+          <!-- Animated Power Visualization -->
+          <div class="mt-8 flex justify-center">
+            <div class="power-animation" ref="powerContainer">
+              <svg width="300" height="200" viewBox="0 0 300 200" class="text-primary">
+                <!-- Power source -->
+                <rect x="50" y="80" width="40" height="40" fill="none" stroke="currentColor" stroke-width="3" class="power-source"/>
+                <text x="70" y="105" class="text-sm fill-current text-center">V</text>
+                
+                <!-- Wires -->
+                <line x1="90" y1="90" x2="150" y2="90" stroke="currentColor" stroke-width="3" class="wire"/>
+                <line x1="90" y1="110" x2="150" y2="110" stroke="currentColor" stroke-width="3" class="wire"/>
+                <line x1="200" y1="90" x2="250" y2="90" stroke="currentColor" stroke-width="3" class="wire"/>
+                <line x1="200" y1="110" x2="250" y2="110" stroke="currentColor" stroke-width="3" class="wire"/>
+                
+                <!-- Load (light bulb) -->
+                <circle cx="175" cy="100" r="25" fill="none" stroke="currentColor" stroke-width="3" class="load-bulb"/>
+                <path d="M165,90 L185,110 M165,110 L185,90" stroke="currentColor" stroke-width="2" class="bulb-filament"/>
+                
+                <!-- Current flow particles -->
+                <circle r="3" fill="#FFD700" class="current-particle">
+                  <animateMotion dur="1.5s" repeatCount="indefinite" path="M90,90 L150,90 L200,90 L250,90 L250,110 L200,110 L150,110 L90,110 Z"/>
+                </circle>
+                
+                <!-- Power waves -->
+                <g class="power-waves">
+                  <circle cx="175" cy="100" r="30" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.6">
+                    <animate attributeName="r" values="30;50;30" dur="2s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx="175" cy="100" r="35" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.4">
+                    <animate attributeName="r" values="35;55;35" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+                    <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+                  </circle>
+                </g>
+                
+                <!-- Labels -->
+                <text x="175" y="140" class="text-xs fill-current text-center">Power = V × I</text>
+                <text x="120" y="80" class="text-xs fill-current current-label">I →</text>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -213,7 +261,8 @@ export default {
       inputs: {
         voltage: null,
         current: null
-      }
+      },
+      animationSpeed: 1
     }
   },
   computed: {
@@ -226,9 +275,106 @@ export default {
       return null
     }
   },
+  mounted() {
+    this.initializeAnimations()
+  },
+  watch: {
+    'inputs.voltage'() {
+      this.animateFormulaHighlight('voltage')
+      this.updatePowerAnimation()
+    },
+    'inputs.current'() {
+      this.animateFormulaHighlight('current')
+      this.updateCurrentAnimation()
+    },
+    result() {
+      this.animateResult()
+    }
+  },
   methods: {
     toggleDark() {
       this.$colorMode = this.$colorMode === 'dark' ? 'light' : 'dark'
+    },
+    initializeAnimations() {
+      // Animate formula parts on load
+      setTimeout(() => {
+        const parts = ['powerElement', 'voltageElement', 'currentElement']
+        parts.forEach((part, index) => {
+          setTimeout(() => {
+            if (this.$refs[part]) {
+              this.$refs[part].classList.add('fade-in')
+            }
+          }, index * 200)
+        })
+      }, 500)
+    },
+    animateFormulaHighlight(type) {
+      const elementMap = {
+        voltage: 'voltageElement',
+        current: 'currentElement',
+        power: 'powerElement'
+      }
+      
+      const element = this.$refs[elementMap[type]]
+      if (element) {
+        element.classList.add('highlight')
+        setTimeout(() => {
+          element.classList.remove('highlight')
+        }, 600)
+      }
+    },
+    updateCurrentAnimation() {
+      const particles = document.querySelectorAll('.current-particle')
+      const speed = Math.max(0.5, Math.min(3, parseFloat(this.inputs.current) || 1))
+      
+      particles.forEach(particle => {
+        const animation = particle.querySelector('animateMotion')
+        if (animation) {
+          animation.setAttribute('dur', `${2 / speed}s`)
+        }
+      })
+    },
+    updatePowerAnimation() {
+      const waves = document.querySelectorAll('.power-waves circle')
+      const bulb = document.querySelector('.load-bulb')
+      const filament = document.querySelector('.bulb-filament')
+      
+      const power = this.result
+      const intensity = Math.min(1, power / 100) // Normalize to 0-1
+      
+      // Update bulb brightness
+      if (bulb && filament) {
+        const brightness = 0.3 + (intensity * 0.7)
+        bulb.style.opacity = brightness
+        filament.style.opacity = brightness
+        
+        if (power > 0) {
+          bulb.style.filter = `drop-shadow(0 0 ${intensity * 10}px #FFD700)`
+        } else {
+          bulb.style.filter = 'none'
+        }
+      }
+      
+      // Update power wave intensity
+      waves.forEach((wave, index) => {
+        const baseOpacity = index === 0 ? 0.6 : 0.4
+        wave.style.opacity = baseOpacity * intensity
+        
+        const animations = wave.querySelectorAll('animate')
+        animations.forEach(anim => {
+          const speed = Math.max(0.5, 2 - intensity)
+          anim.setAttribute('dur', `${speed}s`)
+        })
+      })
+    },
+    animateResult() {
+      const resultElement = document.querySelector('.result-display')
+      if (resultElement) {
+        resultElement.classList.add('result-pulse')
+        setTimeout(() => {
+          resultElement.classList.remove('result-pulse')
+        }, 600)
+      }
     }
   }
 }
@@ -255,5 +401,134 @@ html {
 
 .border-primary {
   border-color: var(--tw-color-primary) !important;
+}
+
+/* Animation Styles */
+.animated-formula {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 2rem;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.formula-part {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.formula-part.fade-in {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.formula-part.highlight {
+  background-color: var(--tw-color-primary);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(159, 168, 218, 0.5);
+}
+
+.formula-operator {
+  color: var(--tw-color-primary);
+  font-size: 1.5rem;
+  margin: 0 0.25rem;
+}
+
+.power-animation {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.wire {
+  stroke-dasharray: 5, 5;
+  animation: wireFlow 2s linear infinite;
+}
+
+.power-source {
+  transition: all 0.3s ease;
+}
+
+.load-bulb {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px #FFD700);
+}
+
+.bulb-filament {
+  transition: all 0.3s ease;
+}
+
+.current-particle {
+  filter: drop-shadow(0 0 6px #FFD700);
+}
+
+.current-label {
+  font-weight: bold;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.power-waves {
+  opacity: 0.8;
+}
+
+.result-pulse {
+  animation: resultPulse 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wireFlow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 10;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes resultPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+    color: #FFD700;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Input animation effects */
+input:focus {
+  animation: inputGlow 0.3s ease;
+}
+
+@keyframes inputGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(159, 168, 218, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba(159, 168, 218, 0.1);
+  }
 }
 </style>

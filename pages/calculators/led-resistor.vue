@@ -94,7 +94,108 @@
             Calculate the required resistor value for LED circuits
           </p>
           <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-4 inline-block">
-            <span class="text-3xl font-mono font-bold text-primary">R = (Vs - Vf) / If</span>
+            <div class="animated-formula" ref="formulaContainer">
+              <span class="formula-part resistor" ref="resistorElement">R</span>
+              <span class="formula-operator">=</span>
+              <span class="formula-part fraction">(</span>
+              <span class="formula-part supply" ref="supplyElement">Vs</span>
+              <span class="formula-operator">-</span>
+              <span class="formula-part forward" ref="forwardElement">Vf</span>
+              <span class="formula-part fraction">)</span>
+              <span class="formula-operator">/</span>
+              <span class="formula-part current" ref="currentElement">If</span>
+            </div>
+          </div>
+          
+          <!-- Animated LED Circuit Visualization -->
+          <div class="mt-8 flex justify-center">
+            <div class="led-animation" ref="ledContainer">
+              <svg width="400" height="300" viewBox="0 0 400 300" class="text-primary">
+                <!-- Supply voltage source -->
+                <g class="voltage-source">
+                  <rect x="50" y="120" width="40" height="60" fill="none" stroke="currentColor" stroke-width="3"/>
+                  <text x="70" y="155" class="text-sm fill-current text-center font-bold">Vs</text>
+                  <text x="70" y="200" class="text-xs fill-current text-center voltage-value" ref="vsDisplay">9V</text>
+                </g>
+                
+                <!-- Wires -->
+                <line x1="90" y1="130" x2="180" y2="130" stroke="currentColor" stroke-width="3" class="wire"/>
+                <line x1="50" y1="170" x2="20" y2="170" stroke="currentColor" stroke-width="3" class="wire"/>
+                <line x1="20" y1="170" x2="20" y2="250" stroke="currentColor" stroke-width="3" class="wire"/>
+                <line x1="20" y1="250" x2="320" y2="250" stroke="currentColor" stroke-width="3" class="wire"/>
+                
+                <!-- Current limiting resistor -->
+                <g class="current-resistor">
+                  <rect x="180" y="120" width="80" height="20" fill="none" stroke="currentColor" stroke-width="3" class="resistor-body"/>
+                  <path d="M185,130 L195,120 L205,140 L215,120 L225,140 L235,120 L245,140 L255,120" 
+                        stroke="currentColor" stroke-width="2" fill="none"/>
+                  <text x="220" y="110" class="text-xs fill-current text-center">R</text>
+                  <text x="220" y="155" class="text-xs fill-current text-center resistor-value" ref="rDisplay">330Ω</text>
+                </g>
+                
+                <line x1="260" y1="130" x2="320" y2="130" stroke="currentColor" stroke-width="3" class="wire"/>
+                
+                <!-- LED -->
+                <g class="led-symbol">
+                  <!-- LED body -->
+                  <circle cx="320" cy="190" r="30" fill="none" stroke="currentColor" stroke-width="3" class="led-body"/>
+                  <!-- LED triangle (diode symbol) -->
+                  <path d="M305,190 L335,175 L335,205 Z" fill="currentColor" opacity="0.3" class="led-triangle"/>
+                  <line x1="335" y1="175" x2="335" y2="205" stroke="currentColor" stroke-width="3"/>
+                  
+                  <!-- Light rays -->
+                  <g class="light-rays">
+                    <path d="M350,170 L365,155" stroke="#FFD700" stroke-width="2" class="light-ray">
+                      <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite"/>
+                    </path>
+                    <path d="M350,190 L370,190" stroke="#FFD700" stroke-width="2" class="light-ray">
+                      <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite" begin="0.3s"/>
+                    </path>
+                    <path d="M350,210 L365,225" stroke="#FFD700" stroke-width="2" class="light-ray">
+                      <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="0.6s"/>
+                    </path>
+                  </g>
+                  
+                  <text x="320" y="235" class="text-xs fill-current text-center">LED</text>
+                  <text x="320" y="250" class="text-xs fill-current text-center led-voltage" ref="vfDisplay">2V</text>
+                </g>
+                
+                <line x1="320" y1="130" x2="320" y2="160" stroke="currentColor" stroke-width="3" class="wire"/>
+                <line x1="320" y1="220" x2="320" y2="250" stroke="currentColor" stroke-width="3" class="wire"/>
+                
+                <!-- Current flow indicators -->
+                <g class="current-flow">
+                  <circle r="3" fill="#FFD700" class="current-particle">
+                    <animateMotion dur="3s" repeatCount="indefinite" 
+                      path="M90,130 L180,130 L260,130 L320,130 L320,250 L20,250 L20,170 L50,170"/>
+                  </circle>
+                  <text x="150" y="115" class="text-xs fill-current current-label" ref="currentDisplay">If = 20mA</text>
+                </g>
+                
+                <!-- Voltage drop indicators -->
+                <g class="voltage-drops">
+                  <!-- Voltage across resistor -->
+                  <path d="M180,100 Q220,80 260,100" stroke="#FF6B6B" stroke-width="2" fill="none" class="voltage-arc"/>
+                  <text x="220" y="75" class="text-xs fill-current voltage-label" ref="vrDisplay">VR = 7V</text>
+                  
+                  <!-- Voltage across LED -->
+                  <path d="M290,190 Q320,170 350,190" stroke="#4CAF50" stroke-width="2" fill="none" class="voltage-arc"/>
+                  <text x="320" y="165" class="text-xs fill-current voltage-label">Vf</text>
+                </g>
+                
+                <!-- Power dissipation indicator -->
+                <g class="power-indicator">
+                  <rect x="180" y="160" width="80" height="15" fill="#FF6B6B" opacity="0.3" class="power-bar">
+                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite"/>
+                  </rect>
+                  <text x="220" y="185" class="text-xs fill-current power-label" ref="powerDisplay">P = 0.14W</text>
+                </g>
+                
+                <!-- Labels -->
+                <text x="200" y="25" class="text-sm fill-current text-center font-bold">LED Current Limiting Circuit</text>
+                <text x="200" y="285" class="text-xs fill-current text-center">R = (Vs - Vf) / If</text>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -281,7 +382,8 @@ export default {
         supplyVoltage: null,
         forwardVoltage: null,
         forwardCurrent: null
-      }
+      },
+      animationSpeed: 1
     }
   },
   computed: {
@@ -303,15 +405,311 @@ export default {
       return null
     }
   },
+  mounted() {
+    this.initializeAnimations()
+  },
+  watch: {
+    'inputs.supplyVoltage'() {
+      this.updateCircuitAnimation()
+      this.animateResult()
+    },
+    'inputs.forwardVoltage'() {
+      this.updateCircuitAnimation()
+      this.animateResult()
+    },
+    'inputs.forwardCurrent'() {
+      this.updateCircuitAnimation()
+      this.animateResult()
+    },
+    result() {
+      this.animateResult()
+    }
+  },
   methods: {
     toggleDark() {
       this.$colorMode = this.$colorMode === 'dark' ? 'light' : 'dark'
+    },
+    initializeAnimations() {
+      // Initialize formula animations
+      if (this.$refs.formulaContainer) {
+        const parts = this.$refs.formulaContainer.querySelectorAll('.formula-part')
+        parts.forEach((part, index) => {
+          part.style.animationDelay = `${index * 0.2}s`
+          part.classList.add('fade-in')
+        })
+      }
+      
+      // Initialize circuit animation
+      this.updateCircuitAnimation()
+    },
+    animateFormulaHighlight(element) {
+      if (element) {
+        element.classList.add('highlight')
+        setTimeout(() => {
+          element.classList.remove('highlight')
+        }, 1000)
+      }
+    },
+    updateCircuitAnimation() {
+      // Update voltage displays
+      if (this.$refs.vsDisplay) {
+        this.$refs.vsDisplay.textContent = `${this.inputs.supplyVoltage || 9}V`
+        this.animateFormulaHighlight(this.$refs.supplyElement)
+      }
+      
+      if (this.$refs.vfDisplay) {
+        this.$refs.vfDisplay.textContent = `${this.inputs.forwardVoltage || 2}V`
+        this.animateFormulaHighlight(this.$refs.forwardElement)
+      }
+      
+      if (this.$refs.currentDisplay) {
+        const current = (this.inputs.forwardCurrent || 0.02) * 1000
+        this.$refs.currentDisplay.textContent = `If = ${current}mA`
+        this.animateFormulaHighlight(this.$refs.currentElement)
+      }
+      
+      // Update calculated values
+      const supplyV = this.inputs.supplyVoltage || 9
+      const forwardV = this.inputs.forwardVoltage || 2
+      const forwardI = this.inputs.forwardCurrent || 0.02
+      const resistorVoltage = supplyV - forwardV
+      const power = resistorVoltage * forwardI
+      
+      if (this.$refs.rDisplay) {
+        const resistance = this.result || ((supplyV - forwardV) / forwardI).toFixed(2)
+        this.$refs.rDisplay.textContent = `${resistance}Ω`
+        this.animateFormulaHighlight(this.$refs.resistorElement)
+      }
+      
+      if (this.$refs.vrDisplay) {
+        this.$refs.vrDisplay.textContent = `VR = ${resistorVoltage.toFixed(1)}V`
+      }
+      
+      if (this.$refs.powerDisplay) {
+        this.$refs.powerDisplay.textContent = `P = ${power.toFixed(4)}W`
+      }
+      
+      // Update LED brightness based on current
+      this.updateLEDBrightness()
+      
+      // Update current flow speed
+      this.updateCurrentFlow()
+    },
+    updateLEDBrightness() {
+      const ledBody = document.querySelector('.led-body')
+      const lightRays = document.querySelectorAll('.light-ray')
+      
+      if (ledBody && lightRays.length > 0) {
+        const current = this.inputs.forwardCurrent || 0.02
+        const brightness = Math.min(current / 0.02, 1)
+        ledBody.style.filter = `brightness(${0.5 + brightness * 0.5})`
+        
+        lightRays.forEach(ray => {
+          ray.style.opacity = brightness
+        })
+      }
+    },
+    updateCurrentFlow() {
+      const currentParticle = document.querySelector('.current-particle')
+      if (currentParticle) {
+        const current = this.inputs.forwardCurrent || 0.02
+        const speed = Math.max(0.5, 3 - (current / 0.02) * 2)
+        const animateMotion = currentParticle.querySelector('animateMotion')
+        if (animateMotion) {
+          animateMotion.setAttribute('dur', `${speed}s`)
+        }
+      }
+    },
+    animateResult() {
+      const resultElement = document.querySelector('.result-value')
+      if (resultElement) {
+        resultElement.classList.add('pulse-result')
+        setTimeout(() => {
+          resultElement.classList.remove('pulse-result')
+        }, 1000)
+      }
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
+/* Animated Formula Styles */
+.animated-formula {
+  font-family: 'Courier New', monospace;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.formula-part {
+  transition: all 0.3s ease;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.formula-part.fade-in {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.formula-part.highlight {
+  background-color: rgba(59, 130, 246, 0.2);
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.formula-part.resistor {
+  color: #ef4444;
+}
+
+.formula-part.supply {
+  color: #3b82f6;
+}
+
+.formula-part.forward {
+  color: #10b981;
+}
+
+.formula-part.current {
+  color: #f59e0b;
+}
+
+.formula-operator {
+  color: #6b7280;
+  font-weight: normal;
+}
+
+/* LED Animation Styles */
+.led-animation {
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  border-radius: 1rem;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.wire {
+  filter: drop-shadow(0 0 3px currentColor);
+}
+
+.current-particle {
+  filter: drop-shadow(0 0 5px #FFD700);
+}
+
+.led-body {
+  transition: filter 0.3s ease;
+}
+
+.light-ray {
+  filter: drop-shadow(0 0 3px #FFD700);
+  transition: opacity 0.3s ease;
+}
+
+.resistor-body {
+  transition: all 0.3s ease;
+}
+
+.voltage-arc {
+  stroke-dasharray: 5,5;
+  animation: dashMove 2s linear infinite;
+}
+
+.power-bar {
+  transition: all 0.3s ease;
+}
+
+.voltage-value, .resistor-value, .led-voltage, .current-label, .voltage-label, .power-label {
+  transition: all 0.3s ease;
+  text-anchor: middle;
+}
+
+/* Input Field Animations */
+.input-field {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.input-field:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  transform: scale(1.02);
+}
+
+.result-value {
+  transition: all 0.3s ease;
+}
+
+.result-value.pulse-result {
+  animation: pulseResult 1s ease;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dashMove {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 10;
+  }
+}
+
+@keyframes pulseResult {
+  0%, 100% {
+    transform: scale(1);
+    background-color: transparent;
+  }
+  50% {
+    transform: scale(1.05);
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+}
+
+/* Dark mode adjustments */
+.dark .led-animation {
+  background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.dark .formula-part.highlight {
+  background-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .animated-formula {
+    font-size: 1.5rem;
+  }
+  
+  .led-animation svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .animated-formula {
+    font-size: 1.2rem;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }

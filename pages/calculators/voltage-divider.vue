@@ -94,7 +94,95 @@
             Calculate output voltage in a voltage divider circuit
           </p>
           <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-4 inline-block">
-            <span class="text-3xl font-mono font-bold text-primary">Vout = Vin × (R2/(R1+R2))</span>
+            <div class="animated-formula" ref="formulaContainer">
+              <span class="formula-part output" ref="outputElement">Vout</span>
+              <span class="formula-operator">=</span>
+              <span class="formula-part input" ref="inputElement">Vin</span>
+              <span class="formula-operator">×</span>
+              <span class="formula-part fraction">(</span>
+              <span class="formula-part r2" ref="r2Element">R2</span>
+              <span class="formula-operator">/</span>
+              <span class="formula-part denominator">(</span>
+              <span class="formula-part r1" ref="r1Element">R1</span>
+              <span class="formula-operator">+</span>
+              <span class="formula-part r2" ref="r2Element2">R2</span>
+              <span class="formula-part denominator">))</span>
+            </div>
+          </div>
+          
+          <!-- Animated Voltage Divider Visualization -->
+          <div class="mt-8 flex justify-center">
+            <div class="divider-animation" ref="dividerContainer">
+              <svg width="300" height="350" viewBox="0 0 300 350" class="text-primary">
+                <!-- Input voltage source -->
+                <g class="voltage-source">
+                  <rect x="50" y="50" width="30" height="60" fill="none" stroke="currentColor" stroke-width="3"/>
+                  <text x="65" y="85" class="text-sm fill-current text-center font-bold">Vin</text>
+                  <text x="65" y="130" class="text-xs fill-current text-center voltage-value" ref="vinDisplay">12V</text>
+                </g>
+                
+                <!-- Wires -->
+                <line x1="80" y1="60" x2="150" y2="60" stroke="currentColor" stroke-width="3" class="wire"/>
+                <line x1="50" y1="100" x2="20" y2="100" stroke="currentColor" stroke-width="3" class="wire"/>
+                <line x1="20" y1="100" x2="20" y2="280" stroke="currentColor" stroke-width="3" class="wire"/>
+                <line x1="20" y1="280" x2="150" y2="280" stroke="currentColor" stroke-width="3" class="wire"/>
+                
+                <!-- R1 Resistor -->
+                <g class="resistor-r1">
+                  <rect x="150" y="50" width="60" height="20" fill="none" stroke="currentColor" stroke-width="3" class="resistor-body"/>
+                  <path d="M155,60 L160,55 L165,65 L170,55 L175,65 L180,55 L185,65 L190,55 L195,65 L200,55 L205,60" 
+                        stroke="currentColor" stroke-width="2" fill="none"/>
+                  <text x="180" y="45" class="text-xs fill-current text-center">R1</text>
+                  <text x="180" y="85" class="text-xs fill-current text-center resistor-value" ref="r1Display">1kΩ</text>
+                </g>
+                
+                <!-- Connection point -->
+                <circle cx="150" cy="150" r="4" fill="currentColor" class="connection-point"/>
+                <line x1="150" y1="70" x2="150" y2="150" stroke="currentColor" stroke-width="3" class="wire"/>
+                
+                <!-- R2 Resistor -->
+                <g class="resistor-r2">
+                  <rect x="150" y="180" width="60" height="20" fill="none" stroke="currentColor" stroke-width="3" class="resistor-body"/>
+                  <path d="M155,190 L160,185 L165,195 L170,185 L175,195 L180,185 L185,195 L190,185 L195,195 L200,185 L205,190" 
+                        stroke="currentColor" stroke-width="2" fill="none"/>
+                  <text x="180" y="175" class="text-xs fill-current text-center">R2</text>
+                  <text x="180" y="215" class="text-xs fill-current text-center resistor-value" ref="r2Display">1kΩ</text>
+                </g>
+                
+                <line x1="150" y1="150" x2="150" y2="180" stroke="currentColor" stroke-width="3" class="wire"/>
+                <line x1="150" y1="200" x2="150" y2="280" stroke="currentColor" stroke-width="3" class="wire"/>
+                
+                <!-- Output connection -->
+                <line x1="150" y1="150" x2="220" y2="150" stroke="currentColor" stroke-width="3" class="wire"/>
+                <circle cx="220" cy="150" r="4" fill="currentColor" class="output-point"/>
+                <text x="230" y="150" class="text-sm fill-current font-bold">Vout</text>
+                <text x="230" y="165" class="text-xs fill-current voltage-value" ref="voutDisplay">6V</text>
+                
+                <!-- Voltage indicators -->
+                <g class="voltage-indicators">
+                  <!-- V1 across R1 -->
+                  <path d="M120,60 Q110,110 120,150" stroke="#FF6B6B" stroke-width="2" fill="none" class="voltage-arc"/>
+                  <text x="100" y="105" class="text-xs fill-current voltage-label" ref="v1Display">V1</text>
+                  
+                  <!-- V2 across R2 -->
+                  <path d="M120,150 Q110,215 120,280" stroke="#4CAF50" stroke-width="2" fill="none" class="voltage-arc"/>
+                  <text x="100" y="215" class="text-xs fill-current voltage-label" ref="v2Display">V2</text>
+                </g>
+                
+                <!-- Current flow -->
+                <g class="current-flow">
+                  <circle r="2" fill="#FFD700" class="current-particle">
+                    <animateMotion dur="3s" repeatCount="indefinite" 
+                      path="M80,60 L150,60 L150,150 L150,280 L20,280 L20,100 L50,100"/>
+                  </circle>
+                  <text x="250" y="60" class="text-xs fill-current current-label">I</text>
+                </g>
+                
+                <!-- Labels -->
+                <text x="150" y="25" class="text-sm fill-current text-center font-bold">Voltage Divider</text>
+                <text x="150" y="320" class="text-xs fill-current text-center">Vout = Vin × R2/(R1+R2)</text>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -265,7 +353,8 @@ export default {
         inputVoltage: null,
         r1: null,
         r2: null
-      }
+      },
+      animationSpeed: 1
     }
   },
   computed: {
@@ -279,9 +368,122 @@ export default {
       return null
     }
   },
+  mounted() {
+    this.initializeAnimations()
+  },
+  watch: {
+    'inputs.inputVoltage'() {
+      this.animateFormulaHighlight('input')
+      this.updateVoltageDisplay()
+    },
+    'inputs.r1'() {
+      this.animateFormulaHighlight('r1')
+      this.updateResistorDisplay()
+    },
+    'inputs.r2'() {
+      this.animateFormulaHighlight('r2')
+      this.updateResistorDisplay()
+    },
+    result() {
+      this.animateResult()
+      this.updateVoltageDivision()
+    }
+  },
   methods: {
     toggleDark() {
       this.$colorMode = this.$colorMode === 'dark' ? 'light' : 'dark'
+    },
+    initializeAnimations() {
+      // Animate formula parts on load
+      setTimeout(() => {
+        const parts = ['outputElement', 'inputElement', 'r1Element', 'r2Element']
+        parts.forEach((part, index) => {
+          setTimeout(() => {
+            if (this.$refs[part]) {
+              this.$refs[part].classList.add('fade-in')
+            }
+          }, index * 200)
+        })
+      }, 500)
+    },
+    animateFormulaHighlight(type) {
+      const elementMap = {
+        input: 'inputElement',
+        r1: 'r1Element',
+        r2: 'r2Element',
+        output: 'outputElement'
+      }
+      
+      const element = this.$refs[elementMap[type]]
+      if (element) {
+        element.classList.add('highlight')
+        setTimeout(() => {
+          element.classList.remove('highlight')
+        }, 600)
+      }
+    },
+    updateVoltageDisplay() {
+      const vinDisplay = this.$refs.vinDisplay
+      const inputVoltage = parseFloat(this.inputs.inputVoltage) || 0
+      
+      if (vinDisplay) {
+        vinDisplay.textContent = `${inputVoltage}V`
+      }
+    },
+    updateResistorDisplay() {
+      const r1Display = this.$refs.r1Display
+      const r2Display = this.$refs.r2Display
+      const r1 = parseFloat(this.inputs.r1) || 0
+      const r2 = parseFloat(this.inputs.r2) || 0
+      
+      if (r1Display) {
+        r1Display.textContent = r1 >= 1000 ? `${(r1/1000).toFixed(1)}kΩ` : `${r1}Ω`
+      }
+      if (r2Display) {
+        r2Display.textContent = r2 >= 1000 ? `${(r2/1000).toFixed(1)}kΩ` : `${r2}Ω`
+      }
+    },
+    updateVoltageDivision() {
+      const voutDisplay = this.$refs.voutDisplay
+      const v1Display = this.$refs.v1Display
+      const v2Display = this.$refs.v2Display
+      
+      const vin = parseFloat(this.inputs.inputVoltage) || 0
+      const r1 = parseFloat(this.inputs.r1) || 1
+      const r2 = parseFloat(this.inputs.r2) || 1
+      const vout = parseFloat(this.result) || 0
+      
+      const v1 = vin - vout // Voltage across R1
+      const v2 = vout // Voltage across R2
+      
+      if (voutDisplay) {
+        voutDisplay.textContent = `${vout.toFixed(2)}V`
+      }
+      if (v1Display) {
+        v1Display.textContent = `V1: ${v1.toFixed(2)}V`
+      }
+      if (v2Display) {
+        v2Display.textContent = `V2: ${v2.toFixed(2)}V`
+      }
+      
+      // Update voltage arc colors based on voltage levels
+      const voltageArcs = document.querySelectorAll('.voltage-arc')
+      if (voltageArcs.length >= 2) {
+        const v1Intensity = Math.min(1, v1 / vin)
+        const v2Intensity = Math.min(1, v2 / vin)
+        
+        voltageArcs[0].style.opacity = 0.3 + (v1Intensity * 0.7)
+        voltageArcs[1].style.opacity = 0.3 + (v2Intensity * 0.7)
+      }
+    },
+    animateResult() {
+      const resultElement = document.querySelector('.result-display')
+      if (resultElement) {
+        resultElement.classList.add('result-pulse')
+        setTimeout(() => {
+          resultElement.classList.remove('result-pulse')
+        }, 600)
+      }
     }
   }
 }
@@ -308,5 +510,152 @@ html {
 
 .border-primary {
   border-color: var(--tw-color-primary) !important;
+}
+
+/* Animation Styles */
+.animated-formula {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 1.5rem;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.formula-part {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.formula-part.fade-in {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.formula-part.highlight {
+  background-color: var(--tw-color-primary);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(159, 168, 218, 0.5);
+}
+
+.formula-operator {
+  color: var(--tw-color-primary);
+  font-size: 1.2rem;
+  margin: 0 0.25rem;
+}
+
+.divider-animation {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.wire {
+  stroke-dasharray: 5, 5;
+  animation: wireFlow 2s linear infinite;
+}
+
+.voltage-source {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 3px currentColor);
+}
+
+.resistor-body {
+  transition: all 0.3s ease;
+}
+
+.connection-point, .output-point {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.voltage-arc {
+  transition: all 0.5s ease;
+  filter: drop-shadow(0 0 2px currentColor);
+}
+
+.voltage-label {
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.voltage-value {
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.resistor-value {
+  transition: all 0.3s ease;
+}
+
+.current-particle {
+  filter: drop-shadow(0 0 6px #FFD700);
+}
+
+.current-label {
+  font-weight: bold;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.result-pulse {
+  animation: resultPulse 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wireFlow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 10;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes resultPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+    color: #FFD700;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Input animation effects */
+input:focus {
+  animation: inputGlow 0.3s ease;
+}
+
+@keyframes inputGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(159, 168, 218, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba(159, 168, 218, 0.1);
+  }
 }
 </style>
