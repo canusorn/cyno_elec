@@ -21,8 +21,14 @@
           <NuxtLink to="/"
             class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
             Home</NuxtLink>
-          <NuxtLink to="/calculators" class="text-primary dark:text-primary-light font-semibold transition-colors">
+          <NuxtLink to="/chapters"
+            class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
+            Chapters</NuxtLink>
+          <NuxtLink to="/calculators" class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
             Calculators</NuxtLink>
+          <NuxtLink to="/simulations"
+            class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
+            Simulations</NuxtLink>
           <NuxtLink to="/contact"
             class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
             Contact</NuxtLink>
@@ -57,9 +63,15 @@
           <NuxtLink to="/" @click="mobileMenuOpen = false"
             class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
             Home</NuxtLink>
+          <NuxtLink to="/chapters" @click="mobileMenuOpen = false"
+            class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
+            Chapters</NuxtLink>
           <NuxtLink to="/calculators" @click="mobileMenuOpen = false"
-            class="block px-3 py-2 text-primary dark:text-primary-light font-semibold transition-colors rounded-md">
+            class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
             Calculators</NuxtLink>
+          <NuxtLink to="/simulations" @click="mobileMenuOpen = false"
+            class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
+            Simulations</NuxtLink>
           <NuxtLink to="/contact" @click="mobileMenuOpen = false"
             class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
             Contact</NuxtLink>

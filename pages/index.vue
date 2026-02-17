@@ -18,9 +18,15 @@
 
           <!-- Desktop Navigation -->
           <div class="hidden md:flex items-center space-x-6">
+            <NuxtLink to="/chapters"
+              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
+              Chapters</NuxtLink>
             <NuxtLink to="/calculators"
               class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
               Calculators</NuxtLink>
+            <NuxtLink to="/simulations"
+              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
+              Simulations</NuxtLink>
             <a href="#formulas"
               class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">Formulas</a>
             <a href="#tools"
@@ -49,9 +55,15 @@
         <div v-show="mobileMenuOpen"
           class="md:hidden bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-t border-gray-200 dark:border-gray-700">
           <div class="px-2 pt-2 pb-3 space-y-1">
+            <NuxtLink to="/chapters" @click="mobileMenuOpen = false"
+              class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
+              Chapters</NuxtLink>
             <NuxtLink to="/calculators" @click="mobileMenuOpen = false"
               class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
               Calculators</NuxtLink>
+            <NuxtLink to="/simulations" @click="mobileMenuOpen = false"
+              class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
+              Simulations</NuxtLink>
             <a href="#formulas" @click="mobileMenuOpen = false"
               class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">Formulas</a>
             <a href="#tools" @click="mobileMenuOpen = false"
@@ -61,7 +73,7 @@
               Contact</NuxtLink>
             <a href="#about" @click="mobileMenuOpen = false"
               class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">About</a>
-            
+
           </div>
         </div>
       </div>
@@ -69,7 +81,7 @@
 
     <!-- Hero Section -->
     <section class="relative pt-24 pb-16 overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent dark:from-primary/5"></div>
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent dark:from-primary/5 pointer-events-none"></div>
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center px-4 sm:px-6 lg:px-8 relative">
         <div class="flex-1 text-center md:text-left">
           <h1
@@ -81,13 +93,17 @@
             Ohm's Law to complex power analysis.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <NuxtLink to="/chapters"
+              class="inline-block bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 hover:shadow-lg text-lg text-center">
+              Start Learning
+            </NuxtLink>
             <a href="#calculators"
-              class="inline-block bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 hover:shadow-lg text-lg">
-              Start Calculating
+              class="inline-block bg-white dark:bg-gray-800 text-primary dark:text-primary-light px-8 py-4 rounded-full font-semibold transition-all hover:shadow-lg border-2 border-primary dark:border-primary-light text-lg text-center">
+              Calculators
             </a>
             <a href="#formulas"
-              class="inline-block bg-white dark:bg-gray-800 text-primary dark:text-primary-light px-8 py-4 rounded-full font-semibold transition-all hover:shadow-lg border-2 border-primary dark:border-primary-light text-lg">
-              View Formulas
+              class="inline-block bg-white dark:bg-gray-800 text-primary dark:text-primary-light px-8 py-4 rounded-full font-semibold transition-all hover:shadow-lg border-2 border-primary dark:border-primary-light text-lg text-center">
+              Formulas
             </a>
           </div>
         </div>
@@ -142,7 +158,7 @@
     </section>
 
     <!-- Calculators Section -->
-    <section id="calculators" class="py-20">
+    <section id="calculators" class="py-20 relative z-10">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <h2
@@ -152,22 +168,22 @@
             calculations</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div v-for="(calculator, index) in calculators" :key="index"
-            class="group flex flex-col items-center bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 cursor-pointer"
-            @click="openCalculator(calculator.type)">
+          <NuxtLink v-for="(calculator, index) in calculators" :key="index"
+            :to="calculator.link"
+            class="group flex flex-col items-center bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 cursor-pointer">
             <component :is="calculator.icon"
               class="h-12 w-12 text-primary group-hover:text-primary-dark transition-colors mb-6" />
             <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">{{ calculator.title }}</h3>
             <p class="text-gray-600 dark:text-gray-300 text-center mb-4">{{ calculator.description }}</p>
             <div class="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded-full">{{ calculator.formula }}
             </div>
-          </div>
+          </NuxtLink>
         </div>
       </div>
     </section>
 
     <!-- Formulas Section -->
-    <section id="formulas" class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <section id="formulas" class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 relative z-10">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <h2
@@ -323,6 +339,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { useColorMode } from '@vueuse/core'
+import { navigateTo } from 'nuxt/app'
 import {
   CalculatorIcon,
   BoltIcon,
@@ -351,28 +368,32 @@ const calculators = [
     title: "Ohm's Law",
     description: 'Calculate voltage, current, or resistance using the fundamental electrical law',
     formula: 'V = I × R',
-    type: 'ohms-law'
+    type: 'ohms-law',
+    link: '/calculators/ohms-law'
   },
   {
     icon: LightBulbIcon,
     title: 'Power Calculator',
     description: 'Calculate electrical power using various combinations of V, I, and R',
     formula: 'P = V × I',
-    type: 'power'
+    type: 'power',
+    link: '/calculators/power'
   },
   {
     icon: CpuChipIcon,
     title: 'Capacitor Calculator',
     description: 'Calculate capacitive reactance and impedance in AC circuits',
     formula: 'Xc = 1/(2πfC)',
-    type: 'capacitor'
+    type: 'capacitor',
+    link: '/calculators/capacitive-reactance'
   },
   {
     icon: CalculatorIcon,
     title: 'Inductor Calculator',
     description: 'Calculate inductive reactance and impedance in AC circuits',
     formula: 'XL = 2πfL',
-    type: 'inductor'
+    type: 'inductor',
+    link: '/calculators/inductive-reactance'
   }
 ]
 
@@ -505,6 +526,17 @@ watch(calculatorInputs, (newInputs) => {
 <style>
 html {
   scroll-behavior: smooth;
+}
+
+/* Fix clickable links */
+a, NuxtLink {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+/* Ensure interactive elements are clickable */
+button, .cursor-pointer {
+  pointer-events: auto !important;
 }
 
 :root {
