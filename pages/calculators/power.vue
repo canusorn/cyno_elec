@@ -1,231 +1,315 @@
 <template>
   <div
-    :class="[colorMode === 'dark' ? 'dark' : '', 'min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800']">
+    :class="[colorMode === 'dark' ? 'dark' : '', 'min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800']"
+  >
     <!-- Navigation -->
-    <nav class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg fixed w-full z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-          <div class="flex items-center">
-            <NuxtLink to="/" class="flex items-center">
-              <!-- Cyno Electric SVG Icon -->
-              <svg class="h-8 sm:h-10 mr-2 hover:scale-105 transition-transform" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="18" stroke="#9FA8DA" stroke-width="2" fill="none"/>
-                <path d="M15 12L25 20L15 28V12Z" fill="#9FA8DA"/>
-                <circle cx="20" cy="20" r="3" fill="#7986CB"/>
-                <path d="M12 8L28 32M28 8L12 32" stroke="#C5CAE9" stroke-width="1" opacity="0.6"/>
-              </svg>
-              <span
-                class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">Cyno Electric</span>
-            </NuxtLink>
-          </div>
-
-          <!-- Desktop Navigation -->
-          <div class="hidden md:flex items-center space-x-6">
-            <NuxtLink to="/"
-              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
-              Home</NuxtLink>
-            <NuxtLink to="/calculators"
-              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
-              Calculators</NuxtLink>
-            <NuxtLink to="/contact"
-              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
-              Contact</NuxtLink>
-            <button @click="toggleDark"
-              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
-              <svg v-if="colorMode === 'dark'" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-              <svg v-else class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Mobile menu button -->
-          <div class="md:hidden flex items-center">
-            <button @click="mobileMenuOpen = !mobileMenuOpen"
-              class="text-gray-600 dark:text-gray-200 hover:text-primary focus:outline-none focus:text-primary transition-colors">
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16" />
-                <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Mobile Navigation Menu -->
-        <div v-show="mobileMenuOpen"
-          class="md:hidden bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-t border-gray-200 dark:border-gray-700">
-          <div class="px-2 pt-2 pb-3 space-y-1">
-            <NuxtLink to="/" @click="mobileMenuOpen = false"
-              class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
-              Home</NuxtLink>
-            <NuxtLink to="/calculators" @click="mobileMenuOpen = false"
-              class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
-              Calculators</NuxtLink>
-            <NuxtLink to="/contact" @click="mobileMenuOpen = false"
-              class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
-              Contact</NuxtLink>
-            <div class="px-3 py-2">
-              <button @click="toggleDark"
-                class="w-full text-left text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
-                Toggle Dark Mode
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <NavigationBar />
 
     <!-- Header Section -->
     <section class="relative pt-24 pb-16">
       <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent dark:from-primary/5"></div>
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div class="text-center mb-8">
           <div class="flex justify-center mb-4">
-            <LightBulbIcon class="h-16 w-16 text-primary" />
+            <LightBulbIcon class="h-16 w-16 text-primary animate-pulse" />
           </div>
-          <h1
-            class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-4">
+          <h1 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-4">
             Power Calculator
           </h1>
           <p class="text-xl text-gray-600 dark:text-gray-300 mb-6">
             Calculate electrical power using voltage and current
           </p>
-          <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-4 inline-block">
-            <div class="animated-formula" ref="formulaContainer">
-              <span class="formula-part power" ref="powerElement">P</span>
-              <span class="formula-operator">=</span>
-              <span class="formula-part voltage" ref="voltageElement">V</span>
-              <span class="formula-operator">×</span>
-              <span class="formula-part current" ref="currentElement">I</span>
-            </div>
-          </div>
           
-          <!-- Animated Power Visualization -->
-          <div class="mt-8 flex justify-center">
-            <div class="power-animation" ref="powerContainer">
-              <svg width="300" height="200" viewBox="0 0 300 200" class="text-primary">
-                <!-- Power source -->
-                <rect x="50" y="80" width="40" height="40" fill="none" stroke="currentColor" stroke-width="3" class="power-source"/>
-                <text x="70" y="105" class="text-sm fill-current text-center">V</text>
-                
-                <!-- Wires -->
-                <line x1="90" y1="90" x2="150" y2="90" stroke="currentColor" stroke-width="3" class="wire"/>
-                <line x1="90" y1="110" x2="150" y2="110" stroke="currentColor" stroke-width="3" class="wire"/>
-                <line x1="200" y1="90" x2="250" y2="90" stroke="currentColor" stroke-width="3" class="wire"/>
-                <line x1="200" y1="110" x2="250" y2="110" stroke="currentColor" stroke-width="3" class="wire"/>
-                
-                <!-- Load (light bulb) -->
-                <circle cx="175" cy="100" r="25" fill="none" stroke="currentColor" stroke-width="3" class="load-bulb"/>
-                <path d="M165,90 L185,110 M165,110 L185,90" stroke="currentColor" stroke-width="2" class="bulb-filament"/>
-                
-                <!-- Current flow particles -->
-                <circle r="3" fill="#FFD700" class="current-particle">
-                  <animateMotion dur="1.5s" repeatCount="indefinite" path="M90,90 L150,90 L200,90 L250,90 L250,110 L200,110 L150,110 L90,110 Z"/>
-                </circle>
-                
-                <!-- Power waves -->
-                <g class="power-waves">
-                  <circle cx="175" cy="100" r="30" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.6">
-                    <animate attributeName="r" values="30;50;30" dur="2s" repeatCount="indefinite"/>
-                    <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite"/>
-                  </circle>
-                  <circle cx="175" cy="100" r="35" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.4">
-                    <animate attributeName="r" values="35;55;35" dur="2s" repeatCount="indefinite" begin="0.5s"/>
-                    <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite" begin="0.5s"/>
-                  </circle>
-                </g>
-                
-                <!-- Labels -->
-                <text x="175" y="140" class="text-xs fill-current text-center">Power = V × I</text>
-                <text x="120" y="80" class="text-xs fill-current current-label">I →</text>
-              </svg>
+          <!-- Animated Formula Display -->
+          <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-4 inline-block shadow-lg">
+            <div class="animated-formula">
+              <span class="formula-part" :class="{ 'highlight': highlightedVar === 'power' }">P</span>
+              <span class="formula-operator">=</span>
+              <span class="formula-part" :class="{ 'highlight': highlightedVar === 'voltage' }">V</span>
+              <span class="formula-operator">×</span>
+              <span class="formula-part" :class="{ 'highlight': highlightedVar === 'current' }">I</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Calculator Section -->
+    <!-- Main Calculator Section -->
     <section class="pb-20">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <!-- Input Section -->
-            <div>
-              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Input Values</h3>
-              <div class="space-y-6">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Voltage (V) - Volts
-                  </label>
-                  <input 
-                    v-model.number="inputs.voltage"
-                    type="number" 
-                    step="any"
-                    placeholder="Enter voltage in volts"
-                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Current (I) - Amperes
-                  </label>
-                  <input 
-                    v-model.number="inputs.current"
-                    type="number" 
-                    step="any"
-                    placeholder="Enter current in amperes"
-                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Power (P) - Watts
-                  </label>
-                  <input 
-                    v-model.number="inputs.power"
-                    type="number" 
-                    step="any"
-                    placeholder="Enter power in watts"
-                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
-                  />
-                </div>
-              </div>
-              <div class="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                <p class="text-sm text-blue-700 dark:text-blue-300">
-                  💡 Enter any two values to calculate the third variable.
-                </p>
-              </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          <!-- LEFT COLUMN: Interactive Circuit & Inputs -->
+          <div class="space-y-6">
+            
+            <!-- Interactive Circuit Diagram -->
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                <span>⚡</span>
+                <span>Power Circuit Diagram</span>
+              </h3>
+              
+              <!-- Power Circuit SVG -->
+              <svg viewBox="0 0 600 300" class="w-full h-auto" :class="{ 'dark-mode': colorMode === 'dark' }">
+                <defs>
+                  <filter id="glow2">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge>
+                      <feMergeNode in="coloredBlur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                  <linearGradient id="bulbGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" :stop-color="bulbColor1" />
+                    <stop offset="100%" :stop-color="bulbColor2" />
+                  </linearGradient>
+                </defs>
+                
+                <!-- Background -->
+                <rect width="600" height="300" fill="rgba(255,255,255,0.05)" rx="8"/>
+                
+                <!-- Wires -->
+                <line x1="100" y1="100" x2="300" y2="100" :stroke="wireColor" stroke-width="4" stroke-linecap="round"/>
+                <line x1="100" y1="200" x2="300" y2="200" :stroke="wireColor" stroke-width="4" stroke-linecap="round"/>
+                <line x1="400" y1="100" x2="500" y2="100" :stroke="wireColor" stroke-width="4" stroke-linecap="round"/>
+                <line x1="400" y1="200" x2="500" y2="200" :stroke="wireColor" stroke-width="4" stroke-linecap="round"/>
+                <line x1="100" y1="100" x2="100" y2="200" :stroke="wireColor" stroke-width="4" stroke-linecap="round"/>
+                <line x1="500" y1="100" x2="500" y2="200" :stroke="wireColor" stroke-width="4" stroke-linecap="round"/>
+                
+                <!-- Voltage Source -->
+                <circle cx="100" cy="150" r="40" fill="white" :stroke="voltageColor" stroke-width="3"/>
+                <line x1="85" y1="140" x2="115" y2="140" :stroke="voltageColor" stroke-width="4"/>
+                <line x1="90" y1="160" x2="110" y2="160" :stroke="voltageColor" stroke-width="2"/>
+                <text x="100" y="190" text-anchor="middle" :font-size="12" font-weight="bold" :fill="voltageColor">
+                  {{ displayVoltage }}V
+                </text>
+                
+                <!-- Load (Light bulb representation) -->
+                <g @click="highlightedVar = 'power'; setTimeout(() => highlightedVar = null, 1000)" class="cursor-pointer">
+                  <circle cx="350" cy="150" r="50" fill="white" :stroke="bulbStrokeColor" stroke-width="4"/>
+                  <circle cx="350" cy="150" r="40" :fill="bulbFillColor" opacity="0.8"/>
+                  <!-- Filament -->
+                  <path d="M330,135 L370,165 M330,165 L370,135" :stroke="filamentColor" stroke-width="3" stroke-linecap="round"/>
+                  
+                  <!-- Power waves animation -->
+                  <g v-if="displayPower > 0">
+                    <circle cx="350" cy="150" r="55" fill="none" :stroke="bulbStrokeColor" stroke-width="2" opacity="0.6">
+                      <animate attributeName="r" values="55;75;55" dur="2s" repeatCount="indefinite"/>
+                      <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                  </g>
+                  
+                  <text x="350" y="220" text-anchor="middle" :font-size="12" font-weight="bold" :fill="bulbStrokeColor">
+                    Load
+                  </text>
+                </g>
+                
+                <!-- Current flow electrons -->
+                <g v-if="showCurrentAnimation">
+                  <circle 
+                    v-for="electron in electrons" 
+                    :key="electron.id"
+                    :r="electronRadius"
+                    :fill="electronColor"
+                    filter="url(#glow2)"
+                  >
+                    <animateMotion
+                      :dur="animationDuration"
+                      :begin="electron.delay"
+                      repeatCount="indefinite"
+                      path="M 100 100 L 300 100 L 300 150 L 400 150 L 400 200 L 100 200 L 100 100"
+                    />
+                  </circle>
+                </g>
+                
+                <!-- Current label -->
+                <text x="200" y="80" text-anchor="middle" :font-size="12" font-weight="bold" :fill="currentColor">
+                  I = {{ currentLabel }}
+                </text>
+                
+                <!-- Power display -->
+                <g class="power-indicator">
+                  <rect x="420" y="130" width="130" height="40" rx="8" :fill="powerBgColor" opacity="0.95"/>
+                  <text x="485" y="155" text-anchor="middle" :font-size="14" font-weight="bold" :fill="powerTextColor">
+                    ⚡ P = {{ displayPower }}W
+                  </text>
+                </g>
+              </svg>
             </div>
 
-            <!-- Result Section -->
-            <div>
-              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Result</h3>
-              <div class="bg-gradient-to-r from-primary/10 to-primary-dark/10 rounded-lg p-6">
-                <div class="text-center">
-                  <span v-if="calculatedVariable" class="text-lg text-gray-600 dark:text-gray-300">{{ calculatedVariable.label }}</span>
-                  <span v-else class="text-lg text-gray-600 dark:text-gray-300">Enter two values to calculate</span>
-                  <div class="text-4xl font-bold text-primary mt-2">
-                    {{ calculatedVariable ? calculatedVariable.value : '---' }} {{ calculatedVariable ? calculatedVariable.unit : '' }}
+            <!-- Input Sliders -->
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+                <span>🎛️</span>
+                <span>Input Controls</span>
+              </h3>
+              
+              <div class="space-y-6">
+                <!-- Voltage Slider -->
+                <SliderInput
+                  v-model="inputs.voltage"
+                  label="Voltage"
+                  unit="V"
+                  icon="🔋"
+                  :min="0"
+                  :max="240"
+                  :step="0.1"
+                  min-label="0V"
+                  max-label="240V"
+                  mid-label="120V"
+                  slider-color="blue"
+                  :is-dark="colorMode === 'dark'"
+                  :format-decimals="2"
+                  :presets="voltagePresets"
+                  :show-number-input="true"
+                  @input="onVoltageInput"
+                />
+                
+                <!-- Current Slider -->
+                <SliderInput
+                  v-model="inputs.current"
+                  label="Current"
+                  unit="A"
+                  icon="⚡"
+                  :min="0"
+                  :max="20"
+                  :step="0.01"
+                  min-label="0A"
+                  max-label="20A"
+                  mid-label="10A"
+                  slider-color="orange"
+                  :is-dark="colorMode === 'dark'"
+                  :format-decimals="3"
+                  :presets="currentPresets"
+                  :show-number-input="true"
+                  @input="onCurrentInput"
+                />
+                
+                <!-- Power Slider (calculated) -->
+                <SliderInput
+                  v-model="inputs.power"
+                  label="Power"
+                  unit="W"
+                  icon="⚡"
+                  :min="0"
+                  :max="5000"
+                  :step="0.1"
+                  min-label="0W"
+                  max-label="5kW"
+                  mid-label="1kW"
+                  slider-color="yellow"
+                  :is-dark="colorMode === 'dark'"
+                  :format-decimals="2"
+                  :presets="powerPresets"
+                  :show-number-input="true"
+                  @input="onPowerInput"
+                />
+              </div>
+              
+              <!-- Quick Actions -->
+              <div class="mt-6 flex flex-wrap gap-2">
+                <button 
+                  @click="resetInputs" 
+                  class="action-btn-secondary"
+                  type="button"
+                >
+                  🔄 Reset All
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: Results & Calculations -->
+          <div class="space-y-6">
+            
+            <!-- Main Result Card -->
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+                <span>📊</span>
+                <span>Calculated Result</span>
+              </h3>
+              
+              <div class="result-card">
+                <div class="result-label">{{ calculatedVariable.label }}</div>
+                <div class="result-value-wrapper">
+                  <div class="result-value" :class="resultValueClass">
+                    {{ calculatedVariable.value !== null ? calculatedVariable.value : '---' }}
                   </div>
-                  <div v-if="calculatedVariable" class="mt-4 text-sm text-gray-600 dark:text-gray-300">
+                  <div class="result-unit">{{ calculatedVariable.unit }}</div>
+                </div>
+                
+                <!-- Additional Info -->
+                <div v-if="calculatedVariable.value !== null" class="mt-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <div class="text-sm text-gray-600 dark:text-gray-300">
                     {{ calculatedVariable.formula }}
                   </div>
                 </div>
               </div>
+              
+              <!-- Status Message -->
+              <div class="mt-4 text-center">
+                <div v-if="calculatedVariable.value === null && hasAnyInput" class="status-message info">
+                  <span class="icon">ℹ️</span>
+                  <span>Enter any two values to calculate the third</span>
+                </div>
+                <div v-else-if="calculatedVariable.value !== null" class="status-message success">
+                  <span class="icon">✅</span>
+                  <span>Calculation complete!</span>
+                </div>
+              </div>
+            </div>
 
-              <!-- Formula Explanation -->
-              <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Formula Explanation</h4>
-                <p class="text-sm text-gray-600 dark:text-gray-300">
-                  Electrical power calculations use the relationship P = V × I. You can calculate any variable when the other two are known:
-                  <br>• Power: P = V × I
-                  <br>• Voltage: V = P / I
-                  <br>• Current: I = P / V
+            <!-- Calculation Steps -->
+            <CalculationSteps
+              v-if="calculatedVariable.value !== null"
+              :formula="formula"
+              :steps="calculationSteps"
+              :final-result="finalResultText"
+              :show-comparison="showComparison"
+              :previous-value="previousResult"
+              :current-value="calculatedVariable.value + ' ' + calculatedVariable.unit"
+              :is-dark="colorMode === 'dark'"
+            />
+
+            <!-- Theory & Tips -->
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                <span>📚</span>
+                <span>Power Law Theory</span>
+              </h3>
+              
+              <div class="theory-content">
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  Electrical power (P) is the rate at which electrical energy is transferred by an electric circuit. It's calculated using the formula: P = V × I
                 </p>
+                
+                <div class="formula-grid">
+                  <div class="formula-item">
+                    <div class="formula-title">Power</div>
+                    <div class="formula-eq">P = V × I</div>
+                    <div class="formula-desc">Watts (W)</div>
+                  </div>
+                  <div class="formula-item">
+                    <div class="formula-title">Voltage</div>
+                    <div class="formula-eq">V = P ÷ I</div>
+                    <div class="formula-desc">Volts (V)</div>
+                  </div>
+                  <div class="formula-item">
+                    <div class="formula-title">Current</div>
+                    <div class="formula-eq">I = P ÷ V</div>
+                    <div class="formula-desc">Amperes (A)</div>
+                  </div>
+                </div>
+                
+                <div class="tips-box mt-4">
+                  <div class="tips-title">💡 Quick Tips:</div>
+                  <ul class="tips-list">
+                    <li>Higher voltage = More power (for same current)</li>
+                    <li>Higher current = More power (for same voltage)</li>
+                    <li>Power is measured in Watts (W)</li>
+                    <li>1 kW = 1000 W (kilowatt)</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -234,231 +318,342 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 dark:bg-black mt-16">
-      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-          <svg class="mx-auto h-12 mb-4 hover:scale-105 transition-transform" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="18" stroke="#9FA8DA" stroke-width="2" fill="none"/>
-            <path d="M15 12L25 20L15 28V12Z" fill="#9FA8DA"/>
-            <circle cx="20" cy="20" r="3" fill="#7986CB"/>
-            <path d="M12 8L28 32M28 8L12 32" stroke="#C5CAE9" stroke-width="1" opacity="0.6"/>
-          </svg>
-          <p class="text-base text-gray-400">&copy; 2025 Cyno Electric. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
+    <Footer />
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref, computed, watch } from 'vue'
 import { useColorMode } from '@vueuse/core'
 import { LightBulbIcon } from '@heroicons/vue/24/outline'
+import NavigationBar from '~/components/NavigationBar.vue'
+import Footer from '~/components/Footer.vue'
+import SliderInput from '~/components/SliderInput.vue'
+import CalculationSteps from '~/components/CalculationSteps.vue'
 
-export default {
-  name: 'PowerCalculator',
-  components: {
-    LightBulbIcon
-  },
-  setup() {
-    // SEO
-    useHead({
-      title: 'Power Calculator - Cyno Electric',
-      meta: [
-        { name: 'description', content: 'Calculate electrical power using voltage and current (P = V × I). Professional electrical engineering calculator.' },
-        { name: 'keywords', content: 'power calculator, electrical power, voltage current power, watt calculator, electrical engineering' }
-      ]
-    })
+// SEO
+useHead({
+  title: 'Power Calculator - Cyno Electric',
+  meta: [
+    { name: 'description', content: 'Calculate electrical power using voltage and current (P = V × I). Professional electrical engineering calculator.' },
+    { name: 'keywords', content: 'power calculator, electrical power, watt calculator, voltage current calculator' }
+  ]
+})
 
-    const colorMode = useColorMode()
-    
+// Color mode
+const colorMode = useColorMode()
+
+// Input state
+const inputs = ref({
+  voltage: null as number | null,
+  current: null as number | null,
+  power: null as number | null
+})
+
+// UI state
+const highlightedVar = ref<string | null>(null)
+const previousResult = ref<string>('')
+const showComparison = ref(false)
+
+// Presets
+const voltagePresets = [
+  { label: '1.5V', value: 1.5 },
+  { label: '5V', value: 5 },
+  { label: '12V', value: 12 },
+  { label: '24V', value: 24 },
+  { label: '120V', value: 120 },
+  { label: '240V', value: 240 }
+]
+
+const currentPresets = [
+  { label: '100mA', value: 0.1 },
+  { label: '500mA', value: 0.5 },
+  { label: '1A', value: 1 },
+  { label: '2A', value: 2 },
+  { label: '5A', value: 5 }
+]
+
+const powerPresets = [
+  { label: '1W', value: 1 },
+  { label: '10W', value: 10 },
+  { label: '60W', value: 60 },
+  { label: '100W', value: 100 },
+  { label: '500W', value: 500 },
+  { label: '1kW', value: 1000 }
+]
+
+// Display values
+const displayVoltage = computed(() => inputs.value.voltage || 0)
+const displayCurrent = computed(() => inputs.value.current || 0)
+const displayPower = computed(() => inputs.value.power || 0)
+
+const currentLabel = computed(() => {
+  const i = inputs.value.current || 0
+  return i < 0.001 ? '0A' : i < 1 ? `${(i * 1000).toFixed(0)}mA` : `${i.toFixed(2)}A`
+})
+
+const showCurrentAnimation = computed(() => (inputs.value.current || 0) > 0)
+
+// Circuit colors based on values
+const voltageColor = computed(() => {
+  const v = inputs.value.voltage || 0
+  if (v < 12) return '#22C55E'
+  if (v < 120) return '#3B82F6'
+  return '#EF4444'
+})
+
+const currentColor = computed(() => {
+  const i = inputs.value.current || 0
+  if (i < 1) return '#22C55E'
+  if (i < 5) return '#F59E0B'
+  return '#EF4444'
+})
+
+const electronColor = computed(() => currentColor.value)
+const wireColor = computed(() => {
+  const i = inputs.value.current || 0
+  return i > 0 ? '#94A3B8' : '#6B7280'
+})
+
+const bulbColor1 = computed(() => {
+  const p = inputs.value.power || 0
+  if (p < 10) return '#FEF3C7'
+  if (p < 100) return '#FDE68A'
+  return '#FCD34D'
+})
+
+const bulbColor2 = computed(() => {
+  const p = inputs.value.power || 0
+  if (p < 10) return '#FDE68A'
+  if (p < 100) return '#FCD34D'
+  return '#FBBF24'
+})
+
+const bulbStrokeColor = computed(() => {
+  const p = inputs.value.power || 0
+  if (p < 10) return '#F59E0B'
+  if (p < 100) return '#D97706'
+  return '#B45309'
+})
+
+const bulbFillColor = computed(() => {
+  const p = inputs.value.power || 0
+  const intensity = Math.min(p / 100, 1)
+  return p < 10 ? '#FEF3C7' : `rgba(253, 230, 138, ${0.3 + intensity * 0.5})`
+})
+
+const filamentColor = computed(() => {
+  const p = inputs.value.power || 0
+  if (p < 10) return '#92400E'
+  if (p < 100) return '#78350F'
+  return '#451A03'
+})
+
+const powerBgColor = computed(() => {
+  const p = inputs.value.power || 0
+  if (p < 10) return '#D1FAE5'
+  if (p < 100) return '#FEF3C7'
+  if (p < 500) return '#FED7AA'
+  return '#FEE2E2'
+})
+
+const powerTextColor = computed(() => {
+  const p = inputs.value.power || 0
+  if (p < 10) return '#065F46'
+  if (p < 100) return '#92400E'
+  if (p < 500) return '#9A3412'
+  return '#991B1B'
+})
+
+// Animation
+const animationDuration = computed(() => {
+  const current = inputs.value.current || 0.1
+  const baseDuration = 4
+  return `${baseDuration / Math.max(0.1, Math.sqrt(current))}s`
+})
+
+const electronRadius = computed(() => {
+  const current = inputs.value.current || 0
+  return Math.min(6, 3 + current)
+})
+
+const electrons = computed(() => {
+  const count = Math.min(8, Math.max(3, Math.ceil((inputs.value.current || 0) * 2)))
+  return Array.from({ length: count }, (_, i) => ({
+    id: i,
+    delay: `${(i * 100) / count}%`
+  }))
+})
+
+// Computed: Check for valid inputs
+const hasValidNumber = (val: number | null): boolean => {
+  return val !== null && val !== '' && !isNaN(val) && isFinite(val)
+}
+
+const hasAnyInput = computed(() => {
+  return hasValidNumber(inputs.value.voltage) ||
+         hasValidNumber(inputs.value.current) ||
+         hasValidNumber(inputs.value.power)
+})
+
+// Computed: Calculate the missing variable
+const calculatedVariable = computed(() => {
+  const { voltage, current, power } = inputs.value
+  const hasVoltage = hasValidNumber(voltage)
+  const hasCurrent = hasValidNumber(current)
+  const hasPower = hasValidNumber(power)
+  
+  // Calculate power when voltage and current are provided
+  if (hasVoltage && hasCurrent && !hasPower) {
+    const calculatedPower = voltage! * current!
     return {
-      colorMode
-    }
-  },
-  data() {
-    return {
-      mobileMenuOpen: false,
-      inputs: {
-        voltage: null,
-        current: null,
-        power: null
-      },
-      animationSpeed: 1
-    }
-  },
-  computed: {
-    hasAnyInput() {
-      return Object.values(this.inputs).some(value => value !== null && value !== '' && !isNaN(value))
-    },
-    calculatedVariable() {
-      const { voltage, current, power } = this.inputs
-      
-      // Count non-null inputs
-      const validInputs = [voltage, current, power]
-        .filter(val => val !== null && val !== '' && !isNaN(val) && val > 0)
-      
-      if (validInputs.length !== 2) return null
-      
-      // Calculate missing variable based on which two are provided
-      if (voltage && current && !power) {
-        // Calculate power: P = V × I
-        const result = voltage * current
-        return {
-          label: 'Power (P)',
-          value: result.toFixed(4),
-          unit: 'W',
-          formula: `${voltage} V × ${current} A = ${result.toFixed(4)} W`
-        }
-      } else if (voltage && power && !current) {
-        // Calculate current: I = P / V
-        const result = power / voltage
-        return {
-          label: 'Current (I)',
-          value: result.toFixed(4),
-          unit: 'A',
-          formula: `${power} W / ${voltage} V = ${result.toFixed(4)} A`
-        }
-      } else if (current && power && !voltage) {
-        // Calculate voltage: V = P / I
-        const result = power / current
-        return {
-          label: 'Voltage (V)',
-          value: result.toFixed(4),
-          unit: 'V',
-          formula: `${power} W / ${current} A = ${result.toFixed(4)} V`
-        }
-      }
-      
-      return null
-    }
-  },
-  mounted() {
-    this.initializeAnimations()
-  },
-  watch: {
-    'inputs.voltage'() {
-      this.animateFormulaHighlight('voltage')
-      this.updatePowerAnimation()
-    },
-    'inputs.current'() {
-      this.animateFormulaHighlight('current')
-      this.updateCurrentAnimation()
-    },
-    'inputs.power'() {
-      this.animateFormulaHighlight('power')
-      this.updatePowerAnimation()
-    },
-    calculatedVariable() {
-      if (this.calculatedVariable) {
-        this.animateResult()
-      }
-    }
-  },
-  methods: {
-    toggleDark() {
-      this.colorMode = this.colorMode === 'dark' ? 'light' : 'dark'
-    },
-    initializeAnimations() {
-      // Animate formula parts on load
-      setTimeout(() => {
-        const formulaElements = this.$refs.formulaContainer?.querySelectorAll('.formula-part, .formula-operator')
-        formulaElements?.forEach((element, index) => {
-          setTimeout(() => {
-            element.style.animationDelay = `${index * 0.2}s`
-            element.classList.add('fade-in')
-          }, index * 200)
-        })
-      }, 500)
-    },
-    animateFormulaHighlight(type) {
-      const elementMap = {
-        voltage: 'voltageElement',
-        current: 'currentElement',
-        power: 'powerElement'
-      }
-      
-      const element = this.$refs[elementMap[type]]
-      if (element) {
-        element.classList.add('highlight')
-        setTimeout(() => {
-          element.classList.remove('highlight')
-        }, 600)
-      }
-    },
-    updateCurrentAnimation() {
-      const particles = document.querySelectorAll('.current-particle')
-      
-      // Get current value from calculated variable or input
-      let current = this.inputs.current
-      if (this.calculatedVariable && this.calculatedVariable.label.includes('Current')) {
-        current = parseFloat(this.calculatedVariable.value)
-      }
-      
-      const speed = Math.max(0.5, Math.min(3, parseFloat(current) || 1))
-      
-      particles.forEach(particle => {
-        const animation = particle.querySelector('animateMotion')
-        if (animation) {
-          animation.setAttribute('dur', `${2 / speed}s`)
-        }
-      })
-    },
-    updatePowerAnimation() {
-      const waves = document.querySelectorAll('.power-waves circle')
-      const bulb = document.querySelector('.load-bulb')
-      const filament = document.querySelector('.bulb-filament')
-      
-      // Get power value from calculated variable or input
-      let power = this.inputs.power
-      if (this.calculatedVariable && this.calculatedVariable.label.includes('Power')) {
-        power = parseFloat(this.calculatedVariable.value)
-      }
-      
-      const intensity = power ? Math.min(1, power / 100) : 0 // Normalize to 0-1
-      
-      // Update bulb brightness
-      if (bulb && filament) {
-        const brightness = 0.3 + (intensity * 0.7)
-        bulb.style.opacity = brightness
-        filament.style.opacity = brightness
-        
-        if (power > 0) {
-          bulb.style.filter = `drop-shadow(0 0 ${intensity * 10}px #FFD700)`
-        } else {
-          bulb.style.filter = 'none'
-        }
-      }
-      
-      // Update power wave intensity
-      waves.forEach((wave, index) => {
-        const baseOpacity = index === 0 ? 0.6 : 0.4
-        wave.style.opacity = baseOpacity * intensity
-        
-        const animations = wave.querySelectorAll('animate')
-        animations.forEach(anim => {
-          const speed = Math.max(0.5, 2 - intensity)
-          anim.setAttribute('dur', `${speed}s`)
-        })
-      })
-    },
-    animateResult() {
-      const resultElement = document.querySelector('.result-display')
-      if (resultElement) {
-        resultElement.classList.add('result-pulse')
-        setTimeout(() => {
-          resultElement.classList.remove('result-pulse')
-        }, 600)
-      }
+      label: 'Power (P)',
+      value: calculatedPower.toFixed(4),
+      unit: 'W',
+      formula: `P = ${voltage}V × ${current}A = ${calculatedPower.toFixed(4)}W`,
+      variable: 'power'
     }
   }
+  
+  // Calculate voltage when power and current are provided
+  if (hasPower && hasCurrent && !hasVoltage) {
+    const calculatedVoltage = power! / current!
+    return {
+      label: 'Voltage (V)',
+      value: calculatedVoltage.toFixed(4),
+      unit: 'V',
+      formula: `V = ${power}W ÷ ${current}A = ${calculatedVoltage.toFixed(4)}V`,
+      variable: 'voltage'
+    }
+  }
+  
+  // Calculate current when power and voltage are provided
+  if (hasPower && hasVoltage && !hasCurrent) {
+    const calculatedCurrent = power! / voltage!
+    return {
+      label: 'Current (I)',
+      value: calculatedCurrent.toFixed(4),
+      unit: 'A',
+      formula: `I = ${power}W ÷ ${voltage}V = ${calculatedCurrent.toFixed(4)}A`,
+      variable: 'current'
+    }
+  }
+  
+  return {
+    label: 'Result',
+    value: null,
+    unit: '',
+    formula: '',
+    variable: null
+  }
+})
+
+// Computed: Formula and steps
+const formula = computed(() => calculatedVariable.value.formula)
+
+const calculationSteps = computed(() => {
+  const { voltage, current, power } = inputs.value
+  const result = calculatedVariable.value
+  
+  if (result.value === null) return []
+  
+  const steps = []
+  
+  // Step 1: Identify known values
+  const knownValues = []
+  if (hasValidNumber(voltage)) knownValues.push(`V = ${voltage}V`)
+  if (hasValidNumber(current)) knownValues.push(`I = ${current}A`)
+  if (hasValidNumber(power)) knownValues.push(`P = ${power}W`)
+  
+  steps.push({
+    description: 'Identify known values',
+    calculation: knownValues.join(', '),
+    note: 'We have two known values, need to find the third'
+  })
+  
+  // Step 2: Show formula
+  steps.push({
+    description: 'Apply Power Law formula',
+    calculation: result.formula,
+    note: 'The relationship between power, voltage, and current'
+  })
+  
+  // Step 3: Show calculation
+  if (result.variable === 'power') {
+    steps.push({
+      description: 'Substitute values and calculate',
+      calculation: `P = ${voltage} × ${current}`,
+      result: `${result.value}W`
+    })
+  } else if (result.variable === 'voltage') {
+    steps.push({
+      description: 'Substitute values and calculate',
+      calculation: `V = ${power} ÷ ${current}`,
+      result: `${result.value}V`
+    })
+  } else if (result.variable === 'current') {
+    steps.push({
+      description: 'Substitute values and calculate',
+      calculation: `I = ${power} ÷ ${voltage}`,
+      result: `${result.value}A`
+    })
+  }
+  
+  return steps
+})
+
+const finalResultText = computed(() => {
+  const result = calculatedVariable.value
+  if (result.value === null) return ''
+  return `${result.label} = ${result.value} ${result.unit}`
+})
+
+const resultValueClass = computed(() => {
+  const result = calculatedVariable.value
+  if (!result.variable) return ''
+  
+  const classMap = {
+    power: 'text-yellow-600 dark:text-yellow-400',
+    voltage: 'text-blue-600 dark:text-blue-400',
+    current: 'text-orange-600 dark:text-orange-400'
+  }
+  
+  return classMap[result.variable] || 'text-primary'
+})
+
+// Input handlers
+const onVoltageInput = () => {
+  highlightedVar.value = 'voltage'
+  setTimeout(() => highlightedVar.value = null, 1000)
 }
+
+const onCurrentInput = () => {
+  highlightedVar.value = 'current'
+  setTimeout(() => highlightedVar.value = null, 1000)
+}
+
+const onPowerInput = () => {
+  highlightedVar.value = 'power'
+  setTimeout(() => highlightedVar.value = null, 1000)
+}
+
+// Actions
+const resetInputs = () => {
+  inputs.value = { voltage: null, current: null, power: null }
+  previousResult.value = ''
+  showComparison.value = false
+}
+
+// Watch for result changes
+watch(() => calculatedVariable.value.value, (newValue, oldValue) => {
+  if (oldValue !== null && newValue !== null && newValue !== oldValue) {
+    previousResult.value = `${oldValue} ${calculatedVariable.value.unit}`
+    showComparison.value = true
+  }
+})
 </script>
 
-<style>
-html {
-  scroll-behavior: smooth;
-}
-
+<style scoped>
 :root {
   --tw-color-primary: #9FA8DA;
   --tw-color-primary-dark: #7986CB;
@@ -469,15 +664,7 @@ html {
   color: var(--tw-color-primary) !important;
 }
 
-.bg-primary {
-  background-color: var(--tw-color-primary) !important;
-}
-
-.border-primary {
-  border-color: var(--tw-color-primary) !important;
-}
-
-/* Animation Styles */
+/* Animated Formula */
 .animated-formula {
   display: flex;
   align-items: center;
@@ -491,12 +678,6 @@ html {
   padding: 0.25rem 0.5rem;
   border-radius: 0.375rem;
   transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.formula-part.fade-in {
-  animation: fadeInUp 0.6s ease forwards;
 }
 
 .formula-part.highlight {
@@ -509,107 +690,231 @@ html {
 .formula-operator {
   color: var(--tw-color-primary);
   font-size: 1.5rem;
-  margin: 0 0.25rem;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
 }
 
-.formula-operator.fade-in {
-  animation: fadeInUp 0.6s ease forwards;
+/* Result Card */
+.result-card {
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(159, 168, 218, 0.1) 0%, rgba(121, 134, 203, 0.1) 100%);
+  border-radius: 1rem;
+  border: 2px solid rgba(159, 168, 218, 0.2);
 }
 
-.power-animation {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 0.75rem;
+.result-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.dark-mode .result-label {
+  color: #9CA3AF;
+}
+
+.result-value-wrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.result-value {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  transition: color 0.3s ease;
+}
+
+.result-unit {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #6B7280;
+}
+
+.dark-mode .result-unit {
+  color: #9CA3AF;
+}
+
+/* Status Messages */
+.status-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.status-message.info {
+  background: rgba(59, 130, 246, 0.1);
+  color: #1D4ED8;
+}
+
+.status-message.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: #065F46;
+}
+
+/* Action Buttons */
+.action-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6B7280;
+  background: white;
+  border: 2px solid #E5E7EB;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .action-btn-secondary {
+  color: #9CA3AF;
+  background: rgba(55, 65, 81, 0.5);
+  border-color: #4B5563;
+}
+
+.action-btn-secondary:hover {
+  border-color: var(--tw-color-primary);
+  color: var(--tw-color-primary);
+  transform: translateY(-1px);
+}
+
+/* Theory Content */
+.theory-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formula-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.formula-item {
+  padding: 0.75rem;
+  background: rgba(159, 168, 218, 0.1);
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.dark-mode .formula-item {
+  background: rgba(159, 168, 218, 0.05);
+}
+
+.formula-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6B7280;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.dark-mode .formula-title {
+  color: #9CA3AF;
+}
+
+.formula-eq {
+  font-size: 1.125rem;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  color: #4338CA;
+}
+
+.dark-mode .formula-eq {
+  color: #A5B4FC;
+}
+
+.formula-desc {
+  font-size: 0.75rem;
+  color: #6B7280;
+  margin-top: 0.25rem;
+}
+
+.dark-mode .formula-desc {
+  color: #9CA3AF;
+}
+
+/* Tips Box */
+.tips-box {
   padding: 1rem;
-  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+  border-radius: 0.75rem;
+  border: 1px solid #F59E0B;
 }
 
-.wire {
-  stroke-dasharray: 5, 5;
-  animation: wireFlow 2s linear infinite;
+.dark-mode .tips-box {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(217, 119, 6, 0.2) 100%);
+  border-color: #FBBF24;
 }
 
-.power-source {
-  transition: all 0.3s ease;
+.tips-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #92400E;
+  margin-bottom: 0.5rem;
 }
 
-.load-bulb {
-  transition: all 0.3s ease;
-  filter: drop-shadow(0 0 5px #FFD700);
+.dark-mode .tips-title {
+  color: #FCD34D;
 }
 
-.bulb-filament {
-  transition: all 0.3s ease;
+.tips-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.current-particle {
-  filter: drop-shadow(0 0 6px #FFD700);
+.tips-list li {
+  font-size: 0.875rem;
+  color: #78350F;
+  padding-left: 1.25rem;
+  position: relative;
+  margin-bottom: 0.25rem;
 }
 
-.current-label {
-  font-weight: bold;
-  animation: pulse 2s ease-in-out infinite;
+.dark-mode .tips-list li {
+  color: #FDE68A;
 }
 
-.power-waves {
-  opacity: 0.8;
+.tips-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0.5rem;
+  color: #F59E0B;
 }
 
-.result-pulse {
-  animation: resultPulse 0.6s ease;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* Responsive */
+@media (max-width: 1024px) {
+  .formula-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .result-value {
+    font-size: 2.5rem;
   }
 }
 
-@keyframes wireFlow {
-  0% {
-    stroke-dashoffset: 0;
+@media (max-width: 640px) {
+  .result-value {
+    font-size: 2rem;
   }
-  100% {
-    stroke-dashoffset: 10;
+  
+  .result-unit {
+    font-size: 1.25rem;
   }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.6;
-  }
-}
-
-@keyframes resultPulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-    color: #FFD700;
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Input animation effects */
-input:focus {
-  animation: inputGlow 0.3s ease;
-}
-
-@keyframes inputGlow {
-  0% {
-    box-shadow: 0 0 0 0 rgba(159, 168, 218, 0.4);
-  }
-  100% {
-    box-shadow: 0 0 0 4px rgba(159, 168, 218, 0.1);
+  
+  .animated-formula {
+    font-size: 1.5rem;
   }
 }
 </style>
