@@ -18,9 +18,6 @@
 
           <!-- Desktop Navigation -->
           <div class="hidden md:flex items-center space-x-6">
-            <NuxtLink to="/chapters"
-              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
-              Chapters</NuxtLink>
             <NuxtLink to="/calculators"
               class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
               Calculators</NuxtLink>
@@ -55,9 +52,6 @@
         <div v-show="mobileMenuOpen"
           class="md:hidden bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-t border-gray-200 dark:border-gray-700">
           <div class="px-2 pt-2 pb-3 space-y-1">
-            <NuxtLink to="/chapters" @click="mobileMenuOpen = false"
-              class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
-              Chapters</NuxtLink>
             <NuxtLink to="/calculators" @click="mobileMenuOpen = false"
               class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
               Calculators</NuxtLink>
@@ -93,7 +87,7 @@
             Ohm's Law to complex power analysis.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <NuxtLink to="/chapters"
+            <NuxtLink to="/calculators"
               class="inline-block bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 hover:shadow-lg text-lg text-center">
               Start Learning
             </NuxtLink>

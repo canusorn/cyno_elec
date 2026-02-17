@@ -21,9 +21,6 @@
           <NuxtLink to="/"
             class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
             Home</NuxtLink>
-          <NuxtLink to="/chapters"
-            class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
-            Chapters</NuxtLink>
           <NuxtLink to="/calculators" class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
             Calculators</NuxtLink>
           <NuxtLink to="/simulations"
@@ -63,9 +60,6 @@
           <NuxtLink to="/" @click="mobileMenuOpen = false"
             class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
             Home</NuxtLink>
-          <NuxtLink to="/chapters" @click="mobileMenuOpen = false"
-            class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
-            Chapters</NuxtLink>
           <NuxtLink to="/calculators" @click="mobileMenuOpen = false"
             class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
             Calculators</NuxtLink>
