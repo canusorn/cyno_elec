@@ -61,11 +61,7 @@
               Contact</NuxtLink>
             <a href="#about" @click="mobileMenuOpen = false"
               class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">About</a>
-            <div class="px-3 py-2">
-              <button @click="toggleDark(); mobileMenuOpen = false"
-                class="w-full bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white px-6 py-2 rounded-full font-medium transition-all">{{
-                  $colorMode === 'dark' ? '☀️ Light' : '🌙 Dark' }}</button>
-            </div>
+            
           </div>
         </div>
       </div>
