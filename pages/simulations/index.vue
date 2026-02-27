@@ -353,6 +353,39 @@
             </div>
           </div>
 
+          <!-- 555 Timer Astable -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-violet-50 to-purple-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="20" y1="40" x2="180" y2="40" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="80" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="40" x2="20" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="180" y1="40" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <rect x="70" y="35" width="60" height="50" fill="#1F2937" stroke="#4B5563" stroke-width="2" rx="4"/>
+                <text x="100" y="58" text-anchor="middle" fill="white" font-size="9" font-weight="bold">555</text>
+                <circle cx="85" cy="70" r="3" fill="#FBBF24"/>
+                <circle cx="115" cy="70" r="3" fill="#3B82F6"/>
+                <rect x="50" y="52" width="15" height="6" fill="white" stroke="#8B5CF6" stroke-width="1.5" rx="1"/>
+                <rect x="135" y="52" width="15" height="6" fill="white" stroke="#8B5CF6" stroke-width="1.5" rx="1"/>
+                <path d="M160,45 L170,55 L160,65" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                555 Timer Astable
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Generate square waves and pulses with the legendary 555 timer IC.
+              </p>
+              <NuxtLink
+                to="/simulations/timer-555-astable"
+                class="inline-flex items-center px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->

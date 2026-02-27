@@ -409,6 +409,26 @@ export default {
           },
           resultUnit: 'seconds',
           calculate: () => 0
+        },
+        {
+          id: 14,
+          title: 'Decibel Calculator',
+          description: 'Convert between linear ratios and decibels for power, voltage, and current',
+          categoryId: ['ac-circuits', 'power'],
+          difficulty: 'Intermediate',
+          category: 'AC Analysis',
+          type: 'decibel-calculator',
+          path: '/calculators/decibel-calculator',
+          formula: 'dB = 10×log₁₀(P₂/P₁) or dB = 20×log₁₀(V₂/V₁)',
+          icon: 'ChartBarIcon',
+          units: ['dB', 'W', 'V', 'A'],
+          inputs: {
+            input1: { label: 'Input Value', placeholder: 'Enter reference value' },
+            input2: { label: 'Output Value', placeholder: 'Enter measured value' },
+            type: { label: 'Calculator Type', placeholder: 'Power/Voltage/Current' }
+          },
+          resultUnit: 'dB',
+          calculate: () => 0
         }
       ]
     }
