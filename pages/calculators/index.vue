@@ -268,6 +268,27 @@ export default {
           },
           resultUnit: 'Ω',
           calculate: (inputs) => (inputs.supplyVoltage - inputs.forwardVoltage) / inputs.forwardCurrent
+        },
+        {
+          id: 7,
+          title: 'Resistance Color Code',
+          description: 'Decode resistor color bands and calculate resistance values',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Basic',
+          category: 'Components',
+          type: 'resistance-color-code',
+          path: '/calculators/resistance-color-code',
+          formula: 'Color Bands → Resistance',
+          icon: 'BoltIcon',
+          units: ['Ω', 'kΩ', 'MΩ'],
+          inputs: {
+            band1: { label: 'Band 1', placeholder: 'First digit' },
+            band2: { label: 'Band 2', placeholder: 'Second digit' },
+            band3: { label: 'Multiplier', placeholder: 'Multiplier' },
+            band4: { label: 'Tolerance', placeholder: 'Tolerance' }
+          },
+          resultUnit: 'Ω',
+          calculate: () => 0
         }
       ]
     }

@@ -117,24 +117,33 @@
             </div>
           </div>
 
-          <!-- Coming Soon: RC Circuit -->
-          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden opacity-75">
+          <!-- RC Circuit -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
-              <div class="text-center">
-                <div class="text-6xl mb-2">🔧</div>
-                <div class="text-gray-500 dark:text-gray-400 text-sm">Coming Soon</div>
-              </div>
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="20" y1="40" x2="180" y2="40" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="80" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="40" x2="20" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="180" y1="40" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <circle cx="20" cy="60" r="15" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <rect x="60" y="35" width="40" height="10" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+                <line x1="140" y1="45" x2="140" y2="75" stroke="#22C55E" stroke-width="3"/>
+                <line x1="155" y1="45" x2="155" y2="75" stroke="#22C55E" stroke-width="3"/>
+              </svg>
             </div>
             <div class="p-6">
               <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                RC Circuit Transient
+                RC Circuit Time Constant
               </h3>
               <p class="text-gray-600 dark:text-gray-300 mb-4">
                 Capacitor charging and discharging curves with time constant visualization.
               </p>
-              <div class="inline-flex items-center px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 rounded-lg font-semibold cursor-not-allowed">
-                Coming Soon
-              </div>
+              <NuxtLink 
+                to="/simulations/rc-circuit" 
+                class="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
             </div>
           </div>
 
