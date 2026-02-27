@@ -367,6 +367,26 @@ export default {
           },
           resultUnit: 'H',
           calculate: () => 0
+        },
+        {
+          id: 12,
+          title: 'Battery Life Calculator',
+          description: 'Calculate battery runtime and life based on capacity and current draw',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Basic',
+          category: 'Components',
+          type: 'battery-life',
+          path: '/calculators/battery-life',
+          formula: 'Battery Life = Capacity / Load Current',
+          icon: 'LightBulbIcon',
+          units: ['mAh', 'Ah', 'h', 'days'],
+          inputs: {
+            capacity: { label: 'Battery Capacity', placeholder: 'Enter capacity', unit: 'mAh' },
+            current: { label: 'Load Current', placeholder: 'Enter current draw', unit: 'mA' },
+            dutyCycle: { label: 'Duty Cycle', placeholder: 'Active time percentage' }
+          },
+          resultUnit: 'hours',
+          calculate: () => 0
         }
       ]
     }

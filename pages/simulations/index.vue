@@ -285,6 +285,39 @@
             </div>
           </div>
 
+          <!-- Diode Rectifier -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-rose-50 to-red-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="20" y1="40" x2="180" y2="40" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="80" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="40" x2="20" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="180" y1="40" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <circle cx="20" cy="60" r="15" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <path d="M 50 145 Q 55 140, 60 145 Q 65 150, 70 145" fill="none" stroke="#3B82F6" stroke-width="2"/>
+                <g transform="translate(70, 60)">
+                  <polygon points="0,-12 10,0 0,12" fill="none" stroke="#22C55E" stroke-width="2.5"/>
+                  <line x1="10" y1="-12" x2="10" y2="12" stroke="#22C55E" stroke-width="2.5"/>
+                </g>
+                <rect x="120" y="55" width="25" height="10" fill="white" stroke="#EF4444" stroke-width="2" rx="2"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Diode Rectifier
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Learn AC to DC conversion with half-wave and full-wave rectification.
+              </p>
+              <NuxtLink
+                to="/simulations/diode-rectifier"
+                class="inline-flex items-center px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
