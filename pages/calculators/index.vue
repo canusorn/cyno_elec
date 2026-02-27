@@ -308,6 +308,25 @@ export default {
           },
           resultUnit: 'Ω',
           calculate: () => 0
+        },
+        {
+          id: 9,
+          title: 'Capacitance Calculator',
+          description: 'Calculate equivalent capacitance for capacitors in series or parallel configurations',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Circuit Analysis',
+          type: 'capacitance-calculator',
+          path: '/calculators/capacitance-calculator',
+          formula: 'C_total = C1 + C2 + ... (parallel) | 1/C_total = 1/C1 + 1/C2 + ... (series)',
+          icon: 'CpuChipIcon',
+          units: ['pF', 'nF', 'μF', 'mF', 'F'],
+          inputs: {
+            capacitors: { label: 'Capacitors', placeholder: 'Enter capacitor values' },
+            mode: { label: 'Configuration', placeholder: 'Series or Parallel' }
+          },
+          resultUnit: 'F',
+          calculate: () => 0
         }
       ]
     }

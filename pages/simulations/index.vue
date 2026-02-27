@@ -181,9 +181,40 @@
             </div>
           </div>
 
+          <!-- RL Circuit Transient -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-cyan-50 to-teal-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="20" y1="40" x2="180" y2="40" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="80" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="40" x2="20" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="180" y1="40" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <circle cx="20" cy="60" r="15" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <rect x="60" y="35" width="40" height="10" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+                <g transform="translate(140, 60)">
+                  <path d="M0,-20 Q8,-18 8,-14 Q8,-10 0,-8 Q-8,-6 -8,-2 Q-8,2 0,4 Q8,6 8,10 Q8,14 0,20" fill="none" stroke="#06B6D4" stroke-width="2.5"/>
+                </g>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                RL Circuit Transient
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore inductor charging and discharging with time constant visualization.
+              </p>
+              <NuxtLink 
+                to="/simulations/rl-circuit" 
+                class="inline-flex items-center px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- Coming Soon: More -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden opacity-75">
-            <div class="h-48 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+            <div class="h-48 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
               <div class="text-center">
                 <div class="text-6xl mb-2">🚧</div>
                 <div class="text-gray-500 dark:text-gray-400 text-sm">More Coming Soon</div>
@@ -194,7 +225,7 @@
                 Advanced Simulators
               </h3>
               <p class="text-gray-600 dark:text-gray-300 mb-4">
-                RL circuits, RLC circuits, and more advanced electrical simulations.
+                RLC circuits, transformers, and more advanced electrical simulations.
               </p>
               <div class="inline-flex items-center px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 rounded-lg font-semibold cursor-not-allowed">
                 Planned
