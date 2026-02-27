@@ -147,13 +147,23 @@
             </div>
           </div>
 
-          <!-- Coming Soon: LED Designer -->
-          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden opacity-75">
+          <!-- LED Circuit Designer -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-red-50 to-pink-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
-              <div class="text-center">
-                <div class="text-6xl mb-2">💡</div>
-                <div class="text-gray-500 dark:text-gray-400 text-sm">Coming Soon</div>
-              </div>
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="30" y1="20" x2="170" y2="20" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="30" y1="100" x2="170" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="30" y1="20" x2="30" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="170" y1="20" x2="170" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <circle cx="30" cy="60" r="15" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <rect x="60" y="55" width="40" height="10" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+                <g transform="translate(120, 60)">
+                  <polygon points="0,-10 8,0 0,10" fill="none" stroke="#22C55E" stroke-width="2"/>
+                  <line x1="8" y1="-10" x2="8" y2="10" stroke="#22C55E" stroke-width="2"/>
+                  <line x1="4" y1="-14" x2="4" y2="-20" stroke="#FBBF24" stroke-width="2"/>
+                  <line x1="12" y1="-14" x2="12" y2="-20" stroke="#FBBF24" stroke-width="2"/>
+                </g>
+              </svg>
             </div>
             <div class="p-6">
               <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
@@ -162,9 +172,12 @@
               <p class="text-gray-600 dark:text-gray-300 mb-4">
                 Design circuits with multiple LEDs in series or parallel configurations.
               </p>
-              <div class="inline-flex items-center px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 rounded-lg font-semibold cursor-not-allowed">
-                Coming Soon
-              </div>
+              <NuxtLink 
+                to="/simulations/led-circuit-designer" 
+                class="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
             </div>
           </div>
 

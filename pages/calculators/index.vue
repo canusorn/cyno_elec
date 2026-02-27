@@ -289,6 +289,25 @@ export default {
           },
           resultUnit: 'Ω',
           calculate: () => 0
+        },
+        {
+          id: 8,
+          title: 'Resistor Series/Parallel',
+          description: 'Calculate equivalent resistance for resistors in series or parallel configurations',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Circuit Analysis',
+          type: 'resistor-series-parallel',
+          path: '/calculators/resistor-series-parallel',
+          formula: 'R_total = R1 + R2 + ... (series) | 1/R_total = 1/R1 + 1/R2 + ... (parallel)',
+          icon: 'ChartBarIcon',
+          units: ['Ω', 'kΩ', 'MΩ'],
+          inputs: {
+            resistors: { label: 'Resistors', placeholder: 'Enter resistor values' },
+            mode: { label: 'Configuration', placeholder: 'Series or Parallel' }
+          },
+          resultUnit: 'Ω',
+          calculate: () => 0
         }
       ]
     }
