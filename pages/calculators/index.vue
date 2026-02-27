@@ -101,7 +101,8 @@ import {
   CpuChipIcon,
   LightBulbIcon,
   CogIcon,
-  ChartBarIcon
+  ChartBarIcon,
+  ClockIcon
 } from '@heroicons/vue/24/outline'
 import NavigationBar from '~/components/NavigationBar.vue'
 import CategoryFilter from '~/components/CategoryFilter.vue'
@@ -116,6 +117,7 @@ export default {
     CpuChipIcon,
     CogIcon,
     ChartBarIcon,
+    ClockIcon,
     CalculatorIcon,
     NavigationBar,
     CategoryFilter,
@@ -386,6 +388,26 @@ export default {
             dutyCycle: { label: 'Duty Cycle', placeholder: 'Active time percentage' }
           },
           resultUnit: 'hours',
+          calculate: () => 0
+        },
+        {
+          id: 13,
+          title: 'RC Time Constant Calculator',
+          description: 'Calculate RC time constant and visualize capacitor charging/discharging curves',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Circuit Analysis',
+          type: 'rc-time-constant',
+          path: '/calculators/rc-time-constant',
+          formula: 'τ = R × C',
+          icon: 'ClockIcon',
+          units: ['Ω', 'μF', 's', 'ms', 'μs'],
+          inputs: {
+            resistance: { label: 'Resistance', placeholder: 'Enter resistance', unit: 'Ω' },
+            capacitance: { label: 'Capacitance', placeholder: 'Enter capacitance', unit: 'μF' },
+            voltage: { label: 'Source Voltage', placeholder: 'Enter voltage', unit: 'V' }
+          },
+          resultUnit: 'seconds',
           calculate: () => 0
         }
       ]

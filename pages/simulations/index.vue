@@ -285,6 +285,41 @@
             </div>
           </div>
 
+          <!-- Transistor Switch -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="20" y1="40" x2="180" y2="40" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="80" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="40" x2="20" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="180" y1="40" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <circle cx="20" cy="60" r="15" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <rect x="50" y="35" width="40" height="10" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+                <g transform="translate(130, 60)">
+                  <rect x="-10" y="-15" width="8" height="30" fill="#4B5563" stroke="#1F2937" stroke-width="2"/>
+                  <line x1="-20" y1="0" x2="-10" y2="0" stroke="#94A3B8" stroke-width="2"/>
+                  <line x1="-2" y1="-10" x2="15" y2="-25" stroke="#94A3B8" stroke-width="2"/>
+                  <line x1="-2" y1="10" x2="15" y2="25" stroke="#94A3B8" stroke-width="2"/>
+                  <polygon points="10,20 20,28 15,13" fill="none" stroke="#22C55E" stroke-width="2"/>
+                </g>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Transistor Switch
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Learn how NPN transistors work as electronic switches with interactive visualization.
+              </p>
+              <NuxtLink
+                to="/simulations/transistor-switch"
+                class="inline-flex items-center px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- Diode Rectifier -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-rose-50 to-red-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
