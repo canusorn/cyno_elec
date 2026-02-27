@@ -248,6 +248,43 @@
             </div>
           </div>
 
+          <!-- Transformer Basics -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="20" y1="40" x2="180" y2="40" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="80" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="40" x2="20" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="180" y1="40" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <circle cx="20" cy="60" r="15" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <rect x="70" y="45" width="60" height="30" fill="none" stroke="#92400E" stroke-width="3" rx="5"/>
+                <g transform="translate(75, 60)">
+                  <path d="M0,-10 Q4,-8, 4,-6 Q4,-4, 0,-2 Q-4,0, -4,2 Q-4,4, 0,6 Q4,8, 4,10" fill="none" stroke="#F59E0B" stroke-width="2"/>
+                  <path d="M12,-10 Q16,-8, 16,-6 Q16,-4, 12,-2 Q8,0, 8,2 Q8,4, 12,6 Q16,8, 16,10" fill="none" stroke="#F59E0B" stroke-width="2"/>
+                </g>
+                <g transform="translate(110, 60)">
+                  <path d="M0,-10 Q4,-8, 4,-6 Q4,-4, 0,-2 Q-4,0, -4,2 Q-4,4, 0,6 Q4,8, 4,10" fill="none" stroke="#3B82F6" stroke-width="2"/>
+                  <path d="M12,-10 Q16,-8, 16,-6 Q16,-4, 12,-2 Q8,0, 8,2 Q8,4, 12,6 Q16,8, 16,10" fill="none" stroke="#3B82F6" stroke-width="2"/>
+                </g>
+                <rect x="155" y="55" width="20" height="10" fill="white" stroke="#EF4444" stroke-width="2" rx="2"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Transformer Basics
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Learn how transformers change voltage levels with turns ratio visualization.
+              </p>
+              <NuxtLink
+                to="/simulations/transformer-basics"
+                class="inline-flex items-center px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->

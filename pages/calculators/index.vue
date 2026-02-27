@@ -348,6 +348,25 @@ export default {
           },
           resultUnit: 'Ω',
           calculate: () => 0
+        },
+        {
+          id: 11,
+          title: 'Inductance Calculator',
+          description: 'Calculate equivalent inductance for inductors in series or parallel configurations',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Circuit Analysis',
+          type: 'inductance-calculator',
+          path: '/calculators/inductance-calculator',
+          formula: 'L_total = L1 + L2 + ... (series) | 1/L_total = 1/L1 + 1/L2 + ... (parallel)',
+          icon: 'CogIcon',
+          units: ['pH', 'nH', 'μH', 'mH', 'H'],
+          inputs: {
+            inductors: { label: 'Inductors', placeholder: 'Enter inductor values' },
+            mode: { label: 'Configuration', placeholder: 'Series or Parallel' }
+          },
+          resultUnit: 'H',
+          calculate: () => 0
         }
       ]
     }
