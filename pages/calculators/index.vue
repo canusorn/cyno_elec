@@ -452,6 +452,26 @@ export default {
           },
           resultUnit: 'V',
           calculate: () => 0
+        },
+        {
+          id: 16,
+          title: 'Power Factor Calculator',
+          description: 'Calculate power factor, apparent power, and reactive power in AC systems with power triangle visualization',
+          categoryId: ['ac-circuits', 'power'],
+          difficulty: 'Intermediate',
+          category: 'AC Analysis',
+          type: 'power-factor-calculator',
+          path: '/calculators/power-factor-calculator',
+          formula: 'PF = P/S = cos(φ)',
+          icon: 'LightBulbIcon',
+          units: ['W', 'VAR', 'VA'],
+          inputs: {
+            realPower: { label: 'Real Power', placeholder: 'Enter P', unit: 'W' },
+            reactivePower: { label: 'Reactive Power', placeholder: 'Enter Q', unit: 'VAR' },
+            frequency: { label: 'Frequency', placeholder: '50/60 Hz', unit: 'Hz' }
+          },
+          resultUnit: 'PF',
+          calculate: () => 0
         }
       ]
     }

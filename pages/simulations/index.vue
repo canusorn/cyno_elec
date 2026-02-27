@@ -418,6 +418,46 @@
             </div>
           </div>
 
+          <!-- MOSFET Switching -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="30" y1="20" x2="170" y2="20" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="100" y1="20" x2="100" y2="35" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="100" y1="55" x2="100" y2="65" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="100" y1="85" x2="100" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="30" y1="100" x2="170" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="30" y1="20" x2="30" y2="35" stroke="#94A3B8" stroke-width="2"/>
+                <rect x="30" y="35" width="40" height="30" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+                <line x1="30" y1="65" x2="30" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <g transform="translate(100, 50)">
+                  <line x1="0" y1="0" x2="0" y2="35" stroke="#374151" stroke-width="2"/>
+                  <line x1="-15" y1="5" x2="-15" y2="30" stroke="#374151" stroke-width="2"/>
+                  <line x1="10" y1="5" x2="10" y2="30" stroke="#374151" stroke-width="2" stroke-dasharray="3,2"/>
+                  <line x1="-25" y1="10" x2="-15" y2="10" stroke="#374151" stroke-width="2"/>
+                  <line x1="10" y1="10" x2="20" y2="10" stroke="#374151" stroke-width="2"/>
+                  <line x1="20" y1="10" x2="20" y2="20" stroke="#374151" stroke-width="2"/>
+                  <polygon points="15,20 25,20 20,25" fill="#374151"/>
+                </g>
+                <line x1="170" y1="20" x2="170" y2="100" stroke="#94A3B8" stroke-width="3"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                MOSFET Switching
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Learn how MOSFETs work as voltage-controlled switches for power electronics applications.
+              </p>
+              <NuxtLink
+                to="/simulations/mosfet-switching"
+                class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
