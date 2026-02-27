@@ -150,7 +150,8 @@ export default {
         { id: 'dc-circuits', name: 'DC Circuits' },
         { id: 'motors', name: 'Motors' },
         { id: 'transformers', name: 'Transformers' },
-        { id: 'lighting', name: 'Lighting' }
+        { id: 'lighting', name: 'Lighting' },
+        { id: 'measurement', name: 'Measurement' }
       ],
       
       // Calculator data
@@ -428,6 +429,28 @@ export default {
             type: { label: 'Calculator Type', placeholder: 'Power/Voltage/Current' }
           },
           resultUnit: 'dB',
+          calculate: () => 0
+        },
+        {
+          id: 15,
+          title: 'Wheatstone Bridge Calculator',
+          description: 'Calculate bridge balance and output voltage for precise resistance measurements',
+          categoryId: ['basic', 'dc-circuits', 'measurement'],
+          difficulty: 'Intermediate',
+          category: 'Measurement',
+          type: 'wheatstone-bridge',
+          path: '/calculators/wheatstone-bridge',
+          formula: 'Balance: R1×R4 = R2×R3',
+          icon: 'ChartBarIcon',
+          units: ['V', 'Ω'],
+          inputs: {
+            vin: { label: 'Input Voltage', placeholder: 'Enter Vin', unit: 'V' },
+            r1: { label: 'R1 (Top Left)', placeholder: 'Enter R1', unit: 'Ω' },
+            r2: { label: 'R2 (Top Right)', placeholder: 'Enter R2', unit: 'Ω' },
+            r3: { label: 'R3 (Bottom Left)', placeholder: 'Enter R3', unit: 'Ω' },
+            r4: { label: 'R4 (Bottom Right)', placeholder: 'Enter R4', unit: 'Ω' }
+          },
+          resultUnit: 'V',
           calculate: () => 0
         }
       ]

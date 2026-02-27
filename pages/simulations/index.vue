@@ -386,6 +386,38 @@
             </div>
           </div>
 
+          <!-- Op-Amp Amplifier -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <polygon points="80,40 80,80 140,60" fill="white" stroke="#0891B2" stroke-width="2"/>
+                <text x="85" y="55" text-anchor="middle" fill="#0891B2" font-size="8" font-weight="bold">-</text>
+                <text x="85" y="70" text-anchor="middle" fill="#0891B2" font-size="8" font-weight="bold">+</text>
+                <line x1="40" y1="50" x2="80" y2="50" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="40" y1="70" x2="80" y2="70" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="140" y1="60" x2="180" y2="60" stroke="#94A3B8" stroke-width="2"/>
+                <rect x="45" y="47" width="20" height="6" fill="white" stroke="#8B5CF6" stroke-width="1.5" rx="1"/>
+                <rect x="115" y="30" width="6" height="20" fill="white" stroke="#8B5CF6" stroke-width="1.5" rx="1"/>
+                <text x="100" y="55" text-anchor="middle" fill="#EF4444" font-size="6">+</text>
+                <text x="100" y="70" text-anchor="middle" fill="#3B82F6" font-size="6">-</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Op-Amp Amplifier
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore inverting and non-inverting amplifier configurations with real-time gain calculation.
+              </p>
+              <NuxtLink
+                to="/simulations/op-amp-amplifier"
+                class="inline-flex items-center px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
