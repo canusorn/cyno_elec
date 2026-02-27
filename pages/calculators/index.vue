@@ -327,6 +327,27 @@ export default {
           },
           resultUnit: 'F',
           calculate: () => 0
+        },
+        {
+          id: 10,
+          title: 'Impedance Calculator',
+          description: 'Calculate total impedance in AC circuits with resistance, inductance, and capacitance',
+          categoryId: ['ac-circuits'],
+          difficulty: 'Intermediate',
+          category: 'AC Analysis',
+          type: 'impedance-calculator',
+          path: '/calculators/impedance-calculator',
+          formula: 'Z = √(R² + (XL - XC)²)',
+          icon: 'ChartBarIcon',
+          units: ['Ω', 'Hz', 'H', 'F'],
+          inputs: {
+            resistance: { label: 'Resistance', placeholder: 'Enter resistance', unit: 'Ω' },
+            inductance: { label: 'Inductance', placeholder: 'Enter inductance', unit: 'H' },
+            capacitance: { label: 'Capacitance', placeholder: 'Enter capacitance', unit: 'F' },
+            frequency: { label: 'Frequency', placeholder: 'Enter frequency', unit: 'Hz' }
+          },
+          resultUnit: 'Ω',
+          calculate: () => 0
         }
       ]
     }
