@@ -1,0 +1,250 @@
+<template>
+  <div
+    :class="[colorMode === 'dark' ? 'dark' : '', 'min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800']">
+    <!-- Navigation -->
+    <nav class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg fixed w-full z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <NuxtLink to="/" class="flex items-center">
+              <!-- Cyno Electric SVG Icon -->
+              <svg class="h-8 sm:h-10 mr-2 hover:scale-105 transition-transform" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="18" stroke="#9FA8DA" stroke-width="2" fill="none"/>
+                <path d="M15 12L25 20L15 28V12Z" fill="#9FA8DA"/>
+                <circle cx="20" cy="20" r="3" fill="#7986CB"/>
+                <path d="M12 8L28 32M28 8L12 32" stroke="#C5CAE9" stroke-width="1" opacity="0.6"/>
+              </svg>
+              <span
+                class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">Cyno Electric</span>
+            </NuxtLink>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-6">
+            <NuxtLink to="/"
+              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
+              Home</NuxtLink>
+            <NuxtLink to="/calculators"
+              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
+              Calculators</NuxtLink>
+            <NuxtLink to="/simulations"
+              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
+              Simulations</NuxtLink>
+            <NuxtLink to="/contact"
+              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
+              Contact</NuxtLink>
+            <button @click="toggleDark"
+              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
+              <svg v-if="colorMode === 'dark'" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <svg v-else class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center">
+            <button @click="mobileMenuOpen = !mobileMenuOpen"
+              class="text-gray-600 dark:text-gray-200 hover:text-primary focus:outline-none focus:text-primary transition-colors">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16" />
+                <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div v-show="mobileMenuOpen"
+          class="md:hidden bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-t border-gray-200 dark:border-gray-700">
+          <div class="px-2 pt-2 pb-3 space-y-1">
+            <NuxtLink to="/" @click="mobileMenuOpen = false"
+              class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
+              Home</NuxtLink>
+            <NuxtLink to="/calculators" @click="mobileMenuOpen = false"
+              class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
+              Calculators</NuxtLink>
+            <NuxtLink to="/simulations" @click="mobileMenuOpen = false"
+              class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
+              Simulations</NuxtLink>
+            <NuxtLink to="/contact" @click="mobileMenuOpen = false"
+              class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
+              Contact</NuxtLink>
+            <div class="px-3 py-2">
+              <button @click="toggleDark"
+                class="w-full text-left text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
+                Toggle Dark Mode
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="relative pt-24 pb-16">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent dark:from-primary/5"></div>
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="text-center mb-8">
+          <div class="flex justify-center mb-4">
+            <svg class="h-16 w-16 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            </svg>
+          </div>
+          <h1
+            class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-4">
+            Transformer Calculator
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-300 mb-6">
+            Calculate transformer parameters, turns ratio, and impedance transformation
+          </p>
+          <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-4 inline-block">
+            <div class="animated-formula">
+              <span class="formula-part n1">N₁</span>
+              <span class="formula-part n2">N₂</span>
+              <span class="formula-operator">=</span>
+              <span class="formula-part v1">V₁</span>
+              <span class="formula-part v2">V₂</span>
+              <span class="formula-operator">=</span>
+              <span class="formula-part i2">I₂</span>
+              <span class="formula-part i1">I₁</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Calculator Section -->
+    <section class="pb-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <TransformerCalculator />
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black mt-16">
+      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <svg class="mx-auto h-12 mb-4 hover:scale-105 transition-transform" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" stroke="#9FA8DA" stroke-width="2" fill="none"/>
+            <path d="M15 12L25 20L15 28V12Z" fill="#9FA8DA"/>
+            <circle cx="20" cy="20" r="3" fill="#7986CB"/>
+            <path d="M12 8L28 32M28 8L12 32" stroke="#C5CAE9" stroke-width="1" opacity="0.6"/>
+          </svg>
+          <p class="text-base text-gray-400">&copy; 2025 Cyno Electric. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</template>
+
+<script>
+import { useColorMode } from '@vueuse/core'
+
+export default {
+  name: 'TransformerCalculatorPage',
+  setup() {
+    useHead({
+      title: 'Transformer Calculator - Cyno Electric',
+      meta: [
+        { name: 'description', content: 'Calculate transformer turns ratio, voltage transformation, current transformation, and impedance matching. Professional electrical engineering tool for transformer analysis.' },
+        { name: 'keywords', content: 'transformer calculator, turns ratio, impedance matching, voltage transformation, electrical engineering' }
+      ]
+    })
+
+    const colorMode = useColorMode()
+    
+    return {
+      colorMode
+    }
+  },
+  data() {
+    return {
+      mobileMenuOpen: false
+    }
+  },
+  methods: {
+    toggleDark() {
+      this.colorMode = this.colorMode === 'dark' ? 'light' : 'dark'
+    }
+  }
+}
+</script>
+
+<style scoped>
+:root {
+  --tw-color-primary: #9FA8DA;
+  --tw-color-primary-dark: #7986CB;
+  --tw-color-primary-light: #C5CAE9;
+}
+
+.text-primary {
+  color: var(--tw-color-primary) !important;
+}
+
+.bg-primary {
+  background-color: var(--tw-color-primary) !important;
+}
+
+.from-primary {
+  --tw-gradient-from: var(--tw-color-primary) !important;
+}
+
+.to-primary-dark {
+  --tw-gradient-to: var(--tw-color-primary-dark) !important;
+}
+
+.animated-formula {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 1.5rem;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.formula-part {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.formula-part:nth-child(1) { animation-delay: 0.1s; }
+.formula-part:nth-child(2) { animation-delay: 0.2s; }
+.formula-part:nth-child(3) { animation-delay: 0.3s; }
+.formula-part:nth-child(4) { animation-delay: 0.4s; }
+.formula-part:nth-child(5) { animation-delay: 0.5s; }
+.formula-part:nth-child(6) { animation-delay: 0.6s; }
+.formula-part:nth-child(7) { animation-delay: 0.7s; }
+.formula-part:nth-child(8) { animation-delay: 0.8s; }
+
+.formula-operator {
+  color: var(--tw-color-primary);
+  font-size: 1.2rem;
+  margin: 0 0.25rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+</style>
