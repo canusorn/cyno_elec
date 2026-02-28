@@ -469,7 +469,7 @@
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
-import { useColorMode } from '#app'
+import { useColorMode } from '@vueuse/core'
 
 const $colorMode = useColorMode()
 
