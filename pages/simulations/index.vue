@@ -690,6 +690,39 @@
             </div>
           </div>
 
+          <!-- Differential Amplifier -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <polygon points="80,30 80,90 140,60" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+                <text x="90" y="55" text-anchor="middle" fill="#8B5CF6" font-size="10" font-weight="bold">-</text>
+                <text x="90" y="70" text-anchor="middle" fill="#8B5CF6" font-size="10" font-weight="bold">+</text>
+                <line x1="30" y1="45" x2="80" y2="45" stroke="#EF4444" stroke-width="2"/>
+                <line x1="30" y1="75" x2="80" y2="75" stroke="#22C55E" stroke-width="2"/>
+                <circle cx="25" cy="45" r="8" fill="#EF4444"/>
+                <circle cx="25" cy="75" r="8" fill="#22C55E"/>
+                <line x1="140" y1="60" x2="180" y2="60" stroke="#8B5CF6" stroke-width="3"/>
+                <circle cx="185" cy="60" r="8" fill="#8B5CF6"/>
+                <rect x="90" y="20" width="30" height="10" fill="white" stroke="#3B82F6" stroke-width="2" rx="2"/>
+                <text x="105" y="18" text-anchor="middle" fill="#3B82F6" font-size="8">Rf</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Differential Amplifier
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Learn how differential amplifiers work with interactive visualization of input/output signals and CMRR.
+              </p>
+              <NuxtLink
+                to="/simulations/differential-amplifier"
+                class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->

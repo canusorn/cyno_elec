@@ -639,6 +639,26 @@ export default {
           },
           resultUnit: 'W',
           calculate: () => 0
+        },
+        {
+          id: 25,
+          title: 'Op-Amp Gain Calculator',
+          description: 'Calculate voltage gain for inverting, non-inverting, differential, and voltage follower op-amp configurations with interactive circuit diagrams.',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Circuit Analysis',
+          type: 'opamp-gain-calculator',
+          path: '/calculators/opamp-gain-calculator',
+          formula: 'A_v = -R_f/R_in (inv) | A_v = 1+R2/R1 (non-inv)',
+          icon: 'CpuChipIcon',
+          units: ['V/V', 'dB', 'Ω'],
+          inputs: {
+            config: { label: 'Configuration', placeholder: 'Select amplifier type' },
+            rin: { label: 'R_in / R1', placeholder: 'Enter input resistor', unit: 'Ω' },
+            rf: { label: 'R_f / R2', placeholder: 'Enter feedback resistor', unit: 'Ω' }
+          },
+          resultUnit: 'V/V',
+          calculate: () => 0
         }
       ]
     }
