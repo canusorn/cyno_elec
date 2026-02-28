@@ -458,6 +458,72 @@
             </div>
           </div>
 
+          <!-- Wien Bridge Oscillator -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <polygon points="70,40 70,80 130,60" fill="white" stroke="#9333EA" stroke-width="2"/>
+                <text x="75" y="55" text-anchor="middle" fill="#9333EA" font-size="6" font-weight="bold">-</text>
+                <text x="75" y="70" text-anchor="middle" fill="#9333EA" font-size="6" font-weight="bold">+</text>
+                <line x1="30" y1="50" x2="70" y2="50" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="30" y1="70" x2="70" y2="70" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="130" y1="60" x2="170" y2="60" stroke="#94A3B8" stroke-width="2"/>
+                <rect x="40" y="47" width="15" height="6" fill="white" stroke="#0891B2" stroke-width="1.5" rx="1"/>
+                <rect x="40" y="67" width="15" height="6" fill="white" stroke="#0891B2" stroke-width="1.5" rx="1"/>
+                <path d="M145,50 Q155,55, 145,60 Q135,65, 145,70" fill="none" stroke="#EC4899" stroke-width="2"/>
+                <rect x="135" y="47" width="20" height="6" fill="white" stroke="#10B981" stroke-width="1.5" rx="1"/>
+                <path d="M40,85 L60,85 M60,85 L60,95 M60,95 L40,95" stroke="#9333EA" stroke-width="1.5" fill="none"/>
+                <circle cx="50" cy="90" r="8" fill="none" stroke="#9333EA" stroke-width="1.5"/>
+                <line x1="50" y1="82" x2="50" y2="98" stroke="#9333EA" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Wien Bridge Oscillator
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Generate pure sinusoidal waves with feedback circuit analysis and frequency response visualization.
+              </p>
+              <NuxtLink
+                to="/simulations/wien-bridge-oscillator"
+                class="inline-flex items-center px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
+          <!-- Boost Converter -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="30" y1="20" x2="170" y2="20" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="30" y1="100" x2="170" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="30" y1="20" x2="30" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="170" y1="20" x2="170" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <circle cx="40" cy="60" r="15" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <path d="M 70 30 Q 78 25, 86 30 Q 94 35, 102 30 Q 110 25, 118 30" fill="none" stroke="#8B5CF6" stroke-width="3"/>
+                <rect x="130" y="45" width="15" height="30" fill="#4B5563" stroke="#1F2937" stroke-width="2" rx="2"/>
+                <polygon points="155,45 165,60 155,75" fill="none" stroke="#22C55E" stroke-width="2"/>
+                <line x1="165" y1="45" x2="165" y2="75" stroke="#22C55E" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Boost Converter
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Step-up DC-DC converter using inductive energy storage with duty cycle control.
+              </p>
+              <NuxtLink
+                to="/simulations/boost-converter"
+                class="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->

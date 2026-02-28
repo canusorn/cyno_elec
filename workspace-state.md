@@ -2,7 +2,7 @@
 
 ## Current Features
 
-### Calculators (15)
+### Calculators (17)
 1. battery-life
 2. power
 3. impedance-calculator
@@ -17,9 +17,12 @@
 12. voltage-divider
 13. rc-time-constant
 14. decibel-calculator
-15. **wheatstone-bridge** ✨ NEW
+15. wheatstone-bridge
+16. power-factor-calculator
+17. energy-storage
+18. **inductor-energy** ✨ NEW
 
-### Simulations (11)
+### Simulations (13)
 1. led-circuit-designer
 2. parallel-circuit
 3. diode-rectifier
@@ -30,102 +33,135 @@
 8. series-circuit
 9. transistor-switch
 10. timer-555-astable
-11. **op-amp-amplifier** ✨ NEW
+11. op-amp-amplifier
+12. mosfet-switching
+13. **boost-converter** ✨ NEW
 
-## Recently Completed (2026-02-28 - Session 6)
+## Recently Completed (2026-02-28 - Session 8)
 
-### ✅ Operational Amplifier Simulation
-- Interactive op-amp simulator with inverting and non-inverting configurations
-- Real-time voltage gain calculation: Inverting Gain = -R2/R1, Non-Inverting Gain = 1 + R2/R1
-- Input/output voltage controls with saturation detection
-- SVG circuit diagram with component labeling
-- Waveform visualization showing input vs output signals
-- Quick presets: Unity Gain, Gain=10, Gain=100, Inverting -10
-- Comprehensive educational content covering:
-  * Ideal op-amp characteristics
-  * Inverting vs non-inverting configurations
-  * Saturation and supply voltage limits
-  * Practical design considerations (gain-bandwidth, slew rate, input bias current)
-  * Common applications (audio preamp, summing amplifier, active filter, voltage follower)
-  * Popular op-amp ICs (LM741, LM358, TL072, OPA2134, LM318)
-- Component: OpAmpAmplifier.vue (460 lines)
-- Page: pages/simulations/op-amp-amplifier.vue (267 lines)
-
-### ✅ Wheatstone Bridge Calculator
-- Interactive Wheatstone bridge circuit calculator
-- Real-time calculation of node voltages (VA, VB) and output voltage (Vout)
-- Bridge balance detection with visual feedback (✓ balanced / ✗ unbalanced)
-- Automatic calculation of R4 value for bridge balance
-- Interactive diamond circuit diagram showing all four resistors
-- Real-time display of voltages at each node
+### ✅ Boost Converter Simulation
+- Interactive step-up DC-DC converter simulator
+- Real-time switching visualization with MOSFET control
+- Dynamic circuit diagram showing:
+  * Input voltage source
+  * Inductor (L) with current flow animation
+  * MOSFET switch (Q1) with ON/OFF states
+  * Diode (D1) for current steering
+  * Output capacitor (C)
+  * Load resistor (R_LOAD)
+- Adjustable parameters:
+  * Input voltage: 3-24V
+  * Duty cycle: 10-90%
+  * Inductance: 10-1000µH
+  * Capacitance: 10-1000µF
+  * Load resistance: 10-500Ω
+  * Switching frequency: 10-500kHz
+- Real-time calculations:
+  * Voltage gain: 1/(1-D)
+  * Output voltage: V_IN / (1-D)
+  * Output current: V_OUT / R_LOAD
+  * Input current: I_OUT / (1-D)
+  * Output power: V_OUT × I_OUT
+  * Efficiency: P_OUT / P_IN × 100%
+  * Ripple voltage: I_OUT / (f × C)
+- Switching waveforms visualization:
+  * Gate control signal
+  * Inductor current (sawtooth waveform)
 - Quick presets:
-  * Balanced (all resistors equal)
-  * Strain Gauge (1% resistance change simulation)
-  * Temperature (PT100 at 100°C)
-  * Unbalanced (different resistor values)
-- Detailed calculation breakdown showing:
-  * VA = Vin × R3 / (R1 + R3)
-  * VB = Vin × R4 / (R2 + R4)
-  * Vout = VB - VA
-  * Balance condition: R1 × R4 = R2 × R3
-  * R4 for balance = (R2 × R3) / R1
+  * 5V → 12V (USB Boost)
+  * 12V → 24V (Automotive)
+  * 3.3V → 5V (Logic Level)
+  * High Gain (5V → 20V)
 - Comprehensive educational content covering:
-  * Wheatstone bridge theory and history
-  * Circuit analysis and voltage divider principles
-  * Practical applications (strain measurement, temperature sensing, pressure sensors, force measurement)
-  * Bridge configurations (quarter, half, full bridge)
-  * Design considerations (excitation voltage, resistance values, temperature effects)
-  * Advantages of Wheatstone bridge measurement
-- Example calculations table for various scenarios
-- Component: WheatstoneBridgeCalculator.vue (471 lines)
-- Page: pages/calculators/wheatstone-bridge.vue (357 lines)
+  * Boost converter operation (ON/OFF states)
+  * Key formulas and calculations
+  * Design considerations (duty cycle limits, component selection)
+  * Common applications (battery-powered, automotive, solar, LED drivers)
+  * Pros and cons (efficiency, simplicity vs. current stress, diode losses)
+- Component: BoostConverter.vue (23,563 bytes)
+- Page: pages/simulations/boost-converter.vue (1,794 bytes)
+
+### ✅ Inductor Energy Storage Calculator
+- Interactive calculator for inductor energy storage
+- Visual inductor coil with magnetic field animation
+- Real-time calculations:
+  * Stored energy: E = ½LI²
+  * Magnetic flux: Φ = LI
+  * Reactive power: Q = I²XL
+  * Time constant: τ = L/R
+- Input controls:
+  * Inductance: 0.1µH - 1H (logarithmic scale)
+  * Current: 0-50A
+  * Voltage: 0.1-1000V (for context)
+- Energy vs Current graph (E = ½LI²):
+  * Shows quadratic relationship
+  * Current operating point indicator
+- Quick presets:
+  * Small Inductor (10µH, 5A)
+  * Power Inductor (100µH, 10A)
+  * Filter Choke (10mH, 1A)
+  * High Energy (100mH, 20A)
+- Comparison table:
+  * Your design vs. common applications
+  * Energy levels across different use cases
+- Comprehensive educational content covering:
+  * How inductors store energy (magnetic fields)
+  * Key formulas (E, Φ, τ)
+  * Magnetic flux linkage
+  * Practical applications (SMPS, filters, transformers, motors)
+  * Inductor types (air core, ferrite, powdered iron, laminated steel)
+  * Safety considerations (voltage spikes, flyback diodes, arc hazards)
+  * Real-world example calculation
+- Component: InductorEnergyCalculator.vue (21,883 bytes)
+- Page: pages/calculators/inductor-energy.vue (1,814 bytes)
 
 ## Implementation Details
 
-**Op-Amp Amplifier:**
-- Component: OpAmpAmplifier.vue (16,010 bytes)
-- Page: pages/simulations/op-amp-amplifier.vue (9,764 bytes)
-- Features: Mode switching (inverting/non-inverting), real-time gain calculation, saturation warning, waveform visualization
-- Presets: Unity Gain, Gain=10, Gain=100, Inverting -10
-- Educational: Ideal op-amp characteristics, configurations, saturation, design tips, IC options
+**Boost Converter:**
+- Component: BoostConverter.vue (23,563 bytes)
+- Page: pages/simulations/boost-converter.vue (1,794 bytes)
+- Features: Switching animation, duty cycle control, efficiency calculation
+- Presets: USB Boost, Automotive, Logic Level, High Gain
+- Educational: ON/OFF states, design considerations, applications
 
-**Wheatstone Bridge:**
-- Component: WheatstoneBridgeCalculator.vue (17,044 bytes)
-- Page: pages/calculators/wheatstone-bridge.vue (12,907 bytes)
-- Features: Balance detection, node voltage calculation, interactive circuit diagram, calculation steps
-- Presets: Balanced, Strain Gauge, Temperature, Unbalanced
-- Educational: Bridge theory, applications, configurations, design considerations, examples
+**Inductor Energy Calculator:**
+- Component: InductorEnergyCalculator.vue (21,883 bytes)
+- Page: pages/calculators/inductor-energy.vue (1,814 bytes)
+- Features: Magnetic field animation, energy graph, comparison table
+- Presets: Small, Power, Filter, High Energy
+- Educational: Energy storage theory, safety, real applications
 
 ## Development Status
-- Last Updated: 2026-02-28 (Session 6)
+- Last Updated: 2026-02-28 (Session 8)
 - Status: ✅ Complete - Two new features implemented
-- Latest Commit: f5f9e52
+- Latest Commit: [pending]
 - GitHub: https://github.com/canusorn/cyno_elec
-- Build Status: ✅ PASSING (65 routes prerendered)
+- Build Status: ⏳ Building...
 
 ## Future Feature Ideas
 
 ### Potential Simulations:
-- Wheatstone Bridge Visualization
-- Operational Amplifier (Inverting/Non-Inverting) ✅ COMPLETED
-- MOSFET Switching
+- Buck Converter (step-down)
+- Buck-Boost Converter (step-up/down)
 - Thyristor/SCR Circuits
 - Three-Phase Circuits
 - 555 Timer Monostable Mode
 - Current Mirror Circuits
 - Differential Amplifier
 - Active Filters (Low-pass, High-pass, Band-pass)
+- Colpitts Oscillator
+- Hartley Oscillator
 
 ### Potential Calculators:
-- Wheatstone Bridge Calculator ✅ COMPLETED
 - Op-Amp Gain Calculator
-- Power Factor Calculator
 - Delta-Wye (Δ-Y) Transform Calculator
 - Voltage Regulator Calculator
-- Capacitor Energy Storage Calculator
-- Inductor Energy Storage Calculator
 - Kirchhoff's Laws Solver
 - Thevenin/Norton Equivalent Calculator
 - Bandwidth Calculator
 - Heat Sink Calculator
 - Wire Gauge and Current Capacity
+- Resistor Divider Network (multiple taps)
+- Battery Sizing Calculator
+- Solar Panel Calculator
+- Transformer Turns Ratio

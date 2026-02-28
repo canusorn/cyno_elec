@@ -472,6 +472,48 @@ export default {
           },
           resultUnit: 'PF',
           calculate: () => 0
+        },
+        {
+          id: 17,
+          title: 'Energy Storage Calculator',
+          description: 'Calculate energy stored in capacitors and inductors with visual diagrams and practical examples',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Components',
+          type: 'energy-storage',
+          path: '/calculators/energy-storage',
+          formula: 'E = ½CV² (capacitor) | E = ½LI² (inductor)',
+          icon: 'BoltIcon',
+          units: ['J', 'mJ', 'μJ', 'Wh'],
+          inputs: {
+            voltage: { label: 'Voltage', placeholder: 'Enter voltage', unit: 'V' },
+            capacitance: { label: 'Capacitance', placeholder: 'Enter capacitance', unit: 'F' },
+            current: { label: 'Current', placeholder: 'Enter current', unit: 'A' },
+            inductance: { label: 'Inductance', placeholder: 'Enter inductance', unit: 'H' }
+          },
+          resultUnit: 'J',
+          calculate: () => 0
+        },
+        {
+          id: 18,
+          title: 'Inductor Energy Calculator',
+          description: 'Calculate energy stored in inductor magnetic fields with E=½LI² and flux visualization',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Components',
+          type: 'inductor-energy',
+          path: '/calculators/inductor-energy',
+          formula: 'E = ½LI² | Φ = LI',
+          icon: 'CogIcon',
+          units: ['J', 'mJ', 'Wb', 'µH', 'mH', 'H'],
+          inputs: {
+            inductance: { label: 'Inductance', placeholder: 'Enter inductance', unit: 'H' },
+            current: { label: 'Current', placeholder: 'Enter current', unit: 'A' },
+            voltage: { label: 'Voltage', placeholder: 'Enter voltage', unit: 'V' },
+            frequency: { label: 'Frequency', placeholder: 'Enter frequency', unit: 'Hz' }
+          },
+          resultUnit: 'J',
+          calculate: () => 0
         }
       ]
     }
