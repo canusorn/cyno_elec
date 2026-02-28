@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-02-28T10:09:00+07:00",
+  "lastUpdate": "2026-02-28T11:12:00+07:00",
   "developer": "Cyno Electric Development Tracker",
   "completedFeatures": [
     {
@@ -64,10 +64,42 @@
         "Educational content on wire sizing principles"
       ],
       "status": "completed"
+    },
+    {
+      "name": "Buck-Boost Converter Simulation",
+      "path": "/simulations/buck-boost-converter",
+      "type": "simulation",
+      "description": "DC-DC converter with step-up/down capability and inverted output polarity",
+      "features": [
+        "Animated circuit diagram with MOSFET switching",
+        "Real-time switching waveforms (gate signal, inductor current)",
+        "Adjustable parameters (Vin, duty cycle, L, C, load, frequency)",
+        "Output voltage calculation: Vout = -Vin × D/(1-D)",
+        "Voltage gain, efficiency, and ripple calculations",
+        "Quick presets (USB 5V→±12V, 12V→-5V, etc.)",
+        "Comprehensive educational content on buck-boost theory"
+      ],
+      "status": "completed"
+    },
+    {
+      "name": "Transformer Calculator",
+      "path": "/calculators/transformer-calculator",
+      "type": "calculator",
+      "description": "Calculate transformer parameters, turns ratio, and impedance transformation",
+      "features": [
+        "Turns ratio calculation (a = N₁/N₂)",
+        "Voltage and current transformation",
+        "Impedance matching and reflection (Z' = Z/a²)",
+        "Visual transformer diagram with winding animation",
+        "Multiple calculation modes (primary→secondary, secondary→primary)",
+        "Quick presets (step-down, step-up, isolation, impedance match)",
+        "Educational content on transformer theory and applications"
+      ],
+      "status": "completed"
     }
   ],
   "pendingTasks": [],
-  "totalCalculators": 20,
+  "totalCalculators": 21,
   "totalSimulations": 17,
-  "notes": "Successfully added Buck Converter Simulation and Wire Gauge & Ampacity Calculator. Both features include comprehensive educational content and real-time calculations."
+  "notes": "Successfully added Buck-Boost Converter Simulation and Transformer Calculator. Both features include comprehensive educational content, real-time calculations, and interactive visualizations. Build tested successfully. Committed and pushed to GitHub."
 }

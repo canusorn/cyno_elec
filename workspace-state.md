@@ -2,7 +2,7 @@
 
 ## Current Features
 
-### Calculators (17)
+### Calculators (21)
 1. battery-life
 2. power
 3. impedance-calculator
@@ -20,9 +20,12 @@
 15. wheatstone-bridge
 16. power-factor-calculator
 17. energy-storage
-18. **inductor-energy** ✨ NEW
+18. inductor-energy
+19. capacitor-series-parallel
+20. wire-gauge-calculator
+21. **transformer-calculator** ✨ NEW
 
-### Simulations (13)
+### Simulations (17)
 1. led-circuit-designer
 2. parallel-circuit
 3. diode-rectifier
@@ -35,133 +38,148 @@
 10. timer-555-astable
 11. op-amp-amplifier
 12. mosfet-switching
-13. **boost-converter** ✨ NEW
+13. boost-converter
+14. buck-converter
+15. capacitor-charging
+16. wien-bridge-oscillator
+17. **buck-boost-converter** ✨ NEW
 
-## Recently Completed (2026-02-28 - Session 8)
+## Recently Completed (2026-02-28 - Session 9)
 
-### ✅ Boost Converter Simulation
-- Interactive step-up DC-DC converter simulator
-- Real-time switching visualization with MOSFET control
-- Dynamic circuit diagram showing:
-  * Input voltage source
-  * Inductor (L) with current flow animation
-  * MOSFET switch (Q1) with ON/OFF states
-  * Diode (D1) for current steering
-  * Output capacitor (C)
-  * Load resistor (R_LOAD)
+### ✅ Buck-Boost Converter Simulation
+- Interactive DC-DC converter with step-up/down capability
+- Inverted output voltage characteristic
+- Animated circuit diagram with MOSFET switching
 - Adjustable parameters:
-  * Input voltage: 3-24V
+  * Input voltage: 3-48V
   * Duty cycle: 10-90%
   * Inductance: 10-1000µH
   * Capacitance: 10-1000µF
   * Load resistance: 10-500Ω
   * Switching frequency: 10-500kHz
 - Real-time calculations:
-  * Voltage gain: 1/(1-D)
-  * Output voltage: V_IN / (1-D)
-  * Output current: V_OUT / R_LOAD
-  * Input current: I_OUT / (1-D)
-  * Output power: V_OUT × I_OUT
-  * Efficiency: P_OUT / P_IN × 100%
-  * Ripple voltage: I_OUT / (f × C)
+  * Output voltage: Vout = -Vin × D/(1-D)
+  * Voltage gain: D/(1-D)
+  * Output current: |Vout| / R_LOAD
+  * Input current: Iout × D/(1-D)
+  * Efficiency: Pout / Pin × 100%
+  * Ripple voltage: Iout / (f × C)
 - Switching waveforms visualization:
-  * Gate control signal
+  * Gate control signal (square wave)
   * Inductor current (sawtooth waveform)
+  * Animated phase indicator
 - Quick presets:
-  * 5V → 12V (USB Boost)
-  * 12V → 24V (Automotive)
-  * 3.3V → 5V (Logic Level)
-  * High Gain (5V → 20V)
-- Comprehensive educational content covering:
-  * Boost converter operation (ON/OFF states)
+  * USB 5V → ±12V
+  * 12V → -5V (Automotive)
+  * 3.3V → -3.3V (Logic Level)
+  * High Gain (5V → -20V)
+- Comprehensive educational content:
+  * How buck-boost converters work (ON/OFF states)
   * Key formulas and calculations
   * Design considerations (duty cycle limits, component selection)
-  * Common applications (battery-powered, automotive, solar, LED drivers)
-  * Pros and cons (efficiency, simplicity vs. current stress, diode losses)
-- Component: BoostConverter.vue (23,563 bytes)
-- Page: pages/simulations/boost-converter.vue (1,794 bytes)
+  * Common applications (battery-powered, op-amp supplies, LED drivers)
+  * Advantages (step-up/down, simple, efficient)
+  * Disadvantages (inverted polarity, switch stress, diode losses)
+- Component: BuckBoostConverter.vue (28,574 bytes)
+- Page: pages/simulations/buck-boost-converter.vue (10,478 bytes)
 
-### ✅ Inductor Energy Storage Calculator
-- Interactive calculator for inductor energy storage
-- Visual inductor coil with magnetic field animation
+### ✅ Transformer Calculator
+- Interactive transformer parameter calculator
+- Visual transformer diagram with core and windings
 - Real-time calculations:
-  * Stored energy: E = ½LI²
-  * Magnetic flux: Φ = LI
-  * Reactive power: Q = I²XL
-  * Time constant: τ = L/R
-- Input controls:
-  * Inductance: 0.1µH - 1H (logarithmic scale)
-  * Current: 0-50A
-  * Voltage: 0.1-1000V (for context)
-- Energy vs Current graph (E = ½LI²):
-  * Shows quadratic relationship
-  * Current operating point indicator
+  * Turns ratio: a = N₁ / N₂
+  * Voltage ratio: V₁ / V₂ = a
+  * Current ratio: I₁ / I₂ = 1/a
+  * Power: P = V × I
+  * Reflected impedance: Z' = Z / a²
+- Input controls for primary/secondary:
+  * Voltage (V)
+  * Current (A)
+  * Turns (N)
+  * Impedance (Ω)
+- Calculation modes:
+  * Primary → Secondary
+  * Secondary → Primary
+  * Calculate Turns Ratio
+  * Impedance Matching
 - Quick presets:
-  * Small Inductor (10µH, 5A)
-  * Power Inductor (100µH, 10A)
-  * Filter Choke (10mH, 1A)
-  * High Energy (100mH, 20A)
-- Comparison table:
-  * Your design vs. common applications
-  * Energy levels across different use cases
-- Comprehensive educational content covering:
-  * How inductors store energy (magnetic fields)
-  * Key formulas (E, Φ, τ)
-  * Magnetic flux linkage
-  * Practical applications (SMPS, filters, transformers, motors)
-  * Inductor types (air core, ferrite, powdered iron, laminated steel)
-  * Safety considerations (voltage spikes, flyback diodes, arc hazards)
-  * Real-world example calculation
-- Component: InductorEnergyCalculator.vue (21,883 bytes)
-- Page: pages/calculators/inductor-energy.vue (1,814 bytes)
+  * Step-Down (230V → 12V)
+  * Step-Up (12V → 230V)
+  * Isolation (1:1)
+  * Impedance Match (600Ω → 2400Ω)
+- Visual features:
+  * Animated transformer diagram
+  * Primary coil (blue) and secondary coil (green)
+  * Core with lamination lines
+  * Real-time ratio display
+- Comprehensive educational content:
+  * Basic principles (Faraday's law, ideal transformer)
+  * Key formulas (turns ratio, voltage/current ratios, impedance reflection)
+  * Transformer types (step-down, step-up, isolation, autotransformer)
+  * Applications (power distribution, AC adapters, impedance matching)
+  * Real-world considerations (efficiency, copper losses, core losses)
+- Component: TransformerCalculator.vue (28,694 bytes)
+- Page: pages/calculators/transformer-calculator.vue (10,555 bytes)
 
 ## Implementation Details
 
-**Boost Converter:**
-- Component: BoostConverter.vue (23,563 bytes)
-- Page: pages/simulations/boost-converter.vue (1,794 bytes)
-- Features: Switching animation, duty cycle control, efficiency calculation
+**Buck-Boost Converter:**
+- Component: BuckBoostConverter.vue (28,574 bytes)
+- Page: pages/simulations/buck-boost-converter.vue (10,478 bytes)
+- Features: Inverted output, switching animation, waveform visualization
 - Presets: USB Boost, Automotive, Logic Level, High Gain
-- Educational: ON/OFF states, design considerations, applications
+- Educational: ON/OFF states, design considerations, pros/cons
 
-**Inductor Energy Calculator:**
-- Component: InductorEnergyCalculator.vue (21,883 bytes)
-- Page: pages/calculators/inductor-energy.vue (1,814 bytes)
-- Features: Magnetic field animation, energy graph, comparison table
-- Presets: Small, Power, Filter, High Energy
-- Educational: Energy storage theory, safety, real applications
+**Transformer Calculator:**
+- Component: TransformerCalculator.vue (28,694 bytes)
+- Page: pages/calculators/transformer-calculator.vue (10,555 bytes)
+- Features: Multiple calculation modes, impedance matching, visual diagram
+- Presets: Step-Down, Step-Up, Isolation, Impedance Match
+- Educational: Transformer theory, types, applications, real-world considerations
 
 ## Development Status
-- Last Updated: 2026-02-28 (Session 8)
-- Status: ✅ Complete - Two new features implemented
-- Latest Commit: [pending]
+- Last Updated: 2026-02-28 (Session 9)
+- Status: ✅ Complete - Two new features implemented and tested
+- Latest Commit: 9c461e7
+- Build Status: ✅ Build successful
 - GitHub: https://github.com/canusorn/cyno_elec
-- Build Status: ⏳ Building...
+
+## Project Statistics
+- Total Calculators: 21
+- Total Simulations: 17
+- Total Features: 38
 
 ## Future Feature Ideas
 
 ### Potential Simulations:
-- Buck Converter (step-down)
-- Buck-Boost Converter (step-up/down)
-- Thyristor/SCR Circuits
+- Buck-Boost Converter ✅ COMPLETED
+- Cuk Converter
+- SEPIC Converter
+- Flyback Converter
+- Forward Converter
+- Push-Pull Converter
+- Half-Bridge Converter
+- Full-Bridge Converter
 - Three-Phase Circuits
 - 555 Timer Monostable Mode
 - Current Mirror Circuits
 - Differential Amplifier
 - Active Filters (Low-pass, High-pass, Band-pass)
-- Colpitts Oscillator
-- Hartley Oscillator
+- Sallen-Key Filters
+- Phase-Locked Loop (PLL)
 
 ### Potential Calculators:
-- Op-Amp Gain Calculator
+- Transformer Calculator ✅ COMPLETED
 - Delta-Wye (Δ-Y) Transform Calculator
-- Voltage Regulator Calculator
+- Voltage Regulator Calculator (LM317, 7805)
 - Kirchhoff's Laws Solver
 - Thevenin/Norton Equivalent Calculator
 - Bandwidth Calculator
 - Heat Sink Calculator
-- Wire Gauge and Current Capacity
 - Resistor Divider Network (multiple taps)
 - Battery Sizing Calculator
 - Solar Panel Calculator
-- Transformer Turns Ratio
+- Rectifier Calculator
+- Filter Design Calculator
+- Operational Amplifier Calculator
+- Power Supply Design Calculator
