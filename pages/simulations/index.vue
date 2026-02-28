@@ -138,9 +138,41 @@
               <p class="text-gray-600 dark:text-gray-300 mb-4">
                 Capacitor charging and discharging curves with time constant visualization.
               </p>
-              <NuxtLink 
-                to="/simulations/rc-circuit" 
+              <NuxtLink
+                to="/simulations/rc-circuit"
                 class="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
+          <!-- Capacitor Charging/Discharging -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="20" y1="40" x2="180" y2="40" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="80" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="40" x2="20" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="180" y1="40" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <circle cx="20" cy="60" r="15" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <rect x="60" y="35" width="40" height="10" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+                <line x1="140" y1="45" x2="140" y2="55" stroke="#10B981" stroke-width="4"/>
+                <line x1="140" y1="65" x2="140" y2="75" stroke="#10B981" stroke-width="4"/>
+                <path d="M 160 40 Q 170 50, 160 60" fill="none" stroke="#F59E0B" stroke-width="2"/>
+                <path d="M 160 60 Q 170 70, 160 80" fill="none" stroke="#F59E0B" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Capacitor Charging/Discharging
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Interactive exponential curves showing voltage and current over time with live graphing.
+              </p>
+              <NuxtLink
+                to="/simulations/capacitor-charging"
+                class="inline-flex items-center px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-semibold transition-colors"
               >
                 Try Now →
               </NuxtLink>
