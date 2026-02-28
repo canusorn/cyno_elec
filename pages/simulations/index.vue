@@ -525,6 +525,39 @@
             </div>
           </div>
 
+          <!-- Buck Converter -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="30" y1="20" x2="170" y2="20" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="30" y1="100" x2="170" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="30" y1="20" x2="30" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="170" y1="20" x2="170" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <circle cx="40" cy="60" r="15" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <rect x="80" y="45" width="15" height="15" fill="white" stroke="#10B981" stroke-width="2" rx="2"/>
+                <path d="M 110 30 Q 118 25, 126 30 Q 134 35, 142 30 Q 150 25, 158 30" fill="none" stroke="#8B5CF6" stroke-width="3"/>
+                <line x1="80" y1="60" x2="80" y2="75" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="80" y1="60" x2="80" y2="45" stroke="#94A3B8" stroke-width="2"/>
+                <polygon points="75,80 85,85 80,90" fill="none" stroke="#EF4444" stroke-width="2"/>
+                <rect x="140" y="55" width="20" height="30" fill="#4B5563" stroke="#1F2937" stroke-width="2" rx="2"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Buck Converter
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Step-down DC-DC converter with duty cycle control and output voltage regulation.
+              </p>
+              <NuxtLink
+                to="/simulations/buck-converter"
+                class="inline-flex items-center px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- Boost Converter -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">

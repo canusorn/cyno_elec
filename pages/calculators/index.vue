@@ -533,6 +533,27 @@ export default {
           },
           resultUnit: 'F',
           calculate: () => 0
+        },
+        {
+          id: 20,
+          title: 'Wire Gauge & Ampacity Calculator',
+          description: 'Calculate wire properties, current capacity (ampacity), resistance, and voltage drop for electrical wiring',
+          categoryId: ['basic', 'dc-circuits', 'measurement'],
+          difficulty: 'Intermediate',
+          category: 'Components',
+          type: 'wire-gauge-calculator',
+          path: '/calculators/wire-gauge-calculator',
+          formula: 'AWG → Diameter, Area, Resistance, Ampacity',
+          icon: 'ChartBarIcon',
+          units: ['AWG', 'mm', 'mm²', 'Ω', 'A'],
+          inputs: {
+            awg: { label: 'Wire Gauge', placeholder: 'Select AWG' },
+            material: { label: 'Material', placeholder: 'Copper/Aluminum' },
+            length: { label: 'Length', placeholder: 'Enter wire length' },
+            current: { label: 'Current', placeholder: 'Enter current' }
+          },
+          resultUnit: 'A',
+          calculate: () => 0
         }
       ]
     }

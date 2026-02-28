@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2025-02-28T09:09:00+07:00",
+  "lastUpdate": "2026-02-28T10:09:00+07:00",
   "developer": "Cyno Electric Development Tracker",
   "completedFeatures": [
     {
@@ -32,10 +32,42 @@
         "Educational content explaining the formulas"
       ],
       "status": "completed"
+    },
+    {
+      "name": "Buck Converter Simulation",
+      "path": "/simulations/buck-converter",
+      "type": "simulation",
+      "description": "Step-down DC-DC converter simulation with duty cycle control and real-time waveforms",
+      "features": [
+        "Adjustable input voltage, duty cycle, frequency, and load",
+        "Animated circuit diagram with MOSFET switching",
+        "Real-time voltage and current waveform visualization",
+        "Output voltage calculation (Vout = D × Vin)",
+        "Efficiency and ripple current calculations",
+        "Educational content explaining buck converter theory"
+      ],
+      "status": "completed"
+    },
+    {
+      "name": "Wire Gauge & Ampacity Calculator",
+      "path": "/calculators/wire-gauge-calculator",
+      "type": "calculator",
+      "description": "Calculate wire properties, current capacity, resistance, and voltage drop",
+      "features": [
+        "AWG selection with diameter and cross-sectional area display",
+        "Copper and aluminum material support",
+        "Length units (meters/feet)",
+        "Current capacity calculation with temperature and installation factors",
+        "Voltage drop and power loss calculations",
+        "Safety warnings for overcurrent",
+        "Quick reference AWG table",
+        "Educational content on wire sizing principles"
+      ],
+      "status": "completed"
     }
   ],
   "pendingTasks": [],
-  "totalCalculators": 19,
-  "totalSimulations": 16,
-  "notes": "Both new features successfully added and compiled. Build verified - new CSS files generated."
+  "totalCalculators": 20,
+  "totalSimulations": 17,
+  "notes": "Successfully added Buck Converter Simulation and Wire Gauge & Ampacity Calculator. Both features include comprehensive educational content and real-time calculations."
 }
