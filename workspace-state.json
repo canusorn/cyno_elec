@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-02-28T11:12:00+07:00",
+  "lastUpdate": "2026-02-28T15:13:00+07:00",
   "developer": "Cyno Electric Development Tracker",
   "completedFeatures": [
     {
@@ -96,10 +96,44 @@
         "Educational content on transformer theory and applications"
       ],
       "status": "completed"
+    },
+    {
+      "name": "AC Circuit Analysis Simulation",
+      "path": "/simulations/ac-circuit",
+      "type": "simulation",
+      "description": "Interactive AC circuit simulator with waveform visualization and impedance analysis",
+      "features": [
+        "AC voltage source with adjustable frequency and amplitude",
+        "Series RLC circuit with configurable components",
+        "Real-time voltage and current waveform visualization",
+        "Phase relationship display (V vs I phase shift)",
+        "Impedance calculation and resonance frequency display",
+        "Interactive phasor diagram",
+        "Quick presets (resistive, inductive, capacitive, resonance)",
+        "Comprehensive educational content on AC circuit theory"
+      ],
+      "status": "completed"
+    },
+    {
+      "name": "AC Power Calculator",
+      "path": "/calculators/ac-power-calculator",
+      "type": "calculator",
+      "description": "Calculate real, reactive, and apparent power in AC circuits with power factor analysis",
+      "features": [
+        "Real power (P), Reactive power (Q), Apparent power (S) calculations",
+        "Power factor calculation with quality indicators",
+        "RMS voltage and current inputs",
+        "Phase angle parameter",
+        "Interactive power triangle visualization",
+        "Quick presets (resistive load, induction motor, transformer, fluorescent)",
+        "Load type detection (resistive/inductive/capacitive)",
+        "Comprehensive educational content on AC power systems and PF correction"
+      ],
+      "status": "completed"
     }
   ],
   "pendingTasks": [],
-  "totalCalculators": 21,
-  "totalSimulations": 17,
-  "notes": "Successfully added Buck-Boost Converter Simulation and Transformer Calculator. Both features include comprehensive educational content, real-time calculations, and interactive visualizations. Build tested successfully. Committed and pushed to GitHub."
+  "totalCalculators": 22,
+  "totalSimulations": 18,
+  "notes": "Successfully added AC Circuit Analysis Simulation and AC Power Calculator. Both features include comprehensive educational content, real-time calculations, and interactive visualizations. Navigation updated in index pages. Ready to commit and push."
 }

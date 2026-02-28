@@ -418,6 +418,39 @@
             </div>
           </div>
 
+          <!-- 555 Timer Monostable -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="20" y1="40" x2="180" y2="40" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="80" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="40" x2="20" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="180" y1="40" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <rect x="70" y="35" width="60" height="50" fill="#1F2937" stroke="#4B5563" stroke-width="2" rx="4"/>
+                <text x="100" y="58" text-anchor="middle" fill="white" font-size="9" font-weight="bold">555</text>
+                <text x="100" y="72" text-anchor="middle" fill="#9CA3AF" font-size="6">Mono</text>
+                <rect x="35" y="52" width="20" height="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2" rx="2"/>
+                <text x="45" y="58" text-anchor="middle" fill="#B45309" font-size="5" font-weight="bold">TRIG</text>
+                <rect x="140" y="47" width="8" height="26" fill="#22C55E" stroke="#16A34A" stroke-width="1.5" rx="1"/>
+                <text x="144" y="63" text-anchor="middle" fill="white" font-size="5" font-weight="bold">LED</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                555 Timer Monostable
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Generate precise single pulses for timing and delay applications.
+              </p>
+              <NuxtLink
+                to="/simulations/timer-555-monostable"
+                class="inline-flex items-center px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- Op-Amp Amplifier -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
@@ -583,6 +616,74 @@
               <NuxtLink
                 to="/simulations/boost-converter"
                 class="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
+          <!-- Half-Bridge Motor Driver -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="30" y1="20" x2="170" y2="20" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="30" y1="100" x2="170" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="30" y1="20" x2="30" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="170" y1="20" x2="170" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <circle cx="100" cy="60" r="25" fill="white" stroke="#059669" stroke-width="2"/>
+                <text x="100" y="55" text-anchor="middle" fill="#059669" font-size="10" font-weight="bold">M</text>
+                <rect x="50" y="30" width="12" height="15" fill="white" stroke="#F59E0B" stroke-width="2" rx="2"/>
+                <rect x="138" y="30" width="12" height="15" fill="white" stroke="#F59E0B" stroke-width="2" rx="2"/>
+                <rect x="50" y="75" width="12" height="15" fill="white" stroke="#3B82F6" stroke-width="2" rx="2"/>
+                <rect x="138" y="75" width="12" height="15" fill="white" stroke="#3B82F6" stroke-width="2" rx="2"/>
+                <line x1="56" y1="45" x2="56" y2="55" stroke="#8B5CF6" stroke-width="2"/>
+                <line x1="144" y1="45" x2="144" y2="55" stroke="#8B5CF6" stroke-width="2"/>
+                <line x1="56" y1="90" x2="56" y2="100" stroke="#8B5CF6" stroke-width="2"/>
+                <line x1="144" y1="90" x2="144" y2="100" stroke="#8B5CF6" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Half-Bridge Motor Driver
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                H-bridge motor control with PWM speed control, direction switching, and real-time waveforms.
+              </p>
+              <NuxtLink
+                to="/simulations/half-bridge-motor-driver"
+                class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
+          <!-- AC Circuit Analysis -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <path d="M 40 60 Q 60 30, 80 60 Q 100 90, 120 60" fill="none" stroke="#3B82F6" stroke-width="3"/>
+                <path d="M 40 60 Q 60 90, 80 60 Q 100 30, 120 60" fill="none" stroke="#EF4444" stroke-width="2" stroke-dasharray="4"/>
+                <circle cx="30" cy="60" r="15" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <text x="30" y="64" text-anchor="middle" fill="#3B82F6" font-size="10" font-weight="bold">AC</text>
+                <rect x="140" y="45" width="20" height="30" fill="white" stroke="#8B5CF6" stroke-width="2" rx="2"/>
+                <text x="150" y="65" text-anchor="middle" fill="#8B5CF6" font-size="8" font-weight="bold">R</text>
+                <path d="M 155 30 Q 160 25, 165 30 Q 170 35, 175 30" fill="none" stroke="#22C55E" stroke-width="2"/>
+                <line x1="150" y1="20" x2="150" y2="30" stroke="#22C55E" stroke-width="2"/>
+                <line x1="150" y1="75" x2="150" y2="90" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="45" y1="60" x2="140" y2="60" stroke="#94A3B8" stroke-width="3"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                AC Circuit Analysis
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore alternating current circuits with real-time waveform visualization, impedance analysis, and phasor diagrams.
+              </p>
+              <NuxtLink
+                to="/simulations/ac-circuit"
+                class="inline-flex items-center px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-semibold transition-colors"
               >
                 Try Now →
               </NuxtLink>

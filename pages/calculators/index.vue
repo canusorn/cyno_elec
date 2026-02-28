@@ -554,6 +554,91 @@ export default {
           },
           resultUnit: 'A',
           calculate: () => 0
+        },
+        {
+          id: 21,
+          title: 'Delta-Wye (Δ-Y) Transformation',
+          description: 'Convert between Delta (Δ) and Wye (Y) resistor configurations for circuit simplification',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Advanced',
+          category: 'Circuit Analysis',
+          type: 'delta-wye',
+          path: '/calculators/delta-wye',
+          formula: 'Ra = (Rab×Rca)/(Rab+Rbc+Rca) | Rab = (Ra×Rb+Rb×Rc+Rc×Ra)/Rc',
+          icon: 'ChartBarIcon',
+          units: ['Ω', 'kΩ', 'MΩ'],
+          inputs: {
+            rab: { label: 'Rab', placeholder: 'Enter Rab', unit: 'Ω' },
+            rbc: { label: 'Rbc', placeholder: 'Enter Rbc', unit: 'Ω' },
+            rca: { label: 'Rca', placeholder: 'Enter Rca', unit: 'Ω' },
+            ra: { label: 'Ra', placeholder: 'Enter Ra', unit: 'Ω' },
+            rb: { label: 'Rb', placeholder: 'Enter Rb', unit: 'Ω' },
+            rc: { label: 'Rc', placeholder: 'Enter Rc', unit: 'Ω' }
+          },
+          resultUnit: 'Ω',
+          calculate: () => 0
+        },
+        {
+          id: 22,
+          title: 'Three-Phase Power Calculator',
+          description: 'Calculate power in three-phase systems with Star (Y) and Delta (Δ) connections for balanced and unbalanced loads',
+          categoryId: ['power', 'ac-circuits'],
+          difficulty: 'Advanced',
+          category: 'AC Analysis',
+          type: 'three-phase-power',
+          path: '/calculators/three-phase-power',
+          formula: 'P = √3 × VL × IL × PF',
+          icon: 'BoltIcon',
+          units: ['kW', 'kVA', 'kVAR', 'V', 'A'],
+          inputs: {
+            lineVoltage: { label: 'Line Voltage', placeholder: 'Enter line voltage', unit: 'V' },
+            current: { label: 'Line Current', placeholder: 'Enter line current', unit: 'A' },
+            powerFactor: { label: 'Power Factor', placeholder: 'Enter power factor', unit: 'pf' },
+            connectionType: { label: 'Connection', placeholder: 'Star or Delta' }
+          },
+          resultUnit: 'kW',
+          calculate: () => 0
+        },
+        {
+          id: 23,
+          title: 'LM317 Voltage Regulator Calculator',
+          description: 'Design adjustable power supplies with the classic LM317 regulator. Calculate resistor values, output voltage, power dissipation, and heatsink requirements.',
+          categoryId: ['dc-circuits', 'power'],
+          difficulty: 'Intermediate',
+          category: 'Power Supply',
+          type: 'lm317-regulator',
+          path: '/calculators/lm317-regulator',
+          formula: 'Vout = 1.25 × (1 + R2/R1)',
+          icon: 'CpuChipIcon',
+          units: ['V', 'Ω', 'A', 'W'],
+          inputs: {
+            outputVoltage: { label: 'Output Voltage', placeholder: 'Enter desired output voltage', unit: 'V' },
+            inputVoltage: { label: 'Input Voltage', placeholder: 'Enter input voltage', unit: 'V' },
+            r1: { label: 'R1 (Program Resistor)', placeholder: 'Enter R1 value', unit: 'Ω' },
+            loadCurrent: { label: 'Load Current', placeholder: 'Enter load current', unit: 'mA' }
+          },
+          resultUnit: 'V',
+          calculate: () => 0
+        },
+        {
+          id: 24,
+          title: 'AC Power Calculator',
+          description: 'Calculate real power (P), reactive power (Q), apparent power (S), and power factor in AC circuits. Visualize power triangle and understand phase relationships.',
+          categoryId: ['ac-circuits', 'power'],
+          difficulty: 'Intermediate',
+          category: 'AC Analysis',
+          type: 'ac-power-calculator',
+          path: '/calculators/ac-power-calculator',
+          formula: 'S² = P² + Q², PF = cos(φ)',
+          icon: 'LightBulbIcon',
+          units: ['W', 'VAR', 'VA', 'PF'],
+          inputs: {
+            voltageRMS: { label: 'RMS Voltage', placeholder: 'Enter RMS voltage', unit: 'V' },
+            currentRMS: { label: 'RMS Current', placeholder: 'Enter RMS current', unit: 'A' },
+            phaseAngle: { label: 'Phase Angle', placeholder: 'Enter phase angle', unit: 'degrees' }
+          },
+          resultUnit: 'W',
+          calculate: () => 0
         }
       ]
     }
