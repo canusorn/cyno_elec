@@ -659,6 +659,46 @@ export default {
           },
           resultUnit: 'V/V',
           calculate: () => 0
+        },
+        {
+          id: 26,
+          title: 'Filter Design Calculator',
+          description: 'Design RC, RL, and LC filters. Calculate component values for low-pass, high-pass, band-pass, and band-stop filters with frequency response visualization.',
+          categoryId: ['ac-circuits', 'basic'],
+          difficulty: 'Intermediate',
+          category: 'AC Analysis',
+          type: 'filter-design-calculator',
+          path: '/calculators/filter-design-calculator',
+          formula: 'fc = 1/(2πRC) | fc = R/(2πL) | fc = 1/(2π√LC)',
+          icon: 'ChartBarIcon',
+          units: ['Hz', 'Ω', 'F', 'H'],
+          inputs: {
+            filterType: { label: 'Filter Type', placeholder: 'LPF, HPF, BPF, BSF' },
+            circuitType: { label: 'Circuit', placeholder: 'RC, RL, LC' },
+            cutoffFreq: { label: 'Cutoff Frequency', placeholder: 'Enter fc', unit: 'Hz' },
+            component: { label: 'C or L', placeholder: 'Enter C or L', unit: 'F/H' }
+          },
+          resultUnit: 'Ω/F',
+          calculate: () => 0
+        },
+        {
+          id: 27,
+          title: '7805 Voltage Regulator Calculator',
+          description: 'Design power supplies with the classic 7805 linear regulator. Calculate component values, power dissipation, efficiency, and thermal requirements for 5V regulation.',
+          categoryId: ['dc-circuits', 'power'],
+          difficulty: 'Beginner',
+          category: 'Power Supply',
+          type: 'regulator-7805',
+          path: '/calculators/regulator-7805',
+          formula: 'P = (Vin - Vout) × Iout',
+          icon: 'BoltIcon',
+          units: ['V', 'mA', 'W', '°C'],
+          inputs: {
+            inputVoltage: { label: 'Input Voltage', placeholder: 'Enter input voltage (7-24V)', unit: 'V' },
+            outputCurrent: { label: 'Output Current', placeholder: 'Enter load current', unit: 'mA' }
+          },
+          resultUnit: 'W',
+          calculate: () => 0
         }
       ]
     }

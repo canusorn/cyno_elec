@@ -723,6 +723,76 @@
             </div>
           </div>
 
+          <!-- Electromagnetic Induction -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="30" y1="20" x2="170" y2="20" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="30" y1="100" x2="170" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="30" y1="20" x2="30" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="170" y1="20" x2="170" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <ellipse cx="70" cy="60" rx="40" ry="25" fill="none" stroke="#9FA8DA" stroke-width="3"/>
+                <ellipse cx="70" cy="60" rx="30" ry="18" fill="none" stroke="#7986CB" stroke-width="2"/>
+                <ellipse cx="70" cy="60" rx="20" ry="12" fill="none" stroke="#9FA8DA" stroke-width="2"/>
+                <rect x="120" y="45" width="15" height="30" fill="#ef4444"/>
+                <rect x="135" y="45" width="15" height="30" fill="#3b82f6"/>
+                <text x="112" y="63" fill="white" font-size="7" font-weight="bold">N</text>
+                <text x="142" y="63" fill="white" font-size="7" font-weight="bold">S</text>
+                <path d="M 155 40 Q 165 35, 175 40 Q 185 45, 195 40" fill="none" stroke="#F59E0B" stroke-width="2" stroke-dasharray="3,2"/>
+                <path d="M 155 80 Q 165 85, 175 80 Q 185 75, 195 80" fill="none" stroke="#F59E0B" stroke-width="2" stroke-dasharray="3,2"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Electromagnetic Induction
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore Faraday's Law and Lenz's Law with interactive visualizations of rotating coils and moving magnets.
+              </p>
+              <NuxtLink
+                to="/simulations/electromagnetic-induction"
+                class="inline-flex items-center px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
+          <!-- PWM Generator -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="20" y1="20" x2="180" y2="20" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="20" y1="100" x2="180" y2="100" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="20" y1="20" x2="20" y2="100" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="180" y1="20" x2="180" y2="100" stroke="#94A3B8" stroke-width="2"/>
+                <!-- PWM signal -->
+                <path d="M 30 70 L 30 30 L 70 30 L 70 70 L 90 70 L 90 30 L 130 30 L 130 70 L 150 70 L 150 30 L 170 30" fill="none" stroke="#8B5CF6" stroke-width="3"/>
+                <!-- Duty cycle indicator -->
+                <line x1="30" y1="15" x2="70" y2="15" stroke="#EF4444" stroke-width="2"/>
+                <line x1="30" y1="10" x2="30" y2="20" stroke="#EF4444" stroke-width="2"/>
+                <line x1="70" y1="10" x2="70" y2="20" stroke="#EF4444" stroke-width="2"/>
+                <text x="50" y="12" text-anchor="middle" fill="#EF4444" font-size="8">T_on</text>
+                <!-- Frequency label -->
+                <text x="100" y="113" text-anchor="middle" fill="#6B7280" font-size="8">Period (T)</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                PWM Generator
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore Pulse Width Modulation signals and understand duty cycle, frequency, and applications.
+              </p>
+              <NuxtLink
+                to="/simulations/pwm-generator"
+                class="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
