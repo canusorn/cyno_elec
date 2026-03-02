@@ -793,6 +793,40 @@
             </div>
           </div>
 
+          <!-- LC Tank Circuit -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Tank circuit diagram -->
+                <circle cx="50" cy="60" r="25" fill="none" stroke="#8B5CF6" stroke-width="2" opacity="0.6"/>
+                <circle cx="150" cy="60" r="25" fill="none" stroke="#EC4899" stroke-width="2" opacity="0.6"/>
+                <line x1="75" y1="60" x2="125" y2="60" stroke="#10B981" stroke-width="2" stroke-dasharray="5,5"/>
+                <text x="50" y="95" text-anchor="middle" fill="#8B5CF6" font-size="10" font-weight="bold">L</text>
+                <text x="150" y="95" text-anchor="middle" fill="#EC4899" font-size="10" font-weight="bold">C</text>
+                <text x="100" y="40" text-anchor="middle" fill="#10B981" font-size="8">Energy Flow</text>
+                <!-- Coil representation -->
+                <path d="M 40 55 Q 50 45, 60 55 Q 70 65, 80 55" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+                <!-- Capacitor representation -->
+                <line x1="140" y1="50" x2="140" y2="70" stroke="#EC4899" stroke-width="3"/>
+                <line x1="160" y1="50" x2="160" y2="70" stroke="#EC4899" stroke-width="3"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                LC Tank Circuit
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Visualize energy oscillation between inductor and capacitor. Explore resonance, Q factor, and frequency response in parallel LC circuits.
+              </p>
+              <NuxtLink
+                to="/simulations/lc-tank-circuit"
+                class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->

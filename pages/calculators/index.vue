@@ -699,6 +699,26 @@ export default {
           },
           resultUnit: 'W',
           calculate: () => 0
+        },
+        {
+          id: 28,
+          title: 'LED Array Calculator',
+          description: 'Design series, parallel, and mixed LED arrays with proper current-limiting resistors. Calculate resistor values, power ratings, and total power consumption for any LED configuration.',
+          categoryId: ['lighting', 'dc-circuits'],
+          difficulty: 'Beginner',
+          category: 'Lighting',
+          type: 'led-array',
+          path: '/calculators/led-array',
+          formula: 'R = (Vsource - Vled) / Iled',
+          icon: 'LightBulbIcon',
+          units: ['Ω', 'V', 'mA', 'W'],
+          inputs: {
+            voltageSource: { label: 'Source Voltage', placeholder: 'Enter source voltage', unit: 'V' },
+            ledForwardVoltage: { label: 'LED Forward Voltage', placeholder: 'Enter LED Vf', unit: 'V' },
+            ledCurrent: { label: 'LED Current', placeholder: 'Enter LED current', unit: 'mA' }
+          },
+          resultUnit: 'Ω',
+          calculate: () => 0
         }
       ]
     }
