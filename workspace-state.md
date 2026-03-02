@@ -2,157 +2,184 @@
 
 ## Current Features
 
-### Calculators (21)
-1. battery-life
-2. power
-3. impedance-calculator
-4. capacitance-calculator
-5. ohms-law
-6. resistor-series-parallel
-7. inductance-calculator
-8. capacitive-reactance
-9. inductive-reactance
-10. resistance-color-code
-11. led-resistor
-12. voltage-divider
-13. rc-time-constant
-14. decibel-calculator
-15. wheatstone-bridge
-16. power-factor-calculator
-17. energy-storage
-18. inductor-energy
-19. capacitor-series-parallel
-20. wire-gauge-calculator
-21. **transformer-calculator** ✨ NEW
+### Calculators (31)
+1. ac-power-calculator
+2. battery-life
+3. capacitance-calculator
+4. capacitive-reactance
+5. capacitor-series-parallel
+6. decibel-calculator
+7. delta-wye
+8. energy-storage
+9. **filter-design-calculator** ✨ NEW
+10. impedance-calculator
+11. inductance-calculator
+12. inductive-reactance
+13. inductor-energy
+14. led-resistor
+15. **lm317-regulator**
+16. ohms-law
+17. **opamp-gain-calculator**
+18. power
+19. power-factor-calculator
+20. **rc-low-pass-filter** ✨ NEW
+21. rc-time-constant
+22. **regulator-7805** ✨ NEW
+23. resistance-color-code
+24. resistor-series-parallel
+25. resonant-frequency
+26. three-phase-power
+27. transformer-calculator
+28. voltage-divider
+29. wheatstone-bridge
+30. **wien-bridge-calculator** ✨ NEW
+31. wire-gauge-calculator
 
-### Simulations (17)
-1. led-circuit-designer
-2. parallel-circuit
-3. diode-rectifier
-4. rc-circuit
-5. rlc-resonance
-6. transformer-basics
-7. rl-circuit
-8. series-circuit
-9. transistor-switch
-10. timer-555-astable
-11. op-amp-amplifier
-12. mosfet-switching
-13. boost-converter
-14. buck-converter
-15. capacitor-charging
-16. wien-bridge-oscillator
-17. **buck-boost-converter** ✨ NEW
+### Simulations (27)
+1. ac-circuit
+2. **active-filter** ✨ NEW
+3. boost-converter
+4. buck-boost-converter
+5. buck-converter
+6. capacitor-charging
+7. current-divider
+8. differential-amplifier
+9. diode-rectifier
+10. **electromagnetic-induction** ✨ NEW
+11. full-wave-bridge-rectifier
+12. half-bridge-motor-driver
+13. led-circuit-designer
+14. mosfet-switching
+15. op-amp-amplifier
+16. parallel-circuit
+17. **pwm-generator** ✨ NEW
+18. rc-circuit
+19. rl-circuit
+20. rlc-resonance
+21. series-circuit
+22. timer-555-astable
+23. timer-555-monostable
+24. transformer-basics
+25. transistor-switch
+26. wien-bridge-oscillator
+27. **inductor-self-resonance** ✨ NEW
 
-## Recently Completed (2026-02-28 - Session 9)
+## Recently Completed (2026-03-02 - Session 10)
 
-### ✅ Buck-Boost Converter Simulation
-- Interactive DC-DC converter with step-up/down capability
-- Inverted output voltage characteristic
-- Animated circuit diagram with MOSFET switching
-- Adjustable parameters:
-  * Input voltage: 3-48V
-  * Duty cycle: 10-90%
-  * Inductance: 10-1000µH
-  * Capacitance: 10-1000µF
-  * Load resistance: 10-500Ω
-  * Switching frequency: 10-500kHz
-- Real-time calculations:
-  * Output voltage: Vout = -Vin × D/(1-D)
-  * Voltage gain: D/(1-D)
-  * Output current: |Vout| / R_LOAD
-  * Input current: Iout × D/(1-D)
-  * Efficiency: Pout / Pin × 100%
-  * Ripple voltage: Iout / (f × C)
-- Switching waveforms visualization:
-  * Gate control signal (square wave)
-  * Inductor current (sawtooth waveform)
-  * Animated phase indicator
+### ✅ Inductor Self-Resonance Simulation
+- Explore parasitic capacitance effects in real inductors
+- Calculate self-resonant frequency (SRF = 1/2π√LCp)
+- Visualize impedance vs frequency curve (log-log scale)
+- Quality factor (Q) calculations at different frequencies
+- Interactive circuit diagram showing parasitic capacitance model
+- Quick presets for different inductor types:
+  * Small RF inductors (1µH, 2pF)
+  * Power inductors (100µH, 10pF)
+  * High Q inductors (10mH, 5pF)
+  * SMD 0805 inductors (22nH, 0.5pF)
+- Frequency range: 1kHz to 100MHz
+- Real-time impedance calculations showing:
+  * Inductive region (below SRF)
+  * Resistive region (at SRF)
+  * Capacitive region (above SRF)
+- Component: InductorSelfResonance.vue (19,886 bytes)
+- Page: pages/simulations/inductor-self-resonance.vue (9,423 bytes)
+
+### ✅ RC Low-Pass Filter Calculator
+- Design RC low-pass filters with specific cutoff frequencies
+- Interactive Bode plot visualization:
+  * Magnitude response (dB vs frequency)
+  * Phase response (degrees vs frequency)
+  * -3dB cutoff point clearly marked
+- Multiple design strategies:
+  * Choose C, calculate R
+  * Choose R, calculate C
+  * Match impedance (Z = 50Ω)
+- Real-time component value calculations
+- Attenuation table showing:
+  * Gain at 0.01fc, 0.1fc, fc, 10fc, 100fc
+  * Phase shift at each frequency
+- Standard component value recommendations:
+  * E96 series for resistors
+  * E6 series for capacitors
 - Quick presets:
-  * USB 5V → ±12V
-  * 12V → -5V (Automotive)
-  * 3.3V → -3.3V (Logic Level)
-  * High Gain (5V → -20V)
-- Comprehensive educational content:
-  * How buck-boost converters work (ON/OFF states)
-  * Key formulas and calculations
-  * Design considerations (duty cycle limits, component selection)
-  * Common applications (battery-powered, op-amp supplies, LED drivers)
-  * Advantages (step-up/down, simple, efficient)
-  * Disadvantages (inverted polarity, switch stress, diode losses)
-- Component: BuckBoostConverter.vue (28,574 bytes)
-- Page: pages/simulations/buck-boost-converter.vue (10,478 bytes)
+  * Audio 1kHz (R=15.9kΩ, C=10nF)
+  * Audio 10kHz (R=15.9kΩ, C=1nF)
+  * RF 1MHz (R=1.59kΩ, C=100pF)
+  * DC 100Hz (R=15.9kΩ, C=100nF)
+- Component: RCLowPassFilterCalculator.vue (25,026 bytes)
+- Page: pages/calculators/rc-low-pass-filter.vue (11,995 bytes)
 
-### ✅ Transformer Calculator
-- Interactive transformer parameter calculator
-- Visual transformer diagram with core and windings
-- Real-time calculations:
-  * Turns ratio: a = N₁ / N₂
-  * Voltage ratio: V₁ / V₂ = a
-  * Current ratio: I₁ / I₂ = 1/a
-  * Power: P = V × I
-  * Reflected impedance: Z' = Z / a²
-- Input controls for primary/secondary:
-  * Voltage (V)
-  * Current (A)
-  * Turns (N)
-  * Impedance (Ω)
-- Calculation modes:
-  * Primary → Secondary
-  * Secondary → Primary
-  * Calculate Turns Ratio
-  * Impedance Matching
-- Quick presets:
-  * Step-Down (230V → 12V)
-  * Step-Up (12V → 230V)
-  * Isolation (1:1)
-  * Impedance Match (600Ω → 2400Ω)
-- Visual features:
-  * Animated transformer diagram
-  * Primary coil (blue) and secondary coil (green)
-  * Core with lamination lines
-  * Real-time ratio display
-- Comprehensive educational content:
-  * Basic principles (Faraday's law, ideal transformer)
-  * Key formulas (turns ratio, voltage/current ratios, impedance reflection)
-  * Transformer types (step-down, step-up, isolation, autotransformer)
-  * Applications (power distribution, AC adapters, impedance matching)
-  * Real-world considerations (efficiency, copper losses, core losses)
-- Component: TransformerCalculator.vue (28,694 bytes)
-- Page: pages/calculators/transformer-calculator.vue (10,555 bytes)
+## Additional Features in This Session
+
+### Active Filter Simulation
+- First-order and second-order active filter simulations
+- Sallen-Key topology implementation
+- Cutoff frequency adjustment
+- Component value suggestions
+
+### Electromagnetic Induction Simulation
+- Faraday's law visualization
+- Lenz's law demonstration
+- Induced EMF calculations
+- Moving magnet through coil animation
+
+### PWM Generator Simulation
+- Pulse Width Modulation visualization
+- Duty cycle control (0-100%)
+- Frequency adjustment
+- Output waveform display
+
+### Filter Design Calculator
+- Multiple filter types (Butterworth, Chebyshev, Bessel)
+- Order selection (1st to 10th order)
+- Component value calculations
+- Frequency response preview
+
+### Wien Bridge Calculator
+- Wien bridge oscillator frequency calculation
+- Component ratio requirements
+- Gain requirements for oscillation
+- Stability analysis
+
+### 7805 Voltage Regulator Calculator
+- Input voltage range
+- Output voltage (5V fixed)
+- Thermal calculations
+- Dropout voltage considerations
+- Heat sink requirements
 
 ## Implementation Details
 
-**Buck-Boost Converter:**
-- Component: BuckBoostConverter.vue (28,574 bytes)
-- Page: pages/simulations/buck-boost-converter.vue (10,478 bytes)
-- Features: Inverted output, switching animation, waveform visualization
-- Presets: USB Boost, Automotive, Logic Level, High Gain
-- Educational: ON/OFF states, design considerations, pros/cons
+**Inductor Self-Resonance:**
+- Component: InductorSelfResonance.vue (19,886 bytes)
+- Page: pages/simulations/inductor-self-resonance.vue (9,423 bytes)
+- Features: Parasitic capacitance model, impedance curve, SRF calculation, Q factor
+- Presets: Small RF, Power Inductor, High Q, SMD 0805
+- Educational: Real inductor behavior, frequency regions, design guidelines
 
-**Transformer Calculator:**
-- Component: TransformerCalculator.vue (28,694 bytes)
-- Page: pages/calculators/transformer-calculator.vue (10,555 bytes)
-- Features: Multiple calculation modes, impedance matching, visual diagram
-- Presets: Step-Down, Step-Up, Isolation, Impedance Match
-- Educational: Transformer theory, types, applications, real-world considerations
+**RC Low-Pass Filter:**
+- Component: RCLowPassFilterCalculator.vue (25,026 bytes)
+- Page: pages/calculators/rc-low-pass-filter.vue (11,995 bytes)
+- Features: Bode plot, design strategies, standard values, attenuation table
+- Presets: Audio 1kHz, Audio 10kHz, RF 1MHz, DC 100Hz
+- Educational: Filter theory, design considerations, applications
 
 ## Development Status
-- Last Updated: 2026-02-28 (Session 9)
-- Status: ✅ Complete - Two new features implemented and tested
-- Latest Commit: 9c461e7
-- Build Status: ✅ Build successful
+- Last Updated: 2026-03-02 (Session 10)
+- Status: ✅ Complete - Eight new features implemented
+- Latest Commit: 3c49bf9
+- Build Status: ✅ Ready for deployment
 - GitHub: https://github.com/canusorn/cyno_elec
 
 ## Project Statistics
-- Total Calculators: 21
-- Total Simulations: 17
-- Total Features: 38
+- Total Calculators: 31
+- Total Simulations: 27
+- Total Features: 58
 
 ## Future Feature Ideas
 
 ### Potential Simulations:
-- Buck-Boost Converter ✅ COMPLETED
 - Cuk Converter
 - SEPIC Converter
 - Flyback Converter
@@ -161,25 +188,25 @@
 - Half-Bridge Converter
 - Full-Bridge Converter
 - Three-Phase Circuits
-- 555 Timer Monostable Mode
 - Current Mirror Circuits
-- Differential Amplifier
-- Active Filters (Low-pass, High-pass, Band-pass)
-- Sallen-Key Filters
 - Phase-Locked Loop (PLL)
+- Schmitt Trigger
+- Multivibrators
+- Sample and Hold Circuit
+- Instrumentation Amplifier
+- Log/Antilog Amplifier
 
 ### Potential Calculators:
-- Transformer Calculator ✅ COMPLETED
-- Delta-Wye (Δ-Y) Transform Calculator
-- Voltage Regulator Calculator (LM317, 7805)
+- Voltage Regulator Calculator (LM317, 7805) ✅ DONE
 - Kirchhoff's Laws Solver
 - Thevenin/Norton Equivalent Calculator
 - Bandwidth Calculator
-- Heat Sink Calculator
+- Heat Sink Calculator ✅ DONE
 - Resistor Divider Network (multiple taps)
 - Battery Sizing Calculator
 - Solar Panel Calculator
 - Rectifier Calculator
-- Filter Design Calculator
 - Operational Amplifier Calculator
 - Power Supply Design Calculator
+- Transmission Line Calculator
+- Antenna Design Calculator
