@@ -719,6 +719,46 @@ export default {
           },
           resultUnit: 'Ω',
           calculate: () => 0
+        },
+        {
+          id: 29,
+          title: 'RMS & Peak Voltage Calculator',
+          description: 'Bidirectional conversion between RMS, Peak, and Peak-to-Peak voltages for sine, square, triangle, and sawtooth waveforms.',
+          categoryId: ['measurement', 'ac-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Measurement',
+          type: 'rms-peak-calculator',
+          path: '/calculators/rms-peak-calculator',
+          formula: 'Vrms = Vpeak/√2 (sine)',
+          icon: 'ChartBarIcon',
+          units: ['V', 'Hz'],
+          inputs: {
+            voltage: { label: 'Voltage', placeholder: 'Enter voltage value', unit: 'V' },
+            inputType: { label: 'Input Type', placeholder: 'RMS, Peak, or Peak-to-Peak' },
+            waveform: { label: 'Waveform', placeholder: 'Sine, Square, Triangle, Sawtooth' }
+          },
+          resultUnit: 'V',
+          calculate: () => 0
+        },
+        {
+          id: 30,
+          title: 'Heatsink Thermal Design Calculator',
+          description: 'Calculate thermal resistance, temperature rise, and heatsink requirements for electronic components and power devices with junction temperature analysis.',
+          categoryId: ['power', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Power',
+          type: 'heatsink-thermal',
+          path: '/calculators/heatsink-thermal',
+          formula: 'ΔT = P × Rθja',
+          icon: 'BoltIcon',
+          units: ['W', '°C', '°C/W'],
+          inputs: {
+            powerDissipation: { label: 'Power Dissipation', placeholder: 'Enter power', unit: 'W' },
+            ambientTemp: { label: 'Ambient Temperature', placeholder: 'Enter ambient temp', unit: '°C' },
+            thermalResistance: { label: 'Thermal Resistance', placeholder: 'Enter Rθ', unit: '°C/W' }
+          },
+          resultUnit: '°C',
+          calculate: () => 0
         }
       ]
     }

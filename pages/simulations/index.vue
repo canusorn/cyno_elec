@@ -827,6 +827,40 @@
             </div>
           </div>
 
+          <!-- Diode Clipping Circuits -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-red-50 to-orange-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Sine wave before clipping -->
+                <path d="M 20 60 Q 40 30, 60 60 T 100 60" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="4,2" opacity="0.6"/>
+                <!-- Clipped waveform -->
+                <path d="M 100 60 L 110 60 L 110 40 L 130 40 L 130 80 L 150 80 L 150 60 L 180 60" fill="none" stroke="#10B981" stroke-width="2.5"/>
+                <!-- Diode symbol -->
+                <polygon points="70,45 70,75 90,60" fill="white" stroke="#EF4444" stroke-width="2"/>
+                <line x1="90" y1="45" x2="90" y2="75" stroke="#EF4444" stroke-width="2"/>
+                <!-- Clip level indicator -->
+                <line x1="100" y1="40" x2="180" y2="40" stroke="#EF4444" stroke-width="1" stroke-dasharray="3,3" opacity="0.7"/>
+                <text x="60" y="30" fill="#3B82F6" font-size="8" font-weight="bold">Input</text>
+                <text x="150" y="30" fill="#10B981" font-size="8" font-weight="bold">Output</text>
+                <text x="140" y="35" fill="#EF4444" font-size="7">Clip Level</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Diode Clipping Circuits
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore how diode clipping circuits modify waveforms by removing portions above or below threshold levels. Learn series, parallel, and double-ended clippers.
+              </p>
+              <NuxtLink
+                to="/simulations/diode-clipping"
+                class="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
