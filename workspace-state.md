@@ -1,7 +1,7 @@
 # Cyno Electric - Workspace State
 
-**Last Updated:** 2026-03-03 02:32:00 +07:00  
-**Session:** Session 14 - Cron Run  
+**Last Updated:** 2026-03-03 03:35:00 +07:00
+**Session:** Session 15 - Cron Run
 **Status:** ✅ All Tasks Complete
 
 ---
@@ -10,13 +10,113 @@
 
 | Category | Count |
 |----------|-------|
-| **Calculators** | 37 |
-| **Simulations** | 32 |
-| **Total Features** | 69 |
+| **Calculators** | 38 |
+| **Simulations** | 33 |
+| **Total Features** | 71 |
 
 ---
 
 ## ✅ Completed Work (Latest)
+
+### Session 15 - 2026-03-03
+
+#### 1. **Simulation: Voltage Multiplier Circuit** 🆕
+**File:** `pages/simulations/voltage-multiplier.vue` + `components/VoltageMultiplierSimulator.vue`
+
+**Features:**
+- Interactive voltage multiplier simulation with 2 configurations:
+  - Half-Wave Rectifier
+  - Voltage Doubler
+- Real-time waveform visualization:
+  - Input AC waveform (blue, semi-transparent)
+  - Output DC waveform (green, solid)
+  - Live voltage indicators
+- Live calculations:
+  - DC output voltage
+  - Voltage gain
+  - Ripple voltage
+  - Output power
+- Input controls:
+  - Peak voltage (1-30V)
+  - Frequency (10-100Hz)
+  - Load resistance (50-5000Ω)
+  - Configuration selection (Half-wave/Doubler)
+  - Animation speed control
+- Quick presets:
+  - Standard Doubler (10V, 50Hz, 1kΩ)
+  - Low Voltage (5V, 60Hz, 500Ω)
+  - High Voltage (20V, 50Hz, 2kΩ)
+  - Heavy Load (12V, 50Hz, 100Ω)
+- Interactive circuit diagrams showing:
+  - AC source
+  - Diodes (D1, D2)
+  - Capacitors (C1, C2) with charge indicators
+  - Load resistor
+  - Animated current flow
+- Comprehensive educational content:
+  - How voltage multipliers work
+  - Half-wave vs doubler configurations
+  - Key formulas and calculations
+  - Applications (CRT displays, ion generators, charge pumps)
+
+**Key Formulas:**
+```
+Half-Wave: Vdc = Vpeak - Vdiode
+Doubler: Vdc = 2×Vpeak - 2×Vdiode
+Ripple: Vripple = Iload × T / C
+Gain = Vout / Vin
+```
+
+---
+
+#### 2. **Calculator: RL Time Constant Calculator** 🆕
+**File:** `pages/calculators/rl-time-constant.vue` + `components/RLTimeConstantCalculator.vue`
+
+**Features:**
+- Complete RL circuit transient analysis:
+  - Time constant calculation (τ = L/R)
+  - Charging and discharging phases
+  - Current and voltage calculations
+  - Energy storage analysis
+- Real-time calculations:
+  - Current at time t
+  - Inductor voltage (VL)
+  - Resistor voltage (VR)
+  - Stored energy (E = ½LI²)
+- Time response curve visualization:
+  - Interactive plot with current point tracking
+  - Time constant markers (1τ to 5τ)
+  - Percentage level markers (63.2%, 86.5%, etc.)
+  - Color-coded curves (green for charging, red for discharging)
+- Input controls:
+  - Resistance (1-1000Ω)
+  - Inductance (1-1000mH)
+  - Time (0-100ms)
+  - Mode selection (Charging/Discharging)
+- Reference calculations:
+  - Time to reach 63.2%, 86.5%, 95%, 98.2%, 99.3%
+  - Shows both absolute time and multiple of τ
+- Quick presets:
+  - Fast Response (1kΩ, 10mH)
+  - Medium (100Ω, 100mH)
+  - Slow Response (10Ω, 1000mH)
+  - High Inductance (50Ω, 500mH)
+- Comprehensive educational content:
+  - RL circuit theory and behavior
+  - Transient response analysis
+  - Key formulas and explanations
+  - Practical applications (motors, relays, filters, speakers)
+
+**Key Formulas:**
+```
+Time Constant: τ = L / R
+Charging: I(t) = (V/R) × (1 - e^(-t/τ))
+Discharging: I(t) = I0 × e^(-t/τ)
+Inductor Voltage: VL = L × (di/dt)
+Stored Energy: E = ½ × L × I²
+```
+
+---
 
 ### Session 14 - 2026-03-03
 
@@ -121,6 +221,7 @@ Required Rθsa = (Tmax - Ta)/P - Rθjc - Rθcs
 
 | Session | Date | Features Added | Notes |
 |---------|------|----------------|-------|
+| 15 | 2026-03-03 | Voltage Multiplier Circuit, RL Time Constant Calculator | Cron run - 2 major features |
 | 14 | 2026-03-03 | Diode Clipping Circuits, Heatsink Thermal Calculator | Cron run - 2 major features |
 | 13 | 2026-03-03 | Rectifier Smoothing Filter, RMS/Peak Calculator | Cron run - 2 major features |
 | 12 | 2026-03-03 | Zener Voltage Regulator, Max Power Transfer | Cron run - 2 major features |
@@ -165,16 +266,16 @@ Potential topics for future development:
 
 ## 💾 Git Status
 
-**Latest Commit:** 7086add  
-**Branch:** main  
-**Status:** Clean (all changes committed and pushed)  
+**Latest Commit:** 7eabc98
+**Branch:** main
+**Status:** Clean (all changes committed and pushed)
 **Build:** ✅ Success (npm run build)
 
 ---
 
 ## 📝 Notes
 
-- Both new features use Vue 3 Composition API with `<script setup>`
+- All new features use Vue 3 Composition API with `<script setup>`
 - TailwindCSS styling with full dark mode support
 - Interactive SVG visualizations for all concepts
 - Comprehensive educational content with formulas, examples, and applications
@@ -183,10 +284,10 @@ Potential topics for future development:
 - Responsive design for mobile and desktop
 - Git pull completed successfully before starting work
 - No incomplete work from previous sessions
-- Total project now has 69 features (37 calculators + 32 simulations)
-- Updated calculators index to include RMS & Peak Calculator and Heatsink Thermal Calculator
-- Updated simulations index to include Diode Clipping Circuits
+- Total project now has 71 features (38 calculators + 33 simulations)
+- Updated calculators index to include RL Time Constant Calculator
+- Updated simulations index to include Voltage Multiplier Circuit
 
 ---
 
-*End of Session 14 Report*
+*End of Session 15 Report*
