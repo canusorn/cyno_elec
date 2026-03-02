@@ -1,320 +1,347 @@
 <template>
-  <div
-    :class="[colorMode === 'dark' ? 'dark' : '', 'min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800']">
+  <div :class="[$colorMode === 'dark' ? 'dark' : '', 'min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800']">
     <!-- Navigation -->
-    <nav class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg fixed w-full z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-          <div class="flex items-center">
-            <NuxtLink to="/" class="flex items-center">
-              <!-- Cyno Electric SVG Icon -->
-              <svg class="h-8 sm:h-10 mr-2 hover:scale-105 transition-transform" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="18" stroke="#9FA8DA" stroke-width="2" fill="none"/>
-                <path d="M15 12L25 20L15 28V12Z" fill="#9FA8DA"/>
-                <circle cx="20" cy="20" r="3" fill="#7986CB"/>
-                <path d="M12 8L28 32M28 8L12 32" stroke="#C5CAE9" stroke-width="1" opacity="0.6"/>
-              </svg>
-              <span
-                class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">Cyno Electric</span>
-            </NuxtLink>
-          </div>
-
-          <!-- Desktop Navigation -->
-          <div class="hidden md:flex items-center space-x-6">
-            <NuxtLink to="/"
-              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
-              Home</NuxtLink>
-            <NuxtLink to="/calculators"
-              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
-              Calculators</NuxtLink>
-            <NuxtLink to="/contact"
-              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
-              Contact</NuxtLink>
-            <button @click="toggleDark"
-              class="text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
-              <svg v-if="colorMode === 'dark'" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-              <svg v-else class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Mobile menu button -->
-          <div class="md:hidden flex items-center">
-            <button @click="mobileMenuOpen = !mobileMenuOpen"
-              class="text-gray-600 dark:text-gray-200 hover:text-primary focus:outline-none focus:text-primary transition-colors">
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16" />
-                <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Mobile Navigation Menu -->
-        <div v-show="mobileMenuOpen"
-          class="md:hidden bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-t border-gray-200 dark:border-gray-700">
-          <div class="px-2 pt-2 pb-3 space-y-1">
-            <NuxtLink to="/" @click="mobileMenuOpen = false"
-              class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
-              Home</NuxtLink>
-            <NuxtLink to="/calculators" @click="mobileMenuOpen = false"
-              class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
-              Calculators</NuxtLink>
-            <NuxtLink to="/contact" @click="mobileMenuOpen = false"
-              class="block px-3 py-2 text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors rounded-md">
-              Contact</NuxtLink>
-            <div class="px-3 py-2">
-              <button @click="toggleDark"
-                class="w-full text-left text-gray-600 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-colors">
-                Toggle Dark Mode
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <NavigationBar />
 
     <!-- Header Section -->
     <section class="relative pt-24 pb-16">
-      <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent dark:from-primary/5"></div>
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent dark:from-primary/5 pointer-events-none"></div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div class="text-center mb-8">
           <div class="flex justify-center mb-4">
-            <ChartBarIcon class="h-16 w-16 text-primary" />
+            <svg class="h-16 w-16 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
           </div>
-          <h1
-            class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-4">
+          <h1 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-4">
             Voltage Divider Calculator
           </h1>
           <p class="text-xl text-gray-600 dark:text-gray-300 mb-6">
-            Calculate output voltage in a voltage divider circuit
+            Calculate output voltage and design voltage divider circuits with interactive visualization
           </p>
-          <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-4 inline-block">
-            <div class="animated-formula" ref="formulaContainer">
-              <span class="formula-part output" ref="outputElement">Vout</span>
-              <span class="formula-operator">=</span>
-              <span class="formula-part input" ref="inputElement">Vin</span>
-              <span class="formula-operator">×</span>
-              <span class="formula-part fraction">(</span>
-              <span class="formula-part r2" ref="r2Element">R2</span>
-              <span class="formula-operator">/</span>
-              <span class="formula-part denominator">(</span>
-              <span class="formula-part r1" ref="r1Element">R1</span>
-              <span class="formula-operator">+</span>
-              <span class="formula-part r2" ref="r2Element2">R2</span>
-              <span class="formula-part denominator">))</span>
+
+          <!-- Animated Formula -->
+          <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-4 inline-block mb-8">
+            <div class="flex items-center gap-3 text-2xl font-mono font-bold flex-wrap justify-center">
+              <span class="text-primary-highlight">V_out</span>
+              <span class="text-gray-400">=</span>
+              <span class="text-primary-highlight">V_in</span>
+              <span class="text-gray-400">×</span>
+              <span class="text-primary-highlight">R2</span>
+              <span class="text-gray-400">÷</span>
+              <span class="text-gray-400">(</span>
+              <span class="text-primary-highlight">R1</span>
+              <span class="text-gray-400">+</span>
+              <span class="text-primary-highlight">R2</span>
+              <span class="text-gray-400">)</span>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Output Voltage = Input × (Bottom Resistor ÷ Total Resistance)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Circuit Visualization -->
+    <section class="pb-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 mb-8">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+            ⚡ Voltage Divider Circuit
+          </h3>
+
+          <!-- SVG Circuit Diagram -->
+          <div class="flex justify-center mb-6">
+            <svg viewBox="0 0 800 350" class="w-full max-w-4xl h-auto bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-900 rounded-lg">
+              <defs>
+                <filter id="glowVoltage">
+                  <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <!-- Main circuit rectangle -->
+              <line x1="100" y1="50" x2="700" y2="50" stroke="#6B7280" stroke-width="4" stroke-linecap="round"/>
+              <line x1="700" y1="50" x2="700" y2="300" stroke="#6B7280" stroke-width="4" stroke-linecap="round"/>
+              <line x1="700" y1="300" x2="100" y2="300" stroke="#6B7280" stroke-width="4" stroke-linecap="round"/>
+              <line x1="100" y1="300" x2="100" y2="50" stroke="#6B7280" stroke-width="4" stroke-linecap="round"/>
+
+              <!-- Input Voltage Source -->
+              <g>
+                <circle cx="100" cy="175" r="40" fill="white" stroke="#EF4444" stroke-width="3"/>
+                <line x1="85" y1="165" x2="115" y2="165" stroke="#EF4444" stroke-width="4"/>
+                <line x1="90" y1="185" x2="110" y2="185" stroke="#EF4444" stroke-width="2"/>
+                <text x="100" y="230" text-anchor="middle" :font-size="13" font-weight="bold" fill="#EF4444">
+                  V_in = {{ vin }}V
+                </text>
+              </g>
+
+              <!-- R1 (Top Resistor) -->
+              <g>
+                <path d="M 300 50 L 300 35 L 310 40 L 290 50 L 310 60 L 290 70 L 310 80 L 290 90 L 310 100 L 300 105 L 300 120"
+                  fill="none" stroke="#3B82F6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="300" y="30" text-anchor="middle" :font-size="12" font-weight="bold" fill="#3B82F6">
+                  R1 = {{ r1 }}Ω
+                </text>
+                <text x="300" y="140" text-anchor="middle" :font-size="11" fill="#3B82F6">
+                  VR1 = ((vin - vout).toFixed(2))V
+                </text>
+              </g>
+
+              <!-- R2 (Bottom Resistor) -->
+              <g>
+                <path d="M 300 300 L 300 285 L 310 290 L 290 300 L 310 310 L 290 320 L 310 330 L 290 340 L 300 345 L 300 360"
+                  fill="none" stroke="#10B981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(0, -60)"/>
+                <text x="300" y="270" text-anchor="middle" :font-size="12" font-weight="bold" fill="#10B981">
+                  R2 = {{ r2 }}Ω
+                </text>
+                <text x="300" y="215" text-anchor="middle" :font-size="11" fill="#10B981">
+                  VR2 = {{ vout.toFixed(2) }}V
+                </text>
+              </g>
+
+              <!-- Output Node -->
+              <g>
+                <circle cx="300" cy="175" r="6" fill="#F59E0B" filter="url(#glowVoltage)"/>
+                <text x="320" y="180" :font-size="13" font-weight="bold" fill="#F59E0B">
+                  V_out = {{ vout.toFixed(2) }}V
+                </text>
+              </g>
+
+              <!-- Ground symbol -->
+              <g transform="translate(700, 300)">
+                <line x1="0" y1="0" x2="0" y2="20" stroke="#6B7280" stroke-width="3"/>
+                <line x1="-20" y1="20" x2="20" y2="20" stroke="#6B7280" stroke-width="3"/>
+                <line x1="-12" y1="26" x2="12" y2="26" stroke="#6B7280" stroke-width="3"/>
+                <line x1="-4" y1="32" x2="4" y2="32" stroke="#6B7280" stroke-width="3"/>
+              </g>
+
+              <!-- Load connection indicator -->
+              <g>
+                <rect x="500" y="150" width="120" height="50" rx="5" fill="rgba(139, 92, 246, 0.1)" stroke="#8B5CF6" stroke-width="2"/>
+                <text x="560" y="175" text-anchor="middle" :font-size="11" fill="#8B5CF6">Load Connected</text>
+                <text x="560" y="190" text-anchor="middle" :font-size="10" fill="#8B5CF6">to V_out</text>
+              </g>
+
+              <!-- Current indicator -->
+              <g>
+                <rect x="420" y="35" width="140" height="25" rx="4" fill="rgba(59, 130, 246, 0.1)" stroke="#3B82F6" stroke-width="2"/>
+                <text x="490" y="53" text-anchor="middle" :font-size="11" font-weight="bold" fill="#1E40AF">
+                  I = {{ current.toFixed(4) }}A
+                </text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calculator Controls -->
+    <section class="pb-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            🎛️ Calculator Controls
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Input Voltage -->
+            <div class="space-y-4">
+              <label class="block text-lg font-semibold text-gray-700 dark:text-gray-200">
+                🔋 Input Voltage (V_in)
+              </label>
+              <div class="relative">
+                <input
+                  type="number"
+                  v-model.number="vin"
+                  min="0"
+                  max="1000"
+                  step="0.1"
+                  class="w-full px-4 py-3 text-lg font-mono bg-gray-50 dark:bg-gray-700 border-2 border-blue-300 dark:border-blue-700 rounded-lg focus:outline-none focus:border-blue-500 dark:focus:border-blue-500 text-gray-900 dark:text-white"
+                >
+                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 font-semibold">V</span>
+              </div>
+              <input
+                type="range"
+                v-model.number="vin"
+                min="0"
+                max="100"
+                step="0.1"
+                class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer"
+              >
+            </div>
+
+            <!-- R1 Resistor -->
+            <div class="space-y-4">
+              <label class="block text-lg font-semibold text-gray-700 dark:text-gray-200">
+                🔵 Resistor R1 (Top)
+              </label>
+              <div class="relative">
+                <input
+                  type="number"
+                  v-model.number="r1"
+                  min="1"
+                  max="1000000"
+                  step="1"
+                  class="w-full px-4 py-3 text-lg font-mono bg-gray-50 dark:bg-gray-700 border-2 border-blue-300 dark:border-blue-700 rounded-lg focus:outline-none focus:border-blue-500 dark:focus:border-blue-500 text-gray-900 dark:text-white"
+                >
+                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 font-semibold">Ω</span>
+              </div>
+              <input
+                type="range"
+                v-model.number="r1"
+                min="10"
+                max="10000"
+                step="10"
+                class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer"
+              >
+              <div class="text-sm text-gray-600 dark:text-gray-400">
+                VR1 = {{ (vin - vout).toFixed(2) }}V
+              </div>
+            </div>
+
+            <!-- R2 Resistor -->
+            <div class="space-y-4">
+              <label class="block text-lg font-semibold text-gray-700 dark:text-gray-200">
+                🟢 Resistor R2 (Bottom)
+              </label>
+              <div class="relative">
+                <input
+                  type="number"
+                  v-model.number="r2"
+                  min="1"
+                  max="1000000"
+                  step="1"
+                  class="w-full px-4 py-3 text-lg font-mono bg-gray-50 dark:bg-gray-700 border-2 border-green-300 dark:border-green-700 rounded-lg focus:outline-none focus:border-green-500 dark:focus:border-green-500 text-gray-900 dark:text-white"
+                >
+                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 font-semibold">Ω</span>
+              </div>
+              <input
+                type="range"
+                v-model.number="r2"
+                min="10"
+                max="10000"
+                step="10"
+                class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer"
+              >
+              <div class="text-sm text-gray-600 dark:text-gray-400">
+                VR2 = {{ vout.toFixed(2) }}V
+              </div>
             </div>
           </div>
-          
-          <!-- Animated Voltage Divider Visualization -->
+
+          <!-- Calculate Button -->
           <div class="mt-8 flex justify-center">
-            <div class="divider-animation" ref="dividerContainer">
-              <svg width="300" height="350" viewBox="0 0 300 350" class="text-primary">
-                <!-- Input voltage source -->
-                <g class="voltage-source">
-                  <rect x="50" y="50" width="30" height="60" fill="none" stroke="currentColor" stroke-width="3"/>
-                  <text x="65" y="85" class="text-sm fill-current text-center font-bold">Vin</text>
-                  <text x="65" y="130" class="text-xs fill-current text-center voltage-value" ref="vinDisplay">12V</text>
-                </g>
-                
-                <!-- Wires -->
-                <line x1="80" y1="60" x2="150" y2="60" stroke="currentColor" stroke-width="3" class="wire"/>
-                <line x1="50" y1="100" x2="20" y2="100" stroke="currentColor" stroke-width="3" class="wire"/>
-                <line x1="20" y1="100" x2="20" y2="280" stroke="currentColor" stroke-width="3" class="wire"/>
-                <line x1="20" y1="280" x2="150" y2="280" stroke="currentColor" stroke-width="3" class="wire"/>
-                
-                <!-- R1 Resistor -->
-                <g class="resistor-r1">
-                  <rect x="150" y="50" width="60" height="20" fill="none" stroke="currentColor" stroke-width="3" class="resistor-body"/>
-                  <path d="M155,60 L160,55 L165,65 L170,55 L175,65 L180,55 L185,65 L190,55 L195,65 L200,55 L205,60" 
-                        stroke="currentColor" stroke-width="2" fill="none"/>
-                  <text x="180" y="45" class="text-xs fill-current text-center">R1</text>
-                  <text x="180" y="85" class="text-xs fill-current text-center resistor-value" ref="r1Display">1kΩ</text>
-                </g>
-                
-                <!-- Connection point -->
-                <circle cx="150" cy="150" r="4" fill="currentColor" class="connection-point"/>
-                <line x1="150" y1="70" x2="150" y2="150" stroke="currentColor" stroke-width="3" class="wire"/>
-                
-                <!-- R2 Resistor -->
-                <g class="resistor-r2">
-                  <rect x="150" y="180" width="60" height="20" fill="none" stroke="currentColor" stroke-width="3" class="resistor-body"/>
-                  <path d="M155,190 L160,185 L165,195 L170,185 L175,195 L180,185 L185,195 L190,185 L195,195 L200,185 L205,190" 
-                        stroke="currentColor" stroke-width="2" fill="none"/>
-                  <text x="180" y="175" class="text-xs fill-current text-center">R2</text>
-                  <text x="180" y="215" class="text-xs fill-current text-center resistor-value" ref="r2Display">1kΩ</text>
-                </g>
-                
-                <line x1="150" y1="150" x2="150" y2="180" stroke="currentColor" stroke-width="3" class="wire"/>
-                <line x1="150" y1="200" x2="150" y2="280" stroke="currentColor" stroke-width="3" class="wire"/>
-                
-                <!-- Output connection -->
-                <line x1="150" y1="150" x2="220" y2="150" stroke="currentColor" stroke-width="3" class="wire"/>
-                <circle cx="220" cy="150" r="4" fill="currentColor" class="output-point"/>
-                <text x="230" y="150" class="text-sm fill-current font-bold">Vout</text>
-                <text x="230" y="165" class="text-xs fill-current voltage-value" ref="voutDisplay">6V</text>
-                
-                <!-- Voltage indicators -->
-                <g class="voltage-indicators">
-                  <!-- V1 across R1 -->
-                  <path d="M120,60 Q110,110 120,150" stroke="#FF6B6B" stroke-width="2" fill="none" class="voltage-arc"/>
-                  <text x="100" y="105" class="text-xs fill-current voltage-label" ref="v1Display">V1</text>
-                  
-                  <!-- V2 across R2 -->
-                  <path d="M120,150 Q110,215 120,280" stroke="#4CAF50" stroke-width="2" fill="none" class="voltage-arc"/>
-                  <text x="100" y="215" class="text-xs fill-current voltage-label" ref="v2Display">V2</text>
-                </g>
-                
-                <!-- Current flow -->
-                <g class="current-flow">
-                  <circle r="2" fill="#FFD700" class="current-particle">
-                    <animateMotion dur="3s" repeatCount="indefinite" 
-                      path="M80,60 L150,60 L150,150 L150,280 L20,280 L20,100 L50,100"/>
-                  </circle>
-                  <text x="250" y="60" class="text-xs fill-current current-label">I</text>
-                </g>
-                
-                <!-- Labels -->
-                <text x="150" y="25" class="text-sm fill-current text-center font-bold">Voltage Divider</text>
-                <text x="150" y="320" class="text-xs fill-current text-center">Vout = Vin × R2/(R1+R2)</text>
-              </svg>
+            <button
+              @click="calculateFromVout"
+              class="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-lg"
+            >
+              🔄 Reverse Calculate (Find R2 for Target V_out)
+            </button>
+          </div>
+
+          <!-- Results Display -->
+          <div class="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-900 rounded-xl p-6">
+            <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-4">📊 Calculation Results</h4>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                <div class="text-sm text-gray-600 dark:text-gray-400">Output Voltage</div>
+                <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{{ vout.toFixed(2) }}V</div>
+              </div>
+              <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                <div class="text-sm text-gray-600 dark:text-gray-400">Total Resistance</div>
+                <div class="text-2xl font-bold text-green-600 dark:text-green-400">{{ (r1 + r2).toFixed(1) }}Ω</div>
+              </div>
+              <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                <div class="text-sm text-gray-600 dark:text-gray-400">Current</div>
+                <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">{{ current.toFixed(4) }}A</div>
+              </div>
+              <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                <div class="text-sm text-gray-600 dark:text-gray-400">Total Power</div>
+                <div class="text-2xl font-bold text-orange-600 dark:text-orange-400">{{ totalPower.toFixed(3) }}W</div>
+              </div>
+            </div>
+
+            <!-- Divider Ratio -->
+            <div class="mt-4 bg-white dark:bg-gray-800 rounded-lg p-4">
+              <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">Voltage Divider Ratio:</div>
+              <div class="font-mono text-lg text-gray-900 dark:text-gray-200">
+                {{ (vout / vin).toFixed(4) }} ({{ ((vout / vin) * 100).toFixed(2) }}%)
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Calculator Section -->
+    <!-- Educational Content -->
     <section class="pb-20">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <!-- Input Section -->
-            <div>
-              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Input Values</h3>
-              <div class="space-y-6">
-                <div class="mb-4 text-center">
-                <p class="text-sm text-gray-600 dark:text-gray-300">
-                  Enter any three values to calculate the fourth variable
-                </p>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Input Voltage (Vin) - Volts
-                </label>
-                <input 
-                  v-model.number="inputs.inputVoltage"
-                  type="number" 
-                  step="any"
-                  placeholder="Enter input voltage in volts"
-                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Resistor 1 (R1) - Ohms
-                </label>
-                <input 
-                  v-model.number="inputs.r1"
-                  type="number" 
-                  step="any"
-                  placeholder="Enter R1 in ohms (top resistor)"
-                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Resistor 2 (R2) - Ohms
-                </label>
-                <input 
-                  v-model.number="inputs.r2"
-                  type="number" 
-                  step="any"
-                  placeholder="Enter R2 in ohms (bottom resistor)"
-                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Output Voltage (Vout) - Volts
-                </label>
-                <input 
-                  v-model.number="inputs.outputVoltage"
-                  type="number" 
-                  step="any"
-                  placeholder="Enter output voltage in volts"
-                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg"
-                />
-              </div>
-              </div>
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+            📚 Understanding Voltage Dividers
+          </h2>
+
+          <div class="prose prose-gray dark:prose-invert max-w-none">
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-6 mb-3">What is a Voltage Divider?</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              A voltage divider is a simple circuit that turns a large voltage into a smaller one using two resistors in series.
+              It's one of the most fundamental circuits in electronics, used everywhere from sensors to power supplies.
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-6 mb-3">How It Works:</h3>
+            <ul class="list-disc pl-6 text-gray-600 dark:text-gray-300 mb-4 space-y-2">
+              <li><strong>Input voltage</strong> is applied across the series combination of R1 and R2</li>
+              <li><strong>Output voltage</strong> is taken from the junction between R1 and R2</li>
+              <li><strong>Voltage divides</strong> proportionally based on the ratio of resistances</li>
+              <li>The same current flows through both resistors</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-6 mb-3">Key Formulas:</h3>
+            <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 font-mono text-sm my-4 space-y-2">
+              <div>V_out = V_in × [R2 ÷ (R1 + R2)]</div>
+              <div>I_total = V_in ÷ (R1 + R2)</div>
+              <div>P_total = V_in × I_total</div>
             </div>
 
-            <!-- Result Section -->
-            <div>
-              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Result</h3>
-              <div class="bg-gradient-to-r from-primary/10 to-primary-dark/10 rounded-lg p-6">
-                <div class="text-center">
-                  <span class="text-lg text-gray-600 dark:text-gray-300">{{ calculatedVariable ? calculatedVariable.label : 'Output Voltage (Vout)' }}</span>
-                  <div class="text-4xl font-bold text-primary mt-2">
-                    {{ calculatedVariable ? calculatedVariable.value.toFixed(3) + ' ' + calculatedVariable.unit : '---' }}
-                  </div>
-                  <div v-if="calculatedVariable" class="mt-4 text-sm text-gray-600 dark:text-gray-300">
-                    {{ calculatedVariable.formula }}
-                  </div>
-                </div>
-              </div>
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-6 mb-3">Common Applications:</h3>
+            <ul class="list-disc pl-6 text-gray-600 dark:text-gray-300 mb-4 space-y-2">
+              <li><strong>Sensor circuits:</strong> Reducing voltage for microcontroller ADC inputs</li>
+              <li><strong>Reference voltages:</strong> Creating stable voltage levels for comparators</li>
+              <li><strong>Signal level shifting:</strong> Matching voltage levels between circuits</li>
+              <li><strong>Bias networks:</strong> Setting operating points for transistors</li>
+            </ul>
 
-              <!-- Circuit Diagram -->
-              <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <h4 class="font-semibold text-gray-900 dark:text-white mb-4 text-center">Circuit Diagram</h4>
-                <div class="flex justify-center">
-                  <svg width="200" height="250" viewBox="0 0 200 250" class="text-primary">
-                    <!-- Input voltage source -->
-                    <text x="10" y="20" class="text-sm fill-current">Vin</text>
-                    <line x1="50" y1="30" x2="150" y2="30" stroke="currentColor" stroke-width="2"/>
-                    
-                    <!-- R1 -->
-                    <rect x="70" y="40" width="60" height="20" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <text x="95" y="55" class="text-sm fill-current text-center">R1</text>
-                    <line x1="100" y1="30" x2="100" y2="40" stroke="currentColor" stroke-width="2"/>
-                    <line x1="100" y1="60" x2="100" y2="80" stroke="currentColor" stroke-width="2"/>
-                    
-                    <!-- Output point -->
-                    <circle cx="100" cy="80" r="3" fill="currentColor"/>
-                    <text x="110" y="85" class="text-sm fill-current">Vout</text>
-                    <line x1="100" y1="80" x2="150" y2="80" stroke="currentColor" stroke-width="2"/>
-                    
-                    <!-- R2 -->
-                    <rect x="70" y="90" width="60" height="20" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <text x="95" y="105" class="text-sm fill-current text-center">R2</text>
-                    <line x1="100" y1="80" x2="100" y2="90" stroke="currentColor" stroke-width="2"/>
-                    <line x1="100" y1="110" x2="100" y2="130" stroke="currentColor" stroke-width="2"/>
-                    
-                    <!-- Ground -->
-                    <line x1="50" y1="130" x2="150" y2="130" stroke="currentColor" stroke-width="2"/>
-                    <line x1="90" y1="140" x2="110" y2="140" stroke="currentColor" stroke-width="2"/>
-                    <line x1="95" y1="145" x2="105" y2="145" stroke="currentColor" stroke-width="2"/>
-                    <line x1="98" y1="150" x2="102" y2="150" stroke="currentColor" stroke-width="2"/>
-                    
-                    <!-- Vertical connections -->
-                    <line x1="50" y1="30" x2="50" y2="130" stroke="currentColor" stroke-width="2"/>
-                    <line x1="150" y1="30" x2="150" y2="130" stroke="currentColor" stroke-width="2"/>
-                  </svg>
-                </div>
-              </div>
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-6 mb-3">Design Tips:</h3>
+            <ul class="list-disc pl-6 text-gray-600 dark:text-gray-300 mb-4 space-y-2">
+              <li><strong>Avoid loading effects:</strong> Ensure load resistance ≫ R2 (at least 10x)</li>
+              <li><strong>Power considerations:</strong> Calculate power dissipation in both resistors</li>
+              <li><strong>Tolerance:</strong> Use 1% or better resistors for precise voltage division</li>
+              <li><strong>Temperature:</strong> Resistor values change with temperature</li>
+            </ul>
 
-              <!-- Formula Explanation -->
-              <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Formula Explanation</h4>
-                <p class="text-sm text-gray-600 dark:text-gray-300">
-                  A voltage divider uses two resistors to create a fraction of the input voltage. 
-                  The output voltage is proportional to the ratio of R2 to the total resistance (R1+R2).
-                </p>
-              </div>
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-6 mb-3">Real-World Example:</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              If you have a 12V supply and need 3.3V for a microcontroller:
+            </p>
+            <ul class="list-disc pl-6 text-gray-600 dark:text-gray-300 mb-4 space-y-2">
+              <li>Desired ratio: 3.3V ÷ 12V = 0.275 (27.5%)</li>
+              <li>Choose R2 = 1kΩ, then R1 = 2.6kΩ (or 2.7kΩ standard value)</li>
+              <li>Current: 12V ÷ 3.7kΩ ≈ 3.2mA</li>
+              <li>Power in R1: (8.7V)² ÷ 2700Ω ≈ 28mW</li>
+              <li>Power in R2: (3.3V)² ÷ 1000Ω ≈ 11mW</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-6 mb-3">⚠️ Important Warnings:</h3>
+            <div class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-4 my-4">
+              <ul class="text-sm text-red-700 dark:text-red-400 space-y-2">
+                <li>• Voltage dividers are NOT suitable for powering devices - use a voltage regulator instead</li>
+                <li>• Output voltage changes when load is connected (loading effect)</li>
+                <li>• Never use for high-power applications - resistors will overheat</li>
+                <li>• For precision applications, use a dedicated voltage reference IC</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -322,419 +349,62 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 dark:bg-black mt-16">
-      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-          <svg class="mx-auto h-12 mb-4 hover:scale-105 transition-transform" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="18" stroke="#9FA8DA" stroke-width="2" fill="none"/>
-            <path d="M15 12L25 20L15 28V12Z" fill="#9FA8DA"/>
-            <circle cx="20" cy="20" r="3" fill="#7986CB"/>
-            <path d="M12 8L28 32M28 8L12 32" stroke="#C5CAE9" stroke-width="1" opacity="0.6"/>
-          </svg>
-          <p class="text-base text-gray-400">&copy; 2025 Cyno Electric. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
+    <Footer />
   </div>
 </template>
 
-<script>
-import { useColorMode } from '@vueuse/core'
-import { ChartBarIcon } from '@heroicons/vue/24/outline'
+<script setup lang="ts">
+import { ref, computed } from 'vue'
+import NavigationBar from '~/components/NavigationBar.vue'
+import Footer from '~/components/Footer.vue'
 
-export default {
-  name: 'VoltageDividerCalculator',
-  components: {
-    ChartBarIcon
-  },
-  setup() {
-    // SEO
-    useHead({
-      title: 'Voltage Divider Calculator - Cyno Electric',
-      meta: [
-        { name: 'description', content: 'Calculate output voltage in a voltage divider circuit using input voltage and resistor values. Professional circuit analysis tool.' },
-        { name: 'keywords', content: 'voltage divider calculator, resistor divider, circuit analysis, voltage ratio, electrical engineering' }
-      ]
-    })
+// State
+const vin = ref(12)
+const r1 = ref(220)
+const r2 = ref(100)
 
-    const colorMode = useColorMode()
-    
-    return {
-      colorMode
-    }
-  },
-  data() {
-    return {
-      mobileMenuOpen: false,
-      inputs: {
-        inputVoltage: null,
-        r1: null,
-        r2: null,
-        outputVoltage: null
-      },
-      animationSpeed: 1
-    }
-  },
-  computed: {
-    hasAnyInput() {
-      return this.inputs.inputVoltage || this.inputs.r1 || this.inputs.r2 || this.inputs.outputVoltage
-    },
-    calculatedVariable() {
-      const { inputVoltage, r1, r2, outputVoltage } = this.inputs
-      
-      // Count non-null inputs
-      const inputCount = [inputVoltage, r1, r2, outputVoltage].filter(val => val !== null && val !== undefined && val !== '').length
-      
-      // Need exactly 3 inputs to calculate the 4th
-      if (inputCount !== 3) return null
-      
-      // Calculate missing variable
-      if (!inputVoltage && r1 && r2 && outputVoltage) {
-        // Calculate Input Voltage: Vin = Vout × (R1 + R2) / R2
-        const value = outputVoltage * (r1 + r2) / r2
-        return {
-          variable: 'inputVoltage',
-          value: value,
-          label: 'Input Voltage (Vin)',
-          unit: 'V',
-          formula: `Vin = Vout × (R1 + R2) / R2 = ${outputVoltage} × (${r1} + ${r2}) / ${r2} = ${value.toFixed(3)} V`
-        }
-      } else if (inputVoltage && !r1 && r2 && outputVoltage) {
-        // Calculate R1: R1 = R2 × (Vin - Vout) / Vout
-        const value = r2 * (inputVoltage - outputVoltage) / outputVoltage
-        return {
-          variable: 'r1',
-          value: value,
-          label: 'Resistor 1 (R1)',
-          unit: 'Ω',
-          formula: `R1 = R2 × (Vin - Vout) / Vout = ${r2} × (${inputVoltage} - ${outputVoltage}) / ${outputVoltage} = ${value.toFixed(3)} Ω`
-        }
-      } else if (inputVoltage && r1 && !r2 && outputVoltage) {
-        // Calculate R2: R2 = R1 × Vout / (Vin - Vout)
-        const value = r1 * outputVoltage / (inputVoltage - outputVoltage)
-        return {
-          variable: 'r2',
-          value: value,
-          label: 'Resistor 2 (R2)',
-          unit: 'Ω',
-          formula: `R2 = R1 × Vout / (Vin - Vout) = ${r1} × ${outputVoltage} / (${inputVoltage} - ${outputVoltage}) = ${value.toFixed(3)} Ω`
-        }
-      } else if (inputVoltage && r1 && r2 && !outputVoltage) {
-        // Calculate Output Voltage: Vout = Vin × R2 / (R1 + R2)
-        const value = inputVoltage * r2 / (r1 + r2)
-        return {
-          variable: 'outputVoltage',
-          value: value,
-          label: 'Output Voltage (Vout)',
-          unit: 'V',
-          formula: `Vout = Vin × R2 / (R1 + R2) = ${inputVoltage} × ${r2} / (${r1} + ${r2}) = ${value.toFixed(3)} V`
-        }
-      }
-      
-      return null
-    }
-  },
-  mounted() {
-    this.initializeAnimations()
-  },
-  watch: {
-    'inputs.inputVoltage'() {
-      this.animateFormulaHighlight('input')
-      this.updateVoltageDisplay()
-    },
-    'inputs.r1'() {
-      this.animateFormulaHighlight('r1')
-      this.updateResistorDisplay()
-    },
-    'inputs.r2'() {
-      this.animateFormulaHighlight('r2')
-      this.updateResistorDisplay()
-    },
-    'inputs.outputVoltage'() {
-      this.animateFormulaHighlight('output')
-      this.updateVoltageDisplay()
-    },
-    calculatedVariable() {
-      if (this.calculatedVariable) {
-        this.animateResult()
-        this.updateVoltageDivision()
-      }
-    }
-  },
-  methods: {
-    toggleDark() {
-      this.colorMode = this.colorMode === 'dark' ? 'light' : 'dark'
-    },
-    initializeAnimations() {
-      // Animate formula parts on load
-      setTimeout(() => {
-        const formulaElements = this.$refs.formulaContainer?.querySelectorAll('.formula-part, .formula-operator')
-        formulaElements?.forEach((element, index) => {
-          setTimeout(() => {
-            element.style.animationDelay = `${index * 0.2}s`
-            element.classList.add('fade-in')
-          }, index * 200)
-        })
-      }, 500)
-    },
-    animateFormulaHighlight(type) {
-      const elementMap = {
-        input: 'inputElement',
-        r1: 'r1Element',
-        r2: 'r2Element',
-        output: 'outputElement'
-      }
-      
-      const element = this.$refs[elementMap[type]]
-      if (element) {
-        element.classList.add('highlight')
-        setTimeout(() => {
-          element.classList.remove('highlight')
-        }, 600)
-      }
-    },
-    updateVoltageDisplay() {
-      const vinDisplay = this.$refs.vinDisplay
-      const inputVoltage = this.inputs.inputVoltage || (this.calculatedVariable && this.calculatedVariable.variable === 'inputVoltage' ? this.calculatedVariable.value : 0)
-      
-      if (vinDisplay) {
-        vinDisplay.textContent = `${inputVoltage}V`
-      }
-    },
-    updateResistorDisplay() {
-      const r1Display = this.$refs.r1Display
-      const r2Display = this.$refs.r2Display
-      const r1 = this.inputs.r1 || (this.calculatedVariable && this.calculatedVariable.variable === 'r1' ? this.calculatedVariable.value : 0)
-      const r2 = this.inputs.r2 || (this.calculatedVariable && this.calculatedVariable.variable === 'r2' ? this.calculatedVariable.value : 0)
-      
-      if (r1Display) {
-        r1Display.textContent = r1 >= 1000 ? `${(r1/1000).toFixed(1)}kΩ` : `${r1}Ω`
-      }
-      if (r2Display) {
-        r2Display.textContent = r2 >= 1000 ? `${(r2/1000).toFixed(1)}kΩ` : `${r2}Ω`
-      }
-    },
-    updateVoltageDivision() {
-      const voutDisplay = this.$refs.voutDisplay
-      const v1Display = this.$refs.v1Display
-      const v2Display = this.$refs.v2Display
-      
-      // Get values from inputs or calculatedVariable
-      let vin = this.inputs.inputVoltage || (this.calculatedVariable && this.calculatedVariable.variable === 'inputVoltage' ? this.calculatedVariable.value : 0)
-      let r1 = this.inputs.r1 || (this.calculatedVariable && this.calculatedVariable.variable === 'r1' ? this.calculatedVariable.value : 1)
-      let r2 = this.inputs.r2 || (this.calculatedVariable && this.calculatedVariable.variable === 'r2' ? this.calculatedVariable.value : 1)
-      let vout = this.inputs.outputVoltage || (this.calculatedVariable && this.calculatedVariable.variable === 'outputVoltage' ? this.calculatedVariable.value : 0)
-      
-      const v1 = vin - vout // Voltage across R1
-      const v2 = vout // Voltage across R2
-      
-      if (voutDisplay) {
-        voutDisplay.textContent = `${vout.toFixed(2)}V`
-      }
-      if (v1Display) {
-        v1Display.textContent = `V1: ${v1.toFixed(2)}V`
-      }
-      if (v2Display) {
-        v2Display.textContent = `V2: ${v2.toFixed(2)}V`
-      }
-      
-      // Update voltage arc colors based on voltage levels
-      const voltageArcs = document.querySelectorAll('.voltage-arc')
-      if (voltageArcs.length >= 2) {
-        const v1Intensity = Math.min(1, v1 / vin)
-        const v2Intensity = Math.min(1, v2 / vin)
-        
-        voltageArcs[0].style.opacity = 0.3 + (v1Intensity * 0.7)
-        voltageArcs[1].style.opacity = 0.3 + (v2Intensity * 0.7)
-      }
-    },
-    animateResult() {
-      const resultElement = document.querySelector('.result-display')
-      if (resultElement) {
-        resultElement.classList.add('result-pulse')
-        setTimeout(() => {
-          resultElement.classList.remove('result-pulse')
-        }, 600)
-      }
-    }
+// Computed properties
+const vout = computed(() => {
+  const totalR = r1.value + r2.value
+  if (totalR === 0) return 0
+  return vin.value * (r2.value / totalR)
+})
+
+const current = computed(() => {
+  const totalR = r1.value + r2.value
+  if (totalR === 0) return 0
+  return vin.value / totalR
+})
+
+const totalPower = computed(() => {
+  return vin.value * current.value
+})
+
+// Reverse calculation - find R2 for target V_out
+const calculateFromVout = () => {
+  const targetVout = parseFloat(prompt('Enter desired output voltage (V):', '3.3') || '3.3')
+  if (targetVout >= vin.value) {
+    alert('Output voltage must be less than input voltage!')
+    return
   }
+
+  // Formula: Vout = Vin * (R2 / (R1 + R2))
+  // Rearranging: Vout/Vin = R2/(R1+R2)
+  // Vout*(R1+R2) = Vin*R2
+  // Vout*R1 + Vout*R2 = Vin*R2
+  // Vout*R1 = (Vin - Vout)*R2
+  // R2 = (Vout*R1) / (Vin - Vout)
+
+  const newR2 = (targetVout * r1.value) / (vin.value - targetVout)
+  r2.value = Math.round(newR2)
 }
+
+// SEO
+useHead({
+  title: 'Voltage Divider Calculator - Cyno Electric',
+  meta: [
+    { name: 'description', content: 'Calculate voltage divider circuits with interactive visualization. Learn the voltage divider formula and design resistor networks.' },
+    { name: 'keywords', content: 'voltage divider, resistor calculator, circuit design, electronics calculator' }
+  ]
+})
 </script>
-
-<style>
-html {
-  scroll-behavior: smooth;
-}
-
-:root {
-  --tw-color-primary: #9FA8DA;
-  --tw-color-primary-dark: #7986CB;
-  --tw-color-primary-light: #C5CAE9;
-}
-
-.text-primary {
-  color: var(--tw-color-primary) !important;
-}
-
-.bg-primary {
-  background-color: var(--tw-color-primary) !important;
-}
-
-.border-primary {
-  border-color: var(--tw-color-primary) !important;
-}
-
-/* Animation Styles */
-.animated-formula {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-size: 1.5rem;
-  font-family: 'Courier New', monospace;
-  font-weight: bold;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.formula-part {
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.375rem;
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.formula-part.fade-in {
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.formula-part.highlight {
-  background-color: var(--tw-color-primary);
-  color: white;
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(159, 168, 218, 0.5);
-}
-
-.formula-operator {
-  color: var(--tw-color-primary);
-  font-size: 1.2rem;
-  margin: 0 0.25rem;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-}
-
-.formula-operator.fade-in {
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.divider-animation {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 0.75rem;
-  padding: 1rem;
-  backdrop-filter: blur(10px);
-}
-
-.wire {
-  stroke-dasharray: 5, 5;
-  animation: wireFlow 2s linear infinite;
-}
-
-.voltage-source {
-  transition: all 0.3s ease;
-  filter: drop-shadow(0 0 3px currentColor);
-}
-
-.resistor-body {
-  transition: all 0.3s ease;
-}
-
-.connection-point, .output-point {
-  transition: all 0.3s ease;
-  filter: drop-shadow(0 0 4px currentColor);
-}
-
-.voltage-arc {
-  transition: all 0.5s ease;
-  filter: drop-shadow(0 0 2px currentColor);
-}
-
-.voltage-label {
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.voltage-value {
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.resistor-value {
-  transition: all 0.3s ease;
-}
-
-.current-particle {
-  filter: drop-shadow(0 0 6px #FFD700);
-}
-
-.current-label {
-  font-weight: bold;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.result-pulse {
-  animation: resultPulse 0.6s ease;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes wireFlow {
-  0% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: 10;
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.6;
-  }
-}
-
-@keyframes resultPulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-    color: #FFD700;
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Input animation effects */
-input:focus {
-  animation: inputGlow 0.3s ease;
-}
-
-@keyframes inputGlow {
-  0% {
-    box-shadow: 0 0 0 0 rgba(159, 168, 218, 0.4);
-  }
-  100% {
-    box-shadow: 0 0 0 4px rgba(159, 168, 218, 0.1);
-  }
-}
-</style>
