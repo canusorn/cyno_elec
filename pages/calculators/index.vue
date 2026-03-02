@@ -151,7 +151,8 @@ export default {
         { id: 'motors', name: 'Motors' },
         { id: 'transformers', name: 'Transformers' },
         { id: 'lighting', name: 'Lighting' },
-        { id: 'measurement', name: 'Measurement' }
+        { id: 'measurement', name: 'Measurement' },
+        { id: 'rf', name: 'RF Engineering' }
       ],
       
       // Calculator data
@@ -799,6 +800,26 @@ export default {
             networkType: { label: 'Network Type', placeholder: 'L, Pi, T, Transformer' }
           },
           resultUnit: 'Ω',
+          calculate: () => 0
+        },
+        {
+          id: 33,
+          title: 'Series/Parallel Calculator',
+          description: 'Calculate total resistance, capacitance, and inductance for components in series or parallel configurations with interactive circuit diagrams.',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Circuit Analysis',
+          type: 'series-parallel-calculator',
+          path: '/calculators/series-parallel-calculator',
+          formula: 'R_total = R₁ + R₂ + ... (series) | 1/R_total = 1/R₁ + 1/R₂ + ... (parallel)',
+          icon: 'ChartBarIcon',
+          units: ['Ω', 'F', 'H'],
+          inputs: {
+            circuitType: { label: 'Circuit Type', placeholder: 'Series or Parallel' },
+            componentType: { label: 'Component Type', placeholder: 'Resistor/Capacitor/Inductor' },
+            components: { label: 'Component Values', placeholder: 'Enter values' }
+          },
+          resultUnit: 'Ω/F/H',
           calculate: () => 0
         }
       ]

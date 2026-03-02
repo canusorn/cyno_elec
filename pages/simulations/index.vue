@@ -945,6 +945,54 @@
             </div>
           </div>
 
+          <!-- Op-Amp Integrator -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-pink-50 to-rose-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Op-amp triangle -->
+                <polygon points="80,40 80,80 130,60" fill="white" stroke="#EC4899" stroke-width="2"/>
+                <text x="88" y="55" text-anchor="middle" fill="#EC4899" font-size="8" font-weight="bold">-</text>
+                <text x="88" y="70" text-anchor="middle" fill="#EC4899" font-size="8" font-weight="bold">+</text>
+                <!-- Input resistor -->
+                <line x1="30" y1="50" x2="80" y2="50" stroke="#94A3B8" stroke-width="2"/>
+                <rect x="45" y="47" width="20" height="6" fill="white" stroke="#8B5CF6" stroke-width="1.5" rx="1"/>
+                <!-- Feedback capacitor -->
+                <line x1="70" y1="50" x2="70" y2="30" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="70" y1="30" x2="90" y2="30" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="90" y1="25" x2="90" y2="35" stroke="#F59E0B" stroke-width="3"/>
+                <line x1="100" y1="25" x2="100" y2="35" stroke="#F59E0B" stroke-width="3"/>
+                <line x1="100" y1="30" x2="120" y2="30" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="120" y1="30" x2="120" y2="60" stroke="#94A3B8" stroke-width="2"/>
+                <!-- Non-inverting input to ground -->
+                <line x1="80" y1="70" x2="60" y2="70" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="60" y1="70" x2="60" y2="85" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="55" y1="85" x2="65" y2="85" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="57" y1="88" x2="63" y2="88" stroke="#94A3B8" stroke-width="2"/>
+                <!-- Output -->
+                <line x1="130" y1="60" x2="180" y2="60" stroke="#EC4899" stroke-width="2.5"/>
+                <!-- Input and output waveforms -->
+                <path d="M 25 95 Q 35 85, 45 95 T 65 95" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="3,2"/>
+                <path d="M 135 95 Q 145 75, 155 95 Q 165 115, 175 95" fill="none" stroke="#EC4899" stroke-width="2"/>
+                <text x="45" y="110" text-anchor="middle" fill="#3B82F6" font-size="7">Input</text>
+                <text x="155" y="110" text-anchor="middle" fill="#EC4899" font-size="7">∫ Output</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Op-Amp Integrator
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore op-amp integrator circuits with real-time visualization. Watch square waves integrate to triangles and learn about time constants.
+              </p>
+              <NuxtLink
+                to="/simulations/op-amp-integrator"
+                class="inline-flex items-center px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
