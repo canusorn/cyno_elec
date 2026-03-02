@@ -905,6 +905,46 @@
             </div>
           </div>
 
+          <!-- Crystal Oscillator -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Crystal symbol -->
+                <rect x="85" y="40" width="30" height="40" fill="white" stroke="#0891B2" stroke-width="2" rx="3"/>
+                <line x1="100" y1="40" x2="100" y2="30" stroke="#0891B2" stroke-width="2"/>
+                <line x1="100" y1="80" x2="100" y2="90" stroke="#0891B2" stroke-width="2"/>
+                <!-- Electrodes -->
+                <line x1="90" y1="45" x2="110" y2="45" stroke="#0891B2" stroke-width="1" opacity="0.5"/>
+                <line x1="90" y1="55" x2="110" y2="55" stroke="#0891B2" stroke-width="1" opacity="0.5"/>
+                <line x1="90" y1="65" x2="110" y2="65" stroke="#0891B2" stroke-width="1" opacity="0.5"/>
+                <line x1="90" y1="75" x2="110" y2="75" stroke="#0891B2" stroke-width="1" opacity="0.5"/>
+                <!-- Output waveform -->
+                <path d="M 130 60 Q 140 40, 150 60 Q 160 80, 170 60" fill="none" stroke="#8B5CF6" stroke-width="2.5"/>
+                <circle cx="175" cy="60" r="3" fill="#8B5CF6"/>
+                <!-- Circuit connection -->
+                <line x1="30" y1="60" x2="85" y2="60" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="115" y1="60" x2="130" y2="60" stroke="#94A3B8" stroke-width="2"/>
+                <!-- Labels -->
+                <text x="100" y="25" text-anchor="middle" fill="#0891B2" font-size="9" font-weight="bold">Crystal</text>
+                <text x="150" y="95" text-anchor="middle" fill="#8B5CF6" font-size="8">Output</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Crystal Oscillator
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore piezoelectric crystal oscillators for precise frequency generation. Learn about equivalent circuits, resonance modes, and temperature effects.
+              </p>
+              <NuxtLink
+                to="/simulations/crystal-oscillator"
+                class="inline-flex items-center px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->

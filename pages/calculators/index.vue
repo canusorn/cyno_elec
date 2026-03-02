@@ -779,6 +779,27 @@ export default {
           },
           resultUnit: 'ms',
           calculate: () => 0
+        },
+        {
+          id: 32,
+          title: 'Impedance Matching Calculator',
+          description: 'Design matching networks (L, Pi, T, transformer) for maximum power transfer. Calculate reflection coefficient, VSWR, return loss, and component values.',
+          categoryId: ['ac-circuits', 'rf'],
+          difficulty: 'Advanced',
+          category: 'RF Engineering',
+          type: 'impedance-matching',
+          path: '/calculators/impedance-matching',
+          formula: 'Γ = (Zl-Zs)/(Zl+Zs)',
+          icon: 'ChartBarIcon',
+          units: ['Ω', 'nH', 'pF'],
+          inputs: {
+            sourceImpedance: { label: 'Source Z', placeholder: 'Enter source impedance', unit: 'Ω' },
+            loadImpedance: { label: 'Load Z', placeholder: 'Enter load impedance', unit: 'Ω' },
+            frequency: { label: 'Frequency', placeholder: 'Enter frequency', unit: 'MHz' },
+            networkType: { label: 'Network Type', placeholder: 'L, Pi, T, Transformer' }
+          },
+          resultUnit: 'Ω',
+          calculate: () => 0
         }
       ]
     }
