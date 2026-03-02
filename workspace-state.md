@@ -1,212 +1,178 @@
-# Cyno Electric Workspace State
+# Cyno Electric - Workspace State
 
-## Current Features
+**Last Updated:** 2025-03-02 22:45:00 +07:00  
+**Session:** Session 11 - Cron Run  
+**Status:** ✅ All Tasks Complete
 
-### Calculators (31)
-1. ac-power-calculator
-2. battery-life
-3. capacitance-calculator
-4. capacitive-reactance
-5. capacitor-series-parallel
-6. decibel-calculator
-7. delta-wye
-8. energy-storage
-9. **filter-design-calculator** ✨ NEW
-10. impedance-calculator
-11. inductance-calculator
-12. inductive-reactance
-13. inductor-energy
-14. led-resistor
-15. **lm317-regulator**
-16. ohms-law
-17. **opamp-gain-calculator**
-18. power
-19. power-factor-calculator
-20. **rc-low-pass-filter** ✨ NEW
-21. rc-time-constant
-22. **regulator-7805** ✨ NEW
-23. resistance-color-code
-24. resistor-series-parallel
-25. resonant-frequency
-26. three-phase-power
-27. transformer-calculator
-28. voltage-divider
-29. wheatstone-bridge
-30. **wien-bridge-calculator** ✨ NEW
-31. wire-gauge-calculator
+---
 
-### Simulations (27)
-1. ac-circuit
-2. **active-filter** ✨ NEW
-3. boost-converter
-4. buck-boost-converter
-5. buck-converter
-6. capacitor-charging
-7. current-divider
-8. differential-amplifier
-9. diode-rectifier
-10. **electromagnetic-induction** ✨ NEW
-11. full-wave-bridge-rectifier
-12. half-bridge-motor-driver
-13. led-circuit-designer
-14. mosfet-switching
-15. op-amp-amplifier
-16. parallel-circuit
-17. **pwm-generator** ✨ NEW
-18. rc-circuit
-19. rl-circuit
-20. rlc-resonance
-21. series-circuit
-22. timer-555-astable
-23. timer-555-monostable
-24. transformer-basics
-25. transistor-switch
-26. wien-bridge-oscillator
-27. **inductor-self-resonance** ✨ NEW
+## 📊 Project Statistics
 
-## Recently Completed (2026-03-02 - Session 10)
+| Category | Count |
+|----------|-------|
+| **Calculators** | 32 |
+| **Simulations** | 28 |
+| **Total Features** | 60 |
 
-### ✅ Inductor Self-Resonance Simulation
-- Explore parasitic capacitance effects in real inductors
-- Calculate self-resonant frequency (SRF = 1/2π√LCp)
-- Visualize impedance vs frequency curve (log-log scale)
-- Quality factor (Q) calculations at different frequencies
-- Interactive circuit diagram showing parasitic capacitance model
-- Quick presets for different inductor types:
-  * Small RF inductors (1µH, 2pF)
-  * Power inductors (100µH, 10pF)
-  * High Q inductors (10mH, 5pF)
-  * SMD 0805 inductors (22nH, 0.5pF)
-- Frequency range: 1kHz to 100MHz
-- Real-time impedance calculations showing:
-  * Inductive region (below SRF)
-  * Resistive region (at SRF)
-  * Capacitive region (above SRF)
-- Component: InductorSelfResonance.vue (19,886 bytes)
-- Page: pages/simulations/inductor-self-resonance.vue (9,423 bytes)
+---
 
-### ✅ RC Low-Pass Filter Calculator
-- Design RC low-pass filters with specific cutoff frequencies
-- Interactive Bode plot visualization:
-  * Magnitude response (dB vs frequency)
-  * Phase response (degrees vs frequency)
-  * -3dB cutoff point clearly marked
-- Multiple design strategies:
-  * Choose C, calculate R
-  * Choose R, calculate C
-  * Match impedance (Z = 50Ω)
-- Real-time component value calculations
-- Attenuation table showing:
-  * Gain at 0.01fc, 0.1fc, fc, 10fc, 100fc
-  * Phase shift at each frequency
-- Standard component value recommendations:
-  * E96 series for resistors
-  * E6 series for capacitors
+## ✅ Completed Work (Latest)
+
+### Session 11 - 2025-03-02
+
+#### 1. **Simulation: RC High-Pass Filter** 🆕
+**File:** `pages/simulations/rc-high-pass-filter.vue`  
+**Component:** `components/simulations/RCHighPassFilter.vue`
+
+**Features:**
+- Interactive Bode plot visualization (magnitude response)
+- Cutoff frequency calculator (fc = 1/2πRC)
+- Time domain waveform comparison (input vs output with phase shift)
+- Phase shift analysis (+0° to +90° lead)
+- Attenuation table showing key frequency points (0.01fc to 100fc)
 - Quick presets:
-  * Audio 1kHz (R=15.9kΩ, C=10nF)
-  * Audio 10kHz (R=15.9kΩ, C=1nF)
-  * RF 1MHz (R=1.59kΩ, C=100pF)
-  * DC 100Hz (R=15.9kΩ, C=100nF)
-- Component: RCLowPassFilterCalculator.vue (25,026 bytes)
-- Page: pages/calculators/rc-low-pass-filter.vue (11,995 bytes)
+  - Audio 1kHz (R=1.59kΩ, C=10nF)
+  - Audio 10kHz (R=1.59kΩ, C=1nF)
+  - RF 1MHz (R=159Ω, C=100pF)
+  - DC Block 100Hz (R=15.9kΩ, C=100nF)
+- Comprehensive educational content:
+  - High-pass vs Low-pass filter comparison
+  - Frequency regions (stop, transition, pass bands)
+  - Phase response characteristics
+  - Real-world applications (audio coupling, RF, speaker crossovers)
+  - Practical design tips
 
-## Additional Features in This Session
+**Key Formulas:**
+```
+fc = 1 / (2πRC)
+Gain = (f/fc) / √(1 + (f/fc)²)
+Phase Shift = arctan(1/(f/fc))
+```
 
-### Active Filter Simulation
-- First-order and second-order active filter simulations
-- Sallen-Key topology implementation
-- Cutoff frequency adjustment
-- Component value suggestions
+---
 
-### Electromagnetic Induction Simulation
-- Faraday's law visualization
-- Lenz's law demonstration
-- Induced EMF calculations
-- Moving magnet through coil animation
+#### 2. **Calculator: RLC Resonance Calculator** 🆕
+**File:** `pages/calculators/rlc-resonance.vue`  
+**Component:** `components/calculators/RLCResonanceCalculator.vue`
 
-### PWM Generator Simulation
-- Pulse Width Modulation visualization
-- Duty cycle control (0-100%)
-- Frequency adjustment
-- Output waveform display
+**Features:**
+- **Dual Circuit Support:**
+  - Series RLC resonance (minimum impedance, maximum current)
+  - Parallel RLC resonance (maximum impedance, minimum current)
+- **Key Calculations:**
+  - Resonant frequency (f₀ = 1/2π√LC)
+  - Angular frequency (ω₀ = 1/√LC)
+  - Quality factor (Q) with different formulas for series/parallel
+  - Bandwidth (BW = f₀/Q)
+  - Lower/upper cutoff frequencies (-3dB points)
+  - Damping ratio (ζ = 1/2Q)
+  - Reactance comparison (XL vs XC at resonance)
+- **Visualizations:**
+  - Frequency response curve (shows -3dB bandwidth)
+  - Circuit topology diagrams (series vs parallel)
+- **Quick Presets:**
+  - AM Radio (1MHz, series, high Q)
+  - FM Radio (100MHz, series, high Q)
+  - Power Inductor (parallel, medium Q)
+  - High Q RF (series, very high Q)
+- **Educational Content:**
+  - Series vs Parallel RLC comparison table
+  - Q factor significance (high/medium/low Q)
+  - Damping characteristics (underdamped/critically damped/overdamped)
+  - Reactance behavior at resonance
+  - Real-world applications (radio tuning, wireless power, EMI filters)
+  - Design examples with component values
 
-### Filter Design Calculator
-- Multiple filter types (Butterworth, Chebyshev, Bessel)
-- Order selection (1st to 10th order)
-- Component value calculations
-- Frequency response preview
+**Key Formulas:**
+```
+Series RLC:
+  Q = (1/R)√(L/C)
+  Z = R (minimum at resonance)
 
-### Wien Bridge Calculator
-- Wien bridge oscillator frequency calculation
-- Component ratio requirements
-- Gain requirements for oscillation
-- Stability analysis
+Parallel RLC:
+  Q = R√(C/L)
+  Z = R (maximum at resonance)
+```
 
-### 7805 Voltage Regulator Calculator
-- Input voltage range
-- Output voltage (5V fixed)
-- Thermal calculations
-- Dropout voltage considerations
-- Heat sink requirements
+---
 
-## Implementation Details
+## 🎯 Summary
 
-**Inductor Self-Resonance:**
-- Component: InductorSelfResonance.vue (19,886 bytes)
-- Page: pages/simulations/inductor-self-resonance.vue (9,423 bytes)
-- Features: Parasitic capacitance model, impedance curve, SRF calculation, Q factor
-- Presets: Small RF, Power Inductor, High Q, SMD 0805
-- Educational: Real inductor behavior, frequency regions, design guidelines
+**This session completed 2 major features:**
 
-**RC Low-Pass Filter:**
-- Component: RCLowPassFilterCalculator.vue (25,026 bytes)
-- Page: pages/calculators/rc-low-pass-filter.vue (11,995 bytes)
-- Features: Bode plot, design strategies, standard values, attenuation table
-- Presets: Audio 1kHz, Audio 10kHz, RF 1MHz, DC 100Hz
-- Educational: Filter theory, design considerations, applications
+1. **RC High-Pass Filter Simulation** - 1,405 lines
+   - Interactive Bode plot with frequency response
+   - Real-time cutoff frequency calculation
+   - Time domain visualization with phase shift
+   - 4 quick presets for common applications
+   - Comprehensive theory and applications
 
-## Development Status
-- Last Updated: 2026-03-02 (Session 10)
-- Status: ✅ Complete - Eight new features implemented
-- Latest Commit: 3c49bf9
-- Build Status: ✅ Ready for deployment
-- GitHub: https://github.com/canusorn/cyno_elec
+2. **RLC Resonance Calculator** - Complete redesign
+   - Series and Parallel RLC circuit support
+   - Full resonance parameter calculations (f₀, Q, BW, ζ)
+   - Frequency response curve visualization
+   - Circuit topology diagrams
+   - 4 quick presets covering RF to power applications
+   - Extensive educational content on resonance theory
 
-## Project Statistics
-- Total Calculators: 31
-- Total Simulations: 27
-- Total Features: 58
+**Total Lines Added:** 1,405  
+**Files Created:** 4 (2 pages + 2 components)
 
-## Future Feature Ideas
+---
 
-### Potential Simulations:
-- Cuk Converter
-- SEPIC Converter
-- Flyback Converter
-- Forward Converter
-- Push-Pull Converter
-- Half-Bridge Converter
-- Full-Bridge Converter
-- Three-Phase Circuits
-- Current Mirror Circuits
-- Phase-Locked Loop (PLL)
-- Schmitt Trigger
-- Multivibrators
-- Sample and Hold Circuit
-- Instrumentation Amplifier
-- Log/Antilog Amplifier
+## 📈 Progress Tracking
 
-### Potential Calculators:
-- Voltage Regulator Calculator (LM317, 7805) ✅ DONE
-- Kirchhoff's Laws Solver
-- Thevenin/Norton Equivalent Calculator
-- Bandwidth Calculator
-- Heat Sink Calculator ✅ DONE
-- Resistor Divider Network (multiple taps)
-- Battery Sizing Calculator
-- Solar Panel Calculator
-- Rectifier Calculator
-- Operational Amplifier Calculator
-- Power Supply Design Calculator
-- Transmission Line Calculator
-- Antenna Design Calculator
+| Session | Date | Features Added | Notes |
+|---------|------|----------------|-------|
+| 11 | 2025-03-02 | RC High-Pass Filter, RLC Resonance | Cron run - 2 major features |
+| 10 | 2025-02-28 | Inductor Self-Resonance, RC Low-Pass Filter | 2 features |
+| 9 | 2025-02-27 | Resonant Frequency, Current Divider | 2 features |
+| 8 | 2025-02-26 | Wien Bridge Calculator, Oscillator | 2 features |
+| 7 | 2025-02-25 | Power Factor, Filter Design | 2 features |
+| ... | ... | ... | ... |
+
+---
+
+## 🔜 Next Session Ideas
+
+Potential topics for future development:
+
+**Simulations:**
+- Capacitor Charge/Discharge with Energy Visualization
+- Diode Clipping Circuits
+- Zener Diode Voltage Regulator
+- Common Emitter Amplifier
+- Oscillator Circuits (Colpitts, Hartley)
+
+**Calculators:**
+- Voltage Regulation Calculator (LM317, 7805)
+- LED Array Calculator
+- Battery Life Estimator
+- Capacitor ESR Calculator
+- Thermal Design Calculator
+
+---
+
+## 💾 Git Status
+
+**Latest Commit:** `69a4ae1`  
+**Message:** feat: add RC High-Pass Filter simulation and RLC Resonance calculator  
+**Branch:** main  
+**Status:** Clean - Pushed to origin/main  
+**Build:** ✅ Success (npm run build)
+
+---
+
+## 📝 Notes
+
+- Both new features use Vue 3 Composition API with `<script setup>`
+- TailwindCSS styling with full dark mode support
+- Interactive SVG visualizations for all concepts
+- Comprehensive educational content with formulas, examples, and applications
+- All components follow the established project patterns
+- Build tested and passed successfully
+- Responsive design for mobile and desktop
+
+---
+
+*End of Session 11 Report*
