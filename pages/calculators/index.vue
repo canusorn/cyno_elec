@@ -759,6 +759,26 @@ export default {
           },
           resultUnit: '°C',
           calculate: () => 0
+        },
+        {
+          id: 31,
+          title: 'RL Time Constant Calculator',
+          description: 'Calculate the time constant and analyze transient response of resistor-inductor (RL) circuits including charging and discharging phases.',
+          categoryId: ['dc-circuits', 'basic'],
+          difficulty: 'Intermediate',
+          category: 'Circuit Analysis',
+          type: 'rl-time-constant',
+          path: '/calculators/rl-time-constant',
+          formula: 'τ = L / R',
+          icon: 'ClockIcon',
+          units: ['ms', 'Ω', 'mH'],
+          inputs: {
+            resistance: { label: 'Resistance', placeholder: 'Enter resistance', unit: 'Ω' },
+            inductance: { label: 'Inductance', placeholder: 'Enter inductance', unit: 'mH' },
+            time: { label: 'Time', placeholder: 'Enter time', unit: 'ms' }
+          },
+          resultUnit: 'ms',
+          calculate: () => 0
         }
       ]
     }

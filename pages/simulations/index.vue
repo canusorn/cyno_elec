@@ -861,6 +861,50 @@
             </div>
           </div>
 
+          <!-- Voltage Multiplier Circuit -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Input AC waveform -->
+                <path d="M 20 60 Q 30 40, 40 60 T 60 60" fill="none" stroke="#3B82F6" stroke-width="2" opacity="0.6"/>
+                <!-- Diodes -->
+                <polygon points="70,50 70,70 85,60" fill="white" stroke="#22C55E" stroke-width="1.5"/>
+                <line x1="85" y1="50" x2="85" y2="70" stroke="#22C55E" stroke-width="1.5"/>
+                <polygon points="70,85 70,105 85,95" fill="white" stroke="#22C55E" stroke-width="1.5"/>
+                <line x1="85" y1="85" x2="85" y2="105" stroke="#22C55E" stroke-width="1.5"/>
+                <!-- Capacitors -->
+                <line x1="105" y1="55" x2="105" y2="65" stroke="#9CA3AF" stroke-width="2"/>
+                <line x1="95" y1="60" x2="115" y2="60" stroke="#F59E0B" stroke-width="2"/>
+                <line x1="95" y1="65" x2="115" y2="65" stroke="#F59E0B" stroke-width="2"/>
+                <line x1="105" y1="65" x2="105" y2="80" stroke="#9CA3AF" stroke-width="2"/>
+                <line x1="105" y1="85" x2="105" y2="95" stroke="#9CA3AF" stroke-width="2"/>
+                <line x1="95" y1="90" x2="115" y2="90" stroke="#F59E0B" stroke-width="2"/>
+                <line x1="95" y1="95" x2="115" y2="95" stroke="#F59E0B" stroke-width="2"/>
+                <!-- Output DC level -->
+                <line x1="125" y1="60" x2="180" y2="60" stroke="#EF4444" stroke-width="2.5"/>
+                <text x="40" y="35" fill="#3B82F6" font-size="8" font-weight="bold">AC In</text>
+                <text x="100" y="45" fill="#22C55E" font-size="7">D1</text>
+                <text x="100" y="118" fill="#22C55E" font-size="7">D2</text>
+                <text x="150" y="55" fill="#EF4444" font-size="9" font-weight="bold">2×V</text>
+                <text x="155" y="80" fill="#10B981" font-size="8">DC Out</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Voltage Multiplier Circuit
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Convert AC to higher DC voltages using capacitors and diodes. Explore half-wave rectifiers and voltage doublers with real-time visualization.
+              </p>
+              <NuxtLink
+                to="/simulations/voltage-multiplier"
+                class="inline-flex items-center px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->

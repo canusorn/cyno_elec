@@ -1,7 +1,7 @@
 # Cyno Electric - Workspace State
 
-**Last Updated:** 2026-03-03 01:32:00 +07:00  
-**Session:** Session 13 - Cron Run  
+**Last Updated:** 2026-03-03 02:32:00 +07:00  
+**Session:** Session 14 - Cron Run  
 **Status:** ✅ All Tasks Complete
 
 ---
@@ -10,132 +10,110 @@
 
 | Category | Count |
 |----------|-------|
-| **Calculators** | 35 |
-| **Simulations** | 31 |
-| **Total Features** | 66 |
+| **Calculators** | 37 |
+| **Simulations** | 32 |
+| **Total Features** | 69 |
 
 ---
 
 ## ✅ Completed Work (Latest)
 
-### Session 13 - 2026-03-03
+### Session 14 - 2026-03-03
 
-#### 1. **Simulation: Rectifier Smoothing Filter** 🆕
-**File:** `pages/simulations/rectifier-smoothing.vue`
+#### 1. **Simulation: Diode Clipping Circuits** 🆕
+**File:** `pages/simulations/diode-clipping.vue` + `components/DiodeClippingSimulator.vue`
 
 **Features:**
-- Full-wave rectifier with capacitor smoothing simulation
-- Real-time ripple voltage calculation: Vr ≈ I_load / (2 × f × C)
-- Interactive waveform visualization (before & after smoothing)
-- Bidirectional waveform display with:
-  - Pulsating DC (unsmoothed) in red
-  - Smoothed DC with ripple in green
-  - DC level indicator (blue dashed line)
-  - Ripple voltage amplitude (orange)
-- Real-time calculations:
-  - Ripple voltage (Vr)
-  - DC output voltage (V_dc ≈ V_peak - Vr/2)
-  - Min/Max output voltages
-  - Ripple percentage with quality assessment
+- Interactive diode clipper simulation with 4 circuit types:
+  - Series Positive Clipper
+  - Parallel Positive Clipper
+  - Series Negative Clipper
+  - Double-Ended (Bi-directional) Clipper
+- Real-time waveform visualization:
+  - Input waveform (blue, semi-transparent)
+  - Output clipped waveform (green, solid)
+  - Clipping level indicators (red dashed lines)
+- Live calculations:
+  - Clip level (positive and negative)
+  - Output peak voltage
+  - Clipping percentage
 - Input controls:
-  - Peak voltage (5-50V)
-  - Load current (10mA - 5A)
-  - AC frequency (10Hz - 1kHz)
-  - Filter capacitance (1μF - 10mF)
+  - Peak voltage (1-20V)
+  - Frequency (1-100Hz)
+  - Diode forward voltage (0.3-1.5V)
+  - Bias voltage (for biased clippers, 0-10V)
+  - Reference voltage (for double-ended, 0-10V)
 - Quick presets:
-  - Audio Amp (25V, 1.5A, 4700μF)
-  - Digital Circuit (5V, 0.1A, 470μF)
-  - Power Supply (18V, 2A, 10mF)
-- Quality assessment based on ripple %:
-  - < 5%: Excellent (green)
-  - 5-10%: Acceptable (yellow)
-  - > 10%: High ripple (red)
+  - Standard Silicon (10V, 10Hz, 0.7V)
+  - Germanium Diode (5V, 20Hz, 0.3V)
+  - High Voltage (20V, 5Hz, with double clipper)
+  - Audio Waveform (2V, 50Hz, parallel clipper)
+- Interactive circuit diagrams showing:
+  - Component placement
+  - Current flow paths
+  - Diode orientation
 - Comprehensive educational content:
-  - How capacitor smoothing works
-  - Design considerations (current, frequency, capacitance effects)
-  - Real-world applications (power supplies, audio, digital circuits)
-- All key formulas explained with examples
+  - How diode clippers work
+  - Different clipper configurations
+  - Clipping threshold calculations
+  - Applications (waveform shaping, protection, AM demodulation)
 
 **Key Formulas:**
 ```
-Vr ≈ I_load / (2 × f × C)
-V_dc ≈ V_peak - Vr/2
-Ripple % = (Vr / V_dc) × 100%
+Clip Level: Vclip = Vf (simple) or Vbias + Vf (biased)
+Output: Vout = Vin (diode OFF) or Vclip (diode ON)
+Clipping % = (Removed Amplitude / Original) × 100%
 ```
 
 ---
 
-#### 2. **Calculator: RMS & Peak Voltage Calculator** 🆕
-**File:** `pages/calculators/rms-peak-calculator.vue`
+#### 2. **Calculator: Heatsink Thermal Design Calculator** 🆕
+**File:** `pages/calculators/heatsink-thermal.vue` + `components/HeatsinkThermalCalculator.vue`
 
 **Features:**
-- Bidirectional conversion between RMS, Peak, and Peak-to-Peak voltages
-- Support for 4 waveform types:
-  - Sine wave
-  - Square wave
-  - Triangle wave
-  - Sawtooth wave
-- Input type selection (RMS / Peak / Peak-to-Peak)
-- Real-time waveform visualization showing:
-  - Peak levels (red dashed)
-  - RMS equivalent area (purple overlay)
-  - Peak-to-Peak total swing (orange arrow)
-  - Live waveform path for selected type
-- Real-time calculations:
-  - RMS voltage (Vrms)
-  - Peak voltage (Vpeak)
-  - Peak-to-Peak voltage (Vpp = 2 × Vpeak)
-  - Average voltage (Vavg)
-  - Form Factor (Kf = Vrms / Vavg)
-  - Crest Factor (Kc = Vpeak / Vrms)
-- Waveform characteristics by type:
-  - Sine: Kf=1.11, Kc=1.414
-  - Square: Kf=1.0, Kc=1.0
-  - Triangle: Kf=1.15, Kc=1.732
-  - Sawtooth: Kf=1.15, Kc=1.732
+- Complete thermal design calculator for power electronics:
+  - Junction-to-Case thermal resistance (Rθjc)
+  - Case-to-Heatsink thermal resistance (Rθcs)
+  - Heatsink-to-Ambient thermal resistance (Rθsa)
+- Real-time temperature monitoring:
+  - Junction temperature (Tj) with circular gauge
+  - Case temperature (Tc)
+  - Temperature rise (ΔT)
+  - Safety margin calculation
+- Visual feedback with color-coded status:
+  - Green: Excellent (>30°C margin)
+  - Yellow: Acceptable (10-30°C margin)
+  - Orange: Marginal (0-10°C margin)
+  - Red: Overheating (negative margin)
+- Input controls:
+  - Power dissipation (0.1-100W)
+  - Ambient temperature (0-100°C)
+  - Maximum junction temperature (80-200°C)
+  - Thermal resistances (Rθjc: 0.1-10°C/W, Rθcs: 0-5°C/W, Rθsa: 0.1-50°C/W)
+- Analysis features:
+  - Required heatsink performance calculation
+  - Without-heatsink temperature prediction
+  - Heatsink effectiveness percentage
+  - Thermal resistance breakdown with bar charts
 - Quick presets:
-  - Mains (230V RMS sine)
-  - USB (5V peak square)
-  - Audio (1V peak-to-peak sine)
-- Educational content:
-  - Understanding RMS, Peak, and Peak-to-Peak measurements
-  - Form Factor & Crest Factor explanations
-  - Common applications (mains power, USB/audio, multimeters, oscilloscopes)
-  - Why RMS matters for power calculations
-- All conversion formulas for each waveform type
+  - TO-220 (5W) - medium power transistor
+  - TO-3 (50W) - high power transistor
+  - CPU Heatsink - IC cooling
+  - High Temp Ambient - harsh environment
+- Comprehensive educational content:
+  - Thermal circuit model (analogous to electrical circuits)
+  - Key parameters explained
+  - Design guidelines and best practices
+  - Typical thermal resistance values table
 
 **Key Formulas:**
 ```
-Sine: Vrms = Vpeak / √2
-Square: Vrms = Vpeak
-Triangle/Sawtooth: Vrms = Vpeak / √3
-Vpp = 2 × Vpeak (all symmetrical waveforms)
+Total Rθ: Rθja = Rθjc + Rθcs + Rθsa
+Temp Rise: ΔT = P × Rθja
+Junction Temp: Tj = Ta + (P × Rθja)
+Case Temp: Tc = Ta + [P × (Rθcs + Rθsa)]
+Required Rθsa = (Tmax - Ta)/P - Rθjc - Rθcs
 ```
-
----
-
-## 🎯 Summary
-
-**This session completed 2 major features:**
-
-1. **Rectifier Smoothing Filter Simulation** - 900+ lines
-   - Full-wave rectifier with capacitor smoothing
-   - Real-time ripple voltage visualization and calculation
-   - Quality assessment based on ripple percentage
-   - 3 quick presets (audio, digital, power supply)
-   - Comprehensive theory on capacitor smoothing and filter design
-
-2. **RMS & Peak Voltage Calculator** - 900+ lines
-   - Bidirectional voltage conversion
-   - 4 waveform types with correct conversion factors
-   - Interactive waveform visualization
-   - Form factor and crest factor calculations
-   - 3 quick presets (mains, USB, audio)
-   - Educational content on voltage measurement types
-
-**Total Lines Added:** 1,800+  
-**Files Created:** 2 pages  
-**Build Status:** ✅ Successful (npm run build)
 
 ---
 
@@ -143,6 +121,7 @@ Vpp = 2 × Vpeak (all symmetrical waveforms)
 
 | Session | Date | Features Added | Notes |
 |---------|------|----------------|-------|
+| 14 | 2026-03-03 | Diode Clipping Circuits, Heatsink Thermal Calculator | Cron run - 2 major features |
 | 13 | 2026-03-03 | Rectifier Smoothing Filter, RMS/Peak Calculator | Cron run - 2 major features |
 | 12 | 2026-03-03 | Zener Voltage Regulator, Max Power Transfer | Cron run - 2 major features |
 | 11 | 2025-03-02 | RC High-Pass Filter, RLC Resonance | 2 features |
@@ -159,36 +138,36 @@ Vpp = 2 × Vpeak (all symmetrical waveforms)
 Potential topics for future development:
 
 **Simulations:**
-- Capacitor Charge/Discharge with Energy Visualization
-- Diode Clipping Circuits
+- Capacitor Charge/Discharge with Energy Visualization (enhanced)
 - Common Emitter Amplifier
-- Colpitts Oscillator
+- Colpitts Oscillator (enhanced)
 - Hartley Oscillator
-- Series RL Circuit Analysis (detailed)
-- Parallel RL Circuit Analysis (detailed)
-- Wheatstone Bridge Analysis (detailed)
 - Voltage Multiplier Circuits
 - Crystal Oscillator
+- Differential Pair Amplifier
+- Push-Pull Amplifier
+- Class A/B/AB Amplifier Analysis
+- Operational Amplifier Circuits (Integrator, Differentiator)
 
 **Calculators:**
-- Battery Life Estimator (improved)
+- Battery Life Estimator (enhanced)
 - Capacitor ESR Calculator
-- Thermal Design Calculator
-- Voltage Regulation Calculator (improved)
+- Voltage Regulation Calculator (enhanced)
 - LED Array Calculator (expanded)
 - Impedance Matching Calculator (Smith Chart)
 - Reactance Chart Calculator
 - Resonant Frequency Calculator (expanded)
 - Voltage Doubler/Tripler Calculator
 - Transmission Line Calculator
+- Thermal Via Calculator for PCBs
 
 ---
 
 ## 💾 Git Status
 
-**Latest Commit:** Pending  
+**Latest Commit:** 7086add  
 **Branch:** main  
-**Status:** Staged changes ready to commit  
+**Status:** Clean (all changes committed and pushed)  
 **Build:** ✅ Success (npm run build)
 
 ---
@@ -204,8 +183,10 @@ Potential topics for future development:
 - Responsive design for mobile and desktop
 - Git pull completed successfully before starting work
 - No incomplete work from previous sessions
-- Total project now has 66 features (35 calculators + 31 simulations)
+- Total project now has 69 features (37 calculators + 32 simulations)
+- Updated calculators index to include RMS & Peak Calculator and Heatsink Thermal Calculator
+- Updated simulations index to include Diode Clipping Circuits
 
 ---
 
-*End of Session 13 Report*
+*End of Session 14 Report*
