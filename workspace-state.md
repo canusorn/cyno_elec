@@ -1,7 +1,7 @@
 # Cyno Electric - Workspace State
 
-**Last Updated:** 2026-03-03 00:32:00 +07:00  
-**Session:** Session 12 - Cron Run  
+**Last Updated:** 2026-03-03 01:32:00 +07:00  
+**Session:** Session 13 - Cron Run  
 **Status:** ✅ All Tasks Complete
 
 ---
@@ -10,96 +10,106 @@
 
 | Category | Count |
 |----------|-------|
-| **Calculators** | 34 |
-| **Simulations** | 30 |
-| **Total Features** | 64 |
+| **Calculators** | 35 |
+| **Simulations** | 31 |
+| **Total Features** | 66 |
 
 ---
 
 ## ✅ Completed Work (Latest)
 
-### Session 12 - 2026-03-03
+### Session 13 - 2026-03-03
 
-#### 1. **Simulation: Zener Voltage Regulator** 🆕
-**File:** `pages/simulations/zener-voltage-regulator.vue`
+#### 1. **Simulation: Rectifier Smoothing Filter** 🆕
+**File:** `pages/simulations/rectifier-smoothing.vue`
 
 **Features:**
-- Interactive circuit diagram with current flow animation
-- Real-time regulation status (in/out of regulation)
-- Load regulation curve (Vout vs RL on log scale)
-- Line regulation curve (Vout vs Vin)
-- Operating point visualization on curves
-- Power dissipation monitoring:
-  - Zener power (Pz = Vz × Iz)
-  - Resistor power (Prs = Is² × Rs)
-  - Safety indicators for overload conditions
+- Full-wave rectifier with capacitor smoothing simulation
+- Real-time ripple voltage calculation: Vr ≈ I_load / (2 × f × C)
+- Interactive waveform visualization (before & after smoothing)
+- Bidirectional waveform display with:
+  - Pulsating DC (unsmoothed) in red
+  - Smoothed DC with ripple in green
+  - DC level indicator (blue dashed line)
+  - Ripple voltage amplitude (orange)
+- Real-time calculations:
+  - Ripple voltage (Vr)
+  - DC output voltage (V_dc ≈ V_peak - Vr/2)
+  - Min/Max output voltages
+  - Ripple percentage with quality assessment
+- Input controls:
+  - Peak voltage (5-50V)
+  - Load current (10mA - 5A)
+  - AC frequency (10Hz - 1kHz)
+  - Filter capacitance (1μF - 10mF)
 - Quick presets:
-  - 5V Regulator (12V→5V, Rs=220Ω)
-  - 3.3V Regulator (9V→3.3V, Rs=180Ω)
-  - 12V Regulator (24V→12V, Rs=390Ω)
-  - High Current (5V@1A, Rs=47Ω)
+  - Audio Amp (25V, 1.5A, 4700μF)
+  - Digital Circuit (5V, 0.1A, 470μF)
+  - Power Supply (18V, 2A, 10mF)
+- Quality assessment based on ripple %:
+  - < 5%: Excellent (green)
+  - 5-10%: Acceptable (yellow)
+  - > 10%: High ripple (red)
 - Comprehensive educational content:
-  - Zener diode breakdown mechanism
-  - Load regulation vs line regulation
-  - Design considerations for Rs selection
-  - Power dissipation limits
-  - When and why regulation fails
-  - Real-world applications (reference voltage, simple regulators, overvoltage protection)
-- All key formulas explained
+  - How capacitor smoothing works
+  - Design considerations (current, frequency, capacitance effects)
+  - Real-world applications (power supplies, audio, digital circuits)
+- All key formulas explained with examples
 
 **Key Formulas:**
 ```
-Vout = Vz (when regulating)
-Iz = (Vin - Vz)/Rs - IL
-IL = Vout / RL
-Pz = Vz × Iz
+Vr ≈ I_load / (2 × f × C)
+V_dc ≈ V_peak - Vr/2
+Ripple % = (Vr / V_dc) × 100%
 ```
 
 ---
 
-#### 2. **Calculator: Maximum Power Transfer Theorem** 🆕
-**File:** `pages/calculators/max-power-transfer.vue`
+#### 2. **Calculator: RMS & Peak Voltage Calculator** 🆕
+**File:** `pages/calculators/rms-peak-calculator.vue`
 
 **Features:**
-- Power vs Load Resistance curve (peaks at RL = Rs)
-- Efficiency vs Load Resistance curve
+- Bidirectional conversion between RMS, Peak, and Peak-to-Peak voltages
+- Support for 4 waveform types:
+  - Sine wave
+  - Square wave
+  - Triangle wave
+  - Sawtooth wave
+- Input type selection (RMS / Peak / Peak-to-Peak)
+- Real-time waveform visualization showing:
+  - Peak levels (red dashed)
+  - RMS equivalent area (purple overlay)
+  - Peak-to-Peak total swing (orange arrow)
+  - Live waveform path for selected type
 - Real-time calculations:
-  - Circuit current (I = Vs / (Rs + RL))
-  - Load voltage (VL = I × RL)
-  - Load power (PL = I² × RL)
-  - Efficiency (η = PL / PS)
-  - Maximum available power (Pmax = Vs² / 4Rs)
-  - Power transfer ratio (%)
-- Visual indicators:
-  - Circuit diagram with current flow
-  - Operating point highlighted on curves
-  - Maximum power condition indicator
-  - Efficiency status (≥50% good, <50% warning)
+  - RMS voltage (Vrms)
+  - Peak voltage (Vpeak)
+  - Peak-to-Peak voltage (Vpp = 2 × Vpeak)
+  - Average voltage (Vavg)
+  - Form Factor (Kf = Vrms / Vavg)
+  - Crest Factor (Kc = Vpeak / Vrms)
+- Waveform characteristics by type:
+  - Sine: Kf=1.11, Kc=1.414
+  - Square: Kf=1.0, Kc=1.0
+  - Triangle: Kf=1.15, Kc=1.732
+  - Sawtooth: Kf=1.15, Kc=1.732
 - Quick presets:
-  - Audio Matching (8Ω speakers)
-  - RF Transmission (50Ω)
-  - High Impedance (1kΩ)
-  - Low Voltage (5V, 10Ω)
-- "Match Load to Source" button for instant optimization
+  - Mains (230V RMS sine)
+  - USB (5V peak square)
+  - Audio (1V peak-to-peak sine)
 - Educational content:
-  - Maximum Power Transfer theorem statement
-  - Mathematical derivation (4-step proof)
-  - Power vs efficiency trade-off analysis
-  - Comparison table (RL=Rs, RL≫Rs, RL≪Rs)
-  - Real-world applications:
-    - RF & microwave systems (impedance matching)
-    - Audio systems (speaker amplifiers)
-    - Battery-powered devices (efficiency priority)
-    - Power grid distribution (high efficiency)
-- Key insight: At max power, efficiency is only 50%
+  - Understanding RMS, Peak, and Peak-to-Peak measurements
+  - Form Factor & Crest Factor explanations
+  - Common applications (mains power, USB/audio, multimeters, oscilloscopes)
+  - Why RMS matters for power calculations
+- All conversion formulas for each waveform type
 
 **Key Formulas:**
 ```
-I = Vs / (Rs + RL)
-PL = I² × RL = Vs² × RL / (Rs + RL)²
-Pmax when RL = Rs
-Pmax = Vs² / 4Rs
-η = RL / (Rs + RL) × 100%
+Sine: Vrms = Vpeak / √2
+Square: Vrms = Vpeak
+Triangle/Sawtooth: Vrms = Vpeak / √3
+Vpp = 2 × Vpeak (all symmetrical waveforms)
 ```
 
 ---
@@ -108,24 +118,24 @@ Pmax = Vs² / 4Rs
 
 **This session completed 2 major features:**
 
-1. **Zener Voltage Regulator Simulation** - 900+ lines
-   - Interactive circuit diagram with current flow
-   - Real-time regulation monitoring (in/out of regulation)
-   - Load and line regulation curves
-   - Power dissipation safety checks
-   - 4 quick presets for common applications
-   - Comprehensive theory on Zener breakdown and regulation
+1. **Rectifier Smoothing Filter Simulation** - 900+ lines
+   - Full-wave rectifier with capacitor smoothing
+   - Real-time ripple voltage visualization and calculation
+   - Quality assessment based on ripple percentage
+   - 3 quick presets (audio, digital, power supply)
+   - Comprehensive theory on capacitor smoothing and filter design
 
-2. **Maximum Power Transfer Calculator** - 800+ lines
-   - Power and efficiency curves vs load resistance
-   - Real-time circuit analysis
-   - Maximum power condition indicator
-   - 4 quick presets (audio, RF, high/low impedance)
-   - Mathematical derivation and proof
-   - Power vs efficiency trade-off education
+2. **RMS & Peak Voltage Calculator** - 900+ lines
+   - Bidirectional voltage conversion
+   - 4 waveform types with correct conversion factors
+   - Interactive waveform visualization
+   - Form factor and crest factor calculations
+   - 3 quick presets (mains, USB, audio)
+   - Educational content on voltage measurement types
 
-**Total Lines Added:** 1,700+  
-**Files Created:** 2 pages
+**Total Lines Added:** 1,800+  
+**Files Created:** 2 pages  
+**Build Status:** ✅ Successful (npm run build)
 
 ---
 
@@ -133,6 +143,7 @@ Pmax = Vs² / 4Rs
 
 | Session | Date | Features Added | Notes |
 |---------|------|----------------|-------|
+| 13 | 2026-03-03 | Rectifier Smoothing Filter, RMS/Peak Calculator | Cron run - 2 major features |
 | 12 | 2026-03-03 | Zener Voltage Regulator, Max Power Transfer | Cron run - 2 major features |
 | 11 | 2025-03-02 | RC High-Pass Filter, RLC Resonance | 2 features |
 | 10 | 2025-02-28 | Inductor Self-Resonance, RC Low-Pass Filter | 2 features |
@@ -153,9 +164,11 @@ Potential topics for future development:
 - Common Emitter Amplifier
 - Colpitts Oscillator
 - Hartley Oscillator
-- Series RL Circuit Analysis
-- Parallel RL Circuit Analysis
-- Wheatstone Bridge Analysis
+- Series RL Circuit Analysis (detailed)
+- Parallel RL Circuit Analysis (detailed)
+- Wheatstone Bridge Analysis (detailed)
+- Voltage Multiplier Circuits
+- Crystal Oscillator
 
 **Calculators:**
 - Battery Life Estimator (improved)
@@ -166,15 +179,16 @@ Potential topics for future development:
 - Impedance Matching Calculator (Smith Chart)
 - Reactance Chart Calculator
 - Resonant Frequency Calculator (expanded)
+- Voltage Doubler/Tripler Calculator
+- Transmission Line Calculator
 
 ---
 
 ## 💾 Git Status
 
-**Latest Commit:** `6f99a1f`  
-**Message:** feat: add Zener Voltage Regulator simulation and Maximum Power Transfer calculator  
+**Latest Commit:** Pending  
 **Branch:** main  
-**Status:** Clean - Pushed to origin/main  
+**Status:** Staged changes ready to commit  
 **Build:** ✅ Success (npm run build)
 
 ---
@@ -190,7 +204,8 @@ Potential topics for future development:
 - Responsive design for mobile and desktop
 - Git pull completed successfully before starting work
 - No incomplete work from previous sessions
+- Total project now has 66 features (35 calculators + 31 simulations)
 
 ---
 
-*End of Session 12 Report*
+*End of Session 13 Report*
