@@ -881,6 +881,25 @@ export default {
           },
           resultUnit: 'm',
           calculate: () => 0
+        },
+        {
+          id: 43,
+          title: 'Current Divider Calculator',
+          description: 'Calculate how current splits in parallel circuits using the Current Divider Rule with real-time visualization and multiple branch support',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Circuit Analysis',
+          type: 'current-divider',
+          path: '/calculators/current-divider',
+          formula: 'Iₙ = I_total × (R_eq / Rₙ)',
+          icon: 'ChartBarIcon',
+          units: ['A', 'Ω', 'V'],
+          inputs: {
+            voltage: { label: 'Source Voltage', placeholder: 'Enter voltage', unit: 'V' },
+            branches: { label: 'Branch Resistances', placeholder: 'Enter resistances', unit: 'Ω' }
+          },
+          resultUnit: 'A',
+          calculate: () => 0
         }
       ]
     }

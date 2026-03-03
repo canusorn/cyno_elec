@@ -1,7 +1,7 @@
 # Cyno Electric - Workspace State
 
-**Last Updated:** 2026-03-03 08:45:00 +07:00
-**Session:** Session 19 - Cron Run
+**Last Updated:** 2026-03-03 10:32:00 +07:00
+**Session:** Session 20 - Cron Run
 **Status:** ✅ All Tasks Complete
 
 ---
@@ -10,90 +10,89 @@
 
 | Category | Count |
 |----------|-------|
-| **Calculators** | 41 |
-| **Simulations** | 37 |
-| **Total Features** | 78 |
+| **Calculators** | 42 |
+| **Simulations** | 38 |
+| **Total Features** | 80 |
 
 ---
 
 ## ✅ Completed Work (Latest)
 
-### Session 19 - 2026-03-03
+### Session 20 - 2026-03-03
 
-#### 1. **Calculator: Inductor Series/Parallel** 🆕
-**File:** `pages/calculators/inductor-series-parallel.vue`
+#### 1. **Calculator: Antenna Resonant Frequency Calculator** 🆕
+**File:** `pages/calculators/antenna-resonant-frequency.vue`
 
 **Features:**
-- Calculate equivalent inductance for inductors in series and parallel configurations
-- Support for 2-6 inductors with configurable values (1-100,000 µH range)
-- Interactive SVG circuit visualization showing series/parallel configurations
-- Real-time calculation updates as parameters change
-- Visual feedback with color-coded inductors
-- Results display in both µH and mH units
-- Configuration toggle between series and parallel modes
+- Calculate resonant length for dipole, monopole, and loop antennas
+- Bidirectional calculation: frequency → length OR length → frequency
+- Support for multiple frequency units (kHz, MHz, GHz)
+- Velocity factor presets (air, wire, various coax types, twin lead)
+- Amateur radio band quick-reference buttons (160m through 23cm)
+- Interactive SVG antenna visualizations for each antenna type
+- Harmonics calculation table (2nd through 6th harmonic)
+- Real-time updates as parameters change
+- Comprehensive educational content
 
 **Key Formulas:**
 ```
-Series: L_total = L₁ + L₂ + L₃ + ...
-Parallel: 1/L_total = 1/L₁ + 1/L₂ + 1/L₃ + ...
+Wavelength: λ = c / f
+Dipole Length: L = (143 / f(MHz)) × VF meters
+Monopole Length: L = (71.5 / f(MHz)) × VF meters
+Loop Length: L = (λ) × VF (full circumference)
 ```
 
 **Educational Content:**
-- Detailed explanation of series and parallel inductor combinations
-- Mutual inductance considerations and warnings
-- Common applications (LC filters, RF circuits, power supplies)
-- Practical design tips (component placement, shielding)
-- Example calculations with step-by-step solutions
+- Radio wave propagation fundamentals
+- Antenna resonance theory
+- Velocity factor explanation and importance
+- Antenna type comparisons and use cases
+- Design tips and safety considerations
+- Real-world applications (ham radio, FM broadcast, Wi-Fi, cellular)
 
 ---
 
-#### 2. **Simulation: Common Emitter Amplifier** 🆕
-**File:** `pages/simulations/common-emitter-amplifier.vue`
+#### 2. **Simulation: RLC Damped Oscillation** 🆕
+**File:** `pages/simulations/rlc-damped-oscillation.vue`
 
 **Features:**
-- Classic BJT common emitter amplifier simulation
-- Real-time animated waveform visualization:
-  - Input sine wave (amber color)
-  - Output amplified wave (pink color, 180° phase inverted)
-  - Canvas-based smooth animation at 60fps
-- Adjustable circuit parameters:
-  - VCC (Supply Voltage): 5-24V
-  - RC (Collector Resistor): 100Ω-10kΩ
-  - RE (Emitter Resistor): 100Ω-5kΩ
-  - Beta (hFE - Current Gain): 50-400
-  - Input Frequency: 100Hz-10kHz
-  - Input Amplitude: 10-200mV
+- Real-time animated canvas graph at 60fps
+- Color-coded damping visualization:
+  - Green: Underdamped (ζ < 1, oscillates with decay)
+  - Yellow: Critically damped (ζ = 1, fastest return without oscillation)
+  - Red: Overdamped (ζ > 1, slow return without oscillation)
+- Interactive parameter controls:
+  - Resistance (R): 10Ω - 1000Ω
+  - Inductance (L): 1mH - 500mH
+  - Capacitance (C): 1µF - 500µF
+  - Initial Voltage: 1V - 50V
 - Live calculations display:
-  - Voltage Gain (Av = -RC/RE)
-  - Phase Shift (180°)
-  - Output Amplitude
-  - Quiescent Current
-  - Input Impedance (approx)
-  - Output Impedance
-- Interactive circuit schematic with labeled components
+  - Damping ratio (ζ = R/2√(L/C))
+  - Natural frequency (ω₀ = 1/√(LC))
+  - Damped frequency (ωd) for underdamped case
+  - Quality factor (Q = 1/(2ζ))
+  - Settling time (2% criterion)
+  - Time constant (τ = 2L/R)
+  - Peak values table
+- SVG circuit diagram with labeled components
+- Envelope visualization (underdamped mode)
 - Play/Pause and Reset controls
+- Interactive experiment presets
 
-**Key Characteristics Demonstrated:**
-- High voltage gain (controlled by RC/RE ratio)
-- Phase inversion (180° phase shift)
-- Moderate input/output impedance
-- Quiescent point setting for maximum swing
+**Key Concepts Demonstrated:**
+- Second-order differential equations in circuits
+- Energy transfer between inductor (magnetic) and capacitor (electric)
+- Resistance effects on oscillation decay
+- Three damping regimes and their applications
+- Real-time parameter sensitivity analysis
 
 **Educational Content:**
-- Comprehensive explanation of CE amplifier operation
-- Biasing fundamentals and operating point analysis
-- Voltage gain formulas and derivations
-- Design considerations and trade-offs
-- Common applications (audio, RF, general amplification)
-- Comparison with other amplifier configurations (Common Base, Common Collector)
-- Advantages and limitations
-- Practical design example
-
-**Advanced Topics Covered:**
-- Emitter bypass capacitor effect (mentioned)
-- Coupling capacitor purpose
-- Temperature sensitivity issues
-- Frequency response considerations
+- Comprehensive explanation of damping types
+- Physical analogies to mechanical spring-mass-damper systems
+- Key formulas and derivations
+- Practical applications (radio tuners, power supplies, oscilloscopes, automotive)
+- Design tips for achieving desired damping characteristics
+- Energy transfer analysis
 
 ---
 
@@ -101,6 +100,7 @@ Parallel: 1/L_total = 1/L₁ + 1/L₂ + 1/L₃ + ...
 
 | Session | Date | Features Added | Notes |
 |---------|------|----------------|-------|
+| 20 | 2026-03-03 | Antenna Resonant Frequency, RLC Damped Oscillation | Cron run - RF engineering + advanced circuit analysis |
 | 19 | 2026-03-03 | Inductor Series/Parallel, Common Emitter Amplifier | Cron run - magnetic components + transistor amplifiers |
 | 18 | 2026-03-03 | Phase Angle Control, LED Series Resistor | Cron run - power electronics + lighting |
 | 17 | 2026-03-03 | Series/Parallel Calculator, Op-Amp Integrator | Cron run - 2 fundamental features |
@@ -145,10 +145,11 @@ Potential topics for future development:
 
 ## 💾 Git Status
 
-**Latest Commit:** 116a975
+**Latest Commit:** 938f53a
 **Branch:** main
 **Status:** Clean (all changes committed and pushed)
-**Build:** ✅ Success
+**Build:** ⚠️ Pre-existing SSR errors in unrelated pages (lc-tank-circuit, power, inductor-energy)
+**New Features Status:** ✅ Both new pages built successfully
 
 ---
 
@@ -159,24 +160,25 @@ Potential topics for future development:
 - Interactive SVG/Canvas visualizations for both calculators and simulations
 - Comprehensive educational content with formulas, examples, and applications
 - All components follow the established project patterns
-- Navigation automatically includes new features
-- Updated calculators index with Inductor Series/Parallel (ID 41)
-- Updated simulations index with Common Emitter Amplifier card
+- Navigation automatically includes new features:
+  * Calculator added to calculators index (ID 42)
+  * Simulation card added to simulations index
 - Both features integrate seamlessly with existing project structure
 - Successfully committed and pushed to GitHub
-- Build tested and passing (all 925 modules transformed successfully)
+- New features built successfully during prerender
+- Total project now has 80 features (42 calculators + 38 simulations)
 
 ---
 
 ## 🎯 Recent Achievements
 
-- **Inductor Series/Parallel Calculator** - Complete tool for inductor combination analysis with interactive circuit visualization, real-time calculations, and comprehensive magnetic component theory
-- **Common Emitter Amplifier Simulation** - Advanced BJT amplifier with real-time waveform animation, voltage gain analysis, and complete transistor amplifier theory
+- **Antenna Resonant Frequency Calculator** - Complete tool for antenna design with bidirectional calculations, band reference, and comprehensive RF theory
+- **RLC Damped Oscillation Simulation** - Advanced second-order circuit analysis with real-time animated waveforms, color-coded damping visualization, and complete damped systems theory
 - Both features maintain consistency with existing codebase patterns
 - Successfully committed and pushed to GitHub
-- Build tested and passing
-- Total project now has 78 features (41 calculators + 37 simulations)
+- New features build successfully
+- Total of 80 educational electrical features now available
 
 ---
 
-*End of Session 19 Report*
+*End of Session 20 Report*

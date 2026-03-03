@@ -1121,6 +1121,44 @@
             </div>
           </div>
 
+          <!-- Push-Pull Amplifier -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Output waveform -->
+                <path d="M 30 60 L 50 60 L 60 30 L 80 30 L 90 60 L 110 60 L 120 90 L 140 90 L 150 60 L 170 60" 
+                      fill="none" stroke="#F97316" stroke-width="2.5"/>
+                <!-- Crossover distortion notch -->
+                <circle cx="100" cy="60" r="3" fill="#EF4444"/>
+                <text x="100" y="75" text-anchor="middle" fill="#EF4444" font-size="7">×-over</text>
+                <!-- Axis -->
+                <line x1="25" y1="60" x2="175" y2="60" stroke="#6B7280" stroke-width="1"/>
+                <!-- Transistor symbols -->
+                <rect x="20" y="10" width="20" height="15" fill="white" stroke="#3B82F6" stroke-width="1.5" rx="2"/>
+                <text x="30" y="20" text-anchor="middle" fill="#3B82F6" font-size="7" font-weight="bold">NPN</text>
+                <rect x="20" y="95" width="20" height="15" fill="white" stroke="#8B5CF6" stroke-width="1.5" rx="2"/>
+                <text x="30" y="105" text-anchor="middle" fill="#8B5CF6" font-size="7" font-weight="bold">PNP</text>
+                <!-- Efficiency badge -->
+                <rect x="155" y="10" width="35" height="18" fill="#22C55E" rx="3"/>
+                <text x="172.5" y="22" text-anchor="middle" fill="white" font-size="8" font-weight="bold">78.5%</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Push-Pull Amplifier
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Class B audio amplifier with real-time waveform visualization. Explore crossover distortion, bias effects, and efficiency.
+              </p>
+              <NuxtLink
+                to="/simulations/push-pull-amplifier"
+                class="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
