@@ -943,6 +943,25 @@ export default {
           },
           resultUnit: 'Ω',
           calculate: () => 0
+        },
+        {
+          id: 46,
+          title: 'RC Low Pass Filter Calculator',
+          description: 'Calculate cutoff frequency, time constant, and frequency response for RC low pass filters with interactive Bode plot',
+          categoryId: ['ac-circuits', 'basic'],
+          difficulty: 'Intermediate',
+          category: 'Filter Design',
+          type: 'rc-low-pass-filter',
+          path: '/calculators/rc-low-pass-filter',
+          formula: 'fc = 1 / (2πRC)',
+          icon: 'ChartBarIcon',
+          units: ['Hz', 'Ω', 'F'],
+          inputs: {
+            resistance: { label: 'Resistance', placeholder: 'Enter resistance', unit: 'Ω' },
+            capacitance: { label: 'Capacitance', placeholder: 'Enter capacitance', unit: 'F' }
+          },
+          resultUnit: 'Hz',
+          calculate: () => 0
         }
       ]
     }

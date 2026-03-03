@@ -1238,6 +1238,49 @@
             </div>
           </div>
 
+          <!-- Sallen-Key Filter -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Op-amp triangle -->
+                <polygon points="100,30 100,90 160,60" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+                <!-- Input -->
+                <line x1="20" y1="50" x2="100" y2="50" stroke="#94A3B8" stroke-width="2"/>
+                <!-- R1 -->
+                <rect x="35" y="45" width="20" height="10" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <!-- C1 -->
+                <line x1="65" y1="50" x2="65" y2="70" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="60" y1="70" x2="70" y2="70" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="60" y1="70" x2="60" y2="80" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="70" y1="70" x2="70" y2="80" stroke="#94A3B8" stroke-width="2"/>
+                <!-- Output -->
+                <line x1="160" y1="60" x2="190" y2="60" stroke="#8B5CF6" stroke-width="2"/>
+                <!-- Feedback network -->
+                <line x1="160" y1="60" x2="175" y2="60" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="2,2"/>
+                <line x1="175" y1="60" x2="175" y2="35" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="2,2"/>
+                <line x1="175" y1="35" x2="65" y2="35" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="2,2"/>
+                <line x1="65" y1="35" x2="65" y2="50" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="2,2"/>
+                <!-- Bode curve hint -->
+                <path d="M 130,95 Q 150,85 175,95" fill="none" stroke="#F59E0B" stroke-width="2"/>
+                <text x="145" y="110" fill="#F59E0B" font-size="8">fc</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Sallen-Key Filter
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Interactive 2nd-order active filter simulation. Explore Butterworth, Bessel, and Chebyshev responses with real-time Bode plots and circuit visualization.
+              </p>
+              <NuxtLink
+                to="/simulations/sallen-key-filter"
+                class="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
