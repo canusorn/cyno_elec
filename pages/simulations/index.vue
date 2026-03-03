@@ -1422,6 +1422,56 @@
             </div>
           </div>
 
+          <!-- Bandpass Filter -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Frequency response curve -->
+                <path d="M 20 100 Q 60 100 80 80 Q 100 20 120 80 Q 140 100 180 100" 
+                      fill="none" stroke="#9333EA" stroke-width="3"/>
+                <!-- Center frequency line -->
+                <line x1="100" y1="20" x2="100" y2="100" stroke="#F59E0B" stroke-width="2" stroke-dasharray="4,4"/>
+                <!-- Passband highlight -->
+                <rect x="70" y="15" width="60" height="85" fill="#9333EA" opacity="0.15"/>
+                <!-- -3dB points -->
+                <circle cx="70" cy="70" r="4" fill="#EF4444"/>
+                <circle cx="130" cy="70" r="4" fill="#EF4444"/>
+                <!-- Circuit symbols -->
+                <rect x="30" y="50" width="15" height="20" fill="none" stroke="#374151" stroke-width="2"/>
+                <path d="M 50 60 L 60 60 M 70 60 L 80 60 M 90 60 L 100 60" stroke="#374151" stroke-width="2"/>
+                <path d="M 60 60 Q 65 50 70 60 Q 75 70 80 60" fill="none" stroke="#374151" stroke-width="2"/>
+                <line x1="100" y1="60" x2="100" y2="45" stroke="#374151" stroke-width="2"/>
+                <line x1="100" y1="75" x2="100" y2="90" stroke="#374151" stroke-width="2"/>
+                <line x1="93" y1="45" x2="107" y2="45" stroke="#374151" stroke-width="2"/>
+                <line x1="93" y1="90" x2="107" y2="90" stroke="#374151" stroke-width="2"/>
+                <!-- Labels -->
+                <text x="100" y="15" text-anchor="middle" fill="#F59E0B" font-size="8" font-weight="bold">f₀</text>
+                <text x="70" y="82" fill="#EF4444" font-size="7">-3dB</text>
+                <text x="125" y="82" fill="#EF4444" font-size="7">-3dB</text>
+                <text x="10" y="50" fill="#374151" font-size="8">R</text>
+                <text x="62" y="45" fill="#374151" font-size="8">L</text>
+                <text x="98" y="40" fill="#374151" font-size="8">C</text>
+                <!-- Frequency axis -->
+                <line x1="20" y1="110" x2="180" y2="110" stroke="#94A3B8" stroke-width="1"/>
+                <text x="100" y="118" text-anchor="middle" fill="#64748B" font-size="7">Frequency</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                RLC Bandpass Filter
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Interactive frequency response analysis. Visualize center frequency, bandwidth, Q factor, and Bode plot for series RLC bandpass filters.
+              </p>
+              <NuxtLink
+                to="/simulations/bandpass-filter"
+                class="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->

@@ -1065,6 +1065,27 @@ export default {
           },
           resultUnit: 'HP',
           calculate: () => 0
+        },
+        {
+          id: 52,
+          title: 'Battery Pack Designer',
+          description: 'Design series and parallel battery pack configurations. Calculate voltage, capacity, energy, and runtime for custom battery packs',
+          categoryId: ['power', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Power Storage',
+          type: 'battery-pack',
+          path: '/calculators/battery-pack',
+          formula: 'V_series = V_cell × N | Ah_parallel = Ah_cell × N',
+          icon: 'BoltIcon',
+          units: ['V', 'Ah', 'Wh', 'cells'],
+          inputs: {
+            cellType: { label: 'Cell Type', placeholder: '18650, 21700, etc.', unit: '' },
+            seriesCells: { label: 'Series Cells', placeholder: 'Number of cells in series', unit: 'S' },
+            parallelCells: { label: 'Parallel Cells', placeholder: 'Number of cells in parallel', unit: 'P' },
+            loadCurrent: { label: 'Load Current', placeholder: 'For runtime calculation', unit: 'A' }
+          },
+          resultUnit: 'Wh',
+          calculate: () => 0
         }
       ]
     }
