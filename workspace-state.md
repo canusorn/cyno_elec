@@ -1,7 +1,7 @@
 # Cyno Electric - Workspace State
 
-**Last Updated:** 2026-03-03 04:32:00 +07:00
-**Session:** Session 16 - Cron Run
+**Last Updated:** 2026-03-03 06:38:00 +07:00
+**Session:** Session 17 - Cron Run
 **Status:** ✅ All Tasks Complete
 
 ---
@@ -10,129 +10,93 @@
 
 | Category | Count |
 |----------|-------|
-| **Calculators** | 35 |
-| **Simulations** | 31 |
-| **Total Features** | 66 |
+| **Calculators** | 36 |
+| **Simulations** | 32 |
+| **Total Features** | 68 |
 
 ---
 
 ## ✅ Completed Work (Latest)
 
-### Session 16 - 2026-03-03
+### Session 17 - 2026-03-03
 
-#### 1. **Simulation: Crystal Oscillator** 🆕
-**File:** `pages/simulations/crystal-oscillator.vue` + `components/CrystalOscillatorSimulator.vue`
-
-**Features:**
-- Interactive piezoelectric crystal oscillator simulation
-- Crystal frequency presets:
-  - 32.768 kHz (Watch Crystal)
-  - 1 MHz, 8 MHz, 16 MHz, 20 MHz, 25 MHz, 50 MHz
-- Real-time parameters:
-  - Temperature effects (AT-cut parabolic curve, -40°C to +85°C)
-  - Load capacitance adjustment (5-50 pF)
-  - Circuit type selection (Pierce, Colpitts, CMOS Inverter)
-- Crystal equivalent circuit visualization:
-  - Motional inductance (Lm)
-  - Motional capacitance (Cm)
-  - Motional resistance (Rm)
-  - Shunt capacitance (C₀)
-- Live calculations:
-  - Series resonant frequency (fs)
-  - Parallel resonant frequency (fp)
-  - Q factor
-  - Temperature deviation (ppm)
-  - Frequency error (Hz)
-  - Startup time
-  - Phase noise
-  - Power dissipation
-  - Frequency pulling range
-- Animated waveform visualization showing oscillation
-- Quick presets:
-  - Watch (32 kHz)
-  - MCU (16 MHz)
-  - USB (24 MHz)
-  - RF (50 MHz)
-- Comprehensive educational content:
-  - Piezoelectric effect explanation
-  - Crystal equivalent circuit model
-  - Series vs parallel resonance
-  - Oscillator circuit types
-  - Crystal cuts and temperature performance
-  - Design tips and best practices
-  - Common applications
-
-**Key Formulas:**
-```
-Series Resonance: fs = 1/(2π√(Lm×Cm))
-Parallel Resonance: fp = fs × √(1 + Cm/C0)
-Temperature Deviation: Δf/f ≈ -0.04 × (ΔT)² ppm (AT-cut)
-Q Factor: Q = (2πfs × Lm) / Rm
-```
-
----
-
-#### 2. **Calculator: Impedance Matching Calculator** 🆕
-**File:** `pages/calculators/impedance-matching.vue` + `components/ImpedanceMatchingCalculator.vue`
+#### 1. **Calculator: Series/Parallel Calculator** 🆕
+**File:** `pages/calculators/series-parallel-calculator.vue` + `components/SeriesParallelCalculator.vue`
 
 **Features:**
-- Complete impedance matching network designer:
-  - L-Network (two-element)
-  - Pi-Network (three-element)
-  - T-Network (three-element)
-  - Transformer matching
-- Source and load impedance controls:
-  - Resistance (1-1000Ω)
-  - Reactance (-500 to +500Ω)
-  - Quick presets (50Ω RF, 75Ω Video, 600Ω Audio, 4/8Ω Speakers)
-- Operating frequency adjustment (0.1-1000 MHz)
-- Mismatch analysis (before matching):
-  - Reflection coefficient (|Γ|)
-  - VSWR (Voltage Standing Wave Ratio)
-  - Return loss (dB)
-  - Mismatch loss (dB)
-  - Power transfer percentage
-- Matching network calculations:
-  - Component values (inductors in nH, capacitors in pF)
-  - Turns ratio for transformer matching
-  - Q factor and bandwidth
-  - Match status indicator
+- Calculate total resistance, capacitance, and inductance for series and parallel circuits
+- Support for up to 10 components in a single calculation
 - Interactive circuit diagrams:
-  - L-Network topology
-  - Transformer winding visualization
-  - Power flow animation
-- Real-time status indicators:
-  - Oscillation status check
-  - Resonance mode display
-  - Color-coded VSWR/reflection coefficient
-- Comprehensive educational content:
-  - Maximum power transfer theorem
-  - Why match impedances
-  - Network types (L, Pi, T, transformer)
-  - Mismatches and reflections
-  - Design considerations
+  - Series circuit visualization
+  - Parallel circuit visualization
+  - Component symbols (resistor, capacitor, inductor)
+- Unit prefix selection:
+  - pico (p), nano (n), micro (µ), milli (m)
+  - base, kilo (k), mega (M), giga (G)
+- Real-time calculations:
+  - Automatic unit scaling for results
+  - Formula display based on circuit type and component type
+  - Component value labeling
+- Educational content:
+  - Series circuits: same current, voltage division
+  - Parallel circuits: same voltage, current division
+  - Special cases (two components, equal components)
+  - Conductance formula
   - Common applications
-  - Standard impedances
-  - Practical tips
 
 **Key Formulas:**
 ```
-Reflection Coefficient: Γ = (Zl - Zs) / (Zl + Zs)
-VSWR: (1 + |Γ|) / (1 - |Γ|)
-Return Loss: -20 × log10(|Γ|)
-Mismatch Loss: -10 × log10(1 - |Γ|²)
-L-Network Q: Q = √(Rhigh/Rlow - 1)
-Transformer Ratio: Np/Ns = √(Zload/Zsource)
+Series Resistors/Inductors: R_total = R₁ + R₂ + R₃ + ...
+Parallel Capacitors: C_total = C₁ + C₂ + C₃ + ...
+Series Capacitors: 1/C_total = 1/C₁ + 1/C₂ + 1/C₃ + ...
+Parallel Resistors/Inductors: 1/R_total = 1/R₁ + 1/R₂ + 1/R₃ + ...
+Two Parallel Components: R_total = (R₁ × R₂) / (R₁ + R₂)
 ```
 
 ---
 
-### Session 15 - 2026-03-03
+#### 2. **Simulation: Op-Amp Integrator** 🆕
+**File:** `pages/simulations/op-amp-integrator.vue` + `components/OpAmpIntegratorSimulator.vue`
 
-#### 1. **Simulation: Voltage Multiplier Circuit**
-#### 2. **Calculator: RL Time Constant Calculator**
+**Features:**
+- Interactive op-amp integrator circuit simulation
+- Input waveform selection:
+  - Square wave (integrates to triangle wave)
+  - Sine wave (integrates to shifted cosine)
+  - Triangle wave (integrates to curved waveform)
+- Adjustable parameters:
+  - Input frequency (0.1 - 5 Hz)
+  - Input amplitude (1 - 10 V)
+  - Input resistance (10 kΩ - 1 MΩ)
+  - Feedback capacitance (10 - 1000 nF)
+- Real-time visualization:
+  - Input waveform display with current value
+  - Output waveform (integrated signal) with current value
+  - Circuit diagram showing op-amp, resistor, and capacitor
+- Live calculations:
+  - Time constant (τ = R × C)
+  - Integration factor (1/RC)
+  - Numerical integration using trapezoidal rule
+- Interactive controls:
+  - Play/Pause simulation
+  - Reset to initial conditions
+  - Real-time parameter adjustment
+- Comprehensive educational content:
+  - Mathematical integration explanation
+  - How the integrator works (5-step process)
+  - Time constant effects (fast/medium/slow)
+  - Signal integration examples (square→triangle, sine→cosine)
+  - Practical considerations (DC offset, initial conditions, frequency response)
+  - Common applications (analog computers, waveform generation, signal processing, control systems)
+  - Key formulas
 
-*See previous session for details*
+**Key Formulas:**
+```
+Integrator Output: V_out = -(1/RC) × ∫ V_in dt
+Time Constant: τ = R × C
+Corner Frequency: f_c = 1/(2πRC)
+DC Gain (with RF): A_DC = -R_F/R_in
+```
 
 ---
 
@@ -140,11 +104,9 @@ Transformer Ratio: Np/Ns = √(Zload/Zsource)
 
 | Session | Date | Features Added | Notes |
 |---------|------|----------------|-------|
+| 17 | 2026-03-03 | Series/Parallel Calculator, Op-Amp Integrator | Cron run - 2 fundamental features |
 | 16 | 2026-03-03 | Crystal Oscillator, Impedance Matching | Cron run - 2 advanced features |
 | 15 | 2026-03-03 | Voltage Multiplier, RL Time Constant | Cron run - 2 major features |
-| 14 | 2026-03-03 | Diode Clipping, Heatsink Thermal | Cron run - 2 major features |
-| 13 | 2026-03-03 | Rectifier Smoothing, RMS/Peak | Cron run - 2 major features |
-| 12 | 2026-03-03 | Zener Voltage Regulator, Max Power Transfer | Cron run - 2 major features |
 | ... | ... | ... | ... |
 
 ---
@@ -157,11 +119,10 @@ Potential topics for future development:
 - Common Emitter Amplifier
 - Colpitts Oscillator (enhanced)
 - Hartley Oscillator
-- Crystal Oscillator (enhanced)
-- Differential Pair Amplifier
+- Differential Pair Amplifier (enhanced)
 - Push-Pull Amplifier
 - Class A/B/AB Amplifier Analysis
-- Operational Amplifier Circuits (Integrator, Differentiator)
+- Operational Amplifier Circuits (Integrator, Differentiator, Filter)
 - Sallen-Key Active Filter
 - Phase-Locked Loop (PLL)
 - Switching Power Supply (Buck/Boost/Flyback)
@@ -174,7 +135,6 @@ Potential topics for future development:
 - Capacitor ESR Calculator
 - Voltage Regulation Calculator (enhanced)
 - LED Array Calculator (expanded)
-- Impedance Matching Calculator (enhanced with Smith chart)
 - Reactance Chart Calculator
 - Resonant Frequency Calculator (expanded)
 - Voltage Doubler/Tripler Calculator
@@ -189,10 +149,10 @@ Potential topics for future development:
 
 ## 💾 Git Status
 
-**Latest Commit:** 9ae385e
+**Latest Commit:** f9b86a7
 **Branch:** main
 **Status:** Clean (all changes committed and pushed)
-**Build:** ✅ Success (npm run build)
+**Build:** 🔄 In progress (npm run build running in background)
 
 ---
 
@@ -200,29 +160,26 @@ Potential topics for future development:
 
 - All new features use Vue 3 Composition API with `<script setup>`
 - TailwindCSS styling with full dark mode support
-- Interactive SVG visualizations for all concepts
+- Interactive SVG visualizations for both calculators and simulations
 - Comprehensive educational content with formulas, examples, and applications
 - All components follow the established project patterns
-- Build tested and passed successfully
-- Responsive design for mobile and desktop
-- Git pull completed successfully before starting work
-- No incomplete work from previous sessions
-- Total project now has 66 features (35 calculators + 31 simulations)
-- Updated calculators index to include Impedance Matching Calculator
-- Updated simulations index to include Crystal Oscillator
-- Both new pages successfully built and prerendered
-- Build time: ~41 seconds total (client + server)
+- Navigation updated to include new features
+- Added 'rf' (RF Engineering) category to calculators
+- Both features integrate seamlessly with existing project structure
+- Updated calculators index to include Series/Parallel Calculator
+- Updated simulations index to include Op-Amp Integrator
+- Total project now has 68 features (36 calculators + 32 simulations)
 
 ---
 
 ## 🎯 Recent Achievements
 
-- **Crystal Oscillator** - Advanced RF simulation with piezoelectric crystal modeling, temperature effects, and multiple circuit types
-- **Impedance Matching** - Professional RF calculator with L-network, Pi-network, T-network, and transformer matching options
-- Comprehensive educational content for both features
-- Interactive visualizations and real-time calculations
-- Both features integrate seamlessly with existing project structure
+- **Series/Parallel Calculator** - Universal calculator for all component types (R, C, L) in series and parallel configurations with unit prefix support
+- **Op-Amp Integrator** - Interactive simulation with real-time waveform integration, multiple input types, and comprehensive educational content
+- Both features maintain consistency with existing codebase patterns
+- Successfully committed and pushed to GitHub
+- Build in progress for deployment
 
 ---
 
-*End of Session 16 Report*
+*End of Session 17 Report*

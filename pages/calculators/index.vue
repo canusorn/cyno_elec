@@ -723,6 +723,27 @@ export default {
         },
         {
           id: 29,
+          title: 'LED Series Resistor Calculator',
+          description: 'Calculate the correct series resistor for single or multiple LEDs in series. Supports multiple LED colors, automatic standard resistor value selection, power dissipation calculation, and efficiency analysis.',
+          categoryId: ['lighting', 'dc-circuits'],
+          difficulty: 'Beginner',
+          category: 'Lighting',
+          type: 'led-series-resistor',
+          path: '/calculators/led-series-resistor',
+          formula: 'R = (Vs - Vf × N) / If',
+          icon: 'LightBulbIcon',
+          units: ['Ω', 'V', 'mA', 'W'],
+          inputs: {
+            supplyVoltage: { label: 'Supply Voltage', placeholder: 'Enter supply voltage', unit: 'V' },
+            ledCount: { label: 'LED Count', placeholder: 'Number of LEDs in series', unit: '' },
+            ledColor: { label: 'LED Color', placeholder: 'Select LED color', unit: '' },
+            forwardCurrent: { label: 'Forward Current', placeholder: 'Enter LED current', unit: 'mA' }
+          },
+          resultUnit: 'Ω',
+          calculate: () => 0
+        },
+        {
+          id: 30,
           title: 'RMS & Peak Voltage Calculator',
           description: 'Bidirectional conversion between RMS, Peak, and Peak-to-Peak voltages for sine, square, triangle, and sawtooth waveforms.',
           categoryId: ['measurement', 'ac-circuits'],
@@ -742,7 +763,7 @@ export default {
           calculate: () => 0
         },
         {
-          id: 30,
+          id: 31,
           title: 'Heatsink Thermal Design Calculator',
           description: 'Calculate thermal resistance, temperature rise, and heatsink requirements for electronic components and power devices with junction temperature analysis.',
           categoryId: ['power', 'dc-circuits'],
@@ -762,7 +783,7 @@ export default {
           calculate: () => 0
         },
         {
-          id: 31,
+          id: 32,
           title: 'RL Time Constant Calculator',
           description: 'Calculate the time constant and analyze transient response of resistor-inductor (RL) circuits including charging and discharging phases.',
           categoryId: ['dc-circuits', 'basic'],
@@ -782,7 +803,7 @@ export default {
           calculate: () => 0
         },
         {
-          id: 32,
+          id: 33,
           title: 'Impedance Matching Calculator',
           description: 'Design matching networks (L, Pi, T, transformer) for maximum power transfer. Calculate reflection coefficient, VSWR, return loss, and component values.',
           categoryId: ['ac-circuits', 'rf'],
@@ -803,7 +824,7 @@ export default {
           calculate: () => 0
         },
         {
-          id: 33,
+          id: 34,
           title: 'Series/Parallel Calculator',
           description: 'Calculate total resistance, capacitance, and inductance for components in series or parallel configurations with interactive circuit diagrams.',
           categoryId: ['basic', 'dc-circuits'],

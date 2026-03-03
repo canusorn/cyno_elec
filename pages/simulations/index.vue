@@ -658,6 +658,37 @@
             </div>
           </div>
 
+          <!-- Phase Angle Control -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <path d="M 30 60 Q 55 30, 80 60 Q 105 90, 130 60 T 180 60" fill="none" stroke="#3B82F6" stroke-width="2"/>
+                <path d="M 30 60 Q 55 30, 80 60" fill="none" stroke="#F59E0B" stroke-width="3"/>
+                <path d="M 80 60 Q 105 90, 130 60 T 180 60" fill="none" stroke="#EF4444" stroke-width="2" stroke-dasharray="4"/>
+                <line x1="80" y1="20" x2="80" y2="100" stroke="#F59E0B" stroke-width="2" stroke-dasharray="4"/>
+                <circle cx="80" cy="60" r="4" fill="#F59E0B"/>
+                <text x="80" y="15" text-anchor="middle" fill="#F59E0B" font-size="10" font-weight="bold">α</text>
+                <rect x="90" y="50" width="20" height="20" fill="white" stroke="#10B981" stroke-width="2" rx="2"/>
+                <text x="100" y="64" text-anchor="middle" fill="#10B981" font-size="8" font-weight="bold">SCR</text>
+                <line x1="30" y1="90" x2="180" y2="90" stroke="#94A3B8" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Phase Angle Control
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                SCR/Triac-based AC power control with adjustable firing angle, real-time waveforms, and load type analysis.
+              </p>
+              <NuxtLink
+                to="/simulations/phase-angle-control"
+                class="inline-flex items-center px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- AC Circuit Analysis -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
