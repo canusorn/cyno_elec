@@ -981,6 +981,25 @@ export default {
           },
           resultUnit: 'W',
           calculate: () => 0
+        },
+        {
+          id: 48,
+          title: 'Period ↔ Frequency Converter',
+          description: 'Convert between period (T) and frequency (f) with real-time calculation and waveform visualization',
+          categoryId: ['basic', 'ac-circuits'],
+          difficulty: 'Basic',
+          category: 'Fundamental',
+          type: 'period-frequency-converter',
+          path: '/calculators/period-frequency-converter',
+          formula: 'f = 1 / T, T = 1 / f',
+          icon: 'ClockIcon',
+          units: ['Hz', 's'],
+          inputs: {
+            frequency: { label: 'Frequency', placeholder: 'Enter frequency', unit: 'Hz' },
+            period: { label: 'Period', placeholder: 'Enter period', unit: 's' }
+          },
+          resultUnit: 'Hz/s',
+          calculate: () => 0
         }
       ]
     }

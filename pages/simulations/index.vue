@@ -1281,6 +1281,61 @@
             </div>
           </div>
 
+          <!-- Series Circuit Analysis -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Battery/Voltage source -->
+                <rect x="20" y="50" width="25" height="20" fill="white" stroke="#3B82F6" stroke-width="2" rx="2"/>
+                <line x1="32" y1="45" x2="32" y2="50" stroke="#3B82F6" stroke-width="2"/>
+                <line x1="32" y1="70" x2="32" y2="75" stroke="#3B82F6" stroke-width="2"/>
+                <text x="32" y="63" text-anchor="middle" fill="#3B82F6" font-size="10" font-weight="bold">V</text>
+                
+                <!-- Wire path -->
+                <line x1="45" y1="50" x2="180" y2="50" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="180" y1="50" x2="180" y2="90" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="180" y1="90" x2="20" y2="90" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="20" y1="90" x2="20" y2="75" stroke="#94A3B8" stroke-width="2"/>
+                
+                <!-- Series resistors -->
+                <rect x="60" y="45" width="20" height="10" fill="white" stroke="#EF4444" stroke-width="2" rx="1"/>
+                <text x="70" y="40" text-anchor="middle" fill="#EF4444" font-size="7">R1</text>
+                
+                <rect x="100" y="45" width="20" height="10" fill="white" stroke="#10B981" stroke-width="2" rx="1"/>
+                <text x="110" y="40" text-anchor="middle" fill="#10B981" font-size="7">R2</text>
+                
+                <rect x="140" y="45" width="20" height="10" fill="white" stroke="#F59E0B" stroke-width="2" rx="1"/>
+                <text x="150" y="40" text-anchor="middle" fill="#F59E0B" font-size="7">R3</text>
+                
+                <!-- Current arrow -->
+                <line x1="50" y1="50" x2="55" y2="50" stroke="#8B5CF6" stroke-width="2" marker-end="url(#arrowhead)"/>
+                <text x="52" y="42" text-anchor="middle" fill="#8B5CF6" font-size="7" font-weight="bold">I</text>
+                
+                <!-- Voltage drops indicators -->
+                <text x="70" y="105" text-anchor="middle" fill="#EF4444" font-size="6">V1</text>
+                <text x="110" y="105" text-anchor="middle" fill="#10B981" font-size="6">V2</text>
+                <text x="150" y="105" text-anchor="middle" fill="#F59E0B" font-size="6">V3</text>
+                
+                <!-- KVL indicator -->
+                <text x="100" y="25" text-anchor="middle" fill="#6366F1" font-size="8" font-weight="bold">ΣV = 0</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Series Circuit Analysis
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Interactive series circuit explorer with multiple resistors. Visualize voltage drops, current distribution, and power dissipation. Verify Kirchhoff's Voltage Law in real-time.
+              </p>
+              <NuxtLink
+                to="/simulations/series-circuit-analysis"
+                class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
