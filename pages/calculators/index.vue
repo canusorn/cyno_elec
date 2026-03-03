@@ -861,6 +861,26 @@ export default {
           },
           resultUnit: 'H',
           calculate: () => 0
+        },
+        {
+          id: 42,
+          title: 'Antenna Resonant Frequency Calculator',
+          description: 'Calculate resonant length and frequency for various antenna types (dipole, monopole, loop) with amateur radio band reference',
+          categoryId: ['rf', 'ac-circuits'],
+          difficulty: 'Intermediate',
+          category: 'RF Engineering',
+          type: 'antenna-resonant-frequency',
+          path: '/calculators/antenna-resonant-frequency',
+          formula: 'λ = c/f | L = λ × VF × multiplier',
+          icon: 'ChartBarIcon',
+          units: ['Hz', 'kHz', 'MHz', 'GHz', 'm', 'cm'],
+          inputs: {
+            frequency: { label: 'Frequency', placeholder: 'Enter frequency' },
+            antennaType: { label: 'Antenna Type', placeholder: 'Dipole/Monopole/Loop' },
+            velocityFactor: { label: 'Velocity Factor', placeholder: '0.5-1.0' }
+          },
+          resultUnit: 'm',
+          calculate: () => 0
         }
       ]
     }

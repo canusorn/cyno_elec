@@ -1082,6 +1082,45 @@
             </div>
           </div>
 
+          <!-- RLC Damped Oscillation -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Damped sine wave -->
+                <path d="M 20 60 Q 35 20, 50 60 Q 65 85, 80 60 Q 95 45, 110 60 Q 125 70, 140 60 Q 155 55, 170 60 Q 185 58, 200 60" 
+                      fill="none" stroke="#22C55E" stroke-width="2.5"/>
+                <!-- Envelope lines -->
+                <path d="M 20 60 Q 50 30, 80 45 Q 110 52, 140 56 Q 170 58, 200 59" 
+                      fill="none" stroke="#22C55E" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+                <path d="M 20 60 Q 50 90, 80 75 Q 110 68, 140 64 Q 170 62, 200 61" 
+                      fill="none" stroke="#22C55E" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+                <!-- Axis -->
+                <line x1="15" y1="60" x2="185" y2="60" stroke="#6B7280" stroke-width="1"/>
+                <!-- Damping type indicators -->
+                <circle cx="30" cy="25" r="5" fill="#22C55E"/>
+                <text x="40" y="28" fill="#22C55E" font-size="8">Underdamped</text>
+                <circle cx="100" cy="25" r="5" fill="#FACC15"/>
+                <text x="110" y="28" fill="#FACC15" font-size="8">Critical</text>
+                <circle cx="155" cy="25" r="5" fill="#F87171"/>
+                <text x="165" y="28" fill="#F87171" font-size="8">Overdamped</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                RLC Damped Oscillation
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Visualize underdamped, critically damped, and overdamped circuits with animated waveforms. Learn about damping ratio and natural frequency.
+              </p>
+              <NuxtLink
+                to="/simulations/rlc-damped-oscillation"
+                class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
