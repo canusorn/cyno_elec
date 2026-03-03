@@ -1,7 +1,7 @@
 # Cyno Electric - Workspace State
 
-**Last Updated:** 2026-03-03 21:32:00 +07:00
-**Session:** Session 26 - Cron Run
+**Last Updated:** 2026-03-03 22:36:00 +07:00
+**Session:** Session 27 - Cron Run
 **Status:** ✅ All Tasks Complete
 
 ---
@@ -10,15 +10,108 @@
 
 | Category | Count |
 |----------|-------|
-| **Calculators** | 54 |
-| **Simulations** | 50 |
-| **Total Features** | 104 |
+| **Calculators** | 55 |
+| **Simulations** | 51 |
+| **Total Features** | 106 |
 
 ---
 
 ## ✅ Completed Work (Latest)
 
-### Session 20 - 2026-03-03
+### Session 27 - 2026-03-03
+
+#### 1. **Calculator: Voltage Sag Calculator** 🆕
+**File:** `pages/calculators/voltage-sag.vue`
+
+**Features:**
+- Calculate voltage drop in power distribution lines
+- Support for multiple wire materials (copper, aluminum, gold, silver)
+- AWG wire gauge selection (0-20 AWG) with automatic area/diameter calculation
+- Adjustable parameters:
+  * Source voltage: User-defined
+  * Load current: 0-100A
+  * Wire length: 1-500m
+  * Power factor: 0.5-1.0
+- Real-time calculations:
+  * Wire resistance (accounts for round-trip)
+  * Voltage drop (V_drop = I × R)
+  * Voltage at load
+  * Voltage regulation percentage
+  * Power loss in the wire
+- Status indicator (Excellent <3%, Acceptable <5%, Poor >5%)
+- Interactive SVG circuit diagram showing source, transmission line, and load
+- AWG wire gauge reference table with specifications
+- Color-coded result cards
+
+**Key Formulas:**
+```
+Wire Resistance: R = (2 × ρ × L) / A
+Voltage Drop: V_drop = I × R
+Voltage at Load: V_load = V_source - V_drop
+Regulation %: (V_drop / V_source) × 100
+Power Loss: P_loss = I² × R
+```
+
+**Educational Content:**
+- Voltage sag causes and effects
+- Wire material resistivity comparison
+- Acceptable voltage drop standards (NEC recommendations)
+- Mitigation strategies
+- Real-world applications (home wiring, industrial power distribution, automotive, solar, battery systems)
+
+---
+
+#### 2. **Simulation: Op-Amp Differentiator** 🆕
+**File:** `pages/simulations/op-amp-differentiator.vue`
+
+**Features:**
+- Interactive op-amp differentiator circuit with real-time waveform visualization
+- Multiple input signal types: Sine, Triangle, Square, Sawtooth
+- Adjustable parameters:
+  * Input frequency: 1-20 Hz
+  * Input amplitude: 0.5-5 V
+  * Feedback resistor (Rf): 1-100 kΩ
+  * Input capacitor (Cin): 1-100 nF
+  * Animation speed: 0.25x - 3x
+- Real-time canvas animation at 60fps showing:
+  * Input waveform (Vin) in red
+  * Output waveform (Vout) in purple (differentiated signal)
+- Live circuit analysis:
+  * DC gain (theoretical)
+  * Time constant (τ = Rf × Cin)
+  * Cutoff frequency (fc = 1/(2πτ))
+  * Phase shift (-90° for differentiator)
+- Interactive SVG circuit diagram with labeled components
+- Play/Pause controls
+- Grid background and center line reference
+
+**Key Concepts Demonstrated:**
+- Mathematical differentiation in analog circuits
+- Input-output relationships for different waveforms
+  * Sine → Cosine (amplitude scales with frequency)
+  * Triangle → Square (constant slope → constant voltage)
+  * Square → Spikes (step → impulse)
+  * Sawtooth → DC (ramp → constant)
+- Frequency-dependent gain behavior
+- High-pass filter characteristics
+
+**Educational Content:**
+- Differentiator circuit operation principles
+- Current flow: i = Cin × dVin/dt
+- Output voltage: Vout = -Rf × Cin × dVin/dt
+- Practical considerations (noise sensitivity, stability)
+- Common applications (rate sensors, edge detection, PD controllers, signal processing)
+- Formula summary and design tips
+
+---
+
+## 📈 Progress Tracking
+
+| Session | Date | Features Added | Notes |
+|---------|------|----------------|-------|
+| 27 | 2026-03-03 | Voltage Sag Calculator, Op-Amp Differentiator | Cron run - Power distribution + analog signal processing |
+| 26 | 2026-03-03 | Kirchhoff's Laws Solver, Switched Capacitor Filter | Cron run - Circuit analysis fundamentals + mixed-signal filtering |
+| 20 | 2026-03-03 | Antenna Resonant Frequency, RLC Damped Oscillation | Cron run - RF engineering + advanced circuit analysis |
 
 #### 1. **Calculator: Antenna Resonant Frequency Calculator** 🆕
 **File:** `pages/calculators/antenna-resonant-frequency.vue`
@@ -149,10 +242,10 @@ Potential topics for future development:
 
 ## 💾 Git Status
 
-**Latest Commit:** df3a686
+**Latest Commit:** 05ecf76
 **Branch:** main
-**Status:** Clean (all changes committed and pushed)
-**Build:** ✅ Build completed successfully - both new features compiled without errors
+**Status:** ✅ Clean (all changes committed and pushed)
+**Build:** Pending verification - new features ready for deployment
 
 ---
 
