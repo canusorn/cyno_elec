@@ -1,19 +1,17 @@
 {
-  "lastUpdate": "2026-03-03T15:50:00+07:00",
-  "session": "Session 24 - Cron Run - COMPLETED",
+  "lastUpdate": "2026-03-03T19:35:00+07:00",
+  "session": "Session 25 - Cron Run - COMPLETED",
   "completedWork": [
-    "Schmitt Trigger Simulation - Interactive hysteresis demonstration with op-amp circuit visualization",
-    "Voltage Level Converter Calculator - Bidirectional logic level converter with MOSFET circuit design",
-    "RC Low Pass Filter Calculator - NEW: Calculate cutoff frequency, time constant, and frequency response with interactive Bode plot",
-    "Sallen-Key Filter Simulation - NEW: 2nd-order active filter with Butterworth/Bessel/Chebyshev responses and real-time visualization"
+    "Capacitor ESR & Impedance Calculator - NEW: Calculate ESR effects, impedance vs frequency with interactive Bode plot, phase angle calculations, and educational content on ESR impact",
+    "LC Tank Circuit Oscillator - NEW: Interactive energy oscillation simulation with voltage/current waveforms, phasor diagram, damped/undamped oscillation control, and real-time circuit properties"
   ],
   "pendingTasks": [],
   "projectStats": {
-    "totalCalculators": 48,
-    "totalSimulations": 43,
-    "totalFeatures": 91
+    "totalCalculators": 49,
+    "totalSimulations": 44,
+    "totalFeatures": 93
   },
-  "latestCommit": "396b901 - feat: add RC Low Pass Filter Calculator and Sallen-Key Filter Simulation (PUSHED)",
-  "buildStatus": "Success - Build completed and tested",
+  "latestCommit": "abc0e47 - feat: add Capacitor ESR Calculator and LC Oscillator simulation (PUSHED)",
+  "buildStatus": "Success - Build completed and tested, both new features compiled successfully",
   "gitStatus": "Clean - All changes committed and pushed to GitHub"
 }

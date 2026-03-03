@@ -2,8 +2,9 @@
 
 ## Current Features
 
-### Calculators (48)
+### Calculators (49)
 1. 78xx-regulator-design ✨ NEW
+2. **ripple-voltage** ✨ NEW
 2. ac-power-calculator
 3. antenna-resonant-frequency
 4. battery-life
@@ -51,9 +52,10 @@
 46. wire-gauge-calculator
 47. wien-bridge-calculator
 
-### Simulations (46)
+### Simulations (47)
 1. ac-circuit
 2. active-filter
+3. **differential-pair** ✨ NEW
 3. boost-converter
 4. buck-boost-converter
 5. buck-converter
@@ -100,6 +102,38 @@
 46. zener-voltage-regulator
 
 ## Recently Completed (2026-03-03)
+
+### ✅ Ripple Voltage Calculator
+- Calculate ripple voltage for power supply filtering (V_ripple = I_load / (f × C))
+- Support for full-wave and half-wave rectifiers
+- Configurable mains frequency (50Hz/60Hz)
+- Real-time calculation with multiple voltage formats (µV, mV, V)
+- Interactive ripple waveform visualization with sawtooth approximation
+- Load current control (1mA to 10A)
+- Filter capacitance control (1µF to 100,000µF)
+- Ripple frequency and time-between-peaks display
+- Quick convert presets: Arduino, Raspberry Pi, Audio Amp, Motor Driver
+- Comprehensive educational content on ripple voltage
+- Design tips and typical ripple requirements table
+- Formula explanations and practical applications
+
+### ✅ Differential Pair Simulation
+- Interactive differential pair amplifier with two matched NPN transistors
+- Real-time current steering visualization based on differential input
+- Adjustable input voltages (Vin+, Vin- from -2V to +2V)
+- Tail current source control (0.1mA to 10mA)
+- Collector resistance control (0.5kΩ to 10kΩ)
+- Differential and common-mode input voltage display
+- Transfer characteristic curve with operating point indicator
+- Current distribution bar chart showing I_C1 and I_C2 split
+- Animated circuit diagram with color-coded components
+- SVG circuit visualization showing Q1, Q2, tail current, and collector resistors
+- Output voltage analysis (Vout1, Vout2, differential output)
+- Preset configurations: Balanced, Positive Diff, Negative Diff, Large Signal
+- Comprehensive educational content on differential pairs
+- Key equations: differential voltage, common-mode voltage, voltage gain
+- Applications: op-amps, differential signaling, RF mixers, DACs
+- Design considerations: transistor matching, emitter degeneration, load balancing
 
 ### ✅ Series Circuit Analysis Simulation
 - Interactive series circuit explorer with multiple resistors (2-5)
@@ -227,7 +261,7 @@
 - Thevenin/Norton Equivalent Calculator
 
 ## Development Status
-- Last Updated: 2026-03-03 18:36
-- Status: ✅ Complete - Series Circuit Analysis Simulation & Period-Frequency Converter Calculator added
-- Latest Commit: fcf7f83
+- Last Updated: 2026-03-03 20:32
+- Status: ✅ Complete - Ripple Voltage Calculator & Differential Pair Simulation added
+- Latest Commit: Pending
 - GitHub: https://github.com/canusorn/cyno_elec

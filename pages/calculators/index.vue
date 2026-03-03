@@ -1000,6 +1000,27 @@ export default {
           },
           resultUnit: 'Hz/s',
           calculate: () => 0
+        },
+        {
+          id: 49,
+          title: 'Ripple Voltage Calculator',
+          description: 'Calculate ripple voltage for power supply filtering in full-wave and half-wave rectifier circuits with waveform visualization',
+          categoryId: ['power', 'ac-circuits', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Power Supply',
+          type: 'ripple-voltage',
+          path: '/calculators/ripple-voltage',
+          formula: 'Vripple = Iload / (f × C)',
+          icon: 'BoltIcon',
+          units: ['V', 'A', 'F', 'Hz'],
+          inputs: {
+            loadCurrent: { label: 'Load Current', placeholder: 'Enter load current', unit: 'A' },
+            capacitance: { label: 'Capacitance', placeholder: 'Enter capacitance', unit: 'F' },
+            rectifierType: { label: 'Rectifier Type', placeholder: 'Full-wave or Half-wave' },
+            frequency: { label: 'Mains Frequency', placeholder: '50Hz or 60Hz', unit: 'Hz' }
+          },
+          resultUnit: 'V',
+          calculate: () => 0
         }
       ]
     }
