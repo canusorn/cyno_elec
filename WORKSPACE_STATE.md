@@ -2,7 +2,7 @@
 
 ## Current Features
 
-### Calculators (47)
+### Calculators (48)
 1. 78xx-regulator-design ✨ NEW
 2. ac-power-calculator
 3. antenna-resonant-frequency
@@ -29,28 +29,29 @@
 24. max-power-transfer
 25. ohms-law
 26. opamp-gain-calculator
-27. power
-28. power-factor-calculator
-29. **pcb-trace-width** ✨ NEW
-30. rc-time-constant
-31. resistance-color-code
-32. resistor-series-parallel
-33. resistor-wattage
-34. resonant-frequency
-35. rl-time-constant
-36. rms-peak-calculator
-37. rlc-resonance
-38. series-parallel-calculator
-39. three-phase-power
-40. transformer-calculator
-41. voltage-divider
-42. voltage-level-converter
-43. vswr-calculator
-44. wheatstone-bridge
-45. wire-gauge-calculator
-46. wien-bridge-calculator
+27. **period-frequency-converter** ✨ NEW
+28. power
+29. power-factor-calculator
+30. **pcb-trace-width** ✨ NEW
+31. rc-time-constant
+32. resistance-color-code
+33. resistor-series-parallel
+34. resistor-wattage
+35. resonant-frequency
+36. rl-time-constant
+37. rms-peak-calculator
+38. rlc-resonance
+39. series-parallel-calculator
+40. three-phase-power
+41. transformer-calculator
+42. voltage-divider
+43. voltage-level-converter
+44. vswr-calculator
+45. wheatstone-bridge
+46. wire-gauge-calculator
+47. wien-bridge-calculator
 
-### Simulations (44)
+### Simulations (46)
 1. ac-circuit
 2. active-filter
 3. boost-converter
@@ -88,16 +89,41 @@
 35. sallen-key-filter
 36. schmitt-trigger
 37. series-circuit
-38. timer-555-astable
-39. timer-555-monostable
-40. transformer-basics
-41. transistor-switch
-42. **triac-dimmer** ✨ NEW
-43. voltage-multiplier
-44. wien-bridge-oscillator
-45. zener-voltage-regulator
+38. **series-circuit-analysis** ✨ NEW
+39. timer-555-astable
+40. timer-555-monostable
+41. transformer-basics
+42. transistor-switch
+43. **triac-dimmer** ✨ NEW
+44. voltage-multiplier
+45. wien-bridge-oscillator
+46. zener-voltage-regulator
 
 ## Recently Completed (2026-03-03)
+
+### ✅ Series Circuit Analysis Simulation
+- Interactive series circuit explorer with multiple resistors (2-5)
+- Real-time voltage drop visualization across each resistor
+- Current flow animation with Ohm's law calculations
+- Power dissipation analysis with bar charts showing distribution
+- Kirchhoff's Voltage Law verification with live calculations
+- SVG circuit diagram with color-coded components and animations
+- Preset configurations: Equal Resistors, Voltage Divider, High Power, Unbalanced
+- Comprehensive educational content on series circuits
+- Formula explanations: R_total, Ohm's Law, voltage drops, power dissipation
+- Practical applications and limitations guide
+
+### ✅ Period-Frequency Converter Calculator
+- Bidirectional conversion between period (T) and frequency (f)
+- Support for multiple units: ps, ns, μs, ms, s, min, hr (period) and Hz, kHz, MHz, GHz, THz (frequency)
+- Real-time calculation with automatic unit selection based on magnitude
+- Results display in all available units simultaneously
+- Waveform visualization with animated sine wave
+- Period indicator showing T on waveform when frequency ≤ 100Hz
+- Quick convert presets: 60Hz power, 1kHz audio, 1MHz RF, 2.4GHz WiFi
+- Comprehensive educational content on the inverse relationship
+- Common applications for period and frequency in electrical engineering
+- Formula explanations and example calculations
 
 ### ✅ PCB Trace Width Calculator
 - Calculate trace width based on IPC-2221 standards
@@ -201,7 +227,7 @@
 - Thevenin/Norton Equivalent Calculator
 
 ## Development Status
-- Last Updated: 2026-03-03 17:32
-- Status: ✅ Complete - PCB Trace Width Calculator & Triac Light Dimmer Simulation added
-- Latest Commit: ada797a
+- Last Updated: 2026-03-03 18:36
+- Status: ✅ Complete - Series Circuit Analysis Simulation & Period-Frequency Converter Calculator added
+- Latest Commit: fcf7f83
 - GitHub: https://github.com/canusorn/cyno_elec
