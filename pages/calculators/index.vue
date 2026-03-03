@@ -962,6 +962,25 @@ export default {
           },
           resultUnit: 'Hz',
           calculate: () => 0
+        },
+        {
+          id: 47,
+          title: '78xx Regulator Design Calculator',
+          description: 'Complete design tool for 78xx series linear voltage regulators with component selection and thermal analysis',
+          categoryId: ['dc-circuits', 'power'],
+          difficulty: 'Intermediate',
+          category: 'Power Supply',
+          type: '78xx-regulator-design',
+          path: '/calculators/78xx-regulator-design',
+          formula: 'P = (Vin - Vout) × Iout',
+          icon: 'BoltIcon',
+          units: ['V', 'A', 'W'],
+          inputs: {
+            inputVoltage: { label: 'Input Voltage', placeholder: 'Enter input voltage', unit: 'V' },
+            outputCurrent: { label: 'Output Current', placeholder: 'Enter output current', unit: 'A' }
+          },
+          resultUnit: 'W',
+          calculate: () => 0
         }
       ]
     }
