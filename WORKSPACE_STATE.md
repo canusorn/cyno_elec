@@ -2,60 +2,130 @@
 
 ## Current Features
 
-### Calculators (27)
-1. ac-power-calculator
-2. battery-life
-3. capacitance-calculator
-4. capacitor-series-parallel
-5. decibel-calculator
-6. delta-wye
-7. energy-storage
-8. impedance-calculator
-9. inductance-calculator
-10. inductive-reactance
-11. inductor-energy
-12. led-resistor
-13. lm317-regulator
-14. ohms-law
-15. opamp-gain-calculator
-16. power-factor-calculator
-17. power
-18. rc-time-constant
-19. resistance-color-code
-20. resistor-series-parallel
-21. **resonant-frequency** ✨ NEW
-22. three-phase-power
-23. transformer-calculator
-24. voltage-divider
-25. wheatstone-bridge
-26. wire-gauge-calculator
+### Calculators (47)
+1. 78xx-regulator-design ✨ NEW
+2. ac-power-calculator
+3. antenna-resonant-frequency
+4. battery-life
+5. capacitance-calculator
+6. capacitive-reactance
+7. capacitor-series-parallel
+8. current-divider
+9. decibel-calculator
+10. delta-wye
+11. energy-storage
+12. filter-design-calculator
+13. heatsink-thermal
+14. impedance-calculator
+15. impedance-matching
+16. inductance-calculator
+17. inductive-reactance
+18. inductor-energy
+19. inductor-series-parallel
+20. led-array
+21. led-resistor
+22. led-series-resistor
+23. lm317-regulator
+24. max-power-transfer
+25. ohms-law
+26. opamp-gain-calculator
+27. power
+28. power-factor-calculator
+29. **pcb-trace-width** ✨ NEW
+30. rc-time-constant
+31. resistance-color-code
+32. resistor-series-parallel
+33. resistor-wattage
+34. resonant-frequency
+35. rl-time-constant
+36. rms-peak-calculator
+37. rlc-resonance
+38. series-parallel-calculator
+39. three-phase-power
+40. transformer-calculator
+41. voltage-divider
+42. voltage-level-converter
+43. vswr-calculator
+44. wheatstone-bridge
+45. wire-gauge-calculator
+46. wien-bridge-calculator
 
-### Simulations (24)
+### Simulations (44)
 1. ac-circuit
-2. boost-converter
-3. buck-boost-converter
-4. buck-converter
-5. capacitor-charging
-6. **current-divider** ✨ NEW
-7. differential-amplifier
-8. diode-rectifier
-9. full-wave-bridge-rectifier
-10. half-bridge-motor-driver
-11. led-circuit-designer
-12. mosfet-switching
-13. op-amp-amplifier
-14. parallel-circuit
-15. rc-circuit
-16. rl-circuit
-17. rlc-resonance
-18. series-circuit
-19. timer-555-astable
-20. timer-555-monostable
-21. transformer-basics
-22. transistor-switch
-23. wien-bridge-oscillator
+2. active-filter
+3. boost-converter
+4. buck-boost-converter
+5. buck-converter
+6. capacitor-charging
+7. common-emitter-amplifier
+8. crystal-oscillator
+9. current-divider
+10. differential-amplifier
+11. diode-clipping
+12. diode-rectifier
+13. electromagnetic-induction
+14. full-wave-bridge-rectifier
+15. half-bridge-motor-driver
+16. inductive-kickback
+17. inductor-self-resonance
+18. lc-tank-circuit
+19. led-circuit-designer
+20. **magnetic-hysteresis** ✨ NEW
+21. mosfet-switching
+22. op-amp-amplifier
+23. op-amp-integrator
+24. parallel-circuit
+25. phase-angle-control
+26. push-pull-amplifier
+27. pwm-generator
+28. rc-circuit
+29. rc-high-pass-filter
+30. rectifier-smoothing
+31. rlc-bandstop-filter
+32. rlc-damped-oscillation
+33. rl-circuit
+34. rlc-resonance
+35. sallen-key-filter
+36. schmitt-trigger
+37. series-circuit
+38. timer-555-astable
+39. timer-555-monostable
+40. transformer-basics
+41. transistor-switch
+42. **triac-dimmer** ✨ NEW
+43. voltage-multiplier
+44. wien-bridge-oscillator
+45. zener-voltage-regulator
 
-## Recently Completed (2026-02-28)
+## Recently Completed (2026-03-03)
+
+### ✅ PCB Trace Width Calculator
+- Calculate trace width based on IPC-2221 standards
+- Support for current (0.1-20A), temperature rise (5-100°C)
+- Configurable trace length (1-500mm) and copper weight (0.5-4 oz/ft²)
+- Real-time cross-section visualization showing trace and substrate
+- Current flow animation with particle effects
+- Trace resistance and voltage drop calculations
+- Power dissipation and cross-sectional area analysis
+- Preset configurations: Signal, Medium Power, High Power, Very High Power
+- Copper thickness reference table (0.5oz to 4oz)
+- Design recommendations with safety margins
+- Comprehensive educational content on PCB design considerations
+
+### ✅ Triac Light Dimmer Simulation
+- Interactive phase-angle control demonstration (0-180° firing angle)
+- Real-time waveform visualization (full sine vs phase-controlled output)
+- Animated circuit diagram with triac, diac, potentiometer, and load
+- Firing angle indicator on waveform display
+- Power percentage calculation based on conduction angle
+- RMS voltage output calculation
+- Conduction angle display (180° - firing angle)
+- Animated light bulb with brightness proportional to power output
+- Current flow animation in the circuit
+- Preset brightness levels: Full Power, Bright, Medium, Dim
+- Comprehensive educational content on triacs and phase-angle control
+- Applications and limitations guide (resistive vs non-resistive loads)
+- Power formula explanations with examples
 
 ### ✅ Resonant Frequency Calculator
 - Calculate resonant frequency for LC and RLC circuits (f₀ = 1 / 2π√LC)
@@ -131,7 +201,7 @@
 - Thevenin/Norton Equivalent Calculator
 
 ## Development Status
-- Last Updated: 2026-02-28 17:09
-- Status: ✅ Complete - Resonant Frequency Calculator & Current Divider Simulation added
-- Latest Commit: TBD
+- Last Updated: 2026-03-03 17:32
+- Status: ✅ Complete - PCB Trace Width Calculator & Triac Light Dimmer Simulation added
+- Latest Commit: ada797a
 - GitHub: https://github.com/canusorn/cyno_elec
