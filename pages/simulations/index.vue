@@ -1199,6 +1199,45 @@
             </div>
           </div>
 
+          <!-- Schmitt Trigger -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-green-50 to-teal-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Op-amp triangle -->
+                <polygon points="80,30 80,90 140,60" fill="white" stroke="#22C55E" stroke-width="2"/>
+                <!-- Input terminals -->
+                <line x1="40" y1="45" x2="80" y2="45" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="40" y1="75" x2="80" y2="75" stroke="#94A3B8" stroke-width="2"/>
+                <!-- Feedback path -->
+                <line x1="140" y1="60" x2="170" y2="60" stroke="#22C55E" stroke-width="2"/>
+                <line x1="170" y1="60" x2="170" y2="30" stroke="#22C55E" stroke-width="2"/>
+                <line x1="170" y1="30" x2="100" y2="30" stroke="#22C55E" stroke-width="2"/>
+                <line x1="100" y1="30" x2="100" y2="45" stroke="#22C55E" stroke-width="2"/>
+                <!-- Hysteresis diagram -->
+                <rect x="50" y="15" width="25" height="20" fill="white" stroke="#F59E0B" stroke-width="1"/>
+                <path d="M 55,28 L 65,20 L 65,28" fill="none" stroke="#F59E0B" stroke-width="1"/>
+                <!-- Labels -->
+                <text x="100" y="25" fill="#22C55E" font-size="6">Hysteresis</text>
+                <text x="85" y="55" fill="#3B82F6" font-size="6">-</text>
+                <text x="85" y="80" fill="#3B82F6" font-size="6">+</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Schmitt Trigger
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore hysteresis and noise immunity in comparator circuits. Understand how positive feedback creates clean digital outputs from noisy analog signals.
+              </p>
+              <NuxtLink
+                to="/simulations/schmitt-trigger"
+                class="inline-flex items-center px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->

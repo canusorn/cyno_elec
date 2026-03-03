@@ -923,6 +923,26 @@ export default {
           },
           resultUnit: 'V',
           calculate: () => 0
+        },
+        {
+          id: 45,
+          title: 'Voltage Level Converter Calculator',
+          description: 'Calculate resistor values for bidirectional logic level conversion between different voltage domains (1.8V, 3.3V, 5V)',
+          categoryId: ['dc-circuits', 'basic'],
+          difficulty: 'Intermediate',
+          category: 'Digital Logic',
+          type: 'voltage-level-converter',
+          path: '/calculators/voltage-level-converter',
+          formula: 'MOSFET Bidirectional Level Shifter',
+          icon: 'BoltIcon',
+          units: ['V', 'Ω', 'mA'],
+          inputs: {
+            lowVoltage: { label: 'Low Voltage (V_LV)', placeholder: 'Enter low voltage', unit: 'V' },
+            highVoltage: { label: 'High Voltage (V_HV)', placeholder: 'Enter high voltage', unit: 'V' },
+            pullupResistor: { label: 'Pull-up Resistor', placeholder: 'Enter resistance', unit: 'Ω' }
+          },
+          resultUnit: 'Ω',
+          calculate: () => 0
         }
       ]
     }
