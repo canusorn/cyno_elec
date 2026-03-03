@@ -1472,6 +1472,43 @@
             </div>
           </div>
 
+          <!-- Oscilloscope Basics -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Oscilloscope screen -->
+                <rect x="20" y="15" width="160" height="90" fill="#064E3B" stroke="#047857" stroke-width="2" rx="5"/>
+                <!-- Grid -->
+                <line x1="20" y1="60" x2="180" y2="60" stroke="#059669" stroke-width="0.5" opacity="0.5"/>
+                <line x1="100" y1="15" x2="100" y2="105" stroke="#059669" stroke-width="0.5" opacity="0.5"/>
+                <line x1="60" y1="15" x2="60" y2="105" stroke="#059669" stroke-width="0.5" opacity="0.3"/>
+                <line x1="140" y1="15" x2="140" y2="105" stroke="#059669" stroke-width="0.5" opacity="0.3"/>
+                <line x1="20" y1="37.5" x2="180" y2="37.5" stroke="#059669" stroke-width="0.5" opacity="0.3"/>
+                <line x1="20" y1="82.5" x2="180" y2="82.5" stroke="#059669" stroke-width="0.5" opacity="0.3"/>
+                <!-- Waveform -->
+                <path d="M 30 60 Q 55 20 80 60 T 130 60 T 180 60" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/>
+                <!-- Controls -->
+                <rect x="185" y="25" width="12" height="8" fill="#374151" rx="1"/>
+                <rect x="185" y="37" width="12" height="8" fill="#374151" rx="1"/>
+                <rect x="185" y="49" width="12" height="8" fill="#374151" rx="1"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Oscilloscope Basics
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Learn to read waveforms, measure voltage, frequency, and period with interactive controls.
+              </p>
+              <NuxtLink
+                to="/simulations/oscilloscope-basics"
+                class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->

@@ -1,17 +1,17 @@
 {
-  "lastUpdate": "2026-03-04T01:32:00+07:00",
-  "session": "Session 28 - Cron Run - COMPLETED",
+  "lastUpdate": "2026-03-04T02:32:00+07:00",
+  "session": "Session 29 - Cron Run - COMPLETED",
   "completedWork": [
-    "Motor HP & Torque Calculator - NEW: Interactive calculator for motor horsepower, torque, RPM, efficiency, and current calculations. Features motor visualization with rotating rotor animation, real-time torque-speed curve, single-phase and three-phase current calculations, efficiency analysis, and comprehensive formulas. HP = (Torque × RPM) ÷ 5252.",
-    "Battery Charging Simulation - NEW: Interactive simulation of battery charging and discharging behavior using RC circuit model. Features battery SOC visualization with animated charging/discharging states, voltage vs time curves, real-time parameter adjustments (capacity, voltage, internal resistance, current), time constant calculations, and educational content on charging principles."
+    "RLC Bandpass Filter Simulation - NEW: Interactive RLC bandpass filter with frequency response visualization. Features real-time Bode plot showing magnitude vs frequency, center frequency calculation (f₀ = 1/(2π√LC)), bandwidth and Q factor calculations, interactive R, L, C sliders, passband highlight with -3dB cutoff points, circuit diagram with SVG visualization, and comprehensive educational content on filter theory including practical applications and design considerations.",
+    "Battery Pack Designer Calculator - NEW: Series and parallel battery pack configuration calculator. Support for 18650 (3.7V, 2.5Ah), 21700 (3.7V, 4.2Ah), 26650 LiFePO4 (3.2V, 3.2Ah), and custom cells. Two configuration modes: by number of cells or by target voltage/capacity. Calculates total voltage, capacity, energy (Wh), and runtime based on load current. Visual battery pack diagram showing cell arrangement (up to 5×10 grid display), common configuration examples (3S1P for drones, 10S3P for e-bikes, 96S50P for EVs), and comprehensive educational content on series/parallel connections, energy calculations, and safety considerations."
   ],
   "pendingTasks": [],
   "projectStats": {
-    "totalCalculators": 57,
-    "totalSimulations": 52,
-    "totalFeatures": 109
+    "totalCalculators": 58,
+    "totalSimulations": 53,
+    "totalFeatures": 111
   },
-  "latestCommit": "0f8ca1b - feat: add Motor HP/Torque Calculator and Battery Charging Simulation (PUSHED)",
-  "buildStatus": "Complete - Both new features created following project patterns, navigation updated, all changes committed and pushed to GitHub",
+  "latestCommit": "44e6935 - feat: add RLC Bandpass Filter Simulation and Battery Pack Designer (PUSHED)",
+  "buildStatus": "Complete - Both new features created following project patterns, navigation updated, build tested successfully, all changes committed and pushed to GitHub",
   "gitStatus": "Clean - All changes committed and pushed to GitHub"
 }

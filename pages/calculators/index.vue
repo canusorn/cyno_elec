@@ -1086,6 +1086,27 @@ export default {
           },
           resultUnit: 'Wh',
           calculate: () => 0
+        },
+        {
+          id: 53,
+          title: 'Transmission Line Calculator',
+          description: 'Calculate characteristic impedance, propagation delay, and electrical length for microstrip and stripline PCB transmission lines. Support for FR-4 and high-frequency materials.',
+          categoryId: ['rf', 'measurement'],
+          difficulty: 'Advanced',
+          category: 'RF Engineering',
+          type: 'transmission-line',
+          path: '/calculators/transmission-line',
+          formula: 'Z₀ ≈ 87/√(εr+1.41) × ln(5.98H/(0.8W+T))',
+          icon: 'ChartBarIcon',
+          units: ['Ω', 'mils', 'ps/in', 'εr'],
+          inputs: {
+            lineType: { label: 'Line Type', placeholder: 'Microstrip or Stripline', unit: '' },
+            traceWidth: { label: 'Trace Width', placeholder: 'Width of trace', unit: 'mils' },
+            substrateHeight: { label: 'Substrate Height', placeholder: 'Distance to ground', unit: 'mils' },
+            dielectricConstant: { label: 'Dielectric Constant', placeholder: 'εr (FR-4 ≈ 4.3)', unit: 'εr' }
+          },
+          resultUnit: 'Ω',
+          calculate: () => 0
         }
       ]
     }
