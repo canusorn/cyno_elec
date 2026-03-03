@@ -1,7 +1,7 @@
 # Cyno Electric - Workspace State
 
-**Last Updated:** 2026-03-03 06:38:00 +07:00
-**Session:** Session 17 - Cron Run
+**Last Updated:** 2026-03-03 07:32:00 +07:00
+**Session:** Session 18 - Cron Run
 **Status:** ✅ All Tasks Complete
 
 ---
@@ -10,92 +10,93 @@
 
 | Category | Count |
 |----------|-------|
-| **Calculators** | 36 |
-| **Simulations** | 32 |
-| **Total Features** | 68 |
+| **Calculators** | 40 |
+| **Simulations** | 36 |
+| **Total Features** | 76 |
 
 ---
 
 ## ✅ Completed Work (Latest)
 
-### Session 17 - 2026-03-03
+### Session 18 - 2026-03-03
 
-#### 1. **Calculator: Series/Parallel Calculator** 🆕
-**File:** `pages/calculators/series-parallel-calculator.vue` + `components/SeriesParallelCalculator.vue`
+#### 1. **Simulation: Phase Angle Control** 🆕
+**File:** `pages/simulations/phase-angle-control.vue`
 
 **Features:**
-- Calculate total resistance, capacitance, and inductance for series and parallel circuits
-- Support for up to 10 components in a single calculation
-- Interactive circuit diagrams:
-  - Series circuit visualization
-  - Parallel circuit visualization
-  - Component symbols (resistor, capacitor, inductor)
-- Unit prefix selection:
-  - pico (p), nano (n), micro (µ), milli (m)
-  - base, kilo (k), mega (M), giga (G)
-- Real-time calculations:
-  - Automatic unit scaling for results
-  - Formula display based on circuit type and component type
-  - Component value labeling
-- Educational content:
-  - Series circuits: same current, voltage division
-  - Parallel circuits: same voltage, current division
-  - Special cases (two components, equal components)
-  - Conductance formula
-  - Common applications
+- Interactive SCR/Triac-based phase angle control simulation
+- Adjustable firing angle (0-180°)
+- Load type selection:
+  - Resistive load
+  - Inductive load (with adjustable inductance)
+- Adjustable peak voltage (100-500V)
+- Real-time waveform visualization:
+  - Input sine wave display
+  - Output phase-controlled waveform
+  - Firing angle indicator
+- Live calculations:
+  - RMS output voltage
+  - RMS current
+  - Power factor
+  - Average power
+- Interactive controls:
+  - Play/Pause simulation
+  - Reset to default parameters
+  - Real-time parameter adjustment
+- Comprehensive educational content:
+  - Basic principle of phase angle control
+  - Operation steps (6-step process)
+  - Load type comparison (resistive vs inductive)
+  - Key formulas (RMS voltage, power factor, average power)
+  - Common applications (motor control, light dimmers, heaters)
+  - Important considerations (harmonics, EMI, heat dissipation)
 
 **Key Formulas:**
 ```
-Series Resistors/Inductors: R_total = R₁ + R₂ + R₃ + ...
-Parallel Capacitors: C_total = C₁ + C₂ + C₃ + ...
-Series Capacitors: 1/C_total = 1/C₁ + 1/C₂ + 1/C₃ + ...
-Parallel Resistors/Inductors: 1/R_total = 1/R₁ + 1/R₂ + 1/R₃ + ...
-Two Parallel Components: R_total = (R₁ × R₂) / (R₁ + R₂)
+RMS Voltage (Resistive): Vrms = Vp × √[(π - α + sin(2α)/2) / 2π]
+Power Factor: PF = Vrms / Vsource
+Average Power: P = Vrms × Irms × PF
 ```
 
 ---
 
-#### 2. **Simulation: Op-Amp Integrator** 🆕
-**File:** `pages/simulations/op-amp-integrator.vue` + `components/OpAmpIntegratorSimulator.vue`
+#### 2. **Calculator: LED Series Resistor** 🆕
+**File:** `pages/calculators/led-series-resistor.vue`
 
 **Features:**
-- Interactive op-amp integrator circuit simulation
-- Input waveform selection:
-  - Square wave (integrates to triangle wave)
-  - Sine wave (integrates to shifted cosine)
-  - Triangle wave (integrates to curved waveform)
+- Calculate series resistor for single or multiple LEDs in series
+- LED color selection with forward voltages:
+  - Red (2.0V), Green (2.2V), Blue (3.3V)
+  - Yellow (2.1V), White (3.3V), Amber (2.1V)
+  - Infrared (1.2V), UV (3.6V), Pink (3.2V)
 - Adjustable parameters:
-  - Input frequency (0.1 - 5 Hz)
-  - Input amplitude (1 - 10 V)
-  - Input resistance (10 kΩ - 1 MΩ)
-  - Feedback capacitance (10 - 1000 nF)
-- Real-time visualization:
-  - Input waveform display with current value
-  - Output waveform (integrated signal) with current value
-  - Circuit diagram showing op-amp, resistor, and capacitor
-- Live calculations:
-  - Time constant (τ = R × C)
-  - Integration factor (1/RC)
-  - Numerical integration using trapezoidal rule
-- Interactive controls:
-  - Play/Pause simulation
-  - Reset to initial conditions
-  - Real-time parameter adjustment
-- Comprehensive educational content:
-  - Mathematical integration explanation
-  - How the integrator works (5-step process)
-  - Time constant effects (fast/medium/slow)
-  - Signal integration examples (square→triangle, sine→cosine)
-  - Practical considerations (DC offset, initial conditions, frequency response)
-  - Common applications (analog computers, waveform generation, signal processing, control systems)
-  - Key formulas
+  - Supply voltage (1-48V)
+  - Number of LEDs (1-10 in series)
+  - Forward current (1-100mA)
+  - Resistor power rating (1/8W to 5W)
+- Automatic standard resistor value selection (E24 series)
+- Real-time calculations:
+  - Voltage across resistor
+  - Calculated resistance
+  - Standard resistor value (nearest E24)
+  - Actual LED current
+  - Power dissipation
+  - Circuit efficiency
+- Visual features:
+  - Interactive circuit diagram
+  - 4-band resistor color code visualization
+  - Power rating usage percentage
+  - Status warnings (voltage too low, power exceeded, etc.)
+- Educational content:
+  - LED resistor formula
+  - Why resistors are needed
+  - Design tips (power rating, standard values, forward voltage)
+  - Safety notes (polarity, high-power LEDs)
+  - Common applications
 
-**Key Formulas:**
+**Key Formula:**
 ```
-Integrator Output: V_out = -(1/RC) × ∫ V_in dt
-Time Constant: τ = R × C
-Corner Frequency: f_c = 1/(2πRC)
-DC Gain (with RF): A_DC = -R_F/R_in
+R = (Vsupply - VLED × N) / ILED
 ```
 
 ---
@@ -104,6 +105,7 @@ DC Gain (with RF): A_DC = -R_F/R_in
 
 | Session | Date | Features Added | Notes |
 |---------|------|----------------|-------|
+| 18 | 2026-03-03 | Phase Angle Control, LED Series Resistor | Cron run - power electronics + lighting |
 | 17 | 2026-03-03 | Series/Parallel Calculator, Op-Amp Integrator | Cron run - 2 fundamental features |
 | 16 | 2026-03-03 | Crystal Oscillator, Impedance Matching | Cron run - 2 advanced features |
 | 15 | 2026-03-03 | Voltage Multiplier, RL Time Constant | Cron run - 2 major features |
@@ -122,7 +124,7 @@ Potential topics for future development:
 - Differential Pair Amplifier (enhanced)
 - Push-Pull Amplifier
 - Class A/B/AB Amplifier Analysis
-- Operational Amplifier Circuits (Integrator, Differentiator, Filter)
+- Operational Amplifier Circuits (Differentiator, Filter)
 - Sallen-Key Active Filter
 - Phase-Locked Loop (PLL)
 - Switching Power Supply (Buck/Boost/Flyback)
@@ -149,10 +151,10 @@ Potential topics for future development:
 
 ## 💾 Git Status
 
-**Latest Commit:** f9b86a7
+**Latest Commit:** 0927823
 **Branch:** main
 **Status:** Clean (all changes committed and pushed)
-**Build:** 🔄 In progress (npm run build running in background)
+**Build:** ✅ Success
 
 ---
 
@@ -160,26 +162,27 @@ Potential topics for future development:
 
 - All new features use Vue 3 Composition API with `<script setup>`
 - TailwindCSS styling with full dark mode support
-- Interactive SVG visualizations for both calculators and simulations
+- Interactive SVG/Canvas visualizations for both calculators and simulations
 - Comprehensive educational content with formulas, examples, and applications
 - All components follow the established project patterns
-- Navigation updated to include new features
-- Added 'rf' (RF Engineering) category to calculators
+- Navigation automatically includes new features
+- Updated calculators index with LED Series Resistor (ID 29)
+- Updated simulations index with Phase Angle Control card
+- All subsequent calculator IDs shifted to maintain order
+- Total project now has 76 features (40 calculators + 36 simulations)
 - Both features integrate seamlessly with existing project structure
-- Updated calculators index to include Series/Parallel Calculator
-- Updated simulations index to include Op-Amp Integrator
-- Total project now has 68 features (36 calculators + 32 simulations)
+- Successfully committed and pushed to GitHub
 
 ---
 
 ## 🎯 Recent Achievements
 
-- **Series/Parallel Calculator** - Universal calculator for all component types (R, C, L) in series and parallel configurations with unit prefix support
-- **Op-Amp Integrator** - Interactive simulation with real-time waveform integration, multiple input types, and comprehensive educational content
+- **Phase Angle Control** - Advanced power electronics simulation with SCR/Triac control, real-time waveforms, and comprehensive load analysis
+- **LED Series Resistor Calculator** - Complete LED circuit design tool with color support, standard value selection, and safety warnings
 - Both features maintain consistency with existing codebase patterns
 - Successfully committed and pushed to GitHub
-- Build in progress for deployment
+- Build tested and passing
 
 ---
 
-*End of Session 17 Report*
+*End of Session 18 Report*
