@@ -1024,6 +1024,51 @@
             </div>
           </div>
 
+          <!-- Op-Amp Differentiator -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-rose-50 to-orange-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Op-amp triangle -->
+                <path d="M 70 30 L 70 90 L 130 60 Z" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+                <!-- Input capacitor -->
+                <line x1="20" y1="45" x2="50" y2="45" stroke="#10B981" stroke-width="2"/>
+                <line x1="50" y1="38" x2="50" y2="52" stroke="#10B981" stroke-width="2"/>
+                <line x1="55" y1="38" x2="55" y2="52" stroke="#10B981" stroke-width="2"/>
+                <line x1="55" y1="45" x2="70" y2="45" stroke="#10B981" stroke-width="2"/>
+                <!-- Feedback resistor -->
+                <path d="M 70 45 L 85 45 L 90 40 L 80 50 L 90 60 L 80 70 L 85 75 L 70 75" fill="none" stroke="#F59E0B" stroke-width="2"/>
+                <!-- Output -->
+                <line x1="130" y1="60" x2="170" y2="60" stroke="#EF4444" stroke-width="2"/>
+                <!-- Ground -->
+                <line x1="70" y1="75" x2="55" y2="75" stroke="#6B7280" stroke-width="2"/>
+                <line x1="45" y1="75" x2="65" y2="75" stroke="#6B7280" stroke-width="2"/>
+                <line x1="50" y1="78" x2="60" y2="78" stroke="#6B7280" stroke-width="1.5"/>
+                <line x1="53" y1="81" x2="57" y2="81" stroke="#6B7280" stroke-width="1.5"/>
+                <!-- Labels -->
+                <text x="20" y="30" text-anchor="middle" fill="#10B981" font-size="6" font-weight="bold">Vin</text>
+                <text x="170" y="50" text-anchor="middle" fill="#EF4444" font-size="6" font-weight="bold">Vout</text>
+                <text x="52" y="32" text-anchor="middle" fill="#10B981" font-size="5">Cin</text>
+                <text x="85" y="32" text-anchor="middle" fill="#F59E0B" font-size="5">Rf</text>
+                <!-- Waveforms hint -->
+                <text x="145" y="48" fill="#8B5CF6" font-size="5">d/dt</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Op-Amp Differentiator
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore op-amp differentiator circuits computing the time derivative of input signals. Watch ramps become DC and sines become cosines.
+              </p>
+              <NuxtLink
+                to="/simulations/op-amp-differentiator"
+                class="inline-flex items-center px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- Common Emitter Amplifier -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">

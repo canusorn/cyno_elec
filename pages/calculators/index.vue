@@ -1021,6 +1021,29 @@ export default {
           },
           resultUnit: 'V',
           calculate: () => 0
+        },
+        {
+          id: 50,
+          title: 'Voltage Sag Calculator',
+          description: 'Calculate voltage drop in power lines and ensure proper voltage regulation for electrical installations',
+          categoryId: ['power', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Power Distribution',
+          type: 'voltage-sag',
+          path: '/calculators/voltage-sag',
+          formula: 'Vdrop = I × (ρ × L / A)',
+          icon: 'BoltIcon',
+          units: ['V', 'A', 'Ω', 'm', 'mm²'],
+          inputs: {
+            sourceVoltage: { label: 'Source Voltage', placeholder: 'Enter source voltage', unit: 'V' },
+            current: { label: 'Load Current', placeholder: 'Enter load current', unit: 'A' },
+            material: { label: 'Wire Material', placeholder: 'Copper, Aluminum, etc.' },
+            length: { label: 'Wire Length', placeholder: 'Enter wire length', unit: 'm' },
+            awg: { label: 'Wire Gauge', placeholder: 'AWG number', unit: 'AWG' },
+            powerFactor: { label: 'Power Factor', placeholder: '0.5 - 1.0', unit: '' }
+          },
+          resultUnit: 'V',
+          calculate: () => 0
         }
       ]
     }
