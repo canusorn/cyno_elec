@@ -1381,6 +1381,47 @@
             </div>
           </div>
 
+          <!-- Battery Charging Simulation -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Battery container -->
+                <rect x="70" y="30" width="60" height="60" fill="none" stroke="#10B981" stroke-width="3" rx="5"/>
+                <!-- Battery terminal -->
+                <rect x="95" y="20" width="10" height="10" fill="#10B981" stroke="#10B981" stroke-width="2"/>
+                <!-- Battery fill (animated) -->
+                <rect x="73" y="33" width="54" height="40" fill="#10B981" opacity="0.6">
+                  <animate attributeName="height" values="10;40;10" dur="3s" repeatCount="indefinite"/>
+                  <animate attributeName="y" values="63;33;63" dur="3s" repeatCount="indefinite"/>
+                </rect>
+                <!-- Charging bolt -->
+                <path d="M 100 40 L 100 55 M 93 47 L 107 47" stroke="#F59E0B" stroke-width="3"/>
+                <!-- Voltage curves -->
+                <path d="M 20 80 Q 40 40 60 80" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="3,3"/>
+                <path d="M 140 80 Q 160 40 180 80" fill="none" stroke="#EF4444" stroke-width="2" stroke-dasharray="3,3"/>
+                <!-- Labels -->
+                <text x="40" y="95" fill="#3B82F6" font-size="8">Charge</text>
+                <text x="155" y="95" fill="#EF4444" font-size="8">Discharge</text>
+                <!-- SOC percentage -->
+                <text x="100" y="65" text-anchor="middle" fill="white" font-size="10" font-weight="bold">75%</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Battery Charging Simulation
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Interactive battery charging and discharging with RC circuit model. Visualize voltage curves, state of charge, and time constant behavior.
+              </p>
+              <NuxtLink
+                to="/simulations/battery-charging"
+                class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->

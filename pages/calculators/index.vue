@@ -1044,6 +1044,27 @@ export default {
           },
           resultUnit: 'V',
           calculate: () => 0
+        },
+        {
+          id: 51,
+          title: 'Motor HP & Torque Calculator',
+          description: 'Calculate motor horsepower, torque, RPM, efficiency, and current draw with interactive motor visualization',
+          categoryId: ['motors', 'power'],
+          difficulty: 'Intermediate',
+          category: 'Motors',
+          type: 'motor-hp-torque',
+          path: '/calculators/motor-hp-torque',
+          formula: 'HP = (Torque × RPM) ÷ 5252',
+          icon: 'CogIcon',
+          units: ['HP', 'lb-ft', 'RPM', 'A', 'V'],
+          inputs: {
+            torque: { label: 'Torque', placeholder: 'Enter torque', unit: 'lb-ft' },
+            rpm: { label: 'Speed', placeholder: 'Enter RPM', unit: 'RPM' },
+            voltage: { label: 'Voltage', placeholder: 'Enter voltage', unit: 'V' },
+            efficiency: { label: 'Efficiency', placeholder: '85', unit: '%' }
+          },
+          resultUnit: 'HP',
+          calculate: () => 0
         }
       ]
     }
