@@ -892,6 +892,44 @@
             </div>
           </div>
 
+          <!-- Diode Clamper Circuit -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Input waveform (centered at 0) -->
+                <path d="M 20 60 Q 35 35, 50 60 T 80 60" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="4,2" opacity="0.6"/>
+                <!-- Output waveform (shifted up - positive clamper) -->
+                <path d="M 100 35 L 100 50 Q 115 25, 130 50 T 160 50 L 160 35" fill="none" stroke="#10B981" stroke-width="2.5"/>
+                <!-- Capacitor symbol -->
+                <line x1="55" y1="55" x2="55" y2="65" stroke="#9CA3AF" stroke-width="2"/>
+                <line x1="48" y1="60" x2="62" y2="60" stroke="#9FA8DA" stroke-width="2"/>
+                <line x1="48" y1="63" x2="62" y2="63" stroke="#9FA8DA" stroke-width="2"/>
+                <!-- Diode symbol -->
+                <polygon points="70,50 70,70 85,60" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+                <line x1="85" y1="50" x2="85" y2="70" stroke="#8B5CF6" stroke-width="2"/>
+                <!-- Clamping level indicator -->
+                <line x1="100" y1="50" x2="180" y2="50" stroke="#EF4444" stroke-width="1" stroke-dasharray="3,3" opacity="0.7"/>
+                <text x="55" y="30" fill="#3B82F6" font-size="8" font-weight="bold">Input</text>
+                <text x="140" y="30" fill="#10B981" font-size="8" font-weight="bold">Output</text>
+                <text x="135" y="45" fill="#EF4444" font-size="7">Clamp Level</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Diode Clamper Circuit
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Learn how clamper circuits shift DC levels of AC signals. Explore positive and negative clampers with adjustable capacitance, resistance, and diode types.
+              </p>
+              <NuxtLink
+                to="/simulations/diode-clamper"
+                class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- Voltage Multiplier Circuit -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">

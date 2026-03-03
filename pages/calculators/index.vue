@@ -1129,6 +1129,27 @@ export default {
           },
           resultUnit: 'kVAR',
           calculate: () => 0
+        },
+        {
+          id: 59,
+          title: 'Diode Forward Bias Calculator',
+          description: 'Calculate diode current, voltage drop, and power dissipation using the Shockley equation. Support for Silicon, Germanium, Schottky, and various LED types.',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Semiconductors',
+          type: 'diode-forward-bias',
+          path: '/calculators/diode-forward-bias',
+          formula: 'I = Is(e^(Vd/nVt) - 1)',
+          icon: 'BoltIcon',
+          units: ['A', 'V', 'Ω', '°C'],
+          inputs: {
+            supplyVoltage: { label: 'Supply Voltage', placeholder: 'Enter supply voltage', unit: 'V' },
+            seriesResistance: { label: 'Series Resistance', placeholder: 'Enter resistance', unit: 'Ω' },
+            diodeType: { label: 'Diode Type', placeholder: 'Select diode type' },
+            temperature: { label: 'Temperature', placeholder: 'Enter temperature', unit: '°C' }
+          },
+          resultUnit: 'A',
+          calculate: () => 0
         }
       ]
     }
