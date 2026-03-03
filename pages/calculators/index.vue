@@ -900,6 +900,29 @@ export default {
           },
           resultUnit: 'A',
           calculate: () => 0
+        },
+        {
+          id: 44,
+          title: 'Rectifier Performance Calculator',
+          description: 'Analyze rectifier circuits with precision - calculate DC voltage, ripple factor, and efficiency for half-wave and full-wave rectifiers with filter capacitors',
+          categoryId: ['ac-circuits', 'power'],
+          difficulty: 'Intermediate',
+          category: 'Power Electronics',
+          type: 'rectifier-performance',
+          path: '/calculators/rectifier-performance',
+          formula: 'V_dc = V_m/π (half-wave) | V_dc = 2V_m/π (full-wave)',
+          icon: 'BoltIcon',
+          units: ['V', 'A', 'Ω', 'µF'],
+          inputs: {
+            rectifierType: { label: 'Rectifier Type', placeholder: 'Half-wave/Full-wave' },
+            peakVoltage: { label: 'Peak Voltage (V_m)', placeholder: 'Enter peak voltage', unit: 'V' },
+            diodeDrop: { label: 'Diode Forward Voltage', placeholder: 'Enter voltage drop', unit: 'V' },
+            loadResistance: { label: 'Load Resistance', placeholder: 'Enter load resistance', unit: 'Ω' },
+            capacitorFilter: { label: 'Filter Capacitor', placeholder: 'Enter capacitance', unit: 'µF' },
+            frequency: { label: 'Frequency', placeholder: 'Enter frequency', unit: 'Hz' }
+          },
+          resultUnit: 'V',
+          calculate: () => 0
         }
       ]
     }

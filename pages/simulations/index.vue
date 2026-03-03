@@ -1159,6 +1159,46 @@
             </div>
           </div>
 
+          <!-- Inductive Kickback -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-red-50 to-orange-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Voltage spike -->
+                <path d="M 30 80 L 60 80 L 70 30 L 80 20 L 90 25 L 100 80 L 170 80" 
+                      fill="none" stroke="#EF4444" stroke-width="2.5"/>
+                <circle cx="80" cy="20" r="3" fill="#EF4444"/>
+                <text x="80" y="12" text-anchor="middle" fill="#EF4444" font-size="9" font-weight="bold">SPIKE!</text>
+                <!-- Inductor coil -->
+                <path d="M 40 60 Q 50 55 60 60 Q 70 65 80 60" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+                <text x="60" y="75" text-anchor="middle" fill="#8B5CF6" font-size="7">L</text>
+                <!-- Switch -->
+                <line x1="100" y1="60" x2="120" y2="60" stroke="#6B7280" stroke-width="2"/>
+                <circle cx="110" cy="60" r="3" fill="#F59E0B"/>
+                <!-- Diode protection -->
+                <path d="M 140 50 L 140 70" stroke="#10B981" stroke-width="2" stroke-dasharray="3,2"/>
+                <circle cx="150" cy="50" r="8" fill="white" stroke="#10B981" stroke-width="1.5"/>
+                <path d="M 146 47 L 154 47 L 146 53 L 154 53" fill="none" stroke="#10B981" stroke-width="1.5"/>
+                <!-- Labels -->
+                <text x="150" cy="105" text-anchor="middle" fill="#10B981" font-size="7">Protected</text>
+                <text x="30" y="95" fill="#EF4444" font-size="7">No Protection</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Inductive Kickback
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Witness dangerous voltage spikes when switching inductive loads. Learn how flyback diodes protect your circuits from back EMF damage.
+              </p>
+              <NuxtLink
+                to="/simulations/inductive-kickback"
+                class="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
