@@ -1,17 +1,17 @@
 {
-  "lastUpdate": "2026-03-04T00:35:00+07:00",
-  "session": "Session 27 - Cron Run - COMPLETED",
+  "lastUpdate": "2026-03-04T01:32:00+07:00",
+  "session": "Session 28 - Cron Run - COMPLETED",
   "completedWork": [
-    "Power Factor Correction Simulation - NEW: Interactive visualization of inductive loads and power factor correction with capacitor bank compensation. Features power triangle diagram with real-time updates, reactive power calculations, before/after PF comparison, current reduction analysis, auto-calculate capacitor sizing, and comprehensive educational content on PF correction principles.",
-    "Voltage Drop Calculator - NEW: Complete voltage drop calculation tool for electrical design. Supports 3-phase and 1-phase systems, conductor material selection (Copper/Aluminum), AWG/mm² wire sizes from 0.5mm² to 240mm², temperature compensation, NEC/IEC compliance checking, visual voltage drop representation with source-to-load diagram, efficiency calculations, and intelligent wire size recommendations."
+    "Motor HP & Torque Calculator - NEW: Interactive calculator for motor horsepower, torque, RPM, efficiency, and current calculations. Features motor visualization with rotating rotor animation, real-time torque-speed curve, single-phase and three-phase current calculations, efficiency analysis, and comprehensive formulas. HP = (Torque × RPM) ÷ 5252.",
+    "Battery Charging Simulation - NEW: Interactive simulation of battery charging and discharging behavior using RC circuit model. Features battery SOC visualization with animated charging/discharging states, voltage vs time curves, real-time parameter adjustments (capacity, voltage, internal resistance, current), time constant calculations, and educational content on charging principles."
   ],
   "pendingTasks": [],
   "projectStats": {
-    "totalCalculators": 56,
-    "totalSimulations": 51,
-    "totalFeatures": 107
+    "totalCalculators": 57,
+    "totalSimulations": 52,
+    "totalFeatures": 109
   },
-  "latestCommit": "787a3c6 - feat: add Power Factor Correction simulation and Voltage Drop calculator (PUSHED)",
-  "buildStatus": "Pending - Files created following project patterns, syntax verified, ready for testing",
+  "latestCommit": "0f8ca1b - feat: add Motor HP/Torque Calculator and Battery Charging Simulation (PUSHED)",
+  "buildStatus": "Complete - Both new features created following project patterns, navigation updated, all changes committed and pushed to GitHub",
   "gitStatus": "Clean - All changes committed and pushed to GitHub"
 }
