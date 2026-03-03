@@ -1509,6 +1509,47 @@
             </div>
           </div>
 
+          <!-- Three-Phase Power System -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Three phasors -->
+                <line x1="100" y1="60" x2="100" y2="20" stroke="#EF4444" stroke-width="3" stroke-linecap="round"/>
+                <line x1="100" y1="60" x2="65" y2="85" stroke="#22C55E" stroke-width="3" stroke-linecap="round"/>
+                <line x1="100" y1="60" x2="135" y2="85" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+                <!-- Circle -->
+                <circle cx="100" cy="60" r="40" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3,3"/>
+                <!-- Center point -->
+                <circle cx="100" cy="60" r="4" fill="#F59E0B"/>
+                <!-- Phase labels -->
+                <text x="100" y="15" text-anchor="middle" fill="#EF4444" font-size="10" font-weight="bold">A</text>
+                <text x="55" y="95" text-anchor="middle" fill="#22C55E" font-size="10" font-weight="bold">B</text>
+                <text x="145" y="95" text-anchor="middle" fill="#3B82F6" font-size="10" font-weight="bold">C</text>
+                <!-- Angle annotations -->
+                <text x="105" y="35" fill="#F59E0B" font-size="7">120°</text>
+                <text x="85" y="75" fill="#F59E0B" font-size="7">120°</text>
+                <!-- Waveforms hint -->
+                <path d="M 10 110 Q 20 100 30 110 T 50 110" fill="none" stroke="#EF4444" stroke-width="1.5" opacity="0.6"/>
+                <path d="M 60 110 Q 70 100 80 110 T 100 110" fill="none" stroke="#22C55E" stroke-width="1.5" opacity="0.6"/>
+                <path d="M 110 110 Q 120 100 130 110 T 150 110" fill="none" stroke="#3B82F6" stroke-width="1.5" opacity="0.6"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Three-Phase Power System
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Interactive visualization of balanced three-phase electrical systems with animated phasor diagrams, waveforms, and power calculations.
+              </p>
+              <NuxtLink
+                to="/simulations/three-phase-power"
+                class="inline-flex items-center px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->

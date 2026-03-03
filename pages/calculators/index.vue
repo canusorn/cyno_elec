@@ -1107,6 +1107,28 @@ export default {
           },
           resultUnit: 'Ω',
           calculate: () => 0
+        },
+        {
+          id: 54,
+          title: 'Power Factor Correction Calculator',
+          description: 'Calculate the required capacitor size for power factor correction in AC electrical systems. Determine kVAR requirements, capacitance values, current reduction, and potential cost savings from improved power factor.',
+          categoryId: ['power', 'ac-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Power Systems',
+          type: 'power-factor-correction',
+          path: '/calculators/power-factor-correction',
+          formula: 'Qc = P × (tan θ₁ - tan θ₂)',
+          icon: 'LightBulbIcon',
+          units: ['kW', 'kVAR', 'µF', 'A'],
+          inputs: {
+            realPower: { label: 'Real Power', placeholder: 'Load power', unit: 'kW' },
+            currentPF: { label: 'Current PF', placeholder: '0.5 - 0.95', unit: '' },
+            targetPF: { label: 'Target PF', placeholder: '0.85 - 0.99', unit: '' },
+            systemVoltage: { label: 'System Voltage', placeholder: 'Line-to-line', unit: 'V' },
+            frequency: { label: 'Frequency', placeholder: '50 or 60 Hz', unit: 'Hz' }
+          },
+          resultUnit: 'kVAR',
+          calculate: () => 0
         }
       ]
     }
