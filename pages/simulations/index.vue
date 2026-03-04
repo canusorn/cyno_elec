@@ -1588,6 +1588,48 @@
             </div>
           </div>
 
+          <!-- SCR Controlled Rectifier -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-red-50 to-rose-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- SCR symbol -->
+                <polygon points="85,40 85,80 115,60" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+                <line x1="115" y1="40" x2="115" y2="80" stroke="#8B5CF6" stroke-width="2"/>
+                <!-- Gate terminal -->
+                <line x1="100" y1="60" x2="100" y2="90" stroke="#F59E0B" stroke-width="2"/>
+                <line x1="100" y1="90" x2="120" y2="100" stroke="#F59E0B" stroke-width="2"/>
+                <!-- Input AC waveform -->
+                <path d="M 20 60 Q 30 40 40 60 T 60 60" fill="none" stroke="#3B82F6" stroke-width="2"/>
+                <!-- Output controlled waveform -->
+                <path d="M 70 60 L 85 60 L 90 55 Q 95 40 105 60 Q 115 80 125 60 L 140 60 L 140 100" fill="none" stroke="#10B981" stroke-width="2.5"/>
+                <!-- Firing pulse indicator -->
+                <line x1="85" y1="60" x2="85" y2="20" stroke="#F59E0B" stroke-width="1" stroke-dasharray="3,2"/>
+                <circle cx="85" cy="15" r="3" fill="#F59E0B"/>
+                <!-- Angle marker -->
+                <path d="M 85 70 A 15 15 0 0 1 100 85" fill="none" stroke="#EF4444" stroke-width="1.5"/>
+                <text x="105" y="95" fill="#EF4444" font-size="8" font-weight="bold">α</text>
+                <!-- Labels -->
+                <text x="30" y="35" fill="#3B82F6" font-size="7">AC In</text>
+                <text x="145" y="55" fill="#10B981" font-size="7">DC Out</text>
+                <text x="100" y="15" fill="#F59E0B" font-size="6">Gate</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                SCR Controlled Rectifier
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Learn how Silicon Controlled Rectifiers enable controlled power conversion through phase-angle firing. Visualize gate triggering, conduction angles, and output waveforms.
+              </p>
+              <NuxtLink
+                to="/simulations/thyristor-scr-rectifier"
+                class="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->

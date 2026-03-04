@@ -1150,6 +1150,28 @@ export default {
           },
           resultUnit: 'A',
           calculate: () => 0
+        },
+        {
+          id: 60,
+          title: 'Inductor Core Design Calculator',
+          description: 'Design custom inductors with ferrite cores. Calculate number of turns, wire gauge, core selection, saturation check, and power losses for toroid and E-core inductors.',
+          categoryId: ['rf', 'power'],
+          difficulty: 'Advanced',
+          category: 'Magnetics',
+          type: 'inductor-core-design',
+          path: '/calculators/inductor-core-design',
+          formula: 'L = (AL × N²) / 1000',
+          icon: 'CogIcon',
+          units: ['µH', 'A', 'nH/turn²', 'AWG'],
+          inputs: {
+            targetInductance: { label: 'Target Inductance', placeholder: 'Enter desired inductance', unit: 'µH' },
+            maxCurrent: { label: 'Maximum Current', placeholder: 'Enter max current', unit: 'A' },
+            frequency: { label: 'Operating Frequency', placeholder: 'Enter frequency', unit: 'kHz' },
+            coreMaterial: { label: 'Core Material', placeholder: 'Select material' },
+            coreSize: { label: 'Core Size', placeholder: 'Select core size' }
+          },
+          resultUnit: 'turns',
+          calculate: () => 0
         }
       ]
     }
