@@ -1,7 +1,7 @@
 # Cyno Electric - Workspace State
 
-**Last Updated:** 2026-03-04 05:32:00 +07:00
-**Session:** Session 28 - Cron Run
+**Last Updated:** 2026-03-04 09:40:00 +07:00
+**Session:** Session 29 - Cron Run
 **Status:** ✅ All Tasks Complete
 
 ---
@@ -10,9 +10,119 @@
 
 | Category | Count |
 |----------|-------|
-| **Calculators** | 61 |
-| **Simulations** | 57 |
-| **Total Features** | 118 |
+| **Calculators** | 62 |
+| **Simulations** | 58 |
+| **Total Features** | 120 |
+
+---
+
+## ✅ Completed Work (Latest)
+
+### Session 29 - 2026-03-04
+
+#### 1. **Calculator: Thermal Noise Calculator** 🆕
+**File:** `pages/calculators/thermal-noise.vue`
+
+**Features:**
+- Calculate Johnson-Nyquist thermal noise in resistors for low-noise circuit design
+- Input parameters:
+  * Resistance: 1Ω to 10MΩ (with quick presets: 50Ω, 1kΩ, 10kΩ, 100kΩ, 1MΩ)
+  * Temperature: 0K to 500K (with presets: 77K LN₂, 290K, 300K, 350K, 400K)
+  * Bandwidth: 1Hz to 1GHz (with presets: 20Hz audio, 20kHz, 1MHz RF, 10MHz, 100MHz)
+  * Number of resistors: 1 to 10 (for parallel/series combinations)
+- Real-time calculations:
+  * RMS noise voltage: Vn = √(4kTRB)
+  * Noise power density
+  * Noise current: In = Vn/R
+  * Noise density in nV/√Hz
+  * Peak-to-peak voltage (6.6× RMS)
+  * Signal level required for 80dB SNR
+- Interactive noise vs resistance chart showing current operating point
+- Preset buttons for common scenarios (audio, RF, cryogenic)
+- Detailed before/after analysis panels
+
+**Key Formulas:**
+```
+Noise Voltage: Vn = √(4kTRB)
+Noise Density: Vn/√Hz = √(4kTR) ≈ 0.13√R nV/√Hz at 300K
+Noise Power: Pn = Vn²/R = 4kTB
+Noise Current: In = Vn/R
+```
+
+**Educational Content:**
+- Johnson-Nyquist noise theory and physical origins
+- Thermal agitation of charge carriers
+- White noise characteristics (flat frequency spectrum)
+- Gaussian amplitude distribution
+- Temperature dependence (√T)
+- Bandwidth dependence (√B)
+- Noise in multiple resistors (uncorrelated addition)
+- Noise figure and SNR calculations
+- Practical examples: 50Ω, 1kΩ, 10kΩ, 100kΩ at 20kHz
+- Minimizing thermal noise techniques
+- Applications: low-noise amplifiers, RF receivers, instrumentation, audio preamps
+- Historical context: Johnson (1928) and Nyquist (1928) at Bell Labs
+
+---
+
+#### 2. **Simulation: Common Collector Amplifier (Emitter Follower)** 🆕
+**File:** `pages/simulations/common-collector-amplifier.vue`
+
+**Features:**
+- Real-time waveform visualization at 60fps
+- Adjustable parameters:
+  * VCC: 5V to 24V
+  * Emitter resistor (RE): 100Ω to 10kΩ
+  * Load resistor (RL): 100Ω to 10kΩ
+  * Beta (hFE): 50 to 500
+  * Input amplitude: 0.1V to 3V
+  * Frequency: 100Hz to 5kHz
+- Live circuit analysis:
+  * Voltage gain: Av ≈ 1 (typically 0.95-0.99)
+  * Current gain: Ai ≈ (β + 1)
+  * Input impedance: Zin ≈ (β + 1) × (RE || RL || re')
+  * Output impedance: Zout ≈ (Rsource / β) + re'
+  * Emitter current: IE
+  * Phase shift: 0° (in-phase)
+- Interactive visualizations:
+  * Real-time input/output waveforms (orange and pink)
+  * Transfer characteristic curve (Vout vs Vin)
+  * Current operating point indicator
+  * Circuit schematic with component values
+- Play/Pause and Reset controls
+- Key characteristics panel highlighting high Zin, low Zout, unity gain
+
+**Key Concepts Demonstrated:**
+- Unity voltage gain (output follows input)
+- High input impedance (doesn't load the source)
+- Low output impedance (can drive heavy loads)
+- Current amplification (β + 1)
+- No phase inversion
+- Wide bandwidth
+- Emitter diode resistance (re' = 25mV/IE)
+
+**Educational Content:**
+- Common Collector configuration fundamentals
+- Why it's called "Emitter Follower"
+- Voltage gain derivation: Av = RE / (RE + re')
+- Input impedance calculation and beta multiplication
+- Output impedance calculation
+- Current gain: Ai = β + 1
+- Comparison with Common Emitter and Common Base configurations
+- Applications: buffer amplifiers, impedance matching, output stages, sensor interfaces
+- Design considerations: Q-point stability, coupling capacitors, emitter resistor sizing
+- Practical example: Microphone preamp buffer (10kΩ to 600Ω matching)
+- Level shifting capability
+
+---
+
+## 📈 Progress Tracking
+
+| Session | Date | Features Added | Notes |
+|---------|------|----------------|-------|
+| 29 | 2026-03-04 | Thermal Noise Calculator, Common Collector Amplifier | Cron run - Noise analysis + voltage follower configuration |
+| 28 | 2026-03-04 | Three-Phase Power System, Power Factor Correction | Cron run - Industrial power systems + AC power optimization |
+| 27 | 2026-03-03 | Voltage Sag Calculator, Op-Amp Differentiator | Cron run - Power distribution + analog signal processing |
 
 ---
 
