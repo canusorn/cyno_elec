@@ -1273,6 +1273,28 @@ export default {
           },
           resultUnit: 'dB',
           calculate: () => 0
+        },
+        {
+          id: 67,
+          title: 'Wire Gauge Calculator',
+          description: 'Calculate current capacity, voltage drop, and select the right wire gauge for your project. Supports copper, aluminum, gold, and silver wires with temperature derating.',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Components',
+          type: 'wire-gauge',
+          path: '/calculators/wire-gauge',
+          formula: 'R = (ρ × L) / A',
+          icon: 'BoltIcon',
+          units: ['AWG', 'mm²', 'A', 'V', 'Ω'],
+          inputs: {
+            current: { label: 'Current', placeholder: 'Enter current', unit: 'A' },
+            wireLength: { label: 'Wire Length', placeholder: 'Enter length', unit: 'm/ft' },
+            voltage: { label: 'System Voltage', placeholder: 'Enter voltage', unit: 'V' },
+            material: { label: 'Wire Material', placeholder: 'Select material' },
+            temperatureRating: { label: 'Temperature Rating', placeholder: 'Select rating' }
+          },
+          resultUnit: 'AWG',
+          calculate: () => 0
         }
       ]
     }

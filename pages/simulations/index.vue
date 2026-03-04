@@ -403,6 +403,41 @@
             </div>
           </div>
 
+          <!-- Joule Thief Circuit -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <rect x="20" y="50" width="30" height="20" fill="white" stroke="#EF4444" stroke-width="2" rx="2"/>
+                <text x="35" y="64" text-anchor="middle" font-size="10" fill="#EF4444">BAT</text>
+                <ellipse cx="100" cy="60" rx="25" ry="15" fill="none" stroke="#F59E0B" stroke-width="2"/>
+                <ellipse cx="100" cy="60" rx="18" ry="10" fill="none" stroke="#F59E0B" stroke-width="2"/>
+                <circle cx="150" cy="60" r="12" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+                <text x="150" y="64" text-anchor="middle" font-size="8" fill="#8B5CF6">Q1</text>
+                <polygon points="175,50 185,60 175,70" fill="#EF4444" stroke="#EF4444" stroke-width="2"/>
+                <line x1="185" y1="60" x2="195" y2="55" stroke="#EF4444" stroke-width="2"/>
+                <line x1="185" y1="60" x2="195" y2="65" stroke="#EF4444" stroke-width="2"/>
+                <line x1="50" y1="60" x2="75" y2="60" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="125" y1="60" x2="138" y2="60" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="162" y1="60" x2="175" y2="60" stroke="#94A3B8" stroke-width="2"/>
+                <circle cx="5" cy="60" r="3" fill="#FBBF24"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Joule Thief Circuit
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Extract energy from "dead" batteries! Learn about self-oscillating circuits and voltage boost techniques.
+              </p>
+              <NuxtLink
+                to="/simulations/joule-thief-circuit"
+                class="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- Diode Rectifier -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-rose-50 to-red-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
