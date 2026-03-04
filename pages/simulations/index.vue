@@ -1889,6 +1889,50 @@
             </div>
           </div>
 
+          <!-- LC Filter -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- LC circuit diagram -->
+                <line x1="30" y1="40" x2="170" y2="40" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="30" y1="80" x2="170" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="30" y1="40" x2="30" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="170" y1="40" x2="170" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <circle cx="30" cy="60" r="12" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <text x="30" y="63" text-anchor="middle" fill="#3B82F6" font-size="7" font-weight="bold">Vin</text>
+                <!-- Inductor -->
+                <path d="M 70 40 L 75 35 L 80 45 L 85 35 L 90 45 L 95 35 L 100 45 L 105 35 L 110 45 L 115 35 L 120 40" fill="none" stroke="#6366F1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="95" y="30" text-anchor="middle" fill="#6366F1" font-size="7" font-weight="bold">L</text>
+                <!-- Capacitor to ground -->
+                <line x1="130" y1="40" x2="130" y2="55" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="125" y1="55" x2="135" y2="55" stroke="#10B981" stroke-width="2.5"/>
+                <line x1="125" y1="58" x2="135" y2="58" stroke="#10B981" stroke-width="2.5"/>
+                <line x1="125" y1="61" x2="135" y2="61" stroke="#10B981" stroke-width="2.5"/>
+                <line x1="130" y1="61" x2="130" y2="80" stroke="#94A3B8" stroke-width="2"/>
+                <text x="142" y="60" fill="#10B981" font-size="7" font-weight="bold">C</text>
+                <circle cx="170" cy="60" r="12" fill="white" stroke="#10B981" stroke-width="2"/>
+                <text x="170" y="63" text-anchor="middle" fill="#10B981" font-size="7" font-weight="bold">Vout</text>
+                <!-- Frequency response wave -->
+                <path d="M 30 95 Q 60 95, 80 95 T 100 75 T 120 95 T 170 95" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+                <text x="100" y="110" text-anchor="middle" fill="#F59E0B" font-size="6">Frequency Response</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                LC Filter Design
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Design and analyze LC filter circuits with interactive Bode plot visualization. Explore low-pass and high-pass filters, Q factor, and frequency response for audio, RF, and power applications.
+              </p>
+              <NuxtLink
+                to="/simulations/lc-filter"
+                class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- Piezoelectric Effect -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-cyan-50 to-teal-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">

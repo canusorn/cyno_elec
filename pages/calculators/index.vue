@@ -1236,6 +1236,27 @@ export default {
         },
         {
           id: 64,
+          title: 'Voltage Regulator Design Calculator',
+          description: 'Design LDO and switching voltage regulators (Buck/Boost) with component calculations. Calculate power dissipation, efficiency, thermal requirements, and get component recommendations for inductors, capacitors, and feedback resistors.',
+          categoryId: ['power', 'dc-circuits'],
+          difficulty: 'Advanced',
+          category: 'Power Regulation',
+          type: 'voltage-regulator',
+          path: '/calculators/voltage-regulator',
+          formula: 'η = (V_out / V_in) × 100%',
+          icon: 'BoltIcon',
+          units: ['V', 'A', 'W', '%'],
+          inputs: {
+            inputVoltage: { label: 'Input Voltage', placeholder: 'Enter input voltage', unit: 'V' },
+            outputVoltage: { label: 'Output Voltage', placeholder: 'Enter output voltage', unit: 'V' },
+            outputCurrent: { label: 'Output Current', placeholder: 'Enter output current', unit: 'A' },
+            regulatorType: { label: 'Regulator Type', placeholder: 'Select type', unit: '' }
+          },
+          resultUnit: 'W',
+          calculate: () => 0
+        },
+        {
+          id: 65,
           title: 'Potentiometer Calculator',
           description: 'Calculate output voltage and power dissipation for potentiometer circuits. Interactive voltage divider calculator with real-time visualization of wiper position effects.',
           categoryId: ['basic', 'dc-circuits'],
