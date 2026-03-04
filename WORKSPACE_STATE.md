@@ -2,10 +2,13 @@
 
 ## Current Features
 
-### Calculators (49)
+### Calculators (53)
 1. 78xx-regulator-design ✨ NEW
 2. **ripple-voltage** ✨ NEW
-2. ac-power-calculator
+3. **smd-resistor-code** ✨ NEW (3-digit, 4-digit EIA, EIA-96 decoder)
+4. **wire-gauge** ✨ NEW
+5. **cutoff-frequency-calculator** ✨ NEW
+6. ac-power-calculator
 3. antenna-resonant-frequency
 4. battery-life
 5. capacitance-calculator
@@ -52,11 +55,14 @@
 46. wire-gauge-calculator
 47. wien-bridge-calculator
 
-### Simulations (47)
+### Simulations (51)
 1. ac-circuit
 2. active-filter
-3. **differential-pair** ✨ NEW
-3. boost-converter
+3. **colpitts-oscillator** ✨ NEW
+4. **differential-pair** ✨ NEW
+5. **instrumentation-amplifier** ✨ NEW (3-op-amp with gain control)
+6. **joule-thief-circuit** ✨ NEW
+7. boost-converter
 4. buck-boost-converter
 5. buck-converter
 6. capacitor-charging
@@ -100,6 +106,41 @@
 44. voltage-multiplier
 45. wien-bridge-oscillator
 46. zener-voltage-regulator
+
+## Recently Completed (2026-03-04)
+
+### ✅ Instrumentation Amplifier Simulation
+- Three-op-amp differential amplifier with adjustable gain (1-100+)
+- Interactive differential input control (Vin+ and Vin-)
+- Real-time output voltage calculation: Vout = (Vin+ - Vin-) × (1 + 2R/RG)
+- Gain control via RG resistor (100Ω to 50kΩ)
+- SVG circuit diagram with animated current flow
+- Signal visualization showing input vs amplified output
+- CMRR display (100+ dB)
+- Preset configurations: Low Gain (2×), Medium Gain (10×), High Gain (100×), Strain Gauge, ECG Front-end, Thermocouple
+- Comprehensive educational content on instrumentation amplifiers
+- Key applications: medical instrumentation, sensor interfaces, industrial automation, audio equipment
+- Design considerations: RG resistor tolerance, resistor matching, reference voltage, input protection
+
+### ✅ SMD Resistor Code Decoder Calculator
+- Support for 3-digit EIA code (e.g., 103 = 10kΩ)
+- Support for 4-digit EIA code (e.g., 1002 = 10kΩ)
+- Support for EIA-96 code (e.g., 01F = 10MΩ)
+- Real-time code validation and error messages
+- Value breakdown showing significant digits, multiplier, and power of 10
+- Equivalent values in Ω, kΩ, MΩ, and mΩ
+- Package size reference (0201 to 2512) with power ratings
+- Visual SMD component diagram with dimensions
+- Quick examples for each code format
+- Comprehensive educational content on SMD marking systems
+- EIA-96 value codes table (01-96) and multiplier letters (Y, X, R, A-L)
+- Applications: consumer electronics, industrial equipment, automotive
+
+### ✅ Additional Features (Included in Push)
+- Wire Gauge Calculator: Current capacity, voltage drop, material selection (copper, aluminum, gold, silver)
+- Cutoff Frequency Calculator: Active and passive filter design
+- Colpitts Oscillator: LC tank circuit simulation
+- Joule Thief Circuit: Energy extraction from dead batteries
 
 ## Recently Completed (2026-03-03)
 
@@ -261,7 +302,8 @@
 - Thevenin/Norton Equivalent Calculator
 
 ## Development Status
-- Last Updated: 2026-03-03 20:32
-- Status: ✅ Complete - Ripple Voltage Calculator & Differential Pair Simulation added
-- Latest Commit: Pending
+- Last Updated: 2026-03-04 16:36
+- Status: ✅ Complete - Instrumentation Amplifier Simulation & SMD Resistor Code Decoder added
+- Latest Commit: ac4434b (feat: add instrumentation amplifier simulation and SMD resistor code decoder)
+- Total Features: 53 Calculators + 51 Simulations = 104 total
 - GitHub: https://github.com/canusorn/cyno_elec
