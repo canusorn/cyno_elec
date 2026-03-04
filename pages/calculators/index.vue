@@ -1192,6 +1192,26 @@ export default {
           },
           resultUnit: 'Hz',
           calculate: () => 0
+        },
+        {
+          id: 62,
+          title: 'Thermal Noise Calculator',
+          description: 'Calculate Johnson-Nyquist thermal noise in resistors for low-noise circuit design. Determine noise voltage, noise density, and SNR requirements for amplifier and RF applications.',
+          categoryId: ['basic', 'rf', 'measurement'],
+          difficulty: 'Intermediate',
+          category: 'Noise Analysis',
+          type: 'thermal-noise',
+          path: '/calculators/thermal-noise',
+          formula: 'Vn = √(4kTRB)',
+          icon: 'ChartBarIcon',
+          units: ['V', 'Ω', 'K', 'Hz', 'nV/√Hz'],
+          inputs: {
+            resistance: { label: 'Resistance', placeholder: 'Enter resistance', unit: 'Ω' },
+            temperature: { label: 'Temperature', placeholder: 'Enter temperature', unit: 'K' },
+            bandwidth: { label: 'Bandwidth', placeholder: 'Enter bandwidth', unit: 'Hz' }
+          },
+          resultUnit: 'V',
+          calculate: () => 0
         }
       ]
     }

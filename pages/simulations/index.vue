@@ -1165,6 +1165,66 @@
             </div>
           </div>
 
+          <!-- Common Collector Amplifier -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- VCC line -->
+                <line x1="100" y1="10" x2="100" y2="25" stroke="#EF4444" stroke-width="2"/>
+                <circle cx="100" cy="8" r="6" fill="white" stroke="#EF4444" stroke-width="1.5"/>
+                <text x="100" y="11" text-anchor="middle" fill="#EF4444" font-size="5" font-weight="bold">VCC</text>
+                <!-- Wire to collector (direct connection) -->
+                <line x1="100" y1="25" x2="100" y2="52" stroke="#6B7280" stroke-width="2"/>
+                <!-- NPN transistor -->
+                <g transform="translate(100, 65)">
+                  <line x1="-15" y1="0" x2="-4" y2="0" stroke="#6B7280" stroke-width="1.5"/>
+                  <line x1="-4" y1="-8" x2="-4" y2="8" stroke="#14B8A6" stroke-width="2"/>
+                  <line x1="-4" y1="-5" x2="5" y2="-10" stroke="#14B8A6" stroke-width="1.5"/>
+                  <line x1="5" y1="-10" x2="5" y2="-18" stroke="#6B7280" stroke-width="1.5"/>
+                  <line x1="-4" y1="5" x2="5" y2="10" stroke="#14B8A6" stroke-width="1.5"/>
+                  <line x1="5" y1="10" x2="5" y2="18" stroke="#6B7280" stroke-width="1.5"/>
+                  <!-- Emitter arrow pointing OUT -->
+                  <polygon points="2,8 5,12 8,8" fill="#14B8A6"/>
+                </g>
+                <!-- RE resistor -->
+                <rect x="95" y="83" width="10" height="15" fill="white" stroke="#06B6D4" stroke-width="1.5"/>
+                <!-- Ground -->
+                <line x1="100" y1="98" x2="100" y2="105" stroke="#6B7280" stroke-width="1.5"/>
+                <line x1="95" y1="105" x2="105" y2="105" stroke="#6B7280" stroke-width="1.5"/>
+                <line x1="97" y1="108" x2="103" y2="108" stroke="#6B7280" stroke-width="1.5"/>
+                <!-- Input -->
+                <circle cx="50" cy="65" r="4" fill="white" stroke="#F59E0B" stroke-width="1.5"/>
+                <line x1="30" y1="65" x2="46" y2="65" stroke="#6B7280" stroke-width="1.5"/>
+                <line x1="54" y1="65" x2="85" y2="65" stroke="#6B7280" stroke-width="1.5"/>
+                <text x="25" y="68" text-anchor="middle" fill="#F59E0B" font-size="6">Vin</text>
+                <!-- Output (from emitter) -->
+                <circle cx="150" cy="88" r="4" fill="white" stroke="#EC4899" stroke-width="1.5"/>
+                <line x1="105" y1="88" x2="146" y2="88" stroke="#6B7280" stroke-width="1.5"/>
+                <line x1="154" y1="88" x2="175" y2="88" stroke="#6B7280" stroke-width="1.5"/>
+                <text x="170" y="91" text-anchor="middle" fill="#EC4899" font-size="6">Vout</text>
+                <!-- Waveforms showing unity gain -->
+                <path d="M 25 100 Q 35 95, 45 100 T 65 100" fill="none" stroke="#F59E0B" stroke-width="2"/>
+                <path d="M 125 100 Q 135 95, 145 100 T 165 100" fill="none" stroke="#EC4899" stroke-width="2"/>
+                <text x="45" y="115" text-anchor="middle" fill="#F59E0B" font-size="6">Input</text>
+                <text x="145" y="115" text-anchor="middle" fill="#EC4899" font-size="6">Output</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Common Collector Amplifier
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Emitter follower with unity voltage gain and high input impedance. Perfect for impedance matching and buffer applications.
+              </p>
+              <NuxtLink
+                to="/simulations/common-collector-amplifier"
+                class="inline-flex items-center px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- RLC Damped Oscillation -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
