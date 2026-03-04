@@ -2,13 +2,14 @@
 
 ## Current Features
 
-### Calculators (53)
+### Calculators (55)
 1. 78xx-regulator-design ✨ NEW
 2. **ripple-voltage** ✨ NEW
 3. **smd-resistor-code** ✨ NEW (3-digit, 4-digit EIA, EIA-96 decoder)
 4. **wire-gauge** ✨ NEW
 5. **cutoff-frequency-calculator** ✨ NEW
-6. ac-power-calculator
+6. **voltage-doubler-calculator** ✨ NEW (Cockcroft-Walton voltage doubler)
+7. ac-power-calculator
 3. antenna-resonant-frequency
 4. battery-life
 5. capacitance-calculator
@@ -55,14 +56,15 @@
 46. wire-gauge-calculator
 47. wien-bridge-calculator
 
-### Simulations (51)
+### Simulations (52)
 1. ac-circuit
 2. active-filter
 3. **colpitts-oscillator** ✨ NEW
-4. **differential-pair** ✨ NEW
-5. **instrumentation-amplifier** ✨ NEW (3-op-amp with gain control)
-6. **joule-thief-circuit** ✨ NEW
-7. boost-converter
+4. **comparator-hysteresis** ✨ NEW (Schmitt trigger with noise immunity)
+5. **differential-pair** ✨ NEW
+6. **instrumentation-amplifier** ✨ NEW (3-op-amp with gain control)
+7. **joule-thief-circuit** ✨ NEW
+8. boost-converter
 4. buck-boost-converter
 5. buck-converter
 6. capacitor-charging
@@ -108,6 +110,35 @@
 46. zener-voltage-regulator
 
 ## Recently Completed (2026-03-04)
+
+### ✅ Voltage Doubler Calculator
+- Cockcroft-Walton voltage doubler design calculations
+- Input voltage (RMS), frequency, and capacitance parameters
+- Output voltage calculations with load current considerations
+- Peak voltage, theoretical maximum, and voltage drop analysis
+- Ripple voltage calculation (V_ripple = I_load / (f × C))
+- Diode forward voltage drop selection (Schottky, Silicon, LED)
+- Interactive circuit diagram with SVG visualization
+- Real-time waveform display showing input vs output
+- Quick presets: Low Power, Mains, Low Ripple, High Current
+- Comprehensive educational content on voltage doublers
+- Design considerations: capacitor selection, diode types, load current, frequency
+- Applications: CRT displays, laser power supplies, ion generation, PMT bias
+
+### ✅ Comparator with Hysteresis Simulation (Schmitt Trigger)
+- Non-inverting Schmitt trigger with adjustable feedback ratio
+- Real-time threshold calculation (V_UTP and V_LTP)
+- Upper and lower threshold display with hysteresis voltage
+- Input noise level simulation to demonstrate noise immunity
+- Transfer characteristic curve with operating point indicator
+- Input/output waveform visualization showing hysteresis behavior
+- Feedback ratio control (β = R2/(R1+R2)) for hysteresis adjustment
+- Output voltage levels (V_OH, V_OL) and reference voltage control
+- SVG circuit diagram with feedback network visualization
+- Quick presets: Low Hysteresis, Medium, High Hysteresis, Noisy Input
+- Comprehensive educational content on hysteresis and noise immunity
+- Key equations: V_UTP, V_LTP, V_H (hysteresis voltage)
+- Applications: switch debouncing, zero-crossing detectors, signal conditioning, PWM receivers, level shifters
 
 ### ✅ Instrumentation Amplifier Simulation
 - Three-op-amp differential amplifier with adjustable gain (1-100+)
@@ -302,8 +333,8 @@
 - Thevenin/Norton Equivalent Calculator
 
 ## Development Status
-- Last Updated: 2026-03-04 16:36
-- Status: ✅ Complete - Instrumentation Amplifier Simulation & SMD Resistor Code Decoder added
-- Latest Commit: ac4434b (feat: add instrumentation amplifier simulation and SMD resistor code decoder)
-- Total Features: 53 Calculators + 51 Simulations = 104 total
+- Last Updated: 2026-03-04 20:32
+- Status: ✅ Complete - Voltage Doubler Calculator & Comparator with Hysteresis Simulation added
+- Latest Commit: (to be added)
+- Total Features: 55 Calculators + 52 Simulations = 107 total
 - GitHub: https://github.com/canusorn/cyno_elec
