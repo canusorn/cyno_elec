@@ -352,6 +352,57 @@
             </div>
           </div>
 
+          <!-- Darlington Pair -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-violet-50 to-purple-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <line x1="20" y1="20" x2="180" y2="20" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="100" x2="180" y2="100" stroke="#94A3B8" stroke-width="3"/>
+                <!-- Q1 -->
+                <g transform="translate(60, 60)">
+                  <circle cx="0" cy="0" r="18" fill="white" stroke="#7C3AED" stroke-width="2"/>
+                  <line x1="-5" y1="-8" x2="-5" y2="8" stroke="#333" stroke-width="2"/>
+                  <line x1="-5" y1="-4" x2="6" y2="-12" stroke="#333" stroke-width="2"/>
+                  <line x1="-5" y1="4" x2="6" y2="12" stroke="#333" stroke-width="2"/>
+                  <polygon points="3,-10 6,-12 6,-8" fill="#333"/>
+                  <polygon points="3,10 6,12 6,8" fill="#333"/>
+                </g>
+                <!-- Q2 -->
+                <g transform="translate(130, 60)">
+                  <circle cx="0" cy="0" r="18" fill="white" stroke="#7C3AED" stroke-width="2"/>
+                  <line x1="-5" y1="-8" x2="-5" y2="8" stroke="#333" stroke-width="2"/>
+                  <line x1="-5" y1="-4" x2="6" y2="-12" stroke="#333" stroke-width="2"/>
+                  <line x1="-5" y1="4" x2="6" y2="12" stroke="#333" stroke-width="2"/>
+                  <polygon points="3,-10 6,-12 6,-8" fill="#333"/>
+                  <polygon points="3,10 6,12 6,8" fill="#333"/>
+                </g>
+                <!-- Connection -->
+                <line x1="78" y1="60" x2="112" y2="60" stroke="#F59E0B" stroke-width="2"/>
+                <!-- VCC and GND -->
+                <line x1="60" y1="20" x2="60" y2="42" stroke="#EF4444" stroke-width="2"/>
+                <line x1="130" y1="20" x2="130" y2="42" stroke="#EF4444" stroke-width="2"/>
+                <line x1="130" y1="78" x2="130" y2="100" stroke="#22C55E" stroke-width="2"/>
+                <!-- Input -->
+                <circle cx="20" cy="60" r="10" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <line x1="30" y1="60" x2="42" y2="60" stroke="#3B82F6" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Darlington Pair
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore high-gain transistor cascading. Learn how two transistors provide massive current amplification.
+              </p>
+              <NuxtLink
+                to="/simulations/darlington-pair"
+                class="inline-flex items-center px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- Diode Rectifier -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-rose-50 to-red-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">

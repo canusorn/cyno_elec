@@ -1233,6 +1233,26 @@ export default {
           },
           resultUnit: 'Ω',
           calculate: () => 0
+        },
+        {
+          id: 64,
+          title: 'Potentiometer Calculator',
+          description: 'Calculate output voltage and power dissipation for potentiometer circuits. Interactive voltage divider calculator with real-time visualization of wiper position effects.',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Basic',
+          category: 'Components',
+          type: 'potentiometer-calculator',
+          path: '/calculators/potentiometer-calculator',
+          formula: 'Vout = Vin × (R2 / (R1 + R2))',
+          icon: 'CogIcon',
+          units: ['V', 'Ω', '%', 'W'],
+          inputs: {
+            inputVoltage: { label: 'Input Voltage', placeholder: 'Enter input voltage', unit: 'V' },
+            totalResistance: { label: 'Total Resistance', placeholder: 'Enter total resistance', unit: 'Ω' },
+            wiperPosition: { label: 'Wiper Position', placeholder: 'Enter position', unit: '%' }
+          },
+          resultUnit: 'V',
+          calculate: () => 0
         }
       ]
     }

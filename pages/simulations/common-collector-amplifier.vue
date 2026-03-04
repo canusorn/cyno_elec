@@ -545,7 +545,8 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
-import { useColorMode, useHead } from '#app'
+import { useColorMode } from '@vueuse/core'
+import { useHead } from '#app'
 
 const colorMode = useColorMode()
 
