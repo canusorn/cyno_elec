@@ -1014,6 +1014,67 @@
             </div>
           </div>
 
+          <!-- RC Phase Shift Oscillator -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-violet-50 to-purple-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Amplifier triangle -->
+                <polygon points="30,50 30,70 60,60" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+                <text x="35" y="58" text-anchor="middle" fill="#8B5CF6" font-size="6" font-weight="bold">-</text>
+                <!-- RC stages -->
+                <line x1="60" y1="60" x2="80" y2="60" stroke="#94A3B8" stroke-width="2"/>
+                <circle cx="80" cy="60" r="3" fill="#F59E0B"/>
+                <rect x="80" y="45" width="4" height="8" fill="white" stroke="#3B82F6" stroke-width="1.5"/>
+                <line x1="82" y1="53" x2="82" y2="58" stroke="#94A3B8" stroke-width="1.5"/>
+                <line x1="80" y1="58" x2="84" y2="58" stroke="#94A3B8" stroke-width="1.5"/>
+                <line x1="84" y1="58" x2="84" y2="53" stroke="#94A3B8" stroke-width="1.5"/>
+                <circle cx="84" cy="60" r="3" fill="#F59E0B"/>
+                <!-- Stage 2 -->
+                <line x1="84" y1="60" x2="105" y2="60" stroke="#94A3B8" stroke-width="2"/>
+                <circle cx="105" cy="60" r="3" fill="#F59E0B"/>
+                <rect x="105" y="45" width="4" height="8" fill="white" stroke="#3B82F6" stroke-width="1.5"/>
+                <line x1="107" y1="53" x2="107" y2="58" stroke="#94A3B8" stroke-width="1.5"/>
+                <line x1="105" y1="58" x2="109" y2="58" stroke="#94A3B8" stroke-width="1.5"/>
+                <line x1="109" y1="58" x2="109" y2="53" stroke="#94A3B8" stroke-width="1.5"/>
+                <circle cx="109" cy="60" r="3" fill="#F59E0B"/>
+                <!-- Stage 3 -->
+                <line x1="109" y1="60" x2="130" y2="60" stroke="#94A3B8" stroke-width="2"/>
+                <circle cx="130" cy="60" r="3" fill="#F59E0B"/>
+                <rect x="130" y="45" width="4" height="8" fill="white" stroke="#3B82F6" stroke-width="1.5"/>
+                <line x1="132" y1="53" x2="132" y2="58" stroke="#94A3B8" stroke-width="1.5"/>
+                <line x1="130" y1="58" x2="134" y2="58" stroke="#94A3B8" stroke-width="1.5"/>
+                <line x1="134" y1="58" x2="134" y2="53" stroke="#94A3B8" stroke-width="1.5"/>
+                <circle cx="134" cy="60" r="3" fill="#F59E0B"/>
+                <!-- Feedback path -->
+                <line x1="134" y1="60" x2="160" y2="60" stroke="#F59E0B" stroke-width="2"/>
+                <line x1="160" y1="60" x2="160" y2="80" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="160" y1="80" x2="20" y2="80" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="20" y1="80" x2="20" y2="60" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="20" y1="60" x2="30" y2="60" stroke="#94A3B8" stroke-width="2"/>
+                <!-- Phase shift arrows -->
+                <text x="85" y="40" text-anchor="middle" fill="#EC4899" font-size="8">60°</text>
+                <text x="110" y="40" text-anchor="middle" fill="#EC4899" font-size="8">60°</text>
+                <text x="135" y="40" text-anchor="middle" fill="#EC4899" font-size="8">60°</text>
+                <!-- Output -->
+                <text x="170" y="58" text-anchor="middle" fill="#10B981" font-size="9" font-weight="bold">180°</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                RC Phase Shift Oscillator
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Learn how cascaded RC networks create 180° phase shift for oscillation. Visualize phase response and understand gain requirements.
+              </p>
+              <NuxtLink
+                to="/simulations/rc-phase-shift-oscillator"
+                class="inline-flex items-center px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- Op-Amp Integrator -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-pink-50 to-rose-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">

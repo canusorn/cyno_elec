@@ -1212,6 +1212,27 @@ export default {
           },
           resultUnit: 'V',
           calculate: () => 0
+        },
+        {
+          id: 63,
+          title: 'Zener Regulator Calculator',
+          description: 'Design Zener diode voltage regulator circuits with proper series resistor sizing. Calculate required resistor value, power dissipation, and verify operating conditions for stable voltage regulation.',
+          categoryId: ['dc-circuits', 'power'],
+          difficulty: 'Intermediate',
+          category: 'Power Regulation',
+          type: 'zener-regulator',
+          path: '/calculators/zener-regulator',
+          formula: 'Rs = (Vin - Vz) / Iz',
+          icon: 'BoltIcon',
+          units: ['V', 'Ω', 'mA', 'W'],
+          inputs: {
+            inputVoltage: { label: 'Input Voltage', placeholder: 'Enter input voltage', unit: 'V' },
+            zenerVoltage: { label: 'Zener Voltage', placeholder: 'Enter zener voltage', unit: 'V' },
+            loadCurrent: { label: 'Load Current', placeholder: 'Enter load current', unit: 'mA' },
+            zenerCurrent: { label: 'Zener Bias Current', placeholder: 'Enter bias current', unit: 'mA' }
+          },
+          resultUnit: 'Ω',
+          calculate: () => 0
         }
       ]
     }
