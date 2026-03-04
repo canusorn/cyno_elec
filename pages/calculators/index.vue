@@ -1172,6 +1172,26 @@ export default {
           },
           resultUnit: 'turns',
           calculate: () => 0
+        },
+        {
+          id: 61,
+          title: 'RC High Pass Filter Calculator',
+          description: 'Design and analyze first-order RC high-pass filters for coupling and audio applications with Bode plot visualization and phase shift calculations',
+          categoryId: ['ac-circuits', 'basic'],
+          difficulty: 'Intermediate',
+          category: 'Filter Design',
+          type: 'rc-high-pass-filter',
+          path: '/calculators/rc-high-pass-filter',
+          formula: 'fc = 1 / (2πRC)',
+          icon: 'ChartBarIcon',
+          units: ['Hz', 'Ω', 'F', '°', 'dB'],
+          inputs: {
+            resistance: { label: 'Resistance', placeholder: 'Enter resistance', unit: 'Ω' },
+            capacitance: { label: 'Capacitance', placeholder: 'Enter capacitance', unit: 'nF' },
+            inputFrequency: { label: 'Input Frequency', placeholder: 'Enter frequency', unit: 'Hz' }
+          },
+          resultUnit: 'Hz',
+          calculate: () => 0
         }
       ]
     }

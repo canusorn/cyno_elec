@@ -1630,6 +1630,58 @@
             </div>
           </div>
 
+          <!-- Wheatstone Bridge -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Diamond bridge shape -->
+                <polygon points="100,20 160,60 100,100 40,60" fill="none" stroke="#F59E0B" stroke-width="2"/>
+                <!-- Resistors -->
+                <rect x="95" y="35" width="10" height="15" fill="white" stroke="#3B82F6" stroke-width="2" rx="1"/>
+                <text x="100" y="32" text-anchor="middle" fill="#3B82F6" font-size="6">R1</text>
+                
+                <rect x="125" y="55" width="10" height="15" fill="white" stroke="#8B5CF6" stroke-width="2" rx="1"/>
+                <text x="138" y="65" text-anchor="middle" fill="#8B5CF6" font-size="6">R2</text>
+                
+                <rect x="95" y="70" width="10" height="15" fill="white" stroke="#10B981" stroke-width="2" rx="1"/>
+                <text x="100" y="95" text-anchor="middle" fill="#10B981" font-size="6">R3</text>
+                
+                <rect x="65" y="55" width="10" height="15" fill="white" stroke="#EF4444" stroke-width="2" rx="1"/>
+                <text x="62" y="65" text-anchor="middle" fill="#EF4444" font-size="6">R4</text>
+                
+                <!-- Galvanometer in center -->
+                <circle cx="100" cy="60" r="12" fill="white" stroke="#F59E0B" stroke-width="2"/>
+                <line x1="100" y1="60" x2="108" y2="54" stroke="#F59E0B" stroke-width="2"/>
+                <circle cx="100" cy="60" r="3" fill="#F59E0B"/>
+                <text x="100" y="80" text-anchor="middle" fill="#F59E0B" font-size="7">G</text>
+                
+                <!-- Voltage source -->
+                <circle cx="20" cy="60" r="12" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <text x="20" y="63" text-anchor="middle" fill="#3B82F6" font-size="7" font-weight="bold">V</text>
+                <line x1="32" y1="60" x2="40" y2="60" stroke="#3B82F6" stroke-width="2"/>
+                
+                <!-- Balance indicator -->
+                <circle cx="180" cy="60" r="10" fill="#10B981"/>
+                <path d="M 176 60 L 180 65 L 184 55" fill="none" stroke="white" stroke-width="2"/>
+                <text x="180" y="85" text-anchor="middle" fill="#10B981" font-size="7">Balanced</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Wheatstone Bridge
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Interactive bridge circuit for precise resistance measurements. Adjust resistors to balance the bridge and explore real-world applications like strain gauges and temperature sensors.
+              </p>
+              <NuxtLink
+                to="/simulations/wheatstone-bridge"
+                class="inline-flex items-center px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
