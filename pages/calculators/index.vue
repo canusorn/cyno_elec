@@ -1316,6 +1316,28 @@ export default {
           },
           resultUnit: 'AWG',
           calculate: () => 0
+        },
+        {
+          id: 68,
+          title: 'Battery State of Charge Estimator',
+          description: 'Estimate battery remaining capacity using voltage-based and coulomb counting methods. Supports Li-Ion, LiPo, Lead-Acid, and NiMH batteries with temperature compensation.',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Components',
+          type: 'battery-soc-estimator',
+          path: '/calculators/battery-soc-estimator',
+          formula: 'SoC = f(V, I, T, t)',
+          icon: 'LightBulbIcon',
+          units: ['%', 'mAh', 'V', 'A'],
+          inputs: {
+            chemistry: { label: 'Battery Chemistry', placeholder: 'Select chemistry' },
+            capacity: { label: 'Rated Capacity', placeholder: 'Enter capacity', unit: 'mAh' },
+            voltage: { label: 'Current Voltage', placeholder: 'Enter voltage', unit: 'V' },
+            current: { label: 'Load Current', placeholder: 'Enter current', unit: 'A' },
+            temperature: { label: 'Battery Temperature', placeholder: 'Enter temperature', unit: '°C' }
+          },
+          resultUnit: '%',
+          calculate: () => 0
         }
       ]
     }

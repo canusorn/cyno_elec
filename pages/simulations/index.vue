@@ -1986,6 +1986,51 @@
             </div>
           </div>
 
+          <!-- H-Bridge Motor Driver -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- H-Bridge structure -->
+                <rect x="30" y="10" width="140" height="100" fill="none" stroke="#F97316" stroke-width="2" rx="5"/>
+                <!-- Top rail -->
+                <line x1="40" y1="20" x2="160" y2="20" stroke="#DC2626" stroke-width="3"/>
+                <!-- Bottom rail -->
+                <line x1="40" y1="100" x2="160" y2="100" stroke="#1F2937" stroke-width="3"/>
+                <!-- Left MOSFETs -->
+                <rect x="55" y="25" width="20" height="15" fill="#22C55E" stroke="#374151" stroke-width="1"/>
+                <rect x="55" y="60" width="20" height="15" fill="#22C55E" stroke="#374151" stroke-width="1"/>
+                <!-- Right MOSFETs -->
+                <rect x="125" y="25" width="20" height="15" fill="#22C55E" stroke="#374151" stroke-width="1"/>
+                <rect x="125" y="60" width="20" height="15" fill="#22C55E" stroke="#374151" stroke-width="1"/>
+                <!-- Motor -->
+                <circle cx="100" cy="50" r="20" fill="#3B82F6" stroke="#1E40AF" stroke-width="2"/>
+                <text x="100" y="55" text-anchor="middle" fill="white" font-size="10" font-weight="bold">M</text>
+                <!-- Connecting lines -->
+                <line x1="75" y1="40" x2="80" y2="50" stroke="#374151" stroke-width="2"/>
+                <line x1="75" y1="67" x2="80" y2="50" stroke="#374151" stroke-width="2"/>
+                <line x1="125" y1="40" x2="120" y2="50" stroke="#374151" stroke-width="2"/>
+                <line x1="125" y1="67" x2="120" y2="50" stroke="#374151" stroke-width="2"/>
+                <!-- Current arrows -->
+                <polygon points="90,45 95,50 90,55" fill="#FCD34D"/>
+                <polygon points="110,55 105,50 110,45" fill="#FCD34D"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                H-Bridge Motor Driver
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Bidirectional DC motor control with PWM speed regulation. Interactive H-bridge circuit with MOSFET switching visualization, forward/reverse/brake/coast modes, and real-time power calculations.
+              </p>
+              <NuxtLink
+                to="/simulations/h-bridge-motor-driver"
+                class="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
