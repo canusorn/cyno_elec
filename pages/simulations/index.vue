@@ -1854,6 +1854,59 @@
             </div>
           </div>
 
+          <!-- Piezoelectric Effect -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-cyan-50 to-teal-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Piezoelectric crystal -->
+                <rect x="70" y="30" width="60" height="60" rx="5" fill="url(#crystalGrad)" stroke="#06B6D4" stroke-width="2"/>
+                <!-- Crystal lattice/dipoles -->
+                <line x1="80" y1="40" x2="80" y2="80" stroke="#0891B2" stroke-width="1.5" stroke-dasharray="3,2"/>
+                <line x1="100" y1="40" x2="100" y2="80" stroke="#0891B2" stroke-width="1.5" stroke-dasharray="3,2"/>
+                <line x1="120" y1="40" x2="120" y2="80" stroke="#0891B2" stroke-width="1.5" stroke-dasharray="3,2"/>
+                <!-- Force arrows -->
+                <line x1="100" y1="10" x2="100" y2="25" stroke="#EF4444" stroke-width="2" marker-end="url(#arrowForce)"/>
+                <text x="105" y="18" fill="#EF4444" font-size="7" font-weight="bold">F</text>
+                <!-- Voltage indicators -->
+                <text x="100" y="55" text-anchor="middle" fill="#10B981" font-size="9" font-weight="bold">+ V -</text>
+                <!-- Electrodes -->
+                <line x1="65" y1="40" x2="65" y2="80" stroke="#F59E0B" stroke-width="2"/>
+                <line x1="135" y1="40" x2="135" y2="80" stroke="#F59E0B" stroke-width="2"/>
+                <!-- Output leads -->
+                <line x1="65" y1="60" x2="45" y2="60" stroke="#F59E0B" stroke-width="2"/>
+                <line x1="135" y1="60" x2="155" y2="60" stroke="#F59E0B" stroke-width="2"/>
+                <!-- Labels -->
+                <text x="100" y="105" text-anchor="middle" fill="#06B6D4" font-size="7">PZT Crystal</text>
+                <text x="35" y="55" fill="#F59E0B" font-size="6">+</text>
+                <text x="160" y="55" fill="#F59E0B" font-size="6">-</text>
+                
+                <defs>
+                  <linearGradient id="crystalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:0.3" />
+                    <stop offset="100%" style="stop-color:#14B8A6;stop-opacity:0.5" />
+                  </linearGradient>
+                  <marker id="arrowForce" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                    <polygon points="0 0, 8 3, 0 6" fill="#EF4444" />
+                  </marker>
+                </defs>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Piezoelectric Effect
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore how mechanical stress generates electricity in piezoelectric materials. Interactive crystal deformation visualization with voltage/charge calculations for PZT, quartz, PVDF, and BaTiO₃.
+              </p>
+              <NuxtLink
+                to="/simulations/piezoelectric-effect"
+                class="inline-flex items-center px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->

@@ -1253,6 +1253,26 @@ export default {
           },
           resultUnit: 'V',
           calculate: () => 0
+        },
+        {
+          id: 65,
+          title: 'RC Filter Attenuation Calculator',
+          description: 'Calculate signal attenuation and frequency response for RC low-pass and high-pass filters with interactive Bode plot visualization',
+          categoryId: ['ac-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Filter Design',
+          type: 'rc-filter-attenuation',
+          path: '/calculators/rc-filter-attenuation',
+          formula: 'fc = 1/(2πRC)',
+          icon: 'ChartBarIcon',
+          units: ['Hz', 'Ω', 'F', 'dB'],
+          inputs: {
+            resistance: { label: 'Resistance', placeholder: 'Enter resistance', unit: 'Ω' },
+            capacitance: { label: 'Capacitance', placeholder: 'Enter capacitance', unit: 'F' },
+            inputFrequency: { label: 'Input Frequency', placeholder: 'Enter frequency', unit: 'Hz' }
+          },
+          resultUnit: 'dB',
+          calculate: () => 0
         }
       ]
     }
