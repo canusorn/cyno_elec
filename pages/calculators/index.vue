@@ -275,6 +275,28 @@ export default {
         },
         {
           id: 7,
+          title: 'LED Forward Voltage & Current Analysis',
+          description: 'Analyze LED characteristics, V-I curves, forward voltage drops, and optimize LED circuits for different colors and configurations',
+          categoryId: ['lighting', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Lighting',
+          type: 'led-forward-voltage',
+          path: '/calculators/led-forward-voltage',
+          formula: 'Vf, If, V-I Curve, Efficiency',
+          icon: 'LightBulbIcon',
+          units: ['V', 'mA', 'Ω', '%'],
+          inputs: {
+            ledColor: { label: 'LED Color', placeholder: 'Select LED color' },
+            forwardVoltage: { label: 'Forward Voltage', placeholder: 'Vf range', unit: 'V' },
+            forwardCurrent: { label: 'Forward Current', placeholder: '1-30mA', unit: 'mA' },
+            configType: { label: 'Configuration', placeholder: 'Single/Series/Parallel' },
+            supplyVoltage: { label: 'Supply Voltage', placeholder: 'Enter voltage', unit: 'V' }
+          },
+          resultUnit: 'Ω',
+          calculate: (inputs) => 'Complex analysis'
+        },
+        {
+          id: 8,
           title: 'Resistance Color Code',
           description: 'Decode resistor color bands and calculate resistance values',
           categoryId: ['basic', 'dc-circuits'],

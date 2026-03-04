@@ -2031,6 +2031,56 @@
             </div>
           </div>
 
+          <!-- Solar Cell I-V Characteristic -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Sun -->
+                <circle cx="40" cy="30" r="15" fill="#FCD34D"/>
+                <line x1="40" y1="5" x2="40" y2="10" stroke="#FCD34D" stroke-width="2"/>
+                <line x1="40" y1="50" x2="40" y2="55" stroke="#FCD34D" stroke-width="2"/>
+                <line x1="15" y1="30" x2="20" y2="30" stroke="#FCD34D" stroke-width="2"/>
+                <line x1="60" y1="30" x2="65" y2="30" stroke="#FCD34D" stroke-width="2"/>
+                <line x1="20" y1="10" x2="24" y2="14" stroke="#FCD34D" stroke-width="2"/>
+                <line x1="56" y1="46" x2="60" y2="50" stroke="#FCD34D" stroke-width="2"/>
+                <line x1="20" y1="50" x2="24" y2="46" stroke="#FCD34D" stroke-width="2"/>
+                <line x1="56" y1="14" x2="60" y2="10" stroke="#FCD34D" stroke-width="2"/>
+                
+                <!-- Solar panel -->
+                <rect x="90" y="40" width="80" height="50" fill="#1E40AF" stroke="#3B82F6" stroke-width="2" rx="3"/>
+                <!-- Grid lines -->
+                <line x1="110" y1="40" x2="110" y2="90" stroke="#60A5FA" stroke-width="1"/>
+                <line x1="130" y1="40" x2="130" y2="90" stroke="#60A5FA" stroke-width="1"/>
+                <line x1="150" y1="40" x2="150" y2="90" stroke="#60A5FA" stroke-width="1"/>
+                <line x1="90" y1="57" x2="170" y2="57" stroke="#60A5FA" stroke-width="1"/>
+                <line x1="90" y1="73" x2="170" y2="73" stroke="#60A5FA" stroke-width="1"/>
+                
+                <!-- I-V curve preview -->
+                <path d="M 95 110 Q 115 95 130 85 Q 145 90 165 110" fill="none" stroke="#22D3EE" stroke-width="2"/>
+                <circle cx="130" cy="85" r="3" fill="#22C55E"/>
+                <text x="130" y="80" text-anchor="middle" fill="#22C55E" font-size="6">MPP</text>
+                
+                <!-- Arrows showing energy flow -->
+                <polygon points="75,35 80,32 80,38" fill="#F59E0B"/>
+                <line x1="60" y1="35" x2="80" y2="35" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3,2"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Solar Cell I-V Characteristic
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Interactive photovoltaic cell simulation with real-time I-V and P-V curves. Explore effects of irradiance, temperature, and MPP tracking on solar cell performance.
+              </p>
+              <NuxtLink
+                to="/simulations/solar-cell-iv-curve"
+                class="inline-flex items-center px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
