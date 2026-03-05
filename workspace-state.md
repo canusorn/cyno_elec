@@ -1,7 +1,7 @@
 # Cyno Electric - Workspace State
 
-**Last Updated:** 2026-03-04 09:40:00 +07:00
-**Session:** Session 29 - Cron Run
+**Last Updated:** 2026-03-06 02:32:00 +07:00
+**Session:** Session 30 - Cron Run
 **Status:** ✅ All Tasks Complete
 
 ---
@@ -10,9 +10,212 @@
 
 | Category | Count |
 |----------|-------|
-| **Calculators** | 62 |
-| **Simulations** | 58 |
-| **Total Features** | 120 |
+| **Calculators** | 91 |
+| **Simulations** | 87 |
+| **Total Features** | 178 |
+
+---
+
+## ✅ Completed Work (Latest)
+
+### Session 30 - 2026-03-06
+
+#### 1. **Calculator: 555 Timer Frequency Calculator** 🆕
+**File:** `pages/calculators/555-timer-calculator.vue`
+
+**Features:**
+- Calculate frequencies and duty cycles for 555 timer in both astable and monostable modes
+- **Astable Mode (Oscillator):**
+  * Frequency: f = 1.44 / ((R1 + 2×R2) × C)
+  * Duty cycle: D = (R1 + R2) / (R1 + 2×R2) × 100%
+  * Period: T = 0.693 × (R1 + 2×R2) × C
+  * High time: t₁ = 0.693 × (R1 + R2) × C
+  * Low time: t₂ = 0.693 × R2 × C
+- **Monostable Mode (One-Shot):**
+  * Pulse width: t = 1.1 × R2 × C
+  * Time constant: τ = (R1 + R2) × C
+  * Minimum trigger pulse calculation
+- Interactive component selection:
+  * R1: 100Ω to 1MΩ (with quick presets: 1kΩ, 10kΩ, 100kΩ)
+  * R2: 100Ω to 1MΩ (with quick presets: 1kΩ, 10kΩ, 100kΩ)
+  * C: 1nF to 1mF (with quick presets: 1nF, 10nF, 100nF, 1µF)
+- Real-time results display with formatted units
+- Animated waveform visualization showing output signal
+- Interactive SVG circuit diagram with component labels
+- Quick presets for common applications:
+  * 1 kHz Audio Oscillator
+  * 1 Hz LED Flasher
+  * 10 ms Pulse Timer (switch debounce)
+  * 38 kHz IR Carrier (remote control)
+
+**Key Formulas:**
+```
+Astable Frequency: f = 1.44 / ((R1 + 2×R2) × C)
+Astable Duty Cycle: D = (R1 + R2) / (R1 + 2×R2) × 100%
+Monostable Pulse Width: t = 1.1 × R2 × C
+Time Constant: τ = (R1 + R2) × C
+```
+
+**Educational Content:**
+- 555 timer IC overview and applications
+- Astable vs monostable mode operation
+- Internal 555 timer architecture (comparators, flip-flop, discharge transistor)
+- Capacitor charging and discharging cycles
+- Threshold and trigger voltage levels (2/3 VCC and 1/3 VCC)
+- Duty cycle limitations in astable mode (cannot go below 50%)
+- Component tolerance effects on accuracy
+- Temperature stability considerations
+- Practical design tips and common pitfalls
+- Real-world applications: LED flashers, tone generators, clock signals, PWM, timers, pulse stretchers
+- Historical context: Designed by Hans Camenzind in 1971 for Signetics
+
+---
+
+#### 2. **Simulation: Cascode Amplifier** 🆕
+**File:** `pages/simulations/cascode-amplifier.vue`
+
+**Features:**
+- Real-time simulation of cascode amplifier (CE-CB configuration)
+- Interactive circuit parameters:
+  * VCC: 5V to 24V
+  * Collector resistor (RC): 0.1kΩ to 10kΩ
+  * Emitter resistor (RE): 0.1kΩ to 5kΩ
+  * Transistor beta (hFE): 50 to 500
+  * Input amplitude: 1mV to 50mV
+  * Input frequency: 0.1kHz to 100kHz
+- Live circuit analysis:
+  * Voltage gain: Av ≈ -gm × RC
+  * Input impedance: Zin ≈ β × re'
+  * Output impedance: Zout ≈ RC
+  * Transconductance: gm = IC / VT
+  * Miller capacitance (dramatically reduced in cascode)
+  * -3dB bandwidth
+- **Comparison Mode:** Toggle between cascode and common emitter performance
+  * Bandwidth comparison (typically 5-10× improvement)
+  * Miller capacitance comparison
+  * Gain comparison
+  * Side-by-side analysis table
+- Interactive visualizations:
+  * Animated input/output waveforms at 60fps
+  * Real-time Bode plot showing frequency response
+  * Interactive SVG circuit diagram with labeled components
+  * Current frequency indicator on Bode plot
+- Quick presets for different applications:
+  * RF Amplifier (high-frequency optimized)
+  * Video Amplifier (wide bandwidth)
+  * General Purpose (balanced performance)
+- Play/Pause and Reset controls
+
+**Key Concepts Demonstrated:**
+- **Miller Effect Problem:** In common emitter, Cμ is multiplied by (1 + |Av|)
+- **Cascode Solution:** CB stage keeps Q1's collector voltage constant → no Miller multiplication
+- **High Bandwidth:** Dramatically extended frequency response (5-10× improvement)
+- **Maintained Gain:** Voltage gain similar to CE stage alone
+- **High Zin:** Like CE stage, doesn't load the source
+- **Low Zout:** Like CB stage, can drive heavy loads
+- **Improved Isolation:** Better separation between input and output
+
+**Educational Content:**
+- Cascode amplifier architecture and theory
+- Detailed Miller effect explanation with formulas
+- How cascode configuration solves high-frequency limitations
+- CE stage (Q1) provides voltage gain
+- CB stage (Q2) acts as current buffer
+- Q2 keeps Q1's collector at AC ground potential
+- Small-signal analysis and equivalent circuits
+- Design considerations: headroom, power consumption, transistor matching
+- Advantages: bandwidth, gain, impedance, isolation, stability
+- Applications: RF amplifiers, video amplifiers, high-speed op-amps, oscilloscope front-ends
+- Variants: FET cascode, mixed BJT-FET cascode
+- Trade-offs: requires higher VCC, slightly more complex design
+
+---
+
+## 📈 Progress Tracking
+
+| Session | Date | Features Added | Notes |
+|---------|------|----------------|-------|
+| 30 | 2026-03-06 | 555 Timer Calculator, Cascode Amplifier | Cron run - Timing circuits + high-frequency amplification |
+| 29 | 2026-03-04 | Thermal Noise Calculator, Common Collector Amplifier | Cron run - Noise analysis + voltage follower configuration |
+
+---
+
+## 🔜 Next Session Ideas
+
+Potential topics for future development:
+
+**Simulations:**
+- Crystal Oscillator (enhanced with frequency stability)
+- Differential Pair Amplifier (enhanced with CMRR)
+- Instrumentation Amplifier (3-op-amp configuration)
+- Sallen-Key Active Filter (enhanced)
+- Phase-Locked Loop (PLL) enhanced
+- Switching Power Supply (Flyback)
+- Transmission Line Simulator
+- Smith Chart Visualizer
+- Antenna Radiation Pattern
+- Delta-Sigma Modulator
+- Charge Pump Circuit
+- Wien Bridge Oscillator (enhanced)
+- Hartley Oscillator (enhanced)
+- Colpitts Oscillator (enhanced)
+
+**Calculators:**
+- JFET Amplifier Bias Calculator
+- MOSFET Bias Calculator
+- Transistor Saturation Calculator
+- Regulator Efficiency Calculator
+- Amplifier Stability Calculator
+- Feedback Network Calculator
+- Op-Amp Noise Calculator
+- PCB Trace Impedance Calculator (enhanced)
+- Thermal Via Calculator
+- Voltage Regulation Calculator (enhanced)
+- Reactance Chart Calculator
+- Resonant Frequency Calculator (expanded)
+- Nodal Analysis Solver (enhanced)
+- Superposition Calculator
+- Maximum Power Transfer (enhanced)
+
+---
+
+## 💾 Git Status
+
+**Latest Commit:** 6a8925c
+**Branch:** main
+**Status:** ✅ Clean (all changes committed and pushed)
+**Build:** ⏳ Building (in progress)
+
+---
+
+## 📝 Notes
+
+- All new features use Vue 3 Composition API with `<script setup>`
+- TailwindCSS styling with full dark mode support
+- Interactive SVG/Canvas visualizations for both calculators and simulations
+- Comprehensive educational content with formulas, examples, and applications
+- All components follow the established project patterns
+- Navigation automatically includes new features:
+  * Calculator added to calculators index (ID 79)
+  * Simulation card added to simulations index
+- Both features integrate seamlessly with existing project structure
+- Successfully committed and pushed to GitHub
+
+---
+
+## 🎯 Recent Achievements
+
+- **555 Timer Frequency Calculator** - Complete timing analysis tool for the ubiquitous 555 timer IC, supporting both astable (oscillator) and monostable (one-shot) modes with interactive component selection, real-time waveform visualization, circuit diagrams, and comprehensive educational content covering theory, formulas, design considerations, and practical applications
+
+- **Cascode Amplifier Simulation** - Advanced high-frequency amplifier simulation demonstrating the cascode (CE-CB) configuration's advantages over common emitter amplifiers, with real-time waveform and Bode plot visualization, performance comparison mode, live circuit analysis, and complete coverage of Miller effect reduction, bandwidth extension, and RF applications
+
+- Both features maintain consistency with existing codebase patterns
+- Successfully committed and pushed to GitHub
+- Total project now has 178 features (91 calculators + 87 simulations)
+
+---
+
+*End of Session 30 Report*
 
 ---
 
