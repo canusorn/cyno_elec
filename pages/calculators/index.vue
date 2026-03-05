@@ -1516,6 +1516,26 @@ export default {
           },
           resultUnit: '%',
           calculate: () => 0
+        },
+        {
+          id: 81,
+          title: 'Maximum Power Transfer Calculator',
+          description: 'Calculate and analyze maximum power transfer theorem - find optimal load resistance for maximum power transfer, efficiency curves, and power vs resistance graphs',
+          categoryId: ['basic', 'dc-circuits', 'power'],
+          difficulty: 'Intermediate',
+          category: 'Circuit Analysis',
+          type: 'maximum-power-transfer',
+          path: '/calculators/maximum-power-transfer',
+          formula: 'Pₗ = Vₛ² × Rₗ / (Rₛ + Rₗ)², Max when Rₗ = Rₛ',
+          icon: 'LightBulbIcon',
+          units: ['W', 'V', 'Ω', '%'],
+          inputs: {
+            sourceVoltage: { label: 'Source Voltage', placeholder: 'Enter source voltage', unit: 'V' },
+            sourceResistance: { label: 'Source Resistance', placeholder: 'Enter source resistance', unit: 'Ω' },
+            loadResistance: { label: 'Load Resistance', placeholder: 'Enter load resistance', unit: 'Ω' }
+          },
+          resultUnit: 'W',
+          calculate: () => 0
         }
       ]
     }

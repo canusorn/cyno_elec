@@ -1799,6 +1799,57 @@
             </div>
           </div>
 
+          <!-- Superposition Theorem -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Source 1 -->
+                <circle cx="40" cy="40" r="12" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <text x="40" y="44" text-anchor="middle" fill="#3B82F6" font-size="9" font-weight="bold">V1</text>
+                
+                <!-- Source 2 -->
+                <circle cx="160" cy="80" r="12" fill="white" stroke="#10B981" stroke-width="2"/>
+                <text x="160" y="84" text-anchor="middle" fill="#10B981" font-size="9" font-weight="bold">V2</text>
+                
+                <!-- Wires forming circuit -->
+                <line x1="40" y1="28" x2="40" y2="15" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="40" y1="15" x2="160" y2="15" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="160" y1="15" x2="160" y2="68" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="40" y1="52" x2="40" y2="105" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="40" y1="105" x2="160" y2="105" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="160" y1="105" x2="160" y2="92" stroke="#94A3B8" stroke-width="2"/>
+                
+                <!-- Resistors -->
+                <rect x="85" y="12" width="30" height="6" fill="white" stroke="#F59E0B" stroke-width="2"/>
+                <text x="100" y="10" text-anchor="middle" fill="#F59E0B" font-size="7">R1</text>
+                
+                <rect x="85" y="102" width="30" height="6" fill="white" stroke="#F59E0B" stroke-width="2"/>
+                <text x="100" y="118" text-anchor="middle" fill="#F59E0B" font-size="7">R2</text>
+                
+                <!-- Current contributions arrows -->
+                <line x1="70" y1="15" x2="75" y2="15" stroke="#3B82F6" stroke-width="2" marker-end="url(#arrowhead-blue)"/>
+                <line x1="125" y1="15" x2="120" y2="15" stroke="#10B981" stroke-width="2" marker-end="url(#arrowhead-green)"/>
+                
+                <!-- Summation symbol -->
+                <text x="100" y="65" text-anchor="middle" fill="#8B5CF6" font-size="16" font-weight="bold">Σ</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Superposition Theorem
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore how multiple voltage sources affect linear circuits. Visualize individual source contributions and their algebraic sum in real-time.
+              </p>
+              <NuxtLink
+                to="/simulations/superposition-theorem"
+                class="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- Battery Charging Simulation -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
