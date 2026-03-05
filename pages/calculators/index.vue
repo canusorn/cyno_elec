@@ -1492,6 +1492,30 @@ export default {
           },
           resultUnit: 'Hz/s',
           calculate: () => 0
+        },
+        {
+          id: 80,
+          title: 'Transformer Regulation Calculator',
+          description: 'Calculate transformer voltage regulation, efficiency, and performance parameters including copper loss, core loss, equivalent impedance, and regulation curves',
+          categoryId: ['transformers', 'ac-circuits', 'power'],
+          difficulty: 'Advanced',
+          category: 'Transformers',
+          type: 'transformer-regulation',
+          path: '/calculators/transformer-regulation',
+          formula: '% Regulation = (Vno-load - Vfull-load) / Vfull-load × 100',
+          icon: 'BoltIcon',
+          units: ['V', 'Ω', 'W', '%'],
+          inputs: {
+            primaryVoltage: { label: 'Primary Voltage', placeholder: 'Enter primary voltage', unit: 'V' },
+            secondaryVoltage: { label: 'Secondary Voltage', placeholder: 'Enter secondary voltage', unit: 'V' },
+            primaryResistance: { label: 'Primary Resistance', placeholder: 'Enter primary resistance', unit: 'Ω' },
+            secondaryResistance: { label: 'Secondary Resistance', placeholder: 'Enter secondary resistance', unit: 'Ω' },
+            coreLoss: { label: 'Core Loss', placeholder: 'Enter core loss', unit: 'W' },
+            loadCurrent: { label: 'Load Current', placeholder: 'Enter load current', unit: 'A' },
+            powerFactor: { label: 'Power Factor', placeholder: 'Enter power factor', unit: '' }
+          },
+          resultUnit: '%',
+          calculate: () => 0
         }
       ]
     }
