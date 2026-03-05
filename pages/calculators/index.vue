@@ -1360,6 +1360,48 @@ export default {
           },
           resultUnit: '%',
           calculate: () => 0
+        },
+        {
+          id: 69,
+          title: 'PCB Trace Impedance Calculator',
+          description: 'Calculate controlled impedance for microstrip and stripline PCB traces. Includes cross-section visualization, dielectric material selection, and design recommendations for high-speed signals.',
+          categoryId: ['rf', 'ac-circuits'],
+          difficulty: 'Advanced',
+          category: 'PCB Design',
+          type: 'pcb-trace-impedance',
+          path: '/calculators/pcb-trace-impedance',
+          formula: 'Z₀ ≈ √(L/C)',
+          icon: 'CpuChipIcon',
+          units: ['Ω', 'mm', 'εr'],
+          inputs: {
+            lineType: { label: 'Line Type', placeholder: 'Microstrip or Stripline' },
+            material: { label: 'Substrate Material', placeholder: 'FR-4, Rogers, etc.' },
+            traceWidth: { label: 'Trace Width', placeholder: 'Enter width', unit: 'mm' },
+            traceThickness: { label: 'Trace Thickness', placeholder: 'Copper weight', unit: 'mm' },
+            dielectricHeight: { label: 'Dielectric Height', placeholder: 'To reference plane', unit: 'mm' }
+          },
+          resultUnit: 'Ω',
+          calculate: () => 0
+        },
+        {
+          id: 999,
+          title: 'Voltage Multiplier Calculator',
+          description: 'Design Cockcroft-Walton voltage multiplier circuits for high-voltage applications',
+          categoryId: ['power', 'dc-circuits'],
+          difficulty: 'Advanced',
+          category: 'Power Electronics',
+          type: 'voltage-multiplier',
+          path: '/calculators/voltage-multiplier',
+          formula: 'Vout = 2n × Vpeak',
+          icon: 'BoltIcon',
+          units: ['V', 'stages'],
+          inputs: {
+            inputVoltage: { label: 'AC Input Voltage', placeholder: 'Enter RMS voltage', unit: 'V' },
+            stages: { label: 'Number of Stages', placeholder: 'Enter stages', unit: '1-12' },
+            outputCurrent: { label: 'Output Current', placeholder: 'Enter current', unit: 'mA' }
+          },
+          resultUnit: 'V',
+          calculate: () => 0
         }
       ]
     }

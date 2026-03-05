@@ -108,9 +108,49 @@
               <p class="text-gray-600 dark:text-gray-300 mb-4">
                 Multiple branches in parallel. See how current divides between paths.
               </p>
-              <NuxtLink 
-                to="/simulations/parallel-circuit" 
+              <NuxtLink
+                to="/simulations/parallel-circuit"
                 class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
+          <!-- Series-Parallel Circuit -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Main circuit loop -->
+                <line x1="20" y1="40" x2="100" y2="40" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="100" y1="40" x2="180" y2="40" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="80" x2="100" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="100" y1="80" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="20" y1="40" x2="20" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <line x1="180" y1="40" x2="180" y2="80" stroke="#94A3B8" stroke-width="3"/>
+                <!-- Voltage source -->
+                <circle cx="20" cy="60" r="15" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <!-- Series resistor R1 -->
+                <rect x="60" y="35" width="30" height="10" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+                <!-- Parallel section -->
+                <line x1="130" y1="40" x2="130" y2="55" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="130" y1="65" x2="130" y2="80" stroke="#94A3B8" stroke-width="2"/>
+                <rect x="125" y="55" width="10" height="10" fill="white" stroke="#22C55E" stroke-width="2"/>
+                <line x1="150" y1="40" x2="150" y2="55" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="150" y1="65" x2="150" y2="80" stroke="#94A3B8" stroke-width="2"/>
+                <rect x="145" y="55" width="10" height="10" fill="white" stroke="#F59E0B" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Series-Parallel Circuit
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Combined series and parallel circuit analysis. See how current and voltage behave in complex circuits.
+              </p>
+              <NuxtLink
+                to="/simulations/series-parallel-circuit"
+                class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors"
               >
                 Try Now →
               </NuxtLink>
@@ -2075,6 +2115,50 @@
               <NuxtLink
                 to="/simulations/solar-cell-iv-curve"
                 class="inline-flex items-center px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
+          <!-- PLL Simulator -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Phase detector -->
+                <circle cx="40" cy="60" r="20" fill="white" stroke="#9333EA" stroke-width="2"/>
+                <text x="40" y="64" text-anchor="middle" fill="#9333EA" font-size="8" font-weight="bold">PD</text>
+                <!-- Loop filter -->
+                <rect x="80" y="50" width="30" height="20" fill="white" stroke="#3B82F6" stroke-width="2" rx="2"/>
+                <text x="95" y="64" text-anchor="middle" fill="#3B82F6" font-size="7">LPF</text>
+                <!-- VCO -->
+                <circle cx="150" cy="60" r="20" fill="white" stroke="#EC4899" stroke-width="2"/>
+                <text x="150" y="64" text-anchor="middle" fill="#EC4899" font-size="8" font-weight="bold">VCO</text>
+                <!-- Connections -->
+                <line x1="60" y1="60" x2="80" y2="60" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="110" y1="60" x2="130" y2="60" stroke="#94A3B8" stroke-width="2"/>
+                <!-- Feedback path -->
+                <path d="M 150 80 Q 150 100 95 100 Q 40 100 40 80" fill="none" stroke="#22C55E" stroke-width="2" stroke-dasharray="4,4"/>
+                <circle cx="95" cy="100" r="8" fill="white" stroke="#22C55E" stroke-width="1.5"/>
+                <text x="95" y="103" text-anchor="middle" fill="#22C55E" font-size="6">÷N</text>
+                <!-- Labels -->
+                <text x="20" y="20" fill="#9333EA" font-size="7" font-weight="bold">f_ref</text>
+                <text x="170" y="20" fill="#EC4899" font-size="7" font-weight="bold">f_out</text>
+                <!-- Lock indicator -->
+                <circle cx="175" cy="85" r="5" fill="#22C55E"/>
+                <text x="175" y="88" text-anchor="middle" fill="white" font-size="5">🔒</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Phase-Locked Loop
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Interactive PLL simulator with lock acquisition visualization. Explore frequency synthesis, phase detection, and loop dynamics in real-time.
+              </p>
+              <NuxtLink
+                to="/simulations/pll-simulator"
+                class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors"
               >
                 Try Now →
               </NuxtLink>
