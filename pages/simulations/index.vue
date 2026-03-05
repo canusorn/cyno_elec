@@ -311,9 +311,48 @@
               <p class="text-gray-600 dark:text-gray-300 mb-4">
                 Explore RLC circuits at resonant frequency with frequency response visualization.
               </p>
-              <NuxtLink 
-                to="/simulations/rlc-resonance" 
+              <NuxtLink
+                to="/simulations/rlc-resonance"
                 class="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
+          <!-- Resonant Circuit Bandwidth -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Frequency response curve -->
+                <path d="M 20 90 Q 50 90, 70 70 Q 100 30, 130 70 Q 150 90, 180 90" fill="none" stroke="#3B82F6" stroke-width="3"/>
+                <!-- Peak marker -->
+                <circle cx="100" cy="45" r="5" fill="#10B981"/>
+                <!-- -3dB points -->
+                <circle cx="65" cy="75" r="4" fill="#F59E0B"/>
+                <circle cx="135" cy="75" r="4" fill="#F59E0B"/>
+                <!-- Bandwidth indicator -->
+                <line x1="65" y1="85" x2="135" y2="85" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="5,3"/>
+                <!-- Labels -->
+                <text x="100" y="25" text-anchor="middle" font-size="10" fill="#10B981">f₀</text>
+                <text x="50" y="100" text-anchor="middle" font-size="8" fill="#6B7280">f₁</text>
+                <text x="150" y="100" text-anchor="middle" font-size="8" fill="#6B7280">f₂</text>
+                <!-- Circuit components hint -->
+                <rect x="25" y="105" width="15" height="8" fill="none" stroke="#EF4444" stroke-width="1.5" rx="1"/>
+                <path d="M 45 109 Q 48 105, 51 109 Q 54 113, 57 109" fill="none" stroke="#22C55E" stroke-width="1.5"/>
+                <circle cx="75" cy="109" r="4" fill="none" stroke="#3B82F6" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Resonant Circuit Bandwidth
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore Q factor and bandwidth in RLC circuits. See how resistance affects selectivity and frequency response.
+              </p>
+              <NuxtLink
+                to="/simulations/resonant-circuit-bandwidth"
+                class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
               >
                 Try Now →
               </NuxtLink>

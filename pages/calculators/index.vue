@@ -1402,6 +1402,29 @@ export default {
           },
           resultUnit: 'V',
           calculate: () => 0
+        },
+        {
+          id: 76,
+          title: 'Inductor Magnetic Field Calculator',
+          description: 'Calculate magnetic field strength for solenoids and inductors with support for air core and ferrite core configurations',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Components',
+          type: 'inductor-magnetic-field',
+          path: '/calculators/inductor-magnetic-field',
+          formula: 'B = μ₀μr × N × I / L',
+          icon: 'CogIcon',
+          units: ['T', 'mT', 'μT', 'A', 'turns'],
+          inputs: {
+            numTurns: { label: 'Number of Turns', placeholder: 'Enter N', unit: 'turns' },
+            current: { label: 'Current', placeholder: 'Enter current', unit: 'A' },
+            length: { label: 'Solenoid Length', placeholder: 'Enter length', unit: 'm' },
+            diameter: { label: 'Solenoid Diameter', placeholder: 'Enter diameter', unit: 'm' },
+            coreType: { label: 'Core Type', placeholder: 'Air or Ferrite' },
+            relativePermeability: { label: 'Relative Permeability', placeholder: 'Enter μr', unit: 'μr' }
+          },
+          resultUnit: 'T',
+          calculate: () => 0
         }
       ]
     }
