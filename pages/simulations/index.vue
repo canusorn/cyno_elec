@@ -359,6 +359,51 @@
             </div>
           </div>
 
+          <!-- Diode Characteristic Curve -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Axes -->
+                <line x1="100" y1="20" x2="100" y2="100" stroke="#374151" stroke-width="2"/>
+                <line x1="30" y1="60" x2="180" y2="60" stroke="#374151" stroke-width="2"/>
+                <!-- Forward bias curve (exponential) -->
+                <path d="M 100 60 Q 120 58, 140 40 Q 160 25, 180 22" fill="none" stroke="#22C55E" stroke-width="3"/>
+                <!-- Reverse bias curve (flat) -->
+                <line x1="100" y1="60" x2="35" y2="62" stroke="#EF4444" stroke-width="3"/>
+                <!-- Operating point -->
+                <circle cx="150" cy="35" r="5" fill="#3B82F6" stroke="white" stroke-width="2"/>
+                <!-- Knee voltage marker -->
+                <line x1="100" y1="60" x2="115" y2="45" stroke="#F59E0B" stroke-width="2" stroke-dasharray="3,3"/>
+                <text x="125" y="42" font-size="9" fill="#F59E0B">Vf</text>
+                <!-- Labels -->
+                <text x="185" y="55" font-size="10" fill="#374151">V</text>
+                <text x="95" y="18" font-size="10" fill="#374151">I</text>
+                <!-- Diode symbol -->
+                <g transform="translate(45, 75)">
+                  <polygon points="0,0 12,-8 12,8" fill="none" stroke="#22C55E" stroke-width="2"/>
+                  <line x1="12" y1="-8" x2="12" y2="8" stroke="#22C55E" stroke-width="2"/>
+                  <line x1="-5" y1="-4" x2="-5" y2="4" stroke="#94A3B8" stroke-width="2"/>
+                  <line x1="-5" y1="0" x2="0" y2="0" stroke="#94A3B8" stroke-width="2"/>
+                  <line x1="12" y1="0" x2="17" y2="0" stroke="#94A3B8" stroke-width="2"/>
+                </g>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Diode Characteristic Curve
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore V-I characteristics of different diode types. Visualize forward bias, reverse bias, and temperature effects.
+              </p>
+              <NuxtLink
+                to="/simulations/diode-characteristic-curve"
+                class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- Transformer Basics -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">

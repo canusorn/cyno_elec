@@ -1425,6 +1425,28 @@ export default {
           },
           resultUnit: 'T',
           calculate: () => 0
+        },
+        {
+          id: 77,
+          title: 'Thermal Derating Calculator',
+          description: 'Calculate component power derating at elevated temperatures with interactive derating curves and safety margin analysis',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Reliability',
+          type: 'thermal-derating',
+          path: '/calculators/thermal-derating',
+          formula: 'P_derated = P_rated × (1 - derate_factor × (T - T_ref))',
+          icon: 'BoltIcon',
+          units: ['W', 'mW', '°C', '%'],
+          inputs: {
+            ratedPower: { label: 'Rated Power', placeholder: 'Enter Prated', unit: 'W' },
+            referenceTemperature: { label: 'Reference Temperature', placeholder: 'Tref', unit: '°C' },
+            maxTemperature: { label: 'Maximum Temperature', placeholder: 'Tmax', unit: '°C' },
+            operatingTemperature: { label: 'Operating Temperature', placeholder: 'Top', unit: '°C' },
+            deratingType: { label: 'Derating Curve', placeholder: 'Linear/Step/Exponential' }
+          },
+          resultUnit: 'W',
+          calculate: () => 0
         }
       ]
     }
