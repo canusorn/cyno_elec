@@ -1496,6 +1496,55 @@
             </div>
           </div>
 
+          <!-- Cascode Amplifier -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Q1 (CE stage) -->
+                <circle cx="70" cy="50" r="18" fill="white" stroke="#4F46E5" stroke-width="2"/>
+                <text x="70" y="48" text-anchor="middle" fill="#4F46E5" font-size="8" font-weight="bold">Q1</text>
+                <text x="70" y="58" text-anchor="middle" fill="#4F46E5" font-size="6">(CE)</text>
+                <!-- Q2 (CB stage) -->
+                <circle cx="130" cy="50" r="18" fill="white" stroke="#3B82F6" stroke-width="2"/>
+                <text x="130" y="48" text-anchor="middle" fill="#3B82F6" font-size="8" font-weight="bold">Q2</text>
+                <text x="130" y="58" text-anchor="middle" fill="#3B82F6" font-size="6">(CB)</text>
+                <!-- Connections -->
+                <line x1="88" y1="50" x2="112" y2="50" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="130" y1="68" x2="130" y2="85" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="70" y1="32" x2="70" y2="20" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="130" y1="32" x2="130" y2="20" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="70" y1="20" x2="130" y2="20" stroke="#94A3B8" stroke-width="2"/>
+                <!-- RC resistor -->
+                <rect x="125" y="12" width="10" height="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+                <!-- Input -->
+                <circle cx="30" cy="50" r="5" fill="#EC4899"/>
+                <line x1="35" y1="50" x2="52" y2="50" stroke="#EC4899" stroke-width="2"/>
+                <text x="25" y="53" text-anchor="end" fill="#EC4899" font-size="7" font-weight="bold">IN</text>
+                <!-- Output -->
+                <circle cx="170" cy="50" r="5" fill="#10B981"/>
+                <line x1="148" y1="50" x2="165" y2="50" stroke="#10B981" stroke-width="2"/>
+                <text x="175" y="53" text-anchor="start" fill="#10B981" font-size="7" font-weight="bold">OUT</text>
+                <!-- Bandwidth badge -->
+                <rect x="75" y="90" width="50" height="18" fill="#22C55E" rx="3"/>
+                <text x="100" y="102" text-anchor="middle" fill="white" font-size="8" font-weight="bold">High BW</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Cascode Amplifier
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                High-frequency CE-CB configuration with reduced Miller effect. Compare bandwidth performance with Common Emitter amplifiers.
+              </p>
+              <NuxtLink
+                to="/simulations/cascode-amplifier"
+                class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- RLC Damped Oscillation -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">

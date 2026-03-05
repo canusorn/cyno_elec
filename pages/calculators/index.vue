@@ -1471,6 +1471,27 @@ export default {
           },
           resultUnit: 'kV',
           calculate: () => 0
+        },
+        {
+          id: 79,
+          title: '555 Timer Frequency Calculator',
+          description: 'Calculate frequencies and duty cycles for the versatile 555 timer IC in astable (oscillator) and monostable (one-shot) modes with interactive circuit diagrams and waveform visualization',
+          categoryId: ['basic', 'dc-circuits'],
+          difficulty: 'Intermediate',
+          category: 'Timing Circuits',
+          type: '555-timer-calculator',
+          path: '/calculators/555-timer-calculator',
+          formula: 'Astable: f = 1.44/((R1+2×R2)×C), Monostable: t = 1.1×R2×C',
+          icon: 'ClockIcon',
+          units: ['Hz', 'Ω', 'F', '%', 's'],
+          inputs: {
+            mode: { label: 'Operating Mode', placeholder: 'Astable/Monostable' },
+            r1: { label: 'Resistor R1', placeholder: 'Enter R1', unit: 'Ω' },
+            r2: { label: 'Resistor R2', placeholder: 'Enter R2', unit: 'Ω' },
+            c: { label: 'Capacitor C', placeholder: 'Enter C', unit: 'F' }
+          },
+          resultUnit: 'Hz/s',
+          calculate: () => 0
         }
       ]
     }
