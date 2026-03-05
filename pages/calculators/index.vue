@@ -1447,6 +1447,30 @@ export default {
           },
           resultUnit: 'W',
           calculate: () => 0
+        },
+        {
+          id: 78,
+          title: 'Dielectric Strength Calculator',
+          description: 'Calculate breakdown voltage, electric field strength, and safety margins for insulation materials with temperature and humidity effects',
+          categoryId: ['basic', 'measurement'],
+          difficulty: 'Intermediate',
+          category: 'Insulation',
+          type: 'dielectric-strength',
+          path: '/calculators/dielectric-strength',
+          formula: 'V_breakdown = E_strength × d',
+          icon: 'BoltIcon',
+          units: ['kV', 'MV/m', 'pF', 'mJ'],
+          inputs: {
+            material: { label: 'Dielectric Material', placeholder: 'Select material type' },
+            thickness: { label: 'Insulation Thickness', placeholder: 'Enter thickness', unit: 'mm' },
+            area: { label: 'Electrode Area', placeholder: 'Enter area', unit: 'cm²' },
+            voltage: { label: 'Applied Voltage', placeholder: 'Enter voltage', unit: 'V' },
+            temperature: { label: 'Temperature', placeholder: 'Enter temperature', unit: '°C' },
+            humidity: { label: 'Humidity', placeholder: 'Enter humidity', unit: '%' },
+            safetyFactor: { label: 'Safety Factor', placeholder: 'Select safety factor' }
+          },
+          resultUnit: 'kV',
+          calculate: () => 0
         }
       ]
     }

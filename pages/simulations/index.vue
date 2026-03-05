@@ -2249,6 +2249,47 @@
             </div>
           </div>
 
+          <!-- Ground Loop Interference -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-red-50 to-orange-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Two devices -->
+                <rect x="20" y="40" width="40" height="40" fill="white" stroke="#3B82F6" stroke-width="2" rx="3"/>
+                <text x="40" y="65" text-anchor="middle" fill="#3B82F6" font-size="8" font-weight="bold">DEV A</text>
+                <rect x="140" y="40" width="40" height="40" fill="white" stroke="#3B82F6" stroke-width="2" rx="3"/>
+                <text x="160" y="65" text-anchor="middle" fill="#3B82F6" font-size="8" font-weight="bold">DEV B</text>
+                <!-- Signal connection -->
+                <line x1="60" y1="50" x2="140" y2="50" stroke="#22C55E" stroke-width="2"/>
+                <text x="100" y="45" text-anchor="middle" fill="#22C55E" font-size="6">Signal</text>
+                <!-- Ground loop path -->
+                <path d="M 40 80 L 40 100 L 160 100 L 160 80" fill="none" stroke="#EF4444" stroke-width="2" stroke-dasharray="4,4"/>
+                <text x="100" y="115" text-anchor="middle" fill="#EF4444" font-size="6">Ground Loop</text>
+                <!-- Noise source -->
+                <circle cx="100" cy="100" r="8" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.5"/>
+                <text x="100" y="103" text-anchor="middle" fill="#EF4444" font-size="6" font-weight="bold">N</text>
+                <!-- Magnetic field lines -->
+                <ellipse cx="100" cy="100" rx="35" ry="15" fill="none" stroke="#F59E0B" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+                <ellipse cx="100" cy="100" rx="50" ry="20" fill="none" stroke="#F59E0B" stroke-width="1" stroke-dasharray="3,3" opacity="0.4"/>
+                <!-- Interference indicator -->
+                <text x="100" y="25" text-anchor="middle" fill="#EF4444" font-size="7" font-weight="bold">⚠️ NOISE</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Ground Loop Interference
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Simulate ground loop effects, noise coupling, and interference in electronic systems. Learn how unwanted ground currents affect signal integrity and explore mitigation strategies.
+              </p>
+              <NuxtLink
+                to="/simulations/ground-loop-interference"
+                class="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
