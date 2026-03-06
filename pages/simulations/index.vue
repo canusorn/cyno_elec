@@ -1496,6 +1496,68 @@
             </div>
           </div>
 
+          <!-- JFET Common-Source Amplifier -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- VDD line -->
+                <line x1="100" y1="10" x2="100" y2="25" stroke="#EF4444" stroke-width="2"/>
+                <circle cx="100" cy="8" r="6" fill="white" stroke="#EF4444" stroke-width="1.5"/>
+                <text x="100" y="11" text-anchor="middle" fill="#EF4444" font-size="5" font-weight="bold">VDD</text>
+                <!-- RD resistor -->
+                <rect x="95" y="25" width="10" height="15" fill="white" stroke="#3B82F6" stroke-width="1.5"/>
+                <!-- Wire to drain -->
+                <line x1="100" y1="40" x2="100" y2="50" stroke="#6B7280" stroke-width="2"/>
+                <!-- JFET symbol (N-channel) -->
+                <g transform="translate(100, 65)">
+                  <line x1="-20" y1="0" x2="-8" y2="0" stroke="#6B7280" stroke-width="1.5"/>
+                  <line x1="-8" y1="-10" x2="-8" y2="10" stroke="#10B981" stroke-width="2"/>
+                  <line x1="0" y1="-6" x2="0" y2="6" stroke="#10B981" stroke-width="1.5"/>
+                  <line x1="0" y1="-6" x2="0" y2="-15" stroke="#6B7280" stroke-width="1.5"/>
+                  <line x1="0" y1="6" x2="0" y2="15" stroke="#6B7280" stroke-width="1.5"/>
+                  <text x="8" y="-12" fill="#10B981" font-size="6">D</text>
+                  <text x="8" y="18" fill="#10B981" font-size="6">S</text>
+                  <text x="-25" y="3" fill="#10B981" font-size="6">G</text>
+                </g>
+                <!-- RS resistor -->
+                <rect x="95" y="80" width="10" height="12" fill="white" stroke="#8B5CF6" stroke-width="1.5"/>
+                <!-- Ground -->
+                <line x1="100" y1="92" x2="100" y2="98" stroke="#6B7280" stroke-width="1.5"/>
+                <line x1="95" y1="98" x2="105" y2="98" stroke="#6B7280" stroke-width="1.5"/>
+                <line x1="97" y1="101" x2="103" y2="101" stroke="#6B7280" stroke-width="1.5"/>
+                <!-- Input -->
+                <circle cx="50" cy="65" r="4" fill="white" stroke="#F59E0B" stroke-width="1.5"/>
+                <line x1="30" y1="65" x2="46" y2="65" stroke="#6B7280" stroke-width="1.5"/>
+                <line x1="54" y1="65" x2="92" y2="65" stroke="#6B7280" stroke-width="1.5"/>
+                <text x="25" y="68" text-anchor="middle" fill="#F59E0B" font-size="6">Vin</text>
+                <!-- Output -->
+                <circle cx="150" cy="32" r="4" fill="white" stroke="#EC4899" stroke-width="1.5"/>
+                <line x1="100" y1="32" x2="146" y2="32" stroke="#6B7280" stroke-width="1.5"/>
+                <line x1="154" y1="32" x2="175" y2="32" stroke="#6B7280" stroke-width="1.5"/>
+                <text x="170" y="35" text-anchor="middle" fill="#EC4899" font-size="6">Vout</text>
+                <!-- Waveforms -->
+                <path d="M 20 110 Q 30 102, 40 110 T 60 110" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+                <path d="M 130 110 Q 140 95, 150 110 Q 160 125, 170 110" fill="none" stroke="#EC4899" stroke-width="2"/>
+                <text x="40" y="118" text-anchor="middle" fill="#F59E0B" font-size="5">Input</text>
+                <text x="150" y="118" text-anchor="middle" fill="#EC4899" font-size="5">Output (inverted)</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                JFET Common-Source Amplifier
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Field-effect transistor amplifier with ultra-high input impedance. Explore voltage-controlled amplification and transconductance.
+              </p>
+              <NuxtLink
+                to="/simulations/jfet-common-source"
+                class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- Cascode Amplifier -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">

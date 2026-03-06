@@ -705,6 +705,27 @@ export default {
           calculate: () => 0
         },
         {
+          id: 84,
+          title: 'Resonant Frequency Calculator (RLC)',
+          description: 'Calculate resonant frequency, bandwidth, Q factor, and cutoff frequencies for series and parallel RLC circuits with interactive frequency response preview.',
+          categoryId: ['ac-circuits', 'rf', 'basic'],
+          difficulty: 'Intermediate',
+          category: 'AC Analysis',
+          type: 'resonant-frequency-calculator',
+          path: '/calculators/resonant-frequency-calculator',
+          formula: 'f₀ = 1/(2π√LC) | Q = f₀/BW | BW = f₀/Q',
+          icon: 'ChartBarIcon',
+          units: ['Hz', 'kHz', 'MHz', 'Ω', 'µH', 'pF'],
+          inputs: {
+            circuitType: { label: 'Circuit Type', placeholder: 'Series/Parallel RLC' },
+            inductance: { label: 'Inductance (L)', placeholder: 'Enter inductance', unit: 'µH' },
+            capacitance: { label: 'Capacitance (C)', placeholder: 'Enter capacitance', unit: 'pF' },
+            resistance: { label: 'Resistance (R)', placeholder: 'Enter resistance', unit: 'Ω' }
+          },
+          resultUnit: 'Hz',
+          calculate: () => 0
+        },
+        {
           id: 27,
           title: '7805 Voltage Regulator Calculator',
           description: 'Design power supplies with the classic 7805 linear regulator. Calculate component values, power dissipation, efficiency, and thermal requirements for 5V regulation.',
