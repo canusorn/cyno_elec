@@ -1850,6 +1850,61 @@
             </div>
           </div>
 
+          <!-- Current Source Interaction -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-cyan-50 to-teal-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Current Source 1 -->
+                <circle cx="50" cy="40" r="18" fill="#22D3EE" opacity="0.3"/>
+                <line x1="35" y1="40" x2="65" y2="40" stroke="#22D3EE" stroke-width="3"/>
+                <line x1="40" y1="34" x2="60" y2="34" stroke="#22D3EE" stroke-width="2"/>
+                <line x1="40" y1="46" x2="60" y2="46" stroke="#22D3EE" stroke-width="2"/>
+                <polygon points="50,20 45,30 55,30" fill="#22D3EE"/>
+                
+                <!-- Current Source 2 -->
+                <circle cx="150" cy="40" r="18" fill="#A855F7" opacity="0.3"/>
+                <line x1="135" y1="40" x2="165" y2="40" stroke="#A855F7" stroke-width="3"/>
+                <line x1="140" y1="34" x2="160" y2="34" stroke="#A855F7" stroke-width="2"/>
+                <line x1="140" y1="46" x2="160" y2="46" stroke="#A855F7" stroke-width="2"/>
+                <polygon points="150,60 145,50 155,50" fill="#A855F7"/>
+                
+                <!-- Resistor network -->
+                <rect x="40" y="75" width="20" height="10" fill="white" stroke="#FBBF24" stroke-width="2"/>
+                <rect x="90" y="75" width="20" height="10" fill="white" stroke="#FBBF24" stroke-width="2"/>
+                <rect x="140" y="75" width="20" height="10" fill="white" stroke="#FBBF24" stroke-width="2"/>
+                
+                <!-- Connecting wires -->
+                <line x1="50" y1="58" x2="50" y2="75" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="150" y1="58" x2="150" y2="75" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="50" y1="85" x2="50" y2="100" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="150" y1="85" x2="150" y2="100" stroke="#94A3B8" stroke-width="2"/>
+                <line x1="50" y1="100" x2="150" y2="100" stroke="#94A3B8" stroke-width="2"/>
+                
+                <!-- Animated current flow -->
+                <circle cx="50" cy="90" r="3" fill="#22D3EE">
+                  <animate attributeName="cy" values="85;95;85" dur="1s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="150" cy="90" r="3" fill="#A855F7">
+                  <animate attributeName="cy" values="95;85;95" dur="1s" repeatCount="indefinite"/>
+                </circle>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Current Source Interaction
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Explore how multiple current sources interact in a circuit. Compare ideal vs practical sources and visualize KCL in action.
+              </p>
+              <NuxtLink
+                to="/simulations/current-source-interaction"
+                class="inline-flex items-center px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
           <!-- Battery Charging Simulation -->
           <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div class="h-48 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">

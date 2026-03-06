@@ -1536,6 +1536,26 @@ export default {
           },
           resultUnit: 'W',
           calculate: () => 0
+        },
+        {
+          id: 82,
+          title: 'Voltage Regulator Efficiency Calculator',
+          description: 'Compare efficiency across linear, switching (buck), and zener regulators. Calculate power dissipation, efficiency curves, and thermal analysis for different regulator types',
+          categoryId: ['basic', 'power', 'components'],
+          difficulty: 'Intermediate',
+          category: 'Power Electronics',
+          type: 'voltage-regulator-efficiency',
+          path: '/calculators/voltage-regulator-efficiency',
+          formula: 'η_linear = V_out/V_in, η_buck ≈ 85-95%',
+          icon: 'BoltIcon',
+          units: ['V', 'A', 'W', '%', '°C'],
+          inputs: {
+            inputVoltage: { label: 'Input Voltage', placeholder: 'Enter input voltage', unit: 'V' },
+            outputVoltage: { label: 'Output Voltage', placeholder: 'Enter output voltage', unit: 'V' },
+            loadCurrent: { label: 'Load Current', placeholder: 'Enter load current', unit: 'A' }
+          },
+          resultUnit: '%',
+          calculate: () => 0
         }
       ]
     }
