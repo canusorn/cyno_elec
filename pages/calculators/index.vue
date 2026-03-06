@@ -1556,6 +1556,26 @@ export default {
           },
           resultUnit: '%',
           calculate: () => 0
+        },
+        {
+          id: 83,
+          title: 'Conductor Voltage Drop Calculator',
+          description: 'Calculate voltage drop in electrical conductors and wires. Account for material properties, temperature effects, wire gauge (AWG/mm²), conductor length, current load, and single/three-phase systems',
+          categoryId: ['basic', 'power', 'components'],
+          difficulty: 'Beginner',
+          category: 'Power Distribution',
+          type: 'conductor-voltage-drop',
+          path: '/calculators/conductor-voltage-drop',
+          formula: 'V_drop = 2 × I × R (single-phase), V_drop = √3 × I × R (three-phase)',
+          icon: 'BoltIcon',
+          units: ['V', 'A', 'Ω', 'W', '%', 'm', 'mm²', '°C'],
+          inputs: {
+            supplyVoltage: { label: 'Supply Voltage', placeholder: 'Enter supply voltage', unit: 'V' },
+            loadCurrent: { label: 'Load Current', placeholder: 'Enter load current', unit: 'A' },
+            conductorLength: { label: 'Conductor Length', placeholder: 'Enter conductor length', unit: 'm' }
+          },
+          resultUnit: 'V',
+          calculate: () => 0
         }
       ]
     }

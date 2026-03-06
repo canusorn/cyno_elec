@@ -2445,6 +2445,58 @@
             </div>
           </div>
 
+          <!-- Bode Plot Analyzer -->
+          <div class="simulation-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center">
+              <svg viewBox="0 0 200 120" class="w-40 h-24">
+                <!-- Frequency axis -->
+                <line x1="20" y1="100" x2="180" y2="100" stroke="#64748B" stroke-width="2"/>
+                <line x1="20" y1="100" x2="20" y2="20" stroke="#64748B" stroke-width="2"/>
+                
+                <!-- Magnitude curve -->
+                <path d="M 25 30 Q 60 30 80 50 T 180 90" fill="none" stroke="#3B82F6" stroke-width="2.5"/>
+                
+                <!-- -3dB line -->
+                <line x1="20" y1="60" x2="180" y2="60" stroke="#EF4444" stroke-width="1" stroke-dasharray="4,4"/>
+                <text x="175" y="55" fill="#EF4444" font-size="8" font-family="monospace">-3dB</text>
+                
+                <!-- Cutoff frequency marker -->
+                <line x1="100" y1="20" x2="100" y2="100" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <circle cx="100" cy="60" r="4" fill="#10B981"/>
+                <text x="90" y="15" fill="#10B981" font-size="8" font-family="monospace">fc</text>
+                
+                <!-- Phase curve -->
+                <path d="M 25 30 Q 60 30 100 60" fill="none" stroke="#8B5CF6" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6"/>
+                
+                <!-- Frequency labels -->
+                <text x="25" y="115" fill="#64748B" font-size="7" font-family="monospace">10Hz</text>
+                <text x="95" y="115" fill="#64748B" font-size="7" font-family="monospace">1kHz</text>
+                <text x="165" y="115" fill="#64748B" font-size="7" font-family="monospace">100kHz</text>
+                
+                <!-- Magnitude label -->
+                <text x="15" y="25" fill="#3B82F6" font-size="8" font-family="monospace">0dB</text>
+                
+                <!-- Gain arrow -->
+                <path d="M 40 35 L 50 35 L 50 42" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+                <text x="55" y="45" fill="#F59E0B" font-size="7">Gain</text>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Bode Plot Analyzer
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Interactive frequency response analysis. Visualize magnitude and phase response of RC, RL, and RLC circuits across frequency ranges.
+              </p>
+              <NuxtLink
+                to="/simulations/bode-plot-analyzer"
+                class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                Try Now →
+              </NuxtLink>
+            </div>
+          </div>
+
         </div>
 
         <!-- Tips Section -->
